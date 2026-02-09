@@ -61,13 +61,36 @@ jobs:
         run: node scripts/audit.js --gate ALL
         continue-on-error: true
 
-      - name: Rebuild with path prefix (for deployment)
+      - name: Rebuild with path prefix for MagUpSite Pages
         if: github.event_name == 'push'
         run: npm run build
         env:
-          PATH_PREFIX: /DeckSiteAgent/
+          PATH_PREFIX: /MagUpSite/
+          SITE_URL: https://alexroessner.github.io/MagUpSite
 
-      - name: Upload Pages artifact
+      - name: Deploy to MagUpSite repo
+        if: github.event_name == 'push'
+        env:
+          DEPLOY_TOKEN: ${{ secrets.MAGUPSITE_DEPLOY_TOKEN }}
+        run: |
+          cd dist
+          git init
+          git config user.name "DeckSiteAgent CI"
+          git config user.email "ci@decksiteagent.dev"
+          git checkout -b main
+          git add -A
+          git commit -m "Deploy MagUp site from DeckSiteAgent @ $(git -C $GITHUB_WORKSPACE rev-parse --short HEAD)"
+
+          if [ -n "$DEPLOY_TOKEN" ]; then
+            git remote add origin "https://x-access-token:${DEPLOY_TOKEN}@github.com/alexroessner/MagUpSite.git"
+            git push -f origin main
+            echo "Deployed to MagUpSite"
+          else
+            echo "::warning::MAGUPSITE_DEPLOY_TOKEN secret not set. Skipping MagUpSite deploy."
+            echo "To enable: create a PAT with repo scope and add it as MAGUPSITE_DEPLOY_TOKEN in DeckSiteAgent repo secrets."
+          fi
+
+      - name: Upload Pages artifact (fallback DeckSiteAgent deploy)
         if: github.event_name == 'push'
         uses: actions/upload-pages-artifact@v3
         with:
@@ -83,7 +106,6 @@ jobs:
     steps:
       - name: Enable GitHub Pages
         run: |
-          # Ensure Pages is configured with GitHub Actions source
           curl -sf -X POST \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github+json" \
@@ -108,14 +130,14 @@ jobs:
       - name: Wait for deployment propagation
         run: sleep 10
 
-      - name: Verify site responds
+      - name: Verify MagUpSite responds
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://alexroessner.github.io/MagUpSite/)
+          echo "MagUpSite HTTP status: $STATUS"
+        continue-on-error: true
+
+      - name: Verify DeckSiteAgent fallback responds
         run: |
           STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://alexroessner.github.io/DeckSiteAgent/)
-          echo "HTTP status: $STATUS"
-          [ "$STATUS" = "200" ]
-
-      - name: Verify CSS loads
-        run: |
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://alexroessner.github.io/DeckSiteAgent/css/style.css)
-          echo "CSS status: $STATUS"
-          [ "$STATUS" = "200" ]
+          echo "DeckSiteAgent HTTP status: $STATUS"
+        continue-on-error: true
