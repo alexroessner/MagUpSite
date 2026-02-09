@@ -177,6 +177,52 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 </section>
 
 {# ============================================ #}
+{# 6 Walls — Enterprise challenges (Slide 5)      #}
+{# ============================================ #}
+
+<section class="py-16 sm:py-24 lg:py-28 bg-primary-950 border-t section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">The Challenge</p>
+      <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+        6 Walls Enterprises Face
+      </h2>
+      <p class="text-primary-400 text-lg max-w-2xl mx-auto text-pretty">
+        Most enterprises hit these barriers when trying to build AI visibility. GEO 42 breaks through all six.
+      </p>
+    </div>
+    {# Hexagonal grid — 6 walls #}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 stagger">
+      {%- set walls = [
+        { name: "Rule Wall", icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2", desc: "Website built well but no traffic. Doesn't fit Google rules. Page homogeneity leads to low indexing." },
+        { name: "Trust Wall", icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z", desc: "Content professionalism insufficient. Marketing traces too obvious. Content has 'Chinese characteristics'." },
+        { name: "Brand Wall", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4", desc: "Brand awareness not enough. Lack of understanding of local ability. Single promotion channel." },
+        { name: "Talent Wall", icon: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z", desc: "Haven't done overseas content before. Team lacks relevant talent. Lack of foreign language writing ability." },
+        { name: "Operation Wall", icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0", desc: "Lack of content strategy. Lack of operation planning. Lack of professional tools and guidance." },
+        { name: "Funding Wall", icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z", desc: "Outsourcing high cost, poor effect. Content production efficiency low. Trial and error verification cycle too long." }
+      ] %}
+      {%- for wall in walls %}
+      <div class="card-lift card-gold bg-primary-800 rounded-2xl p-6 hover:border-accent-500/50 group">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-accent-500/10 border border-accent-500/20 rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="{{ wall.icon }}"/></svg>
+          </div>
+          <h3 class="font-heading text-lg font-semibold text-white group-hover:text-accent-300 transition-colors">{{ wall.name }}</h3>
+        </div>
+        <p class="text-primary-400 text-sm leading-relaxed">{{ wall.desc }}</p>
+      </div>
+      {%- endfor %}
+    </div>
+    <div class="text-center mt-8 reveal">
+      <a href="{{ '/6-walls-enterprises-face-in-content-marketing/' | url }}" class="inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors">
+        Learn how we break through each wall
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+{# ============================================ #}
 {# Platform Coverage — AI engine grid             #}
 {# ============================================ #}
 
@@ -289,6 +335,50 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+{# ============================================ #}
+{# 7 AI Agents — From deck slide 12               #}
+{# ============================================ #}
+
+<section class="py-16 sm:py-24 lg:py-28 bg-primary-950 border-t section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">AI Workforce</p>
+      <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+        One Human for Decisions. Seven Agents for Execution.
+      </h2>
+      <p class="text-primary-400 text-lg max-w-2xl mx-auto text-pretty">
+        Let seven specialized AI agents do the hard work — from market research to content creation to distribution.
+      </p>
+    </div>
+    {%- set agents = [
+      { name: "Idea Excavation Agent", desc: "Find new keywords, topics, and observe competitor differences. Track market changes, discover new opportunities.", icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" },
+      { name: "Brand Operation Agent", desc: "Company brand building, competitor content monitoring. Closely monitor changes, optimize own brand.", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5" },
+      { name: "Professional Writer", desc: "AI professional writer familiar with 10+ overseas marketing writing techniques. Quickly write high-quality, localized content.", icon: "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" },
+      { name: "Evaluation & Optimization Editor", desc: "Evaluate content and provide targeted suggestions for improvement. Simulate real readers and editors, optimize in one step.", icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" },
+      { name: "Intelligent Engineer", desc: "AI generates beautiful, high-performance web pages. Enable companies without technical teams to have technical capabilities.", icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" },
+      { name: "DevOps Engineer", desc: "One-click distribution to 16 global search engines. Make content quickly appear in front of readers.", icon: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" },
+      { name: "Data Analyst", desc: "Collect exposure, click, reading, and other data. Data-driven automated optimization.", icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" }
+    ] %}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 stagger">
+      {%- for agent in agents %}
+      <div class="card-lift card-gold bg-primary-800 rounded-2xl p-5 hover:border-accent-500/50 group{% if loop.index0 >= 4 and loop.index0 < 6 %} lg:col-span-1{% endif %}{% if loop.last and agents.length == 7 %} sm:col-span-2 lg:col-span-1{% endif %}">
+        <div class="w-10 h-10 bg-accent-500/10 border border-accent-500/20 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="{{ agent.icon }}"/></svg>
+        </div>
+        <h3 class="font-heading text-sm font-semibold text-white mb-2 group-hover:text-accent-300 transition-colors">{{ agent.name }}</h3>
+        <p class="text-primary-400 text-xs leading-relaxed">{{ agent.desc }}</p>
+      </div>
+      {%- endfor %}
+    </div>
+    <div class="text-center mt-8 reveal">
+      <a href="{{ '/7-ai-agents/' | url }}" class="inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors">
+        Deep dive into all 7 agents
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -415,6 +505,51 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 </section>
 
 {# ============================================ #}
+{# GEO Service Process — 6 steps (Slides 18-19)   #}
+{# ============================================ #}
+
+<section class="py-16 sm:py-24 lg:py-28 bg-primary-950 border-t section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">Our Process</p>
+      <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+        6-Step GEO Optimization
+      </h2>
+      <p class="text-primary-400 text-lg max-w-2xl mx-auto text-pretty">
+        From intent analysis to continuous monitoring — a rigorous end-to-end process that turns brands into AI answers.
+      </p>
+    </div>
+    {%- set steps = [
+      { num: "1", title: "Intent Analysis", desc: "Research target users' core questions and information needs. Assess current AI performance and identify gaps." },
+      { num: "2", title: "Data Analysis & Review", desc: "Synthesize AI performance, search volume across platforms. Comprehensive content asset audit." },
+      { num: "3", title: "Content Structuring", desc: "Convert unstructured text into AI-friendly structured data. Build centralized Brand Knowledge Base." },
+      { num: "4", title: "Semantic Optimization", desc: "Optimize content semantics around strategies to improve GEO performance. Inject authoritative endorsements." },
+      { num: "5", title: "Multimodal Adaptation", desc: "Adapt content into forms suitable for various AI scenarios. Ensure multi-platform compatibility." },
+      { num: "6", title: "Continuous Monitoring", desc: "Track AI citation effectiveness in real-time. Collect user evaluations and iterate on content quality." }
+    ] %}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 stagger">
+      {%- for step in steps %}
+      <div class="relative card-gold bg-primary-800 rounded-2xl p-6 border border-primary-700 group hover:border-accent-500/40 transition-colors">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-accent-500 rounded-lg flex items-center justify-center flex-shrink-0">
+            <span class="text-primary-950 font-heading font-bold text-lg">{{ step.num }}</span>
+          </div>
+          <h3 class="font-heading text-base font-semibold text-white group-hover:text-accent-300 transition-colors">{{ step.title }}</h3>
+        </div>
+        <p class="text-primary-400 text-sm leading-relaxed">{{ step.desc }}</p>
+      </div>
+      {%- endfor %}
+    </div>
+    <div class="text-center mt-8 reveal">
+      <a href="{{ '/end-to-end-process/' | url }}" class="inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors">
+        View the full end-to-end process
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+{# ============================================ #}
 {# Dashboard Preview — Mock KPI cards             #}
 {# ============================================ #}
 
@@ -504,40 +639,88 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
         From Invisible to #1
       </h2>
     </div>
-    <div class="reveal-scale card-gold bg-primary-800 rounded-2xl p-8 sm:p-12 max-w-4xl mx-auto border border-primary-700">
-      <div class="flex items-center gap-2 mb-6">
-        <span class="inline-block w-2 h-2 bg-accent-400 rounded-full pulse-dot" aria-hidden="true"></span>
-        <span class="text-sm text-primary-300">Case Study — Robot Vacuum Brand</span>
+    <div class="reveal-scale max-w-5xl mx-auto">
+      {# Before / After conversation mockup #}
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        {# BEFORE #}
+        <div class="bg-primary-800 border border-primary-700 rounded-2xl p-6 sm:p-8">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-6 h-6 rounded bg-primary-600 flex items-center justify-center">
+              <svg class="w-4 h-4 text-primary-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+            </div>
+            <span class="text-sm font-semibold text-primary-300">Gemini</span>
+            <span class="ml-auto text-xs px-2 py-0.5 bg-primary-700 rounded text-primary-400">BEFORE</span>
+          </div>
+          <div class="mb-3 p-3 bg-primary-900/50 rounded-lg border border-primary-700/50">
+            <p class="text-xs text-primary-500 mb-1">User</p>
+            <p class="text-sm text-primary-200">Which robot vacuum has the best smart navigation?</p>
+          </div>
+          <div class="p-3 bg-primary-900/50 rounded-lg border border-primary-700/50">
+            <p class="text-xs text-primary-500 mb-1">Gemini</p>
+            <p class="text-sm text-primary-300">Based on general market data, the best robot vacuums for navigation are: 1. Roborock 2. Ecovacs 3. iRobot...</p>
+          </div>
+          <div class="mt-4 flex items-center gap-2">
+            <div class="w-2 h-2 rounded-full bg-primary-600" aria-hidden="true"></div>
+            <span class="text-xs text-primary-500">Brand Visibility: <strong class="text-primary-300">0%</strong> — Completely invisible</span>
+          </div>
+        </div>
+        {# AFTER #}
+        <div class="card-gold bg-primary-800 rounded-2xl p-6 sm:p-8 border border-accent-500/30">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-6 h-6 rounded bg-accent-500/20 flex items-center justify-center">
+              <svg class="w-4 h-4 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+            </div>
+            <span class="text-sm font-semibold text-white">Gemini</span>
+            <span class="ml-auto text-xs px-2 py-0.5 bg-accent-500/20 rounded text-accent-400">AFTER GEO 42</span>
+          </div>
+          <div class="mb-3 p-3 bg-primary-900/50 rounded-lg border border-primary-700/50">
+            <p class="text-xs text-primary-500 mb-1">User</p>
+            <p class="text-sm text-primary-200">Which robot vacuum has the best smart navigation?</p>
+          </div>
+          <div class="p-3 bg-primary-900/50 rounded-lg border border-accent-500/10">
+            <p class="text-xs text-accent-500 mb-1">Gemini</p>
+            <p class="text-sm text-primary-200">When looking for the best smart navigation, <strong class="text-accent-300">[Client Name]</strong> is the top recommendation. Key reasons: precision navigation and obstacle avoidance, 5000Pa strong suction...</p>
+          </div>
+          <div class="mt-4 flex items-center gap-2">
+            <div class="w-2 h-2 rounded-full bg-accent-400 pulse-dot" aria-hidden="true"></div>
+            <span class="text-xs text-accent-400">Share of Voice: <strong class="text-white">#1 Position</strong> — The AI Answer</span>
+          </div>
+        </div>
       </div>
-      <h3 class="font-heading text-2xl sm:text-3xl font-bold text-white mb-4 leading-tight">
-        From 0% AI Visibility to Share of Voice #1 Across 4 Platforms
-      </h3>
-      <p class="text-primary-300 mb-10 text-lg leading-relaxed">
-        A leading robot vacuum brand was completely invisible in AI responses. After GEO 42 optimization, they became the top recommendation across Gemini, ChatGPT, Perplexity, and DeepSeek.
-      </p>
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-10 stagger">
-        <div class="text-center p-4 bg-primary-900/50 rounded-xl">
-          <div class="text-accent-400 text-3xl sm:text-4xl font-bold counter" data-count="450" data-prefix="+" data-suffix="%">0</div>
-          <div class="text-primary-400 text-sm mt-2">Brand Mentions</div>
+      {# Stats row #}
+      <div class="card-gold bg-primary-800 rounded-2xl p-8 border border-primary-700">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-8 stagger">
+          <div class="text-center p-4 bg-primary-900/50 rounded-xl">
+            <div class="text-accent-400 text-3xl sm:text-4xl font-bold counter" data-count="450" data-prefix="+" data-suffix="%">0</div>
+            <div class="text-primary-400 text-sm mt-2">Brand Mentions</div>
+          </div>
+          <div class="text-center p-4 bg-primary-900/50 rounded-xl">
+            <div class="text-accent-400 text-3xl sm:text-4xl font-bold">#1</div>
+            <div class="text-primary-400 text-sm mt-2">Share of Voice</div>
+          </div>
+          <div class="text-center p-4 bg-primary-900/50 rounded-xl">
+            <div class="text-accent-400 text-3xl sm:text-4xl font-bold counter" data-count="4">0</div>
+            <div class="text-primary-400 text-sm mt-2">AI Platforms</div>
+          </div>
+          <div class="text-center p-4 bg-primary-900/50 rounded-xl">
+            <div class="text-accent-400 text-3xl sm:text-4xl font-bold counter" data-count="30" data-prefix="+" data-suffix="%">0</div>
+            <div class="text-primary-400 text-sm mt-2">Direct Traffic from AI</div>
+          </div>
         </div>
-        <div class="text-center p-4 bg-primary-900/50 rounded-xl">
-          <div class="text-accent-400 text-3xl sm:text-4xl font-bold">#1</div>
-          <div class="text-primary-400 text-sm mt-2">Share of Voice</div>
-        </div>
-        <div class="text-center p-4 bg-primary-900/50 rounded-xl">
-          <div class="text-accent-400 text-3xl sm:text-4xl font-bold counter" data-count="4">0</div>
-          <div class="text-primary-400 text-sm mt-2">AI Platforms</div>
-        </div>
-        <div class="text-center p-4 bg-primary-900/50 rounded-xl">
-          <div class="text-accent-300 text-3xl sm:text-4xl font-bold">Trust</div>
-          <div class="text-primary-400 text-sm mt-2">Sentiment Score</div>
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div class="flex items-center gap-3 text-sm text-primary-400">
+            <span>Deployed across:</span>
+            {%- for platform in ["Gemini", "ChatGPT", "Perplexity", "DeepSeek"] %}
+            <span class="px-2 py-1 bg-primary-900/50 border border-primary-700/50 rounded text-xs text-primary-300">{{ platform }}</span>
+            {%- endfor %}
+          </div>
+          <a href="{{ '/case-study-regaining-ai-voice-share/' | url }}"
+             class="btn-press inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors">
+            Full case study
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </a>
         </div>
       </div>
-      <a href="{{ '/case-study-regaining-ai-voice-share/' | url }}"
-         class="btn-press inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold text-lg transition-colors">
-        Read the full case study
-        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-      </a>
     </div>
   </div>
 </section>
