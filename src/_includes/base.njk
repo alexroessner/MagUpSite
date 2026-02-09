@@ -10,6 +10,7 @@
   {%- endif %}
   <meta name="description" content="{{ description | default(site.description) }}">
   <meta name="robots" content="index, follow">
+  <link rel="icon" href="{{ '/favicon.svg' | url }}" type="image/svg+xml">
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 
   {# ---- Open Graph ---- #}
@@ -22,6 +23,15 @@
   <meta property="og:type" content="{% if page.url == '/' %}website{% else %}article{% endif %}">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:site_name" content="{{ site.name }}">
+
+  {# ---- Twitter Card ---- #}
+  <meta name="twitter:card" content="summary">
+  {%- if page.url == "/" %}
+  <meta name="twitter:title" content="{{ site.name }}{% if site.tagline %} — {{ site.tagline }}{% endif %}">
+  {%- else %}
+  <meta name="twitter:title" content="{{ title }} | {{ site.name }}">
+  {%- endif %}
+  <meta name="twitter:description" content="{{ description | default(site.description) }}">
 
   {# ---- Fonts ---- #}
   {%- if site.fonts.googleFontsUrl %}

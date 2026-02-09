@@ -49,3 +49,31 @@ permalink: "{{ section.slug }}/"
 </div>
 {%- endif %}
 {%- endfor %}
+
+{# ---- Navigation between sections ---- #}
+{%- set sections = pageContent.custom_sections %}
+{%- set currentIndex = -1 %}
+{%- for s in sections %}
+  {%- if s.slug == section.slug %}
+    {%- set currentIndex = loop.index0 %}
+  {%- endif %}
+{%- endfor %}
+
+<div class="not-prose mt-16 pt-8 border-t border-primary-700">
+  <div class="flex justify-between items-center">
+    {%- if currentIndex > 0 %}
+    <a href="{{ ('/' + sections[currentIndex - 1].slug + '/') | url }}" class="group flex items-center gap-2 text-sm text-primary-300 hover:text-accent-400 transition-colors">
+      <svg class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      {{ sections[currentIndex - 1].title | truncate(40, true, '...') }}
+    </a>
+    {%- else %}
+    <span></span>
+    {%- endif %}
+    {%- if currentIndex >= 0 and currentIndex < sections.length - 1 %}
+    <a href="{{ ('/' + sections[currentIndex + 1].slug + '/') | url }}" class="group flex items-center gap-2 text-sm text-primary-300 hover:text-accent-400 transition-colors">
+      {{ sections[currentIndex + 1].title | truncate(40, true, '...') }}
+      <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
+    {%- endif %}
+  </div>
+</div>

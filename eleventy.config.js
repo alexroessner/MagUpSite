@@ -6,6 +6,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/pdf");
   eleventyConfig.addPassthroughCopy("src/css/style.css");
+  eleventyConfig.addPassthroughCopy({ "src/favicon.svg": "favicon.svg" });
 
   // Load merged blueprint if it exists, otherwise use defaults
   const blueprintPath = path.join(__dirname, "data", "merged-blueprint.json");
