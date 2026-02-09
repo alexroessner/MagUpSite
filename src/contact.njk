@@ -13,13 +13,21 @@ description: "Get in touch with MagUp to learn how GEO + SEO content marketing c
       Ready to see how AI-powered content marketing can grow your brand? Reach out and our team will get back to you.
     </p>
 
-    {%- if site.contact.email or site.contact.phone %}
+    {%- if site.contact.email or site.contact.phone or site.contact.url %}
     <div class="space-y-4 text-primary-200">
       {%- if site.contact.email %}
       <p>
         <strong class="text-white">Email:</strong><br>
         <a href="mailto:{{ site.contact.email }}" class="text-accent-400 underline hover:text-accent-300 transition-colors">
           {{ site.contact.email }}
+        </a>
+      </p>
+      {%- endif %}
+      {%- if site.contact.url %}
+      <p>
+        <strong class="text-white">Website:</strong><br>
+        <a href="{{ site.contact.url }}" class="text-accent-400 underline hover:text-accent-300 transition-colors" target="_blank" rel="noopener">
+          {{ site.contact.url | replace("https://www.", "") | replace("https://", "") }}
         </a>
       </p>
       {%- endif %}

@@ -31,6 +31,6 @@ module.exports = {
     mono: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
     googleFontsUrl: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
   },
-  siteUrl: "",
+  siteUrl: "https://alexroessner.github.io/MagUpSite",
   pathPrefix: "/",
 };

@@ -223,5 +223,269 @@
       "slug": "case-study-regaining-ai-voice-share",
       "content": "MagUp helped a leading robot vacuum cleaner brand regain AI voice share in a Gemini-dominated category. Before GEO optimization, the brand had 0% visibility — completely drowned by competitors. When users asked AI assistants about robot vacuums, the response was generic, listing competitors like iRobot Roomba, Roborock, and Ecovacs DEEBOT without mentioning the client's brand at all. After MagUp's GEO optimization, the brand achieved Share of Voice 1st Position — becoming the top answer. AI responses now lead with the client's brand as the top recommendation, highlighting specific product strengths like precision laser navigation and 5000Pa strong suction power. The brand also dominates related queries such as 'strong suction robot vacuum.' Platform coverage extends across Gemini, ChatGPT, Perplexity, and DeepSeek. Key result metrics: Brand Mentions increased by +450%, Sentiment Score shifted to Positive (Trust), and Direct Traffic from AI search grew significantly. This case study demonstrates MagUp's ability to transform a brand from complete AI invisibility to category leadership across multiple AI platforms."
     }
+  ],
+  "tables": [
+    {
+      "caption": "6 Walls Enterprises Face",
+      "headers": [
+        "Wall",
+        "Challenge"
+      ],
+      "rows": [
+        [
+          "Rule Wall",
+          "Complex regulatory and compliance requirements across markets"
+        ],
+        [
+          "Trust Wall",
+          "Building authentic credibility with skeptical audiences"
+        ],
+        [
+          "Brand Wall",
+          "Maintaining consistent brand voice across global markets"
+        ],
+        [
+          "Talent Wall",
+          "Finding specialized AI and SEO content marketing professionals"
+        ],
+        [
+          "Operation Wall",
+          "Scaling content operations across languages and channels"
+        ],
+        [
+          "Funding Wall",
+          "Justifying content marketing budgets with measurable ROI"
+        ]
+      ]
+    },
+    {
+      "caption": "Visibility Flywheel Growth Model",
+      "headers": [
+        "Position",
+        "Description"
+      ],
+      "rows": [
+        [
+          "Become the Answer",
+          "Position your brand as the authoritative source AI engines reference"
+        ],
+        [
+          "Win Trust",
+          "Build credibility through consistent AI-optimized content"
+        ],
+        [
+          "Facilitate Transaction",
+          "Convert AI-driven visibility into measurable business outcomes"
+        ]
+      ]
+    },
+    {
+      "caption": "Market Data",
+      "headers": [
+        "Metric",
+        "Value"
+      ],
+      "rows": [
+        [
+          "Traditional vs AI search gap",
+          "34x"
+        ],
+        [
+          "AI chatbot traffic growth",
+          "1000x"
+        ],
+        [
+          "Enterprises served",
+          "1000+"
+        ]
+      ]
+    },
+    {
+      "caption": "SEO vs GEO Comparison",
+      "headers": [
+        "Dimension",
+        "Traditional SEO",
+        "GEO"
+      ],
+      "rows": [
+        [
+          "Distribution Model",
+          "Linear — progressive ranking (position 10 → 1)",
+          "Cliff-Edge — binary opposition (cited or invisible)"
+        ],
+        [
+          "Competition",
+          "Multiple sites coexist on page one",
+          "Zero-sum: handful of sources cited per response"
+        ],
+        [
+          "Ranking Shift",
+          "Gradual, incremental improvements",
+          "Binary: you are the answer or absent"
+        ],
+        [
+          "Stakes",
+          "Moderate — still visible on page 1-2",
+          "High — no page two in AI responses"
+        ],
+        [
+          "Reward",
+          "Proportional to ranking position",
+          "Disproportionate authority and trust for winners"
+        ]
+      ]
+    },
+    {
+      "caption": "7 AI Agents",
+      "headers": [
+        "Agent",
+        "Role",
+        "Key Capabilities"
+      ],
+      "rows": [
+        [
+          "Idea Excavation Agent",
+          "Topic & keyword discovery",
+          "Discovers keywords/topics, monitors competitors, tracks market changes"
+        ],
+        [
+          "Brand Operation Agent",
+          "Brand management",
+          "Manages brand building, monitors competitor content strategies"
+        ],
+        [
+          "Professional Writer",
+          "Content creation",
+          "10+ overseas marketing writing techniques, GEO/SEO-optimized content at scale"
+        ],
+        [
+          "Evaluation & Optimization Editor",
+          "Quality assurance",
+          "Evaluates quality, provides improvement suggestions, simulates reader perspectives"
+        ],
+        [
+          "Intelligent Engineer",
+          "Web page generation",
+          "Generates high-performance web pages without technical teams"
+        ],
+        [
+          "DevOps Engineer",
+          "Distribution",
+          "One-click distribution to 16 global search engines and content platforms"
+        ],
+        [
+          "Data Analyst",
+          "Analytics & optimization",
+          "Collects exposure/click/reading data, drives automated optimization"
+        ]
+      ]
+    },
+    {
+      "caption": "Product Architecture — Four Core Engines",
+      "headers": [
+        "Engine",
+        "Capabilities"
+      ],
+      "rows": [
+        [
+          "Long-form Engine",
+          "Multiple writing styles, structured content generation, deep content creation, SEO optimization suggestions"
+        ],
+        [
+          "Image Engine",
+          "Intelligent image generation, style transfer, batch processing, copyright compliance checking"
+        ],
+        [
+          "Data Engine",
+          "Data collection/cleaning, real-time analysis, trend prediction models, data visualization reports"
+        ],
+        [
+          "Knowledge Base",
+          "Industry knowledge graph, intelligent Q&A, document management/retrieval, continuous learning"
+        ]
+      ]
+    },
+    {
+      "caption": "Case Study: Robot Vacuum GEO Results",
+      "headers": [
+        "Metric",
+        "Before GEO",
+        "After GEO"
+      ],
+      "rows": [
+        [
+          "Brand Visibility",
+          "0% — completely drowned by competitors",
+          "Share of Voice 1st Position"
+        ],
+        [
+          "AI Response Quality",
+          "Generic listing of iRobot, Roborock, Ecovacs",
+          "Brand is top recommendation with specific features"
+        ],
+        [
+          "Brand Mentions",
+          "Baseline",
+          "+450% increase"
+        ],
+        [
+          "Sentiment Score",
+          "Not mentioned",
+          "Positive (Trust)"
+        ],
+        [
+          "Platform Coverage",
+          "None",
+          "Gemini, ChatGPT, Perplexity, DeepSeek"
+        ]
+      ]
+    },
+    {
+      "caption": "MagUp Delivery Team Structure",
+      "headers": [
+        "Role",
+        "Responsibilities"
+      ],
+      "rows": [
+        [
+          "Leader (Hub)",
+          "Overall scheduling, content overall design, package adjustment, optimization plan customization"
+        ],
+        [
+          "Data Analysts",
+          "Targeted data analysis, provide decision basis for content strategy"
+        ],
+        [
+          "Knowledge Base Architects",
+          "Overall knowledge base structure setup, content review"
+        ],
+        [
+          "Content Channel Leads",
+          "Multi-platform multi-channel content seeding, AI training, ensure content indexing"
+        ],
+        [
+          "Content Operations",
+          "Customized content production based on different AI platform characteristics"
+        ]
+      ]
+    }
+  ],
+  "industries": [
+    {
+      "name": "Software & AI",
+      "description": "Helping software and AI companies maximize brand visibility in AI-powered search and answer engines."
+    },
+    {
+      "name": "Advanced Manufacturing",
+      "description": "Supporting manufacturing enterprises in building global AI content marketing systems."
+    },
+    {
+      "name": "E-commerce & Consumer",
+      "description": "Boosting product visibility in ChatGPT Shopping, AI assistants, and AI-powered discovery for consumer brands."
+    },
+    {
+      "name": "Professional Services",
+      "description": "Enabling professional services firms to become the authoritative answer in AI-driven search."
+    }
   ]
 }

@@ -268,6 +268,12 @@ function buildContent(extract) {
           .replace(/^-|-$/g, ""),
         content: s.content,
       })),
+    tables: (extract.tables || []).map((t) => ({
+      caption: t.caption,
+      headers: t.headers,
+      rows: t.rows,
+    })),
+    industries: extract.industries || [],
   };
 }
 
