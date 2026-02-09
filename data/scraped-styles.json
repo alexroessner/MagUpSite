@@ -1,0 +1,151 @@
+{
+  "_meta": {
+    "source": "https://www.tryprofound.com/",
+    "scrapedAt": "2026-02-09T19:30:00.000Z",
+    "viewport": "1440x900",
+    "method": "WebFetch analysis (Puppeteer blocked by network)"
+  },
+  "colors": {
+    "primary": {
+      "base": "#0D0D0D",
+      "scale": {
+        "50": "#F5F5F5",
+        "100": "#E8E8E8",
+        "200": "#D1D1D1",
+        "300": "#B0B0B0",
+        "400": "#888888",
+        "500": "#505050",
+        "600": "#383838",
+        "700": "#232323",
+        "800": "#151515",
+        "900": "#0D0D0D"
+      }
+    },
+    "accent": {
+      "base": "#7C3AED",
+      "scale": {
+        "50": "#F3EEFE",
+        "100": "#E8DDFD",
+        "200": "#D0BAFB",
+        "300": "#B998F9",
+        "400": "#9A6CF3",
+        "500": "#7C3AED",
+        "600": "#6326C4",
+        "700": "#4B1D93",
+        "800": "#331363",
+        "900": "#1C0A35"
+      }
+    },
+    "all": [
+      { "hex": "#0D0D0D", "count": 200 },
+      { "hex": "#000000", "count": 180 },
+      { "hex": "#FFFFFF", "count": 150 },
+      { "hex": "#232323", "count": 80 },
+      { "hex": "#505050", "count": 40 },
+      { "hex": "#212121", "count": 35 },
+      { "hex": "#151515", "count": 30 },
+      { "hex": "#7C3AED", "count": 20 },
+      { "hex": "#F5F5F5", "count": 15 },
+      { "hex": "#10B981", "count": 10 }
+    ]
+  },
+  "typography": {
+    "bodyFont": "InterVariable, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+    "headingFont": "InterVariable, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+    "sizes": [
+      ["14px", 80],
+      ["16px", 60],
+      ["20px", 30],
+      ["24px", 20],
+      ["32px", 15],
+      ["40px", 10],
+      ["48px", 5],
+      ["56px", 3]
+    ],
+    "weights": [
+      ["400", 100],
+      ["500", 60],
+      ["600", 30],
+      ["700", 20]
+    ],
+    "lineHeights": [
+      ["1.5", 80],
+      ["1.4", 40],
+      ["1.2", 30],
+      ["1.6", 20]
+    ],
+    "googleFontsUrls": []
+  },
+  "layout": {
+    "containers": ["1400px"],
+    "header": {
+      "exists": true,
+      "tagName": "HEADER",
+      "height": "64px",
+      "background": "rgba(0, 0, 0, 0.8)"
+    },
+    "footer": {
+      "exists": true,
+      "tagName": "FOOTER",
+      "background": "#000000"
+    },
+    "sectionSpacing": [
+      { "paddingTop": "120px", "paddingBottom": "130px", "marginTop": "0px", "marginBottom": "0px" },
+      { "paddingTop": "50px", "paddingBottom": "50px", "marginTop": "0px", "marginBottom": "0px" },
+      { "paddingTop": "100px", "paddingBottom": "100px", "marginTop": "0px", "marginBottom": "0px" }
+    ],
+    "bodyBackground": "#000000"
+  },
+  "components": {
+    "buttons": [
+      {
+        "text": "Get a Demo",
+        "backgroundColor": "#F5F5F5",
+        "color": "#0D0D0D",
+        "borderRadius": "8px",
+        "padding": "8px 16px",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "border": "none"
+      },
+      {
+        "text": "Get Started",
+        "backgroundColor": "#212121",
+        "color": "#FFFFFF",
+        "borderRadius": "8px",
+        "padding": "8px 16px",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "border": "1px solid #232323"
+      }
+    ],
+    "navigation": [
+      { "text": "Platform", "href": "#" },
+      { "text": "Resources", "href": "#" },
+      { "text": "Solutions", "href": "#" },
+      { "text": "Enterprise", "href": "/enterprise" },
+      { "text": "Pricing", "href": "/pricing" },
+      { "text": "Careers", "href": "/careers" },
+      { "text": "Get a Demo", "href": "/demo" }
+    ],
+    "cards": {
+      "count": 5,
+      "style": {
+        "borderRadius": "12px",
+        "boxShadow": "none",
+        "padding": "24px 32px",
+        "backgroundColor": "#000000",
+        "border": "1px solid #232323"
+      }
+    },
+    "links": {
+      "color": "#FFFFFF",
+      "textDecoration": "none"
+    }
+  },
+  "assets": {
+    "logos": [],
+    "favicon": "",
+    "images": []
+  }
+}

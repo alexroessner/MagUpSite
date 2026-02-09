@@ -26,56 +26,36 @@
 }
 
 @theme {
-  /* ===== Typography =====
-   *
-   * These defaults are overwritten by the merge script when a reference
-   * URL is scraped. The fallback values provide a clean, professional
-   * starting point for any business.
-   */
-
-  /* Headings: system serif stack for institutional credibility */
-  --font-heading: Georgia, "Times New Roman", serif;
-
-  /* Body: system sans stack for screen readability */
-  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-
-  /* Technical identifiers, code references */
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
-
-  /* Body text size: 17px for comfortable reading of business content */
+  /* ===== Typography ===== */
+  --font-heading: InterVariable, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-sans: InterVariable, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   --text-body: 1.0625rem;
   --text-body--line-height: 1.7;
 
-  /* ===== Colors =====
-   *
-   * Default palette provides a professional blue/orange scheme.
-   * The merge script replaces these with colors extracted from the
-   * reference URL or derived from the PDF's visual identity.
-   */
+  /* ===== Colors ===== */
 
-  /* Primary scale — the dominant brand color */
-  --color-primary-50: #E6F0F5;
-  --color-primary-100: #CCE1EB;
-  --color-primary-200: #99C3D7;
-  --color-primary-300: #66A5C3;
-  --color-primary-400: #3387AF;
-  --color-primary-500: #006699;
-  --color-primary-600: #00527A;
-  --color-primary-700: #003D5C;
-  --color-primary-800: #00293D;
-  --color-primary-900: #00141F;
+  /* Primary scale — base: #0D0D0D */
+  --color-primary-50: #F5F5F5;
+  --color-primary-100: #E8E8E8;
+  --color-primary-200: #D1D1D1;
+  --color-primary-300: #B0B0B0;
+  --color-primary-400: #888888;
+  --color-primary-500: #505050;
+  --color-primary-600: #383838;
+  --color-primary-700: #232323;
+  --color-primary-800: #151515;
+  --color-primary-900: #0D0D0D;
 
-  /* Accent scale — for CTAs, emphasis, and highlights */
-  --color-accent-50: #FEF3EF;
-  --color-accent-100: #FDE7DF;
-  --color-accent-200: #FBCFBF;
-  --color-accent-300: #F9B79F;
-  --color-accent-400: #F79F7F;
-  --color-accent-500: #CC3300;
-  --color-accent-600: #A32900;
-  --color-accent-700: #7A1F00;
-  --color-accent-800: #521400;
-  --color-accent-900: #290A00;
+  /* Accent scale — base: #7C3AED */
+  --color-accent-50: #F3EEFE;
+  --color-accent-100: #E8DDFD;
+  --color-accent-200: #D0BAFB;
+  --color-accent-300: #B998F9;
+  --color-accent-400: #9A6CF3;
+  --color-accent-500: #7C3AED;
+  --color-accent-600: #6326C4;
+  --color-accent-700: #4B1D93;
+  --color-accent-800: #331363;
+  --color-accent-900: #1C0A35;
 }

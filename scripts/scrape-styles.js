@@ -20,7 +20,11 @@
 
 const fs = require("fs");
 const path = require("path");
-const puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer-core");
+
+// Use system-installed Chromium (Playwright's or any available)
+const CHROME_PATH = process.env.CHROME_PATH ||
+  "/root/.cache/ms-playwright/chromium-1194/chrome-linux/chrome";
 
 // ---------------------------------------------------------------------------
 // CLI argument parsing
@@ -460,7 +464,8 @@ async function scrape(url) {
 
   const browser = await puppeteer.launch({
     headless: "new",
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    executablePath: CHROME_PATH,
+    args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-gpu", "--disable-dev-shm-usage"],
   });
 
   try {

@@ -250,7 +250,7 @@ function buildContent(extract) {
     })),
     contact: mergeContact(extract),
     testimonials: [],
-    clients: [],
+    clients: extract.clients || [],
     certifications: [],
     custom_sections: (extract.sections || [])
       .filter(
