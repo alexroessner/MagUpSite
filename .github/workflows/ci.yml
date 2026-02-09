@@ -72,10 +72,10 @@ jobs:
       - name: Push to MagUpSite repo
         if: github.event_name == 'push'
         env:
-          DEPLOY_TOKEN: ${{ secrets.MAGUPSITE_DEPLOY_TOKEN }}
+          DEPLOY_TOKEN: ${{ secrets.MAGUPSITE_DEPLOY_TOKEN2 }}
         run: |
           if [ -z "$DEPLOY_TOKEN" ]; then
-            echo "::warning::MAGUPSITE_DEPLOY_TOKEN not set. Skipping MagUpSite deploy."
+            echo "::warning::MAGUPSITE_DEPLOY_TOKEN2 not set. Skipping MagUpSite deploy."
             exit 0
           fi
           cd dist
