@@ -1,0 +1,103 @@
+/**
+ * MagUp Animation Engine
+ * Scroll reveals, animated counters, and typewriter effects
+ */
+(function () {
+  "use strict";
+
+  // ── Scroll-triggered reveals via IntersectionObserver ──
+  var revealEls = document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger");
+  if (revealEls.length && "IntersectionObserver" in window) {
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+    );
+    revealEls.forEach(function (el) { observer.observe(el); });
+  } else {
+    // Fallback: show everything
+    revealEls.forEach(function (el) { el.classList.add("visible"); });
+  }
+
+  // ── Animated counters ──
+  var counters = document.querySelectorAll("[data-count]");
+  if (counters.length && "IntersectionObserver" in window) {
+    var countObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          var target = el.getAttribute("data-count");
+          var prefix = el.getAttribute("data-prefix") || "";
+          var suffix = el.getAttribute("data-suffix") || "";
+          var num = parseFloat(target);
+          var isNum = !isNaN(num);
+          if (!isNum) {
+            el.textContent = prefix + target + suffix;
+            countObserver.unobserve(el);
+            return;
+          }
+          var duration = 1800;
+          var start = performance.now();
+          function animate(now) {
+            var progress = Math.min((now - start) / duration, 1);
+            // Ease out cubic
+            var ease = 1 - Math.pow(1 - progress, 3);
+            var current = Math.round(num * ease);
+            el.textContent = prefix + current + suffix;
+            if (progress < 1) requestAnimationFrame(animate);
+            else el.textContent = prefix + target + suffix;
+          }
+          requestAnimationFrame(animate);
+          countObserver.unobserve(el);
+        });
+      },
+      { threshold: 0.5 }
+    );
+    counters.forEach(function (el) { countObserver.observe(el); });
+  }
+
+  // ── Typewriter cycling ──
+  var typers = document.querySelectorAll("[data-typewriter]");
+  typers.forEach(function (el) {
+    var words = el.getAttribute("data-typewriter").split("|");
+    if (words.length < 2) return;
+    var wordIndex = 0;
+    var charIndex = 0;
+    var deleting = false;
+    var speed = 80;
+
+    function tick() {
+      var current = words[wordIndex];
+      if (deleting) {
+        charIndex--;
+        el.textContent = current.substring(0, charIndex);
+        if (charIndex === 0) {
+          deleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+          setTimeout(tick, 400);
+          return;
+        }
+        setTimeout(tick, 40);
+      } else {
+        charIndex++;
+        el.textContent = current.substring(0, charIndex);
+        if (charIndex === current.length) {
+          deleting = true;
+          setTimeout(tick, 2000);
+          return;
+        }
+        setTimeout(tick, speed);
+      }
+    }
+
+    // Start after a brief delay
+    setTimeout(tick, 800);
+  });
+})();

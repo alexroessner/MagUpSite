@@ -1,29 +1,60 @@
 ---
-layout: page.njk
+layout: base.njk
 title: Services — AI Visibility, GEO, and SEO Analytics
 description: "MagUp's 7 service pillars: AI visibility tracking, prompt intelligence, citation analytics, crawler optimization, traffic attribution, shopping visibility, and GEO+SEO content marketing."
+fullWidth: true
 ---
 
-{%- if pageContent.services.length %}
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8 not-prose">
-  {%- for service in pageContent.services %}
-  <div class="bg-primary-800 border border-primary-700 rounded-xl p-6 sm:p-8 hover:border-accent-500 transition-colors">
-    <h2 class="font-heading text-xl font-semibold text-white mb-3">
-      {{ service.name }}
-    </h2>
-    <p class="text-primary-300 text-sm leading-relaxed">
-      {{ service.description }}
-    </p>
-  </div>
-  {%- endfor %}
-</div>
-{%- else %}
-This page will be populated with services extracted from the source PDF.
+{%- set serviceIcons = [
+  '<svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>',
+  '<svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+  '<svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>',
+  '<svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>',
+  '<svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>',
+  '<svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z"/></svg>',
+  '<svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>'
+] %}
 
-Run the pipeline to generate content:
-```
-npm run extract -- --pdf source-pdf/your-document.pdf
-npm run merge
-npm run build
-```
-{%- endif %}
+<section class="py-16 sm:py-24 bg-primary-900">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">Our Services</p>
+      <h1 class="font-heading text-4xl sm:text-5xl font-bold text-white mb-4">
+        Full-Stack AI Visibility
+      </h1>
+      <p class="text-primary-300 text-lg max-w-2xl mx-auto text-pretty">
+        Seven service pillars covering every dimension of how brands get discovered, cited, and recommended by AI.
+      </p>
+    </div>
+
+    {%- if pageContent.services.length %}
+    <div class="space-y-6 stagger">
+      {%- for service in pageContent.services %}
+      <div class="card-lift bg-primary-800 border border-primary-700 rounded-2xl p-8 sm:p-10 hover:border-accent-500/50 group">
+        <div class="flex flex-col sm:flex-row gap-6 items-start">
+          <div class="flex-shrink-0 w-14 h-14 bg-accent-500/10 border border-accent-500/20 rounded-xl flex items-center justify-center text-accent-400 group-hover:bg-accent-500/20 transition-colors">
+            {{ serviceIcons[loop.index0] | default(serviceIcons[0]) | safe }}
+          </div>
+          <div>
+            <h2 class="font-heading text-xl sm:text-2xl font-semibold text-white mb-3 group-hover:text-accent-300 transition-colors">
+              {{ service.name }}
+            </h2>
+            <p class="text-primary-300 leading-relaxed">
+              {{ service.description }}
+            </p>
+          </div>
+        </div>
+      </div>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+
+    <div class="mt-16 text-center reveal">
+      <a href="{{ '/contact/' | url }}"
+         class="btn-press inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-400 text-white font-semibold px-8 py-3.5 rounded-lg transition-all duration-200 text-lg shadow-lg shadow-accent-500/25">
+        Get a Demo
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
