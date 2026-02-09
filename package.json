@@ -1,5 +1,5 @@
 {
-  "name": "magupus",
+  "name": "decksiteagent",
   "version": "1.0.0",
   "description": "PDF-driven white-label website generator. Extracts content from PDF documents, scrapes design systems from reference URLs, merges both streams, and generates professional static sites.",
   "main": "index.js",

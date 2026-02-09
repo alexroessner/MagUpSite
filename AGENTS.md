@@ -1,4 +1,4 @@
-# AGENTS.md for MagUpUS
+# AGENTS.md for DeckSiteAgent
 
 PDF-driven white-label website generator. Takes a PDF document and a
 reference URL, extracts content and design, merges them, and generates

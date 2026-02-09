@@ -1,4 +1,4 @@
-# MagUpUS
+# DeckSiteAgent
 
 PDF-driven white-label website generator. Extracts content from PDF
 documents, scrapes design systems from reference URLs, merges both
@@ -23,7 +23,7 @@ npm run pipeline
 
 ## How It Works
 
-MagUpUS operates as a two-stream pipeline with a merge step:
+DeckSiteAgent operates as a two-stream pipeline with a merge step:
 
 ```
 Stream A (Content)          Stream B (Design)
@@ -99,7 +99,7 @@ npm run audit        # Multi-persona audit checks
 ## Project Structure
 
 ```
-MagUpUS/
+DeckSiteAgent/
 ├── .github/workflows/ci.yml    CI/CD pipeline
 ├── personas/                   AI persona files (10 total)
 │   ├── document-analyst.md     PDF structure & extraction

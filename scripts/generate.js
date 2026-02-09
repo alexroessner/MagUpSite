@@ -57,8 +57,8 @@ function run(cmd, label) {
 function main() {
   const options = parseArgs();
 
-  console.log("MagUpUS Pipeline");
-  console.log("================");
+  console.log("DeckSiteAgent Pipeline");
+  console.log("======================");
   console.log(`  PDF: ${options.pdf}`);
   console.log(`  URL: ${options.url || "(none — using default design)"}`);
   console.log("");

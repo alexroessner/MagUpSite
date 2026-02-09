@@ -1,5 +1,5 @@
 {
-  "_schema": "MagUpUS content schema v1. Populated by scripts/merge.js from PDF extraction + style scraping.",
+  "_schema": "DeckSiteAgent content schema v1. Populated by scripts/merge.js from PDF extraction + style scraping.",
   "company": {
     "name": "",
     "tagline": "",

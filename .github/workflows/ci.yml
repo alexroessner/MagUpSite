@@ -60,7 +60,7 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: npm run build
         env:
-          PATH_PREFIX: /MagUpUS/
+          PATH_PREFIX: /DeckSiteAgent/
 
       - name: Upload Pages artifact
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -90,12 +90,12 @@ jobs:
 
       - name: Verify site responds
         run: |
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://alexroessner.github.io/MagUpUS/)
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://alexroessner.github.io/DeckSiteAgent/)
           echo "HTTP status: $STATUS"
           [ "$STATUS" = "200" ]
 
       - name: Verify CSS loads
         run: |
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://alexroessner.github.io/MagUpUS/css/style.css)
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://alexroessner.github.io/DeckSiteAgent/css/style.css)
           echo "CSS status: $STATUS"
           [ "$STATUS" = "200" ]

@@ -237,8 +237,8 @@ function auditD() {
 function main() {
   const { gate } = parseArgs();
 
-  console.log("MagUpUS Audit System");
-  console.log("====================");
+  console.log("DeckSiteAgent Audit System");
+  console.log("==========================");
 
   if (gate === "A" || gate === "ALL") auditA();
   if (gate === "B" || gate === "ALL") auditB();
