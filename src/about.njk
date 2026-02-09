@@ -1,37 +1,129 @@
 ---
-layout: page.njk
-title: About MagUp — GEO + SEO Content Marketing Platform
-description: "MagUp is the Content Marketing Brain for 1000+ Global Enterprises — combining GEO and SEO to maximize brand visibility across AI answer engines and traditional search."
+layout: base.njk
+title: About MagUp
+description: "MagUp is the GEO + SEO Content Marketing platform helping 1000+ global enterprises get cited by AI answer engines."
+fullWidth: true
 ---
 
-{%- if pageContent.about.content %}
-{{ pageContent.about.content }}
-{%- else %}
-This page will be populated with content extracted from the source PDF.
+<section class="py-16 sm:py-24 lg:py-28 bg-primary-900">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+      <div class="reveal-left">
+        <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">About</p>
+        <h1 class="font-heading text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
+          The Content Marketing Brain for Global Enterprises
+        </h1>
+        {%- if pageContent.about.content %}
+        <div class="text-primary-300 space-y-4 text-lg leading-relaxed">
+          <p>{{ pageContent.about.content }}</p>
+        </div>
+        {%- endif %}
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+          <a href="{{ '/services/' | url }}" class="btn-press inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-400 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 shadow-lg shadow-accent-500/25">
+            Explore Our Services
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </a>
+          <a href="{{ '/case-study-regaining-ai-voice-share/' | url }}" class="btn-press inline-flex items-center justify-center gap-2 border border-primary-600 text-primary-200 hover:border-accent-500 hover:text-white font-medium px-6 py-3 rounded-lg transition-all duration-200">
+            See Case Study
+          </a>
+        </div>
+      </div>
+      <div class="reveal-right space-y-6">
+        <div class="bg-primary-800 border border-primary-700 rounded-2xl p-8">
+          <h2 class="font-heading text-xl font-semibold text-white mb-6">By the Numbers</h2>
+          <div class="grid grid-cols-2 gap-6">
+            <div class="text-center p-4 bg-primary-900/50 rounded-xl">
+              <div class="text-2xl sm:text-3xl font-bold text-accent-400">1000+</div>
+              <div class="text-sm text-primary-400 mt-1">Enterprise Clients</div>
+            </div>
+            <div class="text-center p-4 bg-primary-900/50 rounded-xl">
+              <div class="text-2xl sm:text-3xl font-bold text-accent-400">10+</div>
+              <div class="text-sm text-primary-400 mt-1">AI Platforms</div>
+            </div>
+            <div class="text-center p-4 bg-primary-900/50 rounded-xl">
+              <div class="text-2xl sm:text-3xl font-bold text-accent-400">7</div>
+              <div class="text-sm text-primary-400 mt-1">AI Agents</div>
+            </div>
+            <div class="text-center p-4 bg-primary-900/50 rounded-xl">
+              <div class="text-2xl sm:text-3xl font-bold text-accent-400">+450%</div>
+              <div class="text-sm text-primary-400 mt-1">Brand Mentions</div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-primary-800 border border-primary-700 rounded-2xl p-6">
+          <h2 class="font-heading text-lg font-semibold text-white mb-4">Trusted By</h2>
+          <div class="flex flex-wrap gap-3">
+            {%- for client in pageContent.clients | batch(8) | first %}
+            <span class="text-sm text-primary-300 bg-primary-900/50 px-3 py-1.5 rounded-lg border border-primary-700/50">{{ client }}</span>
+            {%- endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-Run the pipeline to generate content:
-```
-npm run extract -- --pdf source-pdf/your-document.pdf
-npm run merge
-npm run build
-```
-{%- endif %}
-
-{%- if pageContent.about.highlights.length %}
-
-## Highlights
-
-{% for highlight in pageContent.about.highlights %}- {{ highlight }}
-{% endfor %}
-{%- endif %}
-
+{# ---- Team Section ---- #}
 {%- if pageContent.team.length %}
-
-## Our Team
-
-{% for member in pageContent.team %}
-### {{ member.name }}{% if member.title %} — {{ member.title }}{% endif %}
-
-{{ member.bio }}
-{% endfor %}
+<section class="py-16 sm:py-24 bg-primary-900 border-t section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12 reveal">
+      <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">Our Team</p>
+      <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white">
+        The People Behind the Platform
+      </h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
+      {%- for member in pageContent.team %}
+      <div class="card-lift bg-primary-800 border border-primary-700 rounded-2xl p-6 hover:border-accent-500/50">
+        <div class="w-12 h-12 bg-accent-500/10 border border-accent-500/20 rounded-xl flex items-center justify-center mb-4">
+          <span class="text-accent-400 font-bold text-lg" aria-hidden="true">{{ member.name | first }}</span>
+        </div>
+        <h3 class="font-heading text-lg font-semibold text-white mb-1">{{ member.name }}</h3>
+        {%- if member.title %}
+        <p class="text-accent-400 text-sm mb-3">{{ member.title }}</p>
+        {%- endif %}
+        <p class="text-primary-400 text-sm leading-relaxed">{{ member.bio }}</p>
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
 {%- endif %}
+
+{# ---- Related Links ---- #}
+<section class="py-12 sm:py-16 bg-primary-900 border-t section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="reveal grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <a href="{{ '/7-ai-agents/' | url }}" class="card-lift block bg-primary-800 border border-primary-700 rounded-2xl p-6 hover:border-accent-500/50 group">
+        <h3 class="font-heading text-lg font-semibold text-white mb-2 group-hover:text-accent-300 transition-colors">7 AI Agents</h3>
+        <p class="text-primary-400 text-sm">Learn how our AI agents automate the content lifecycle.</p>
+      </a>
+      <a href="{{ '/product-architecture/' | url }}" class="card-lift block bg-primary-800 border border-primary-700 rounded-2xl p-6 hover:border-accent-500/50 group">
+        <h3 class="font-heading text-lg font-semibold text-white mb-2 group-hover:text-accent-300 transition-colors">Product Architecture</h3>
+        <p class="text-primary-400 text-sm">Explore the four core engines powering the platform.</p>
+      </a>
+      <a href="{{ '/end-to-end-process/' | url }}" class="card-lift block bg-primary-800 border border-primary-700 rounded-2xl p-6 hover:border-accent-500/50 group">
+        <h3 class="font-heading text-lg font-semibold text-white mb-2 group-hover:text-accent-300 transition-colors">End-to-End Process</h3>
+        <p class="text-primary-400 text-sm">See our 5-stage GEO + SEO workflow from strategy to optimization.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+{# ---- CTA ---- #}
+<section class="relative overflow-hidden py-16 sm:py-20 bg-[linear-gradient(135deg,#151515_0%,#1C0A35_50%,#0D0D0D_100%)] border-t section-divider">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+    <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">
+      Ready to Get Started?
+    </h2>
+    <p class="text-lg text-primary-300 max-w-2xl mx-auto mb-8">
+      See how MagUp can transform your brand from invisible to indispensable across every AI platform.
+    </p>
+    <a href="{{ '/contact/' | url }}" class="btn-press inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-400 text-white font-semibold px-8 py-3.5 rounded-lg transition-all duration-200 text-lg shadow-lg shadow-accent-500/25">
+      Get a Demo
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+    </a>
+  </div>
+</section>

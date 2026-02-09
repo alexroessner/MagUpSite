@@ -263,6 +263,10 @@ button:focus-visible {
   .card-lift:hover {
     transform: none;
   }
+
+  .pulse-dot::before {
+    animation: none;
+  }
 }
 
 @theme {
@@ -286,6 +290,7 @@ button:focus-visible {
   --color-primary-700: #232323;
   --color-primary-800: #151515;
   --color-primary-900: #0D0D0D;
+  --color-primary-950: #050505;
 
   /* Accent scale — base: #7C3AED */
   --color-accent-50: #F3EEFE;
@@ -298,4 +303,5 @@ button:focus-visible {
   --color-accent-700: #4B1D93;
   --color-accent-800: #331363;
   --color-accent-900: #1C0A35;
+  --color-accent-950: #0E0520;
 }

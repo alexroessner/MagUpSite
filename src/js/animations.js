@@ -1,13 +1,16 @@
 /**
  * MagUp Animation Engine
  * Scroll reveals, animated counters, and typewriter effects
+ * Respects prefers-reduced-motion for all animations
  */
 (function () {
   "use strict";
 
+  var prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   // ── Scroll-triggered reveals via IntersectionObserver ──
   var revealEls = document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger");
-  if (revealEls.length && "IntersectionObserver" in window) {
+  if (revealEls.length && "IntersectionObserver" in window && !prefersReducedMotion) {
     var observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
@@ -21,46 +24,55 @@
     );
     revealEls.forEach(function (el) { observer.observe(el); });
   } else {
-    // Fallback: show everything
+    // Fallback: show everything immediately
     revealEls.forEach(function (el) { el.classList.add("visible"); });
   }
 
   // ── Animated counters ──
   var counters = document.querySelectorAll("[data-count]");
   if (counters.length && "IntersectionObserver" in window) {
-    var countObserver = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          var el = entry.target;
-          var target = el.getAttribute("data-count");
-          var prefix = el.getAttribute("data-prefix") || "";
-          var suffix = el.getAttribute("data-suffix") || "";
-          var num = parseFloat(target);
-          var isNum = !isNaN(num);
-          if (!isNum) {
-            el.textContent = prefix + target + suffix;
+    if (prefersReducedMotion) {
+      // Show final values immediately for reduced motion
+      counters.forEach(function (el) {
+        var target = el.getAttribute("data-count");
+        var prefix = el.getAttribute("data-prefix") || "";
+        var suffix = el.getAttribute("data-suffix") || "";
+        el.textContent = prefix + target + suffix;
+      });
+    } else {
+      var countObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var el = entry.target;
+            var target = el.getAttribute("data-count");
+            var prefix = el.getAttribute("data-prefix") || "";
+            var suffix = el.getAttribute("data-suffix") || "";
+            var num = parseFloat(target);
+            var isNum = !isNaN(num);
+            if (!isNum) {
+              el.textContent = prefix + target + suffix;
+              countObserver.unobserve(el);
+              return;
+            }
+            var duration = 1800;
+            var start = performance.now();
+            function animate(now) {
+              var progress = Math.min((now - start) / duration, 1);
+              var ease = 1 - Math.pow(1 - progress, 3);
+              var current = Math.round(num * ease);
+              el.textContent = prefix + current + suffix;
+              if (progress < 1) requestAnimationFrame(animate);
+              else el.textContent = prefix + target + suffix;
+            }
+            requestAnimationFrame(animate);
             countObserver.unobserve(el);
-            return;
-          }
-          var duration = 1800;
-          var start = performance.now();
-          function animate(now) {
-            var progress = Math.min((now - start) / duration, 1);
-            // Ease out cubic
-            var ease = 1 - Math.pow(1 - progress, 3);
-            var current = Math.round(num * ease);
-            el.textContent = prefix + current + suffix;
-            if (progress < 1) requestAnimationFrame(animate);
-            else el.textContent = prefix + target + suffix;
-          }
-          requestAnimationFrame(animate);
-          countObserver.unobserve(el);
-        });
-      },
-      { threshold: 0.5 }
-    );
-    counters.forEach(function (el) { countObserver.observe(el); });
+          });
+        },
+        { threshold: 0.5 }
+      );
+      counters.forEach(function (el) { countObserver.observe(el); });
+    }
   }
 
   // ── Typewriter cycling ──
@@ -68,6 +80,13 @@
   typers.forEach(function (el) {
     var words = el.getAttribute("data-typewriter").split("|");
     if (words.length < 2) return;
+
+    // Show first word statically for reduced motion
+    if (prefersReducedMotion) {
+      el.textContent = words[0];
+      return;
+    }
+
     var wordIndex = 0;
     var charIndex = 0;
     var deleting = false;
@@ -97,7 +116,6 @@
       }
     }
 
-    // Start after a brief delay
     setTimeout(tick, 800);
   });
 })();

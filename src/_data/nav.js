@@ -48,11 +48,13 @@ const caseStudy = customPages.find((p) =>
 module.exports = {
   // Header nav — clean 5-item journey:
   // Awareness (Home) → Interest (About) → Evaluation (Services, Case Study) → Decision (Contact)
+  // Header nav — buyer's journey:
+  // Awareness (Home) → Evaluation (Services, Case Study) → Interest (About) → Decision (Contact)
   main: [
     allPages.home || corePages.home,
-    allPages.about || corePages.about,
     allPages.services || corePages.services,
     caseStudy,
+    allPages.about || corePages.about,
     allPages.contact || corePages.contact,
   ].filter(Boolean),
 

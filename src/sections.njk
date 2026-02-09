@@ -29,10 +29,11 @@ permalink: "{{ section.slug }}/"
 <div class="not-prose mt-10 overflow-x-auto">
   <h2 class="font-heading text-xl font-semibold text-white mb-4">{{ table.caption }}</h2>
   <table class="min-w-full border border-primary-700 rounded-lg overflow-hidden text-sm">
+    <caption class="sr-only">{{ table.caption }}</caption>
     <thead>
       <tr class="bg-primary-800">
         {%- for header in table.headers %}
-        <th class="px-4 py-3 text-left font-semibold text-white border-b border-primary-700">{{ header }}</th>
+        <th scope="col" class="px-4 py-3 text-left font-semibold text-white border-b border-primary-700">{{ header }}</th>
         {%- endfor %}
       </tr>
     </thead>
@@ -49,6 +50,47 @@ permalink: "{{ section.slug }}/"
 </div>
 {%- endif %}
 {%- endfor %}
+
+{# ---- Related sections (internal linking) ---- #}
+{%- set relatedSections = [] %}
+{%- set keywords = section.title | lower %}
+{%- for s in pageContent.custom_sections %}
+  {%- if s.slug != section.slug %}
+    {%- set sLower = s.title | lower %}
+    {%- if (keywords.includes("ai visibility") and (sLower.includes("brand presence") or sLower.includes("citation"))) or
+           (keywords.includes("geo") and (sLower.includes("seo") or sLower.includes("content marketing"))) or
+           (keywords.includes("seo") and (sLower.includes("geo") or sLower.includes("content marketing"))) or
+           (keywords.includes("agent") and (sLower.includes("architecture") or sLower.includes("process"))) or
+           (keywords.includes("case study") and (sLower.includes("proven") or sLower.includes("visibility"))) or
+           (keywords.includes("dashboard") and (sLower.includes("monitoring") or sLower.includes("tracking"))) or
+           (keywords.includes("crawler") and (sLower.includes("traffic") or sLower.includes("agent"))) or
+           (keywords.includes("shopping") and (sLower.includes("visibility") or sLower.includes("traffic"))) or
+           (keywords.includes("prompt") and (sLower.includes("response") or sLower.includes("demand"))) or
+           (keywords.includes("market") and (sLower.includes("growth") or sLower.includes("shift"))) %}
+      {%- set relatedSections = (relatedSections.push(s), relatedSections) %}
+    {%- endif %}
+  {%- endif %}
+{%- endfor %}
+
+{%- if relatedSections.length %}
+<div class="not-prose mt-10 p-6 bg-primary-800 border border-primary-700 rounded-xl">
+  <h2 class="font-heading text-lg font-semibold text-white mb-4">Related Topics</h2>
+  <div class="flex flex-wrap gap-3">
+    {%- for rel in relatedSections | batch(3) | first %}
+    <a href="{{ ('/' + rel.slug + '/') | url }}" class="text-sm text-accent-400 hover:text-accent-300 underline transition-colors">{{ rel.title }}</a>
+    {%- endfor %}
+  </div>
+</div>
+{%- endif %}
+
+{# ---- CTA ---- #}
+<div class="not-prose mt-12 p-8 bg-[linear-gradient(135deg,#151515_0%,#1C0A35_100%)] border border-accent-700/30 rounded-2xl text-center">
+  <p class="text-lg text-primary-200 mb-4">Ready to see these capabilities in action?</p>
+  <a href="{{ '/contact/' | url }}" class="btn-press inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-400 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 shadow-lg shadow-accent-500/25">
+    Get a Demo
+    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+  </a>
+</div>
 
 {# ---- Navigation between sections ---- #}
 {%- set sections = pageContent.custom_sections %}
