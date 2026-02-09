@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, 'claude/**']
   pull_request:
     branches: [main]
 
@@ -57,19 +57,19 @@ jobs:
         run: node scripts/audit.js --gate ALL
 
       - name: Build with path prefix (for deployment)
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'push'
         run: npm run build
         env:
           PATH_PREFIX: /DeckSiteAgent/
 
       - name: Upload Pages artifact
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'push'
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
   deploy:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push'
     needs: build-and-lint
     runs-on: ubuntu-latest
     environment:
@@ -81,7 +81,7 @@ jobs:
         uses: actions/deploy-pages@v4
 
   smoke-test:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push'
     needs: deploy
     runs-on: ubuntu-latest
     steps:
