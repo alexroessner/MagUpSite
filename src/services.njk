@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 title: AI Visibility Services
-description: "MagUp's 7 service pillars: AI visibility tracking, prompt intelligence, citation analytics, crawler optimization, traffic attribution, shopping visibility, and GEO+SEO content marketing."
+description: "GEO 42's 7 service pillars: AI visibility tracking, prompt intelligence, citation analytics, crawler optimization, traffic attribution, shopping visibility, and GEO+SEO content marketing."
 fullWidth: true
 ---
 
@@ -40,7 +40,7 @@ fullWidth: true
     {%- if pageContent.services.length %}
     <div class="space-y-6 stagger">
       {%- for service in pageContent.services %}
-      <div class="card-lift bg-primary-800 border border-primary-700 rounded-2xl p-8 sm:p-10 hover:border-accent-500/50 group">
+      <div class="card-lift card-gold bg-primary-800 rounded-2xl p-8 sm:p-10 hover:border-accent-500/50 group">
         <div class="flex flex-col sm:flex-row gap-6 items-start">
           <div class="flex-shrink-0 w-14 h-14 bg-accent-500/10 border border-accent-500/20 rounded-xl flex items-center justify-center text-accent-400 group-hover:bg-accent-500/20 transition-colors">
             {{ serviceIcons[loop.index0] | default(serviceIcons[0]) | safe }}
@@ -67,7 +67,7 @@ fullWidth: true
 
     <div class="mt-16 text-center reveal">
       <a href="{{ '/contact/' | url }}"
-         class="btn-press inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-400 text-white font-semibold px-8 py-3.5 rounded-lg transition-all duration-200 text-lg shadow-lg shadow-accent-500/25">
+         class="btn-press inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-400 text-primary-950 font-semibold px-8 py-3.5 rounded-lg transition-all duration-200 text-lg shadow-lg shadow-accent-500/25">
         Get a Demo
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
       </a>

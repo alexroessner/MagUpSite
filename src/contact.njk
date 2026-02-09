@@ -1,11 +1,11 @@
 ---
 layout: base.njk
-title: Contact MagUp
-description: "Get in touch with MagUp to learn how GEO + SEO content marketing can make your brand the top AI answer."
+title: Contact GEO 42
+description: "Get in touch with GEO 42 to learn how AI visibility optimization can make your brand the top answer across every generative engine."
 fullWidth: true
 ---
 
-<section class="relative overflow-hidden py-16 sm:py-24 lg:py-28 bg-[linear-gradient(0deg,#0D0D0D_0%,#000000_100%)]">
+<section class="relative overflow-hidden py-16 sm:py-24 lg:py-28 bg-primary-950">
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="hero-glow" aria-hidden="true"></div>
   <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,7 +16,7 @@ fullWidth: true
           Ready to Become the AI Answer?
         </h1>
         <p class="text-primary-300 text-lg leading-relaxed mb-8">
-          See how MagUp can transform your brand from invisible to indispensable across every AI platform — in weeks, not months.
+          See how GEO 42 can transform your brand from invisible to indispensable across every AI platform — in weeks, not months.
         </p>
         <div class="space-y-4">
           <div class="flex items-center gap-4 p-4 bg-primary-800/50 border border-primary-700/50 rounded-xl">
@@ -55,10 +55,10 @@ fullWidth: true
         </div>
       </div>
       <div class="reveal-right">
-        <div class="bg-primary-800 border border-primary-700 rounded-2xl p-8 sm:p-10">
+        <div class="card-gold bg-primary-800 rounded-2xl p-8 sm:p-10 border border-primary-700">
           <h2 class="font-heading text-2xl font-bold text-white mb-3">Get a Demo</h2>
           <p class="text-primary-300 mb-8">
-            Reach out and our team will show you how AI-powered content marketing can grow your brand.
+            Reach out and our team will show you how AI-powered visibility optimization can grow your brand.
           </p>
           <div class="space-y-6">
             <div class="p-5 bg-primary-900/50 rounded-xl border border-primary-700/50">
@@ -82,8 +82,8 @@ fullWidth: true
                 </li>
               </ul>
             </div>
-            <a href="mailto:{{ pageContent.contact.email }}" class="btn-press w-full inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-400 text-white font-semibold px-8 py-3.5 rounded-lg transition-all duration-200 text-lg shadow-lg shadow-accent-500/25">
-              Email {{ pageContent.contact.email }}
+            <a href="mailto:{{ site.contact.email | default('hello@geo42.ai') }}" class="btn-press w-full inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-400 text-primary-950 font-semibold px-8 py-3.5 rounded-lg transition-all duration-200 text-lg shadow-lg shadow-accent-500/25">
+              Email {{ site.contact.email | default('hello@geo42.ai') }}
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
             </a>
           </div>

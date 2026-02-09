@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {%- if page.url == "/" %}
-  <title>{{ site.name }}{% if site.tagline %} — {{ site.tagline }}{% endif %}</title>
+  <title>{{ site.name }} — {{ site.tagline }}</title>
   {%- else %}
   <title>{{ title }} | {{ site.name }}</title>
   {%- endif %}
@@ -15,7 +15,7 @@
 
   {# ---- Open Graph ---- #}
   {%- if page.url == "/" %}
-  <meta property="og:title" content="{{ site.name }}{% if site.tagline %} — {{ site.tagline }}{% endif %}">
+  <meta property="og:title" content="{{ site.name }} — {{ site.tagline }}">
   {%- else %}
   <meta property="og:title" content="{{ title }} | {{ site.name }}">
   {%- endif %}
@@ -27,7 +27,7 @@
   {# ---- Twitter Card ---- #}
   <meta name="twitter:card" content="summary">
   {%- if page.url == "/" %}
-  <meta name="twitter:title" content="{{ site.name }}{% if site.tagline %} — {{ site.tagline }}{% endif %}">
+  <meta name="twitter:title" content="{{ site.name }} — {{ site.tagline }}">
   {%- else %}
   <meta name="twitter:title" content="{{ title }} | {{ site.name }}">
   {%- endif %}
@@ -41,7 +41,7 @@
   {%- endif %}
   <link rel="stylesheet" href="{{ '/css/style.css' | url }}">
 
-  {# ---- Structured data (JSON-LD) ---- #}
+  {# ---- JSON-LD ---- #}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -52,37 +52,10 @@
         "name": "{{ site.name }}",
         "url": "{{ site.url }}/",
         "description": "{{ site.description }}"
-        {%- if site.contact.phone %},
-        "telephone": "{{ site.contact.phone }}"
-        {%- endif %}
         {%- if site.contact.email %},
         "email": "{{ site.contact.email }}"
         {%- endif %}
-        {%- if site.contact.address.street %},
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "{{ site.contact.address.street }}",
-          "addressLocality": "{{ site.contact.address.city }}",
-          "addressRegion": "{{ site.contact.address.state }}",
-          "postalCode": "{{ site.contact.address.zip }}",
-          "addressCountry": "{{ site.contact.address.country }}"
-        }
-        {%- endif %}
       },
-      {%- if site.author.name %}
-      {
-        "@type": "Person",
-        "@id": "{{ site.url }}/#person",
-        "name": "{{ site.author.name }}"
-        {%- if site.author.jobTitle %},
-        "jobTitle": "{{ site.author.jobTitle }}"
-        {%- endif %}
-        {%- if site.author.email %},
-        "email": "{{ site.author.email }}"
-        {%- endif %},
-        "worksFor": { "@id": "{{ site.url }}/#organization" }
-      },
-      {%- endif %}
       {%- if page.url == "/" %}
       {
         "@type": "WebSite",
@@ -107,178 +80,123 @@
 </head>
 <body class="flex flex-col min-h-screen bg-primary-900 font-sans text-body leading-relaxed text-primary-100">
 
-  {# ---- Skip link for keyboard/screen-reader users ---- #}
   <a href="#main" class="skip-link">Skip to main content</a>
 
-  {# ---- Header ---- #}
-  <header class="bg-primary-800 text-white">
+  {# ---- Sticky glass header ---- #}
+  <header class="site-header" id="site-header">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between py-4">
-        <div>
-          <a href="{{ '/' | url }}" class="inline-block hover:opacity-90 transition-opacity">
-            <span class="font-heading text-2xl sm:text-3xl font-bold tracking-tight">
-              {{ site.name }}
-            </span>
-          </a>
-          {%- if site.tagline %}
-          <p class="font-heading text-primary-200 text-sm sm:text-base italic mt-0.5">
-            {{ site.tagline }}
-          </p>
-          {%- endif %}
-        </div>
+      <div class="flex items-center justify-between h-16">
+        <a href="{{ '/' | url }}" class="logo-mark hover:opacity-90 transition-opacity">
+          <span class="logo-icon" aria-hidden="true">42</span>
+          <span class="logo-text"><span class="logo-geo">GEO</span><span class="logo-42"> 42</span></span>
+        </a>
 
-        {# Mobile hamburger button #}
-        <button
-          type="button"
-          id="menu-toggle"
-          class="lg:hidden inline-flex items-center justify-center p-2 rounded text-primary-200 hover:text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-white"
-          aria-expanded="false"
-          aria-controls="mobile-nav"
-          aria-label="Toggle navigation menu"
-        >
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <nav class="hidden lg:flex items-center gap-1" aria-label="Main navigation">
+          {%- for item in nav.main -%}
+          {% set itemUrl = item.url | url %}
+          <a href="{{ itemUrl }}"
+             class="px-3 py-1.5 text-sm font-medium rounded-md transition-colors
+                    {%- if page.url == itemUrl %} text-accent-400 bg-accent-500/10{% else %} text-primary-200 hover:text-accent-400 hover:bg-primary-800{% endif %}"
+             {%- if page.url == itemUrl %} aria-current="page"{% endif %}>
+            {{- item.title -}}
+          </a>
+          {%- endfor -%}
+          <a href="{{ '/contact/' | url }}"
+             class="ml-3 px-4 py-1.5 text-sm font-semibold bg-accent-500 text-primary-950 rounded-md hover:bg-accent-400 transition-colors">
+            Get a Demo
+          </a>
+        </nav>
+
+        <button type="button" id="menu-toggle"
+          class="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-primary-200 hover:text-white hover:bg-primary-800 focus:outline-none focus:ring-2 focus:ring-accent-400"
+          aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation menu">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path id="menu-icon-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             <path id="menu-icon-close" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
     </div>
-
-    {# ---- Desktop navigation ---- #}
-    <nav class="hidden lg:block bg-primary-700 border-t border-primary-600" aria-label="Main navigation">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ul class="flex items-center">
-          {%- for item in nav.main -%}
-          {% set itemUrl = item.url | url %}
-          <li>
-            <a href="{{ itemUrl }}"
-               class="block px-4 py-2.5 text-sm font-medium transition-colors
-                      {%- if page.url == itemUrl %} bg-primary-600 text-white{% else %} text-primary-100 hover:text-white hover:bg-primary-600{% endif %}"
-               {%- if page.url == itemUrl %} aria-current="page"{% endif %}>
-              {{- item.title -}}
-            </a>
-          </li>
-          {%- endfor -%}
-        </ul>
-      </div>
-    </nav>
-
-    {# ---- Mobile navigation ---- #}
-    <nav id="mobile-nav" class="hidden lg:hidden bg-primary-700 border-t border-primary-600" aria-label="Mobile navigation">
-      <div class="px-4 py-2">
-        <ul class="space-y-1">
-          {%- for item in nav.all -%}
-          {% set itemUrl = item.url | url %}
-          <li>
-            <a href="{{ itemUrl }}"
-               class="block px-3 py-2 text-sm font-medium rounded transition-colors
-                      {%- if page.url == itemUrl %} bg-primary-600 text-white{% else %} text-primary-100 hover:text-white hover:bg-primary-600{% endif %}"
-               {%- if page.url == itemUrl %} aria-current="page"{% endif %}>
-              {{- item.title -}}
-            </a>
-          </li>
-          {%- endfor -%}
-        </ul>
+    <nav id="mobile-nav" class="hidden lg:hidden border-t border-primary-700/50" aria-label="Mobile navigation">
+      <div class="max-w-6xl mx-auto px-4 py-3 space-y-1">
+        {%- for item in nav.all -%}
+        {% set itemUrl = item.url | url %}
+        <a href="{{ itemUrl }}"
+           class="block px-3 py-2 text-sm font-medium rounded-md transition-colors
+                  {%- if page.url == itemUrl %} text-accent-400 bg-accent-500/10{% else %} text-primary-200 hover:text-accent-400 hover:bg-primary-800{% endif %}"
+           {%- if page.url == itemUrl %} aria-current="page"{% endif %}>{{- item.title -}}</a>
+        {%- endfor -%}
       </div>
     </nav>
   </header>
 
-  {# ---- Main content ---- #}
   <main id="main" class="flex-1 w-full{% if not fullWidth %} max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12{% endif %}">
     {{ content | safe }}
   </main>
 
   {# ---- Footer ---- #}
-  <footer class="bg-primary-800 text-primary-100" aria-label="Company information and site directory">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-
-      {# Page directory + contact #}
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
-
-        {# Grouped page links #}
+  <footer class="bg-primary-950 text-primary-100 border-t border-primary-800" aria-label="Site footer">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <a href="{{ '/' | url }}" class="logo-mark mb-3 inline-flex">
+            <span class="logo-icon" aria-hidden="true">42</span>
+            <span class="logo-text"><span class="logo-geo">GEO</span><span class="logo-42"> 42</span></span>
+          </a>
+          <p class="text-primary-400 text-sm mt-3">{{ site.tagline }}</p>
+        </div>
         {%- for group in nav.footerGroups -%}
         <div>
-          <h2 class="font-heading text-base font-semibold text-white mb-4 uppercase tracking-wide">{{ group.heading }}</h2>
+          <h2 class="font-heading text-sm font-semibold text-accent-400 mb-4 uppercase tracking-wider">{{ group.heading }}</h2>
           <ul class="space-y-2">
             {%- for item in group.items -%}
             {%- if item %}
-            <li>
-              <a href="{{ item.url | url }}" class="text-sm text-primary-200 underline hover:text-white transition-colors">
-                {{- item.title -}}
-              </a>
-            </li>
+            <li><a href="{{ item.url | url }}" class="text-sm text-primary-300 hover:text-white transition-colors">{{- item.title -}}</a></li>
             {%- endif -%}
             {%- endfor -%}
           </ul>
         </div>
         {%- endfor -%}
-
-        {# Contact column #}
         <div>
-          <h2 class="font-heading text-base font-semibold text-white mb-4 uppercase tracking-wide">Contact</h2>
-          <address class="not-italic text-sm space-y-2">
-            {%- if site.contact.address.street %}
-            <p>
-              {{ site.contact.address.street }}<br>
-              {{ site.contact.address.city }}{% if site.contact.address.state %}, {{ site.contact.address.state }}{% endif %} {{ site.contact.address.zip }}<br>
-              {{ site.contact.address.country }}
-            </p>
-            {%- endif %}
-            {%- if site.contact.phone %}
-            <p>Tel: {{ site.contact.phone }}</p>
-            {%- endif %}
-            {%- if site.contact.fax %}
-            <p>Fax: {{ site.contact.fax }}</p>
-            {%- endif %}
+          <h2 class="font-heading text-sm font-semibold text-accent-400 mb-4 uppercase tracking-wider">Contact</h2>
+          <address class="not-italic text-sm space-y-2 text-primary-300">
             {%- if site.contact.email %}
-            <p>
-              <a href="mailto:{{ site.contact.email }}" class="text-primary-200 underline hover:text-white transition-colors">
-                {{ site.contact.email }}
-              </a>
-            </p>
+            <p><a href="mailto:{{ site.contact.email }}" class="hover:text-white transition-colors">{{ site.contact.email }}</a></p>
             {%- endif %}
             {%- if site.contact.url %}
-            <p>
-              <a href="{{ site.contact.url }}" class="text-primary-200 underline hover:text-white transition-colors" target="_blank" rel="noopener">
-                {{ site.contact.url | replace("https://www.", "") | replace("https://", "") }}
-              </a>
-            </p>
+            <p><a href="{{ site.contact.url }}" class="hover:text-white transition-colors" target="_blank" rel="noopener">{{ site.contact.url | replace("https://www.", "") | replace("https://", "") }}</a></p>
             {%- endif %}
           </address>
         </div>
-
       </div>
-
-      {# Copyright #}
-      <div class="border-t border-primary-700 mt-10 pt-6 text-sm text-primary-300 text-center">
-        <p>&copy; {{ currentYear }} {{ site.name }}. All rights reserved.</p>
-      </div>
-
+      <div class="gold-line mt-10 mb-6"></div>
+      <p class="text-sm text-primary-500 text-center">&copy; {{ currentYear }} {{ site.name }}. All rights reserved.</p>
     </div>
   </footer>
 
-  {# ---- Animation engine ---- #}
   <script src="{{ '/js/animations.js' | url }}" defer></script>
-
-  {# ---- Mobile menu toggle ---- #}
   <script>
     (function () {
       var toggle = document.getElementById('menu-toggle');
       var nav = document.getElementById('mobile-nav');
       var iconOpen = document.getElementById('menu-icon-open');
       var iconClose = document.getElementById('menu-icon-close');
-
-      if (!toggle || !nav) return;
-
-      toggle.addEventListener('click', function () {
-        var expanded = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', String(!expanded));
-        nav.classList.toggle('hidden');
-        iconOpen.classList.toggle('hidden');
-        iconClose.classList.toggle('hidden');
-      });
+      if (toggle && nav) {
+        toggle.addEventListener('click', function () {
+          var expanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!expanded));
+          nav.classList.toggle('hidden');
+          iconOpen.classList.toggle('hidden');
+          iconClose.classList.toggle('hidden');
+        });
+      }
+      var header = document.getElementById('site-header');
+      if (header) {
+        window.addEventListener('scroll', function () {
+          header.classList.toggle('scrolled', window.scrollY > 20);
+        }, { passive: true });
+      }
     })();
   </script>
-
 </body>
 </html>

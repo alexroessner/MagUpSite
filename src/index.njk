@@ -2,37 +2,36 @@
 layout: base.njk
 title: Home
 fullWidth: true
-description: "MagUp is the GEO + SEO content marketing platform helping 1000+ global enterprises get cited by ChatGPT, Perplexity, Gemini, and Google AI Overviews."
+description: "GEO 42 is the AI visibility platform that makes your brand the definitive answer across every generative engine — ChatGPT, Perplexity, Gemini, and beyond."
 ---
 
 {# ============================================ #}
-{# Hero Section — Profound-style with grid       #}
+{# Hero — Gold gradient with grid overlay        #}
 {# ============================================ #}
 
-<section class="relative overflow-hidden bg-[linear-gradient(0deg,#0D0D0D_0%,#000000_100%)] text-white pt-20 pb-24 sm:pt-28 sm:pb-32 lg:pt-36 lg:pb-40">
-  {# Grid overlay #}
+<section class="relative overflow-hidden bg-primary-950 text-white pt-20 pb-24 sm:pt-28 sm:pb-32 lg:pt-36 lg:pb-40">
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="hero-glow" aria-hidden="true"></div>
 
   <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
     {# Status badge #}
-    <div class="reveal inline-flex items-center gap-2 bg-primary-800/80 border border-primary-700 rounded-full px-4 py-1.5 mb-8">
+    <div class="reveal inline-flex items-center gap-2 bg-primary-900/80 border border-primary-700 rounded-full px-4 py-1.5 mb-8">
       <span class="inline-block w-2 h-2 bg-accent-400 rounded-full pulse-dot" aria-hidden="true"></span>
       <span class="text-sm text-primary-200">Powering 1,000+ enterprise brands</span>
     </div>
 
     <h1 class="reveal font-heading text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] mb-6">
-      <span class="gradient-text">Get Your Brand Cited</span><br>
-      <span class="text-white">by </span><span class="text-accent-400" data-typewriter="ChatGPT|Perplexity|Gemini|Google AI|DeepSeek|Claude">ChatGPT</span>
+      <span class="gradient-text">Become the Answer</span><br>
+      <span class="text-white">on </span><span class="text-accent-400" data-typewriter="ChatGPT|Perplexity|Gemini|Google AI|DeepSeek|Claude">ChatGPT</span>
     </h1>
 
     <p class="reveal text-lg sm:text-xl text-primary-300 max-w-2xl mx-auto mb-10 text-pretty">
-      MagUp combines GEO + SEO to make your brand the answer when customers ask AI. Track visibility, optimize citations, and dominate every answer engine.
+      GEO 42 makes your brand the definitive answer across every AI engine. Track visibility, optimize citations, and dominate generative search.
     </p>
 
     <div class="reveal flex flex-col sm:flex-row gap-4 justify-center">
       <a href="{{ '/contact/' | url }}"
-         class="btn-press inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-400 text-white font-semibold px-8 py-3.5 rounded-lg transition-all duration-200 text-lg shadow-lg shadow-accent-500/25">
+         class="btn-press inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-400 text-primary-950 font-semibold px-8 py-3.5 rounded-lg transition-all duration-200 text-lg shadow-lg shadow-accent-500/25">
         <span>Get a Demo</span>
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
       </a>
@@ -45,7 +44,7 @@ description: "MagUp is the GEO + SEO content marketing platform helping 1000+ gl
 </section>
 
 {# ============================================ #}
-{# Logos — Scrolling marquee                     #}
+{# Client logos — Scrolling marquee               #}
 {# ============================================ #}
 
 {%- if pageContent.clients.length %}
@@ -54,18 +53,15 @@ description: "MagUp is the GEO + SEO content marketing platform helping 1000+ gl
     <p class="text-center text-sm text-primary-500 uppercase tracking-widest font-medium mb-8">Trusted by global enterprises</p>
   </div>
   <div class="relative">
-    {# Fade edges #}
     <div class="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-primary-900 to-transparent z-10 pointer-events-none"></div>
     <div class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-primary-900 to-transparent z-10 pointer-events-none"></div>
     <div class="overflow-hidden">
       <div class="logo-marquee gap-12 items-center whitespace-nowrap">
-        {# First set #}
         {%- for client in pageContent.clients %}
         <div class="flex-shrink-0 flex items-center justify-center h-12 px-6 bg-primary-800/50 border border-primary-700/50 rounded-lg">
           <span class="text-primary-300 font-semibold text-base tracking-wide">{{ client }}</span>
         </div>
         {%- endfor %}
-        {# Duplicate for seamless loop #}
         {%- for client in pageContent.clients %}
         <div class="flex-shrink-0 flex items-center justify-center h-12 px-6 bg-primary-800/50 border border-primary-700/50 rounded-lg">
           <span class="text-primary-300 font-semibold text-base tracking-wide">{{ client }}</span>
@@ -78,25 +74,25 @@ description: "MagUp is the GEO + SEO content marketing platform helping 1000+ gl
 {%- endif %}
 
 {# ============================================ #}
-{# Stats bar — Animated counters                 #}
+{# KPI Stats — Animated counters with glow       #}
 {# ============================================ #}
 
 <section class="py-12 sm:py-16 bg-primary-900">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="reveal grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-      <div class="text-center p-6 bg-primary-800/50 rounded-xl border border-primary-700/50">
-        <div class="text-3xl sm:text-4xl font-bold text-accent-400 counter" data-count="7" data-suffix="">0</div>
+      <div class="kpi-glow text-center p-6 bg-primary-800/50 rounded-xl border border-primary-700/50">
+        <div class="text-3xl sm:text-4xl font-bold text-accent-400 counter" data-count="7">0</div>
         <div class="text-sm text-primary-400 mt-2">AI Agents</div>
       </div>
-      <div class="text-center p-6 bg-primary-800/50 rounded-xl border border-primary-700/50">
+      <div class="kpi-glow text-center p-6 bg-primary-800/50 rounded-xl border border-primary-700/50">
         <div class="text-3xl sm:text-4xl font-bold text-accent-400 counter" data-count="10" data-suffix="+">0</div>
         <div class="text-sm text-primary-400 mt-2">AI Platforms</div>
       </div>
-      <div class="text-center p-6 bg-primary-800/50 rounded-xl border border-primary-700/50">
+      <div class="kpi-glow text-center p-6 bg-primary-800/50 rounded-xl border border-primary-700/50">
         <div class="text-3xl sm:text-4xl font-bold text-accent-400 counter" data-count="1000" data-suffix="+">0</div>
         <div class="text-sm text-primary-400 mt-2">Enterprises</div>
       </div>
-      <div class="text-center p-6 bg-primary-800/50 rounded-xl border border-primary-700/50">
+      <div class="kpi-glow text-center p-6 bg-primary-800/50 rounded-xl border border-primary-700/50">
         <div class="text-3xl sm:text-4xl font-bold text-accent-400 counter" data-count="450" data-prefix="+" data-suffix="%">0</div>
         <div class="text-sm text-primary-400 mt-2">Brand Mentions</div>
       </div>
@@ -105,69 +101,200 @@ description: "MagUp is the GEO + SEO content marketing platform helping 1000+ gl
 </section>
 
 {# ============================================ #}
-{# About / Company Overview                     #}
+{# Flywheel — The Visibility Growth Model         #}
 {# ============================================ #}
 
-{%- if pageContent.about.content %}
 <section class="py-16 sm:py-24 lg:py-28 bg-primary-900 border-t section-divider">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
       <div class="reveal-left">
-        <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">About MagUp</p>
+        <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">Growth Model</p>
         <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-          The Content Marketing Brain for Global Enterprises
+          The Visibility Flywheel
         </h2>
-        <div class="text-primary-300 space-y-4 text-lg leading-relaxed">
-          <p>{{ pageContent.about.content }}</p>
+        <p class="text-primary-300 text-lg leading-relaxed mb-8">
+          GEO 42 operates on a compounding flywheel — more visibility leads to more trust, which drives more transactions, which generates more signals that increase visibility.
+        </p>
+        <div class="space-y-4">
+          <div class="arch-layer">
+            <h3 class="font-heading text-lg font-semibold text-white">Become the Answer</h3>
+            <p class="text-primary-400 text-sm">Position your brand as the source AI engines cite when users ask questions in your category.</p>
+          </div>
+          <div class="arch-layer">
+            <h3 class="font-heading text-lg font-semibold text-white">Win Trust</h3>
+            <p class="text-primary-400 text-sm">Build credibility through consistent, high-quality AI-optimized content that earns citations.</p>
+          </div>
+          <div class="arch-layer">
+            <h3 class="font-heading text-lg font-semibold text-white">Facilitate Transaction</h3>
+            <p class="text-primary-400 text-sm">Convert AI-driven visibility into measurable business outcomes and customer acquisition.</p>
+          </div>
         </div>
       </div>
-      <div class="reveal-right">
-        <div class="bg-primary-800 border border-primary-700 rounded-2xl p-8 space-y-5">
-          <div class="flex items-center gap-4 p-3 rounded-lg bg-primary-900/50">
-            <div class="flex-shrink-0 w-10 h-10 bg-accent-500/10 border border-accent-500/20 rounded-lg flex items-center justify-center">
-              <svg class="w-5 h-5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-            </div>
-            <div>
-              <span class="text-white font-semibold">7 Specialized AI Agents</span>
-              <p class="text-primary-400 text-sm">Automate your entire content lifecycle</p>
-            </div>
+      <div class="reveal-right flex justify-center">
+        {# Flywheel SVG — animated circular diagram #}
+        <div class="relative w-80 h-80 sm:w-96 sm:h-96">
+          <svg viewBox="0 0 400 400" class="w-full h-full flywheel-spin" role="img" aria-label="Visibility Flywheel: Become the Answer, Win Trust, Facilitate Transaction">
+            <defs>
+              <linearGradient id="fw-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FBBF24"/>
+                <stop offset="100%" stop-color="#D4A017"/>
+              </linearGradient>
+              <linearGradient id="fw-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#262520"/>
+                <stop offset="100%" stop-color="#181712"/>
+              </linearGradient>
+            </defs>
+            {# Outer ring #}
+            <circle cx="200" cy="200" r="180" fill="none" stroke="url(#fw-gold)" stroke-width="2" opacity="0.3"/>
+            <circle cx="200" cy="200" r="140" fill="none" stroke="url(#fw-gold)" stroke-width="1" opacity="0.15"/>
+            {# Three arc segments #}
+            <path d="M200 20 A180 180 0 0 1 355.88 290" fill="none" stroke="#FBBF24" stroke-width="3" stroke-linecap="round"/>
+            <path d="M355.88 290 A180 180 0 0 1 44.12 290" fill="none" stroke="#D4A017" stroke-width="3" stroke-linecap="round"/>
+            <path d="M44.12 290 A180 180 0 0 1 200 20" fill="none" stroke="#B8860B" stroke-width="3" stroke-linecap="round"/>
+            {# Arrow nodes at each position #}
+            <circle cx="200" cy="28" r="8" fill="#FBBF24"/>
+            <circle cx="350" cy="286" r="8" fill="#D4A017"/>
+            <circle cx="50" cy="286" r="8" fill="#B8860B"/>
+            {# Center hub #}
+            <circle cx="200" cy="200" r="60" fill="url(#fw-dark)" stroke="#D4A017" stroke-width="2"/>
+            <text x="200" y="192" text-anchor="middle" fill="#FBBF24" font-family="system-ui" font-weight="700" font-size="24">42</text>
+            <text x="200" y="214" text-anchor="middle" fill="#B5B2A5" font-family="system-ui" font-weight="400" font-size="11">FLYWHEEL</text>
+          </svg>
+          {# Labels positioned around the flywheel #}
+          <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 text-center">
+            <span class="text-xs sm:text-sm font-semibold text-accent-300 bg-primary-900/90 px-2 py-1 rounded">Become the Answer</span>
           </div>
-          <div class="flex items-center gap-4 p-3 rounded-lg bg-primary-900/50">
-            <div class="flex-shrink-0 w-10 h-10 bg-accent-500/10 border border-accent-500/20 rounded-lg flex items-center justify-center">
-              <svg class="w-5 h-5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            </div>
-            <div>
-              <span class="text-white font-semibold">10+ AI Platforms Covered</span>
-              <p class="text-primary-400 text-sm">ChatGPT, Gemini, Perplexity, DeepSeek &amp; more</p>
-            </div>
+          <div class="absolute bottom-2 right-0 text-center">
+            <span class="text-xs sm:text-sm font-semibold text-accent-400 bg-primary-900/90 px-2 py-1 rounded">Win Trust</span>
           </div>
-          <div class="flex items-center gap-4 p-3 rounded-lg bg-primary-900/50">
-            <div class="flex-shrink-0 w-10 h-10 bg-accent-500/10 border border-accent-500/20 rounded-lg flex items-center justify-center">
-              <svg class="w-5 h-5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-            </div>
-            <div>
-              <span class="text-white font-semibold">1000+ Global Enterprises</span>
-              <p class="text-primary-400 text-sm">HP, Samsung, Nike, Ford &amp; more</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-4 p-3 rounded-lg bg-primary-900/50">
-            <div class="flex-shrink-0 w-10 h-10 bg-accent-500/10 border border-accent-500/20 rounded-lg flex items-center justify-center">
-              <svg class="w-5 h-5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-            </div>
-            <div>
-              <span class="text-white font-semibold">End-to-End GEO + SEO</span>
-              <p class="text-primary-400 text-sm">From strategy to optimization in one platform</p>
-            </div>
+          <div class="absolute bottom-2 left-0 text-center">
+            <span class="text-xs sm:text-sm font-semibold text-accent-500 bg-primary-900/90 px-2 py-1 rounded">Facilitate Transaction</span>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-{%- endif %}
 
 {# ============================================ #}
-{# Services / Capabilities with icons            #}
+{# Platform Coverage — AI engine grid             #}
+{# ============================================ #}
+
+<section class="py-16 sm:py-24 lg:py-28 bg-primary-950 border-t section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">Platform Coverage</p>
+      <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+        Every AI Engine. One Dashboard.
+      </h2>
+      <p class="text-primary-400 text-lg max-w-2xl mx-auto text-pretty">
+        Monitor and optimize your brand visibility across all major generative engines — Western and Chinese ecosystems alike.
+      </p>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 stagger">
+      {%- set platforms = [
+        { name: "ChatGPT", icon: "chat", tier: "primary" },
+        { name: "Google AI", icon: "search", tier: "primary" },
+        { name: "Perplexity", icon: "compass", tier: "primary" },
+        { name: "Gemini", icon: "sparkle", tier: "primary" },
+        { name: "Claude", icon: "brain", tier: "primary" },
+        { name: "Copilot", icon: "code", tier: "secondary" },
+        { name: "DeepSeek", icon: "deep", tier: "secondary" },
+        { name: "Doubao", icon: "globe", tier: "secondary" },
+        { name: "Qwen", icon: "star", tier: "secondary" },
+        { name: "Kimi", icon: "moon", tier: "secondary" }
+      ] %}
+      {%- for platform in platforms %}
+      <div class="card-gold card-lift bg-primary-800 rounded-xl p-5 text-center hover:border-accent-500/50 group">
+        <div class="w-12 h-12 mx-auto mb-3 bg-accent-500/10 border border-accent-500/20 rounded-xl flex items-center justify-center group-hover:bg-accent-500/20 transition-colors">
+          {%- if platform.icon == "chat" %}
+          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+          {%- elif platform.icon == "search" %}
+          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          {%- elif platform.icon == "compass" %}
+          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+          {%- elif platform.icon == "sparkle" %}
+          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+          {%- elif platform.icon == "brain" %}
+          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          {%- elif platform.icon == "code" %}
+          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+          {%- elif platform.icon == "deep" %}
+          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+          {%- elif platform.icon == "globe" %}
+          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          {%- elif platform.icon == "star" %}
+          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+          {%- else %}
+          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          {%- endif %}
+        </div>
+        <span class="font-heading text-sm font-semibold {% if platform.tier == 'primary' %}text-white{% else %}text-primary-200{% endif %}">{{ platform.name }}</span>
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+{# ============================================ #}
+{# Product Architecture — 4-layer stack           #}
+{# ============================================ #}
+
+<section class="py-16 sm:py-24 lg:py-28 bg-primary-900 border-t section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div class="reveal-right order-2 lg:order-1">
+        {# Architecture Stack SVG #}
+        <div class="space-y-3">
+          {%- set archLayers = [
+            { label: "Application Layer", desc: "Dashboard · Reports · Alerts", color: "accent-300" },
+            { label: "Agent Layer", desc: "7 Specialized AI Agents", color: "accent-400" },
+            { label: "Engine Layer", desc: "GEO + SEO Optimization Core", color: "accent-500" },
+            { label: "Knowledge Base", desc: "Content Library · AI Models · Data Lake", color: "accent-600" }
+          ] %}
+          {%- for layer in archLayers %}
+          <div class="card-gold bg-primary-800 rounded-xl p-5 border border-primary-700 hover:border-accent-500/40 transition-colors group">
+            <div class="flex items-center gap-4">
+              <div class="flex-shrink-0 w-10 h-10 bg-{{ layer.color }}/10 border border-{{ layer.color }}/30 rounded-lg flex items-center justify-center">
+                <span class="text-{{ layer.color }} font-heading font-bold text-sm">{{ loop.index }}</span>
+              </div>
+              <div>
+                <h3 class="font-heading text-base font-semibold text-white group-hover:text-accent-300 transition-colors">{{ layer.label }}</h3>
+                <p class="text-primary-400 text-sm">{{ layer.desc }}</p>
+              </div>
+            </div>
+          </div>
+          {%- endfor %}
+          {# Connecting lines #}
+          <svg class="absolute left-9 top-0 bottom-0 w-px hidden" aria-hidden="true">
+            <line x1="0" y1="0" x2="0" y2="100%" stroke="#D4A017" stroke-width="2" stroke-dasharray="4 4"/>
+          </svg>
+        </div>
+      </div>
+      <div class="reveal-left order-1 lg:order-2">
+        <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">Architecture</p>
+        <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+          Four Layers. One Platform.
+        </h2>
+        <p class="text-primary-300 text-lg leading-relaxed mb-6">
+          GEO 42's product architecture is built in four integrated layers — from the knowledge base that powers AI comprehension to the application layer that delivers actionable insights.
+        </p>
+        <div class="flex items-center gap-3 p-4 bg-primary-800/50 border border-primary-700/50 rounded-xl">
+          <div class="flex-shrink-0 w-10 h-10 bg-accent-500/10 border border-accent-500/20 rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <div>
+            <span class="text-white font-semibold">7 Specialized AI Agents</span>
+            <p class="text-primary-400 text-sm">Automate the entire content lifecycle end-to-end</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ============================================ #}
+{# Services — 7 Pillars                           #}
 {# ============================================ #}
 
 {%- set serviceIcons = [
@@ -181,7 +308,7 @@ description: "MagUp is the GEO + SEO content marketing platform helping 1000+ gl
 ] %}
 
 {%- if pageContent.services.length %}
-<section class="py-16 sm:py-24 lg:py-28 bg-primary-900 border-t section-divider">
+<section class="py-16 sm:py-24 lg:py-28 bg-primary-950 border-t section-divider">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-14 reveal">
       <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">What We Do</p>
@@ -194,7 +321,7 @@ description: "MagUp is the GEO + SEO content marketing platform helping 1000+ gl
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
       {%- for service in pageContent.services %}
-      <div class="card-lift bg-primary-800 border border-primary-700 rounded-2xl p-7 hover:border-accent-500/50 group">
+      <div class="card-lift card-gold bg-primary-800 rounded-2xl p-7 hover:border-accent-500/50 group">
         <div class="w-12 h-12 bg-accent-500/10 border border-accent-500/20 rounded-xl flex items-center justify-center mb-5 text-accent-400 group-hover:bg-accent-500/20 transition-colors">
           {{ serviceIcons[loop.index0] | default(serviceIcons[0]) | safe }}
         </div>
@@ -207,15 +334,169 @@ description: "MagUp is the GEO + SEO content marketing platform helping 1000+ gl
       </div>
       {%- endfor %}
     </div>
+    <div class="text-center mt-10 reveal">
+      <a href="{{ '/services/' | url }}" class="inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors">
+        View all services
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 {%- endif %}
 
 {# ============================================ #}
-{# Featured Case Study                          #}
+{# SEO vs GEO — Binary comparison                 #}
 {# ============================================ #}
 
-<section class="py-16 sm:py-24 lg:py-28 bg-primary-800 border-t section-divider">
+<section class="py-16 sm:py-24 lg:py-28 bg-primary-900 border-t section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">The Shift</p>
+      <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+        SEO is Linear. GEO is Binary.
+      </h2>
+      <p class="text-primary-400 text-lg max-w-2xl mx-auto text-pretty">
+        In AI search, you are either the cited answer or you are invisible. There is no page two.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal">
+      {# SEO Card #}
+      <div class="bg-primary-800 border border-primary-700 rounded-2xl p-8 sm:p-10">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 bg-primary-700 rounded-lg flex items-center justify-center">
+            <span class="text-primary-300 font-heading font-bold text-sm">SEO</span>
+          </div>
+          <h3 class="font-heading text-xl font-semibold text-primary-200">Traditional SEO</h3>
+        </div>
+        <p class="text-primary-400 text-sm leading-relaxed mb-6">Linear distribution model — sites climb from position 10 to position 1 through incremental improvements. Multiple sites coexist on page one.</p>
+        {# Visual: progressive bars #}
+        <div class="space-y-2">
+          {%- for i in range(5) %}
+          <div class="flex items-center gap-3">
+            <span class="text-xs text-primary-500 w-4">#{{ i + 1 }}</span>
+            <div class="flex-1 h-2 bg-primary-700 rounded-full overflow-hidden">
+              <div class="h-full bg-primary-500 rounded-full" style="width: {{ 100 - (i * 18) }}%"></div>
+            </div>
+          </div>
+          {%- endfor %}
+        </div>
+        <p class="text-xs text-primary-500 mt-3">Progressive ranking — gradual climb</p>
+      </div>
+      {# GEO Card #}
+      <div class="card-gold bg-primary-800 rounded-2xl p-8 sm:p-10 border border-accent-500/30">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 bg-accent-500/20 rounded-lg flex items-center justify-center">
+            <span class="text-accent-400 font-heading font-bold text-sm">GEO</span>
+          </div>
+          <h3 class="font-heading text-xl font-semibold text-white">Generative Engine Optimization</h3>
+        </div>
+        <p class="text-primary-300 text-sm leading-relaxed mb-6">Binary opposition model — AI cites a handful of sources per response. You are either the answer or invisible. Zero-sum, winner-take-all.</p>
+        {# Visual: binary bars #}
+        <div class="space-y-2">
+          <div class="flex items-center gap-3">
+            <span class="text-xs text-accent-400 w-4">#1</span>
+            <div class="flex-1 h-2 bg-primary-700 rounded-full overflow-hidden">
+              <div class="h-full bg-accent-500 rounded-full" style="width: 100%"></div>
+            </div>
+          </div>
+          {%- for i in range(4) %}
+          <div class="flex items-center gap-3">
+            <span class="text-xs text-primary-500 w-4"></span>
+            <div class="flex-1 h-2 bg-primary-700 rounded-full overflow-hidden">
+              <div class="h-full bg-primary-700 rounded-full" style="width: 0%"></div>
+            </div>
+          </div>
+          {%- endfor %}
+        </div>
+        <p class="text-xs text-accent-500 mt-3">Binary outcome — cited or invisible</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ============================================ #}
+{# Dashboard Preview — Mock KPI cards             #}
+{# ============================================ #}
+
+<section class="py-16 sm:py-24 lg:py-28 bg-primary-950 border-t section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">Intelligence Dashboard</p>
+      <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+        Real-Time AI Visibility
+      </h2>
+      <p class="text-primary-400 text-lg max-w-2xl mx-auto text-pretty">
+        Track how AI engines see, cite, and recommend your brand — all in one intelligent dashboard.
+      </p>
+    </div>
+    {# Dashboard mock #}
+    <div class="reveal-scale bg-primary-800 border border-primary-700 rounded-2xl p-6 sm:p-8 max-w-5xl mx-auto">
+      {# Header bar #}
+      <div class="flex items-center justify-between mb-6">
+        <div class="flex items-center gap-2">
+          <div class="w-3 h-3 rounded-full bg-accent-500" aria-hidden="true"></div>
+          <span class="font-heading text-sm font-semibold text-white">GEO 42 Dashboard</span>
+        </div>
+        <div class="flex gap-1.5" aria-hidden="true">
+          <div class="w-2.5 h-2.5 rounded-full bg-primary-600"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-primary-600"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-accent-500"></div>
+        </div>
+      </div>
+      {# KPI row #}
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6 stagger">
+        <div class="kpi-glow bg-primary-900/80 rounded-xl p-4 border border-primary-700/50">
+          <div class="text-xs text-primary-500 uppercase tracking-wider mb-1">Visibility Rate</div>
+          <div class="text-2xl font-bold text-accent-400">87.3%</div>
+          <div class="text-xs text-accent-500 mt-1">+12.4% this week</div>
+        </div>
+        <div class="kpi-glow bg-primary-900/80 rounded-xl p-4 border border-primary-700/50">
+          <div class="text-xs text-primary-500 uppercase tracking-wider mb-1">Recommendation Rate</div>
+          <div class="text-2xl font-bold text-accent-400">64.1%</div>
+          <div class="text-xs text-accent-500 mt-1">+8.7% this week</div>
+        </div>
+        <div class="kpi-glow bg-primary-900/80 rounded-xl p-4 border border-primary-700/50">
+          <div class="text-xs text-primary-500 uppercase tracking-wider mb-1">AI Answers</div>
+          <div class="text-2xl font-bold text-accent-400">2,847</div>
+          <div class="text-xs text-accent-500 mt-1">+341 this week</div>
+        </div>
+        <div class="kpi-glow bg-primary-900/80 rounded-xl p-4 border border-primary-700/50">
+          <div class="text-xs text-primary-500 uppercase tracking-wider mb-1">Brand Sentiment</div>
+          <div class="text-2xl font-bold text-accent-400">Trust</div>
+          <div class="text-xs text-accent-500 mt-1">Positive across 10 engines</div>
+        </div>
+      </div>
+      {# Platform comparison bars #}
+      <div class="bg-primary-900/50 rounded-xl p-5 border border-primary-700/30">
+        <div class="text-xs text-primary-500 uppercase tracking-wider mb-4">Platform Visibility</div>
+        <div class="space-y-3">
+          {%- set dashPlatforms = [
+            { name: "ChatGPT", pct: 92 },
+            { name: "Perplexity", pct: 88 },
+            { name: "Gemini", pct: 76 },
+            { name: "Google AI", pct: 71 },
+            { name: "Claude", pct: 68 }
+          ] %}
+          {%- for p in dashPlatforms %}
+          <div class="flex items-center gap-3">
+            <span class="text-xs text-primary-300 w-20 flex-shrink-0">{{ p.name }}</span>
+            <div class="flex-1 h-2 bg-primary-700 rounded-full overflow-hidden">
+              <div class="h-full rounded-full" style="width: {{ p.pct }}%; background: linear-gradient(90deg, #D4A017, #FBBF24)"></div>
+            </div>
+            <span class="text-xs text-accent-400 w-10 text-right">{{ p.pct }}%</span>
+          </div>
+          {%- endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ============================================ #}
+{# Case Study — Before/After                      #}
+{# ============================================ #}
+
+<section class="py-16 sm:py-24 lg:py-28 bg-primary-900 border-t section-divider">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-12 reveal">
       <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">Proven Results</p>
@@ -223,7 +504,7 @@ description: "MagUp is the GEO + SEO content marketing platform helping 1000+ gl
         From Invisible to #1
       </h2>
     </div>
-    <div class="reveal-scale bg-[linear-gradient(135deg,#151515_0%,#1C0A35_100%)] border border-accent-700/30 rounded-2xl p-8 sm:p-12 max-w-4xl mx-auto">
+    <div class="reveal-scale card-gold bg-primary-800 rounded-2xl p-8 sm:p-12 max-w-4xl mx-auto border border-primary-700">
       <div class="flex items-center gap-2 mb-6">
         <span class="inline-block w-2 h-2 bg-accent-400 rounded-full pulse-dot" aria-hidden="true"></span>
         <span class="text-sm text-primary-300">Case Study — Robot Vacuum Brand</span>
@@ -232,7 +513,7 @@ description: "MagUp is the GEO + SEO content marketing platform helping 1000+ gl
         From 0% AI Visibility to Share of Voice #1 Across 4 Platforms
       </h3>
       <p class="text-primary-300 mb-10 text-lg leading-relaxed">
-        A leading robot vacuum brand was completely invisible in AI responses. After MagUp's GEO optimization, they became the top recommendation across Gemini, ChatGPT, Perplexity, and DeepSeek.
+        A leading robot vacuum brand was completely invisible in AI responses. After GEO 42 optimization, they became the top recommendation across Gemini, ChatGPT, Perplexity, and DeepSeek.
       </p>
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-10 stagger">
         <div class="text-center p-4 bg-primary-900/50 rounded-xl">
@@ -262,7 +543,32 @@ description: "MagUp is the GEO + SEO content marketing platform helping 1000+ gl
 </section>
 
 {# ============================================ #}
-{# Industry Verticals                            #}
+{# Market Data — The 34x Opportunity              #}
+{# ============================================ #}
+
+<section class="py-16 sm:py-24 bg-primary-950 border-t section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal">
+      <div class="shimmer kpi-glow bg-primary-800 rounded-2xl p-8 sm:p-10 text-center border border-primary-700">
+        <div class="text-6xl sm:text-7xl font-bold gradient-text-gold font-heading mb-3">34x</div>
+        <h3 class="font-heading text-lg font-semibold text-white mb-2">The Search Gap</h3>
+        <p class="text-primary-400 text-sm leading-relaxed">
+          The gap between traditional search volume and AI search adoption — a massive untapped opportunity for early movers.
+        </p>
+      </div>
+      <div class="shimmer kpi-glow bg-primary-800 rounded-2xl p-8 sm:p-10 text-center border border-primary-700">
+        <div class="text-6xl sm:text-7xl font-bold gradient-text-gold font-heading mb-3">1000x</div>
+        <h3 class="font-heading text-lg font-semibold text-white mb-2">AI Chatbot Growth</h3>
+        <p class="text-primary-400 text-sm leading-relaxed">
+          AI chatbot traffic has grown 1000x, fundamentally reshaping how consumers discover brands and products.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ============================================ #}
+{# Industries                                      #}
 {# ============================================ #}
 
 {%- if pageContent.industries.length %}
@@ -282,7 +588,7 @@ description: "MagUp is the GEO + SEO content marketing platform helping 1000+ gl
     ] %}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger">
       {%- for industry in pageContent.industries %}
-      <div class="card-lift bg-primary-800 border border-primary-700 rounded-2xl p-6 text-center hover:border-accent-500/50 group">
+      <div class="card-lift card-gold bg-primary-800 rounded-2xl p-6 text-center hover:border-accent-500/50 group">
         <div class="w-14 h-14 mx-auto bg-accent-500/10 border border-accent-500/20 rounded-2xl flex items-center justify-center mb-4 text-accent-400 group-hover:bg-accent-500/20 transition-colors">
           {{ industryIcons[loop.index0] | safe }}
         </div>
@@ -296,10 +602,10 @@ description: "MagUp is the GEO + SEO content marketing platform helping 1000+ gl
 {%- endif %}
 
 {# ============================================ #}
-{# Contact CTA — with gradient bg               #}
+{# CTA — Gold gradient                            #}
 {# ============================================ #}
 
-<section class="relative overflow-hidden py-20 sm:py-28 bg-[linear-gradient(135deg,#151515_0%,#1C0A35_50%,#0D0D0D_100%)] border-t section-divider">
+<section class="relative overflow-hidden py-20 sm:py-28 bg-primary-950 border-t section-divider">
   <div class="hero-glow" aria-hidden="true"></div>
   <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
     <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">Get Started</p>
@@ -307,17 +613,17 @@ description: "MagUp is the GEO + SEO content marketing platform helping 1000+ gl
       Ready to Become the AI Answer?
     </h2>
     <p class="text-lg text-primary-300 max-w-2xl mx-auto mb-10 text-pretty">
-      See how MagUp can transform your brand from invisible to indispensable across every AI platform — in weeks, not months.
+      See how GEO 42 can transform your brand from invisible to indispensable across every AI platform — in weeks, not months.
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
       <a href="{{ '/contact/' | url }}"
-         class="btn-press inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-400 text-white font-semibold px-8 py-3.5 rounded-lg transition-all duration-200 text-lg shadow-lg shadow-accent-500/25">
+         class="btn-press inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-400 text-primary-950 font-semibold px-8 py-3.5 rounded-lg transition-all duration-200 text-lg shadow-lg shadow-accent-500/25">
         Get a Demo
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
       </a>
-      <a href="mailto:{{ pageContent.contact.email }}"
+      <a href="mailto:{{ site.contact.email | default('hello@geo42.ai') }}"
          class="btn-press inline-flex items-center justify-center gap-2 border border-primary-600 text-primary-200 hover:border-accent-500 hover:text-white font-medium px-8 py-3.5 rounded-lg transition-all duration-200 text-lg">
-        {{ pageContent.contact.email }}
+        {{ site.contact.email | default('hello@geo42.ai') }}
       </a>
     </div>
   </div>

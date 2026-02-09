@@ -2,15 +2,15 @@
 
 @plugin "@tailwindcss/typography";
 
-/* ===== Skip link: visually hidden until focused ===== */
+/* ===== Skip link ===== */
 .skip-link {
   position: absolute;
   top: -100%;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 50;
+  z-index: 100;
   background-color: var(--color-primary-800);
-  color: white;
+  color: var(--color-accent-400);
   padding: 0.5rem 1.5rem;
   border-radius: 0 0 0.5rem 0.5rem;
   font-weight: 500;
@@ -21,11 +21,11 @@
 
 .skip-link:focus {
   top: 0;
-  outline: 2px solid white;
+  outline: 2px solid var(--color-accent-400);
   outline-offset: 2px;
 }
 
-/* ===== Focus styles for dark backgrounds ===== */
+/* ===== Focus styles ===== */
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid var(--color-accent-400);
@@ -33,7 +33,61 @@ button:focus-visible {
   border-radius: 2px;
 }
 
-/* ===== Scroll-triggered reveal animations ===== */
+/* ===== Sticky glass header ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(16px) saturate(1.5);
+  -webkit-backdrop-filter: blur(16px) saturate(1.5);
+  background: rgba(15, 14, 10, 0.85);
+  border-bottom: 1px solid rgba(212, 160, 23, 0.1);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.site-header.scrolled {
+  background: rgba(15, 14, 10, 0.95);
+  border-bottom-color: rgba(212, 160, 23, 0.2);
+}
+
+/* ===== Logo mark ===== */
+.logo-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-mark .logo-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  background: linear-gradient(135deg, var(--color-accent-500), var(--color-accent-600));
+  border-radius: 0.5rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--color-primary-950);
+  letter-spacing: -0.02em;
+}
+
+.logo-mark .logo-text {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.375rem;
+  letter-spacing: -0.03em;
+}
+
+.logo-mark .logo-text .logo-geo {
+  color: white;
+}
+
+.logo-mark .logo-text .logo-42 {
+  color: var(--color-accent-400);
+}
+
+/* ===== Scroll-triggered reveals ===== */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -104,7 +158,7 @@ button:focus-visible {
   transform: translateY(0);
 }
 
-/* ===== Typewriter effect ===== */
+/* ===== Typewriter cursor ===== */
 .typewriter {
   border-right: 2px solid var(--color-accent-400);
   white-space: nowrap;
@@ -123,7 +177,7 @@ button:focus-visible {
   50% { border-color: var(--color-accent-400); }
 }
 
-/* ===== Animated counter ===== */
+/* ===== Counter ===== */
 .counter {
   font-variant-numeric: tabular-nums;
 }
@@ -136,14 +190,14 @@ button:focus-visible {
   background-clip: text;
 }
 
-.gradient-text-accent {
+.gradient-text-gold {
   background: linear-gradient(135deg, var(--color-accent-300) 0%, var(--color-accent-500) 50%, var(--color-accent-700) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ===== Hero grid overlay (à la Profound) ===== */
+/* ===== Hero grid overlay ===== */
 .hero-grid {
   position: absolute;
   inset: 0;
@@ -156,8 +210,8 @@ button:focus-visible {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(90deg, rgba(124, 58, 237, 0.06) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(124, 58, 237, 0.06) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(212, 160, 23, 0.04) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(212, 160, 23, 0.04) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
@@ -168,17 +222,23 @@ button:focus-visible {
   background: radial-gradient(ellipse 60% 50% at 50% 50%, transparent, var(--color-primary-900));
 }
 
-/* ===== Glow effect for hero ===== */
+/* ===== Hero glow — warm gold ===== */
 .hero-glow {
   position: absolute;
-  width: 600px;
-  height: 400px;
+  width: 700px;
+  height: 450px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(ellipse, rgba(124, 58, 237, 0.15), transparent 70%);
+  background: radial-gradient(ellipse, rgba(212, 160, 23, 0.08), transparent 70%);
   pointer-events: none;
-  filter: blur(60px);
+  filter: blur(80px);
+}
+
+/* ===== Gold accent line ===== */
+.gold-line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-accent-500), transparent);
 }
 
 /* ===== Logo marquee ===== */
@@ -205,10 +265,29 @@ button:focus-visible {
 
 .card-lift:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px -12px rgba(124, 58, 237, 0.25);
+  box-shadow: 0 16px 48px -12px rgba(212, 160, 23, 0.15);
 }
 
-/* ===== Pulse dot for status ===== */
+/* ===== Gold border card ===== */
+.card-gold {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-gold::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(212, 160, 23, 0.3), transparent 50%, rgba(212, 160, 23, 0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ===== Pulse dot ===== */
 .pulse-dot {
   position: relative;
 }
@@ -228,14 +307,84 @@ button:focus-visible {
   50% { transform: scale(1.8); opacity: 0; }
 }
 
-/* ===== Smooth section borders ===== */
+/* ===== Section divider ===== */
 .section-divider {
   border-image: linear-gradient(90deg, transparent, var(--color-primary-700), transparent) 1;
 }
 
-/* ===== Button press effect ===== */
+/* ===== Button press ===== */
 .btn-press:active {
   transform: scale(0.97);
+}
+
+/* ===== Flywheel animation ===== */
+.flywheel-spin {
+  animation: spin-slow 20s linear infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ===== Shimmer effect for premium feel ===== */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212, 160, 23, 0.08), transparent);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+/* ===== KPI card glow ===== */
+.kpi-glow {
+  box-shadow: 0 0 0 1px rgba(212, 160, 23, 0.1),
+              0 4px 24px -4px rgba(212, 160, 23, 0.08);
+}
+
+/* ===== Architecture layer ===== */
+.arch-layer {
+  border-left: 3px solid var(--color-accent-500);
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.arch-layer::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--color-accent-500);
+}
+
+/* ===== Screen reader only ===== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 /* ===== Reduced motion ===== */
@@ -267,41 +416,47 @@ button:focus-visible {
   .pulse-dot::before {
     animation: none;
   }
+
+  .flywheel-spin {
+    animation: none;
+  }
+
+  .shimmer::after {
+    animation: none;
+  }
 }
 
 @theme {
-  /* ===== Typography ===== */
-  --font-heading: InterVariable, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* ===== Typography — Space Grotesk headings, Inter body ===== */
+  --font-heading: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-sans: InterVariable, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   --text-body: 1.0625rem;
   --text-body--line-height: 1.7;
 
-  /* ===== Colors ===== */
+  /* ===== Primary — warm black ===== */
+  --color-primary-50: #FAFAF5;
+  --color-primary-100: #F0EFE8;
+  --color-primary-200: #D8D6CC;
+  --color-primary-300: #B5B2A5;
+  --color-primary-400: #8A8778;
+  --color-primary-500: #5C594D;
+  --color-primary-600: #3D3B33;
+  --color-primary-700: #262520;
+  --color-primary-800: #181712;
+  --color-primary-900: #0F0E0A;
+  --color-primary-950: #070604;
 
-  /* Primary scale — base: #0D0D0D */
-  --color-primary-50: #F5F5F5;
-  --color-primary-100: #E8E8E8;
-  --color-primary-200: #D1D1D1;
-  --color-primary-300: #B0B0B0;
-  --color-primary-400: #888888;
-  --color-primary-500: #505050;
-  --color-primary-600: #383838;
-  --color-primary-700: #232323;
-  --color-primary-800: #151515;
-  --color-primary-900: #0D0D0D;
-  --color-primary-950: #050505;
-
-  /* Accent scale — base: #7C3AED */
-  --color-accent-50: #F3EEFE;
-  --color-accent-100: #E8DDFD;
-  --color-accent-200: #D0BAFB;
-  --color-accent-300: #B998F9;
-  --color-accent-400: #9A6CF3;
-  --color-accent-500: #7C3AED;
-  --color-accent-600: #6326C4;
-  --color-accent-700: #4B1D93;
-  --color-accent-800: #331363;
-  --color-accent-900: #1C0A35;
-  --color-accent-950: #0E0520;
+  /* ===== Accent — rich gold ===== */
+  --color-accent-50: #FFFBEB;
+  --color-accent-100: #FEF3C7;
+  --color-accent-200: #FDE68A;
+  --color-accent-300: #FCD34D;
+  --color-accent-400: #FBBF24;
+  --color-accent-500: #D4A017;
+  --color-accent-600: #B8860B;
+  --color-accent-700: #8B6914;
+  --color-accent-800: #6B4F0E;
+  --color-accent-900: #4A3508;
+  --color-accent-950: #2D2004;
 }

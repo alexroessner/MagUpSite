@@ -1,7 +1,7 @@
 ---
 layout: base.njk
-title: About MagUp
-description: "MagUp is the GEO + SEO Content Marketing platform helping 1000+ global enterprises get cited by AI answer engines."
+title: About GEO 42
+description: "GEO 42 is the AI visibility platform helping 1000+ global enterprises get cited by AI answer engines."
 fullWidth: true
 ---
 
@@ -11,7 +11,7 @@ fullWidth: true
       <div class="reveal-left">
         <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">About</p>
         <h1 class="font-heading text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
-          The Content Marketing Brain for Global Enterprises
+          The Answer Engine for Enterprise Brands
         </h1>
         {%- if pageContent.about.content %}
         <div class="text-primary-300 space-y-4 text-lg leading-relaxed">
@@ -19,7 +19,7 @@ fullWidth: true
         </div>
         {%- endif %}
         <div class="mt-8 flex flex-col sm:flex-row gap-4">
-          <a href="{{ '/services/' | url }}" class="btn-press inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-400 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 shadow-lg shadow-accent-500/25">
+          <a href="{{ '/services/' | url }}" class="btn-press inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-400 text-primary-950 font-semibold px-6 py-3 rounded-lg transition-all duration-200 shadow-lg shadow-accent-500/25">
             Explore Our Services
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
           </a>
@@ -29,7 +29,7 @@ fullWidth: true
         </div>
       </div>
       <div class="reveal-right space-y-6">
-        <div class="bg-primary-800 border border-primary-700 rounded-2xl p-8">
+        <div class="card-gold bg-primary-800 rounded-2xl p-8 border border-primary-700">
           <h2 class="font-heading text-xl font-semibold text-white mb-6">By the Numbers</h2>
           <div class="grid grid-cols-2 gap-6">
             <div class="text-center p-4 bg-primary-900/50 rounded-xl">
@@ -75,7 +75,7 @@ fullWidth: true
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
       {%- for member in pageContent.team %}
-      <div class="card-lift bg-primary-800 border border-primary-700 rounded-2xl p-6 hover:border-accent-500/50">
+      <div class="card-lift card-gold bg-primary-800 rounded-2xl p-6 hover:border-accent-500/50">
         <div class="w-12 h-12 bg-accent-500/10 border border-accent-500/20 rounded-xl flex items-center justify-center mb-4">
           <span class="text-accent-400 font-bold text-lg" aria-hidden="true">{{ member.name | first }}</span>
         </div>
@@ -95,15 +95,15 @@ fullWidth: true
 <section class="py-12 sm:py-16 bg-primary-900 border-t section-divider">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="reveal grid grid-cols-1 sm:grid-cols-3 gap-6">
-      <a href="{{ '/7-ai-agents/' | url }}" class="card-lift block bg-primary-800 border border-primary-700 rounded-2xl p-6 hover:border-accent-500/50 group">
+      <a href="{{ '/7-ai-agents/' | url }}" class="card-lift card-gold block bg-primary-800 rounded-2xl p-6 hover:border-accent-500/50 group">
         <h3 class="font-heading text-lg font-semibold text-white mb-2 group-hover:text-accent-300 transition-colors">7 AI Agents</h3>
         <p class="text-primary-400 text-sm">Learn how our AI agents automate the content lifecycle.</p>
       </a>
-      <a href="{{ '/product-architecture/' | url }}" class="card-lift block bg-primary-800 border border-primary-700 rounded-2xl p-6 hover:border-accent-500/50 group">
+      <a href="{{ '/product-architecture/' | url }}" class="card-lift card-gold block bg-primary-800 rounded-2xl p-6 hover:border-accent-500/50 group">
         <h3 class="font-heading text-lg font-semibold text-white mb-2 group-hover:text-accent-300 transition-colors">Product Architecture</h3>
         <p class="text-primary-400 text-sm">Explore the four core engines powering the platform.</p>
       </a>
-      <a href="{{ '/end-to-end-process/' | url }}" class="card-lift block bg-primary-800 border border-primary-700 rounded-2xl p-6 hover:border-accent-500/50 group">
+      <a href="{{ '/end-to-end-process/' | url }}" class="card-lift card-gold block bg-primary-800 rounded-2xl p-6 hover:border-accent-500/50 group">
         <h3 class="font-heading text-lg font-semibold text-white mb-2 group-hover:text-accent-300 transition-colors">End-to-End Process</h3>
         <p class="text-primary-400 text-sm">See our 5-stage GEO + SEO workflow from strategy to optimization.</p>
       </a>
@@ -112,16 +112,16 @@ fullWidth: true
 </section>
 
 {# ---- CTA ---- #}
-<section class="relative overflow-hidden py-16 sm:py-20 bg-[linear-gradient(135deg,#151515_0%,#1C0A35_50%,#0D0D0D_100%)] border-t section-divider">
+<section class="relative overflow-hidden py-16 sm:py-20 bg-primary-950 border-t section-divider">
   <div class="hero-glow" aria-hidden="true"></div>
   <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
     <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">
       Ready to Get Started?
     </h2>
     <p class="text-lg text-primary-300 max-w-2xl mx-auto mb-8">
-      See how MagUp can transform your brand from invisible to indispensable across every AI platform.
+      See how GEO 42 can transform your brand from invisible to indispensable across every AI platform.
     </p>
-    <a href="{{ '/contact/' | url }}" class="btn-press inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-400 text-white font-semibold px-8 py-3.5 rounded-lg transition-all duration-200 text-lg shadow-lg shadow-accent-500/25">
+    <a href="{{ '/contact/' | url }}" class="btn-press inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-400 text-primary-950 font-semibold px-8 py-3.5 rounded-lg transition-all duration-200 text-lg shadow-lg shadow-accent-500/25">
       Get a Demo
       <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
     </a>
