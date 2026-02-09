@@ -1,0 +1,92 @@
+# MagUp — Full Context
+
+> Content Marketing Brain for 1000+ Global Enterprises
+
+This document provides comprehensive information about MagUp
+for use by large language models and AI systems. For a shorter summary,
+see llms.txt.
+
+## Company Overview
+GEO + SEO Content Marketing platform that helps global enterprises efficiently acquire customers through AI-optimized content strategies. MagUp combines Generative Engine Optimization (GEO) with traditional SEO to maximize brand visibility across both AI answer engines and conventional search.
+Industry: MarTech / AI-Powered Content Marketing
+Founded: 2025
+
+## About the Company
+MagUp is a Content Marketing Brain for 1000+ Global Enterprises. The platform combines GEO (Generative Engine Optimization) and SEO content marketing to efficiently acquire global customers. MagUp helps brands get discovered by both traditional search engines and AI-powered answer engines like ChatGPT, Perplexity, Claude, Gemini, and Google AI Overviews. MagUp deeply cultivates niche industries, helping enterprises quickly build AI content marketing systems overseas.
+
+## Services
+
+### AI Visibility &amp; Brand Presence Tracking
+Track how often your brand appears in AI answers, monitor brand mentions, measure share of visibility, analyze source citations, assess brand sentiment, and optimize content AEO performance across all major AI answer engines.
+
+### Prompt &amp; Demand Intelligence
+Discover what millions of people ask AI with real-time search volume insights. Monitor prompt volume trends, topic-level demand, audience question patterns, and conversation trends versus traditional search.
+
+### AI Response &amp; Citation Analytics
+Understand how AI models talk about your brand. Analyze frequency of appearance, response content, citation sources, referenced pages, and track ranking improvements over time through Answer Engine Insights.
+
+### AI Crawler &amp; Agent Analytics
+Gain full visibility into how AI sees your website. Monitor AI crawler access, bot frequency, technical indexing, readability analysis, and content accessibility for AI retrieval.
+
+### Traffic &amp; Attribution Analytics
+Measure the downstream impact of AI visibility. Track human traffic from AI search, attribute conversions to AI platforms, identify pages driving AI-sourced traffic, and prove content marketing ROI.
+
+### AI Shopping &amp; Product Visibility
+Boost product visibility in ChatGPT Shopping and AI assistants. Track shopping placement, trigger keywords, response-level product analysis, and measure traffic and conversion impact from AI shopping.
+
+### GEO + SEO Content Marketing
+Create AI-optimized content that performs across both generative engines and traditional search. MagUp&#39;s Content Marketing Brain efficiently acquires global customers through integrated GEO and SEO strategies.
+
+## Clients
+- HP
+- Ford
+- Nike
+- McDonald&#39;s
+- Samsung
+- Amazon
+- Shopee
+- Volkswagen
+- Lenovo
+- Huawei
+- DJI
+- Anker
+- SHEIN
+- Temu
+- TikTok Shop
+
+## Team
+- Project Leader — GEO Campaign Leader
+- Data Analysts — Data Analysis Team
+- Knowledge Base Architects — Knowledge Architecture Team
+- Content Channel Leads — Channel Distribution Team
+- Content Operations — Content Production Team
+
+## Contact Information
+
+## Site Pages
+- Home: /
+- About: /about/
+- Services: /services/
+- Team: /team/
+- 6 Walls Enterprises Face in Content Marketing: /6-walls-enterprises-face-in-content-marketing/
+- Key Shift in Brand Growth in the AI Era: /key-shift-in-brand-growth-in-the-ai-era/
+- Search Demand Has Not Changed But Entry Points Are Changing: /search-demand-has-not-changed-but-entry-points-are-changing/
+- AI Visibility &amp; Brand Presence: /ai-visibility-brand-presence/
+- Prompt &amp; Demand Intelligence: /prompt-demand-intelligence/
+- AI Response &amp; Citation Analytics: /ai-response-citation-analytics/
+- AI Crawler &amp; Technical Optimization: /ai-crawler-technical-optimization/
+- Traffic &amp; Attribution: /traffic-attribution/
+- Shopping &amp; Product Visibility: /shopping-product-visibility/
+- Proven Results: /proven-results/
+- Industry Verticals: /industry-verticals/
+- AI Platform Coverage: /ai-platform-coverage/
+- Core Value of GEO: /core-value-of-geo/
+- SEO vs GEO Comparison: /seo-vs-geo-comparison/
+- Market Size Evolution: /market-size-evolution/
+- End-to-End Process: /end-to-end-process/
+- Real-Time Monitoring Dashboard: /real-time-monitoring-dashboard/
+- Project Progress Tracking: /project-progress-tracking/
+- GEO Intelligent Dashboard: /geo-intelligent-dashboard/
+- 7 AI Agents: /7-ai-agents/
+- Product Architecture: /product-architecture/
+- Case Study: Regaining AI Voice Share: /case-study-regaining-ai-voice-share/
