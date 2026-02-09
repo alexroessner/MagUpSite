@@ -1,0 +1,239 @@
+---
+layout: base.njk
+title: Style Guide
+description: "Living design system reference for the generated site."
+eleventyExcludeFromCollections: true
+---
+
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+
+  <h1 class="font-heading text-4xl sm:text-5xl font-bold text-primary-700 leading-tight mb-4">Style Guide</h1>
+  <p class="text-lg text-gray-600 mb-10">Living design system reference. Updated by the merge pipeline.</p>
+
+  {# ============================================ #}
+  {# Design Philosophy                            #}
+  {# ============================================ #}
+
+  <section class="mb-16">
+    <h2 class="font-heading text-2xl font-bold text-primary-700 border-b-3 border-primary-500 pb-2 mb-6">Design Philosophy</h2>
+    <div class="prose prose-lg">
+      <p>This site is generated from two inputs: a PDF document (content) and a reference URL (design). The design system merges both streams into a cohesive visual identity.</p>
+      <ul>
+        <li><strong>Content-first:</strong> Design serves the content, not the other way around.</li>
+        <li><strong>Accessible by default:</strong> WCAG 2.1 AA minimum. Underlined links, visible focus states, sufficient contrast.</li>
+        <li><strong>Zero client-side JavaScript:</strong> Only a hamburger menu toggle. Everything else is HTML + CSS.</li>
+        <li><strong>System fonts for body:</strong> Zero load cost, excellent screen readability.</li>
+        <li><strong>Responsive from mobile up:</strong> Every section works at 320px before scaling to desktop.</li>
+      </ul>
+    </div>
+  </section>
+
+  {# ============================================ #}
+  {# Colors                                       #}
+  {# ============================================ #}
+
+  <section class="mb-16">
+    <h2 class="font-heading text-2xl font-bold text-primary-700 border-b-3 border-primary-500 pb-2 mb-6">Colors</h2>
+
+    <h3 class="font-heading text-lg font-semibold text-primary-700 mb-4">Primary Scale</h3>
+    <div class="grid grid-cols-5 sm:grid-cols-10 gap-2 mb-8">
+      <div class="text-center">
+        <div class="h-12 rounded bg-primary-50"></div>
+        <span class="text-xs text-gray-500 mt-1 block">50</span>
+      </div>
+      <div class="text-center">
+        <div class="h-12 rounded bg-primary-100"></div>
+        <span class="text-xs text-gray-500 mt-1 block">100</span>
+      </div>
+      <div class="text-center">
+        <div class="h-12 rounded bg-primary-200"></div>
+        <span class="text-xs text-gray-500 mt-1 block">200</span>
+      </div>
+      <div class="text-center">
+        <div class="h-12 rounded bg-primary-300"></div>
+        <span class="text-xs text-gray-500 mt-1 block">300</span>
+      </div>
+      <div class="text-center">
+        <div class="h-12 rounded bg-primary-400"></div>
+        <span class="text-xs text-gray-500 mt-1 block">400</span>
+      </div>
+      <div class="text-center">
+        <div class="h-12 rounded bg-primary-500"></div>
+        <span class="text-xs text-gray-500 mt-1 block">500</span>
+      </div>
+      <div class="text-center">
+        <div class="h-12 rounded bg-primary-600"></div>
+        <span class="text-xs text-gray-500 mt-1 block">600</span>
+      </div>
+      <div class="text-center">
+        <div class="h-12 rounded bg-primary-700"></div>
+        <span class="text-xs text-gray-500 mt-1 block">700</span>
+      </div>
+      <div class="text-center">
+        <div class="h-12 rounded bg-primary-800"></div>
+        <span class="text-xs text-gray-500 mt-1 block">800</span>
+      </div>
+      <div class="text-center">
+        <div class="h-12 rounded bg-primary-900"></div>
+        <span class="text-xs text-gray-500 mt-1 block">900</span>
+      </div>
+    </div>
+
+    <h3 class="font-heading text-lg font-semibold text-primary-700 mb-4">Accent Scale</h3>
+    <div class="grid grid-cols-5 sm:grid-cols-10 gap-2 mb-8">
+      <div class="text-center">
+        <div class="h-12 rounded bg-accent-50"></div>
+        <span class="text-xs text-gray-500 mt-1 block">50</span>
+      </div>
+      <div class="text-center">
+        <div class="h-12 rounded bg-accent-100"></div>
+        <span class="text-xs text-gray-500 mt-1 block">100</span>
+      </div>
+      <div class="text-center">
+        <div class="h-12 rounded bg-accent-200"></div>
+        <span class="text-xs text-gray-500 mt-1 block">200</span>
+      </div>
+      <div class="text-center">
+        <div class="h-12 rounded bg-accent-300"></div>
+        <span class="text-xs text-gray-500 mt-1 block">300</span>
+      </div>
+      <div class="text-center">
+        <div class="h-12 rounded bg-accent-400"></div>
+        <span class="text-xs text-gray-500 mt-1 block">400</span>
+      </div>
+      <div class="text-center">
+        <div class="h-12 rounded bg-accent-500"></div>
+        <span class="text-xs text-gray-500 mt-1 block">500</span>
+      </div>
+      <div class="text-center">
+        <div class="h-12 rounded bg-accent-600"></div>
+        <span class="text-xs text-gray-500 mt-1 block">600</span>
+      </div>
+      <div class="text-center">
+        <div class="h-12 rounded bg-accent-700"></div>
+        <span class="text-xs text-gray-500 mt-1 block">700</span>
+      </div>
+      <div class="text-center">
+        <div class="h-12 rounded bg-accent-800"></div>
+        <span class="text-xs text-gray-500 mt-1 block">800</span>
+      </div>
+      <div class="text-center">
+        <div class="h-12 rounded bg-accent-900"></div>
+        <span class="text-xs text-gray-500 mt-1 block">900</span>
+      </div>
+    </div>
+  </section>
+
+  {# ============================================ #}
+  {# Typography                                   #}
+  {# ============================================ #}
+
+  <section class="mb-16">
+    <h2 class="font-heading text-2xl font-bold text-primary-700 border-b-3 border-primary-500 pb-2 mb-6">Typography</h2>
+
+    <h3 class="font-heading text-lg font-semibold text-primary-700 mb-4">Heading Scale</h3>
+    <div class="space-y-4 mb-8">
+      <p class="font-heading text-5xl font-bold text-primary-700">Heading 5xl</p>
+      <p class="font-heading text-4xl font-bold text-primary-700">Heading 4xl</p>
+      <p class="font-heading text-3xl font-bold text-primary-700">Heading 3xl</p>
+      <p class="font-heading text-2xl font-bold text-primary-700">Heading 2xl</p>
+      <p class="font-heading text-xl font-semibold text-primary-700">Heading xl</p>
+    </div>
+
+    <h3 class="font-heading text-lg font-semibold text-primary-700 mb-4">Body Text</h3>
+    <div class="space-y-2 mb-8">
+      <p class="text-lg">Body large (text-lg)</p>
+      <p class="text-body">Body default (text-body — 17px)</p>
+      <p class="text-sm">Body small (text-sm)</p>
+      <p class="text-xs">Body extra small (text-xs)</p>
+    </div>
+  </section>
+
+  {# ============================================ #}
+  {# Buttons                                      #}
+  {# ============================================ #}
+
+  <section class="mb-16">
+    <h2 class="font-heading text-2xl font-bold text-primary-700 border-b-3 border-primary-500 pb-2 mb-6">Buttons</h2>
+    <div class="flex flex-wrap gap-4">
+      <a href="#" class="inline-block bg-primary-600 hover:bg-primary-700 text-white font-medium px-6 py-3 rounded transition-colors">Primary</a>
+      <a href="#" class="inline-block border border-primary-600 text-primary-600 hover:bg-primary-50 font-medium px-6 py-3 rounded transition-colors">Secondary</a>
+      <a href="#" class="inline-block bg-accent-500 hover:bg-accent-600 text-white font-medium px-6 py-3 rounded transition-colors">Accent</a>
+      <a href="#" class="text-primary-600 underline hover:text-primary-700 font-medium px-2 py-3 transition-colors">Text Link</a>
+    </div>
+  </section>
+
+  {# ============================================ #}
+  {# Cards                                        #}
+  {# ============================================ #}
+
+  <section class="mb-16">
+    <h2 class="font-heading text-2xl font-bold text-primary-700 border-b-3 border-primary-500 pb-2 mb-6">Cards</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+        <h3 class="font-heading text-xl font-semibold text-primary-700 mb-3">Card Title</h3>
+        <p class="text-gray-600">Card content goes here. This is the standard card pattern used for services and features.</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+        <h3 class="font-heading text-xl font-semibold text-primary-700 mb-3">Card with CTA</h3>
+        <p class="text-gray-600 mb-4">Card content with a call to action button below.</p>
+        <a href="#" class="text-primary-600 underline hover:text-primary-700 font-medium">Learn more &rarr;</a>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+        <h3 class="font-heading text-xl font-semibold text-primary-700 mb-3">Card Three</h3>
+        <p class="text-gray-600">Another card demonstrating the grid layout and consistent styling.</p>
+      </div>
+    </div>
+  </section>
+
+  {# ============================================ #}
+  {# Section Headers                              #}
+  {# ============================================ #}
+
+  <section class="mb-16">
+    <h2 class="font-heading text-2xl font-bold text-primary-700 border-b-3 border-primary-500 pb-2 mb-6">Section Headers</h2>
+    <p class="text-gray-600 mb-4">H2 elements within prose get a bottom border rule, following the convention of technical publications.</p>
+    <div class="prose prose-lg prose-h2:border-b-3 prose-h2:border-primary-500 prose-h2:text-primary-700 prose-h2:pb-2">
+      <h2>Example Section Header</h2>
+      <p>This demonstrates the ruled-heading pattern used throughout interior pages.</p>
+    </div>
+  </section>
+
+  {# ============================================ #}
+  {# Accessibility                                #}
+  {# ============================================ #}
+
+  <section class="mb-16" id="accessibility">
+    <h2 class="font-heading text-2xl font-bold text-primary-700 border-b-3 border-primary-500 pb-2 mb-6">Accessibility</h2>
+    <div class="prose prose-lg">
+      <p>Target: WCAG 2.1 AA compliance on all pages.</p>
+      <ul>
+        <li><strong>Skip link:</strong> Hidden until focused, jumps to <code>#main</code>.</li>
+        <li><strong>Links:</strong> Permanently underlined (WCAG 1.4.1 — not just on hover).</li>
+        <li><strong>Focus states:</strong> Visible on all interactive elements.</li>
+        <li><strong>Color contrast:</strong> All text-on-background combinations meet AA ratios.</li>
+        <li><strong>Navigation:</strong> <code>aria-current="page"</code> on active items, <code>aria-expanded</code> on hamburger.</li>
+      </ul>
+      <h3>The Grayscale Test</h3>
+      <p>View the site with color removed and ask: "Can I still tell what's interactive?" Links should be identifiable by their underline, buttons by their shape, and focus states by their outline — not just by color.</p>
+    </div>
+  </section>
+
+  {# ============================================ #}
+  {# Files Reference                              #}
+  {# ============================================ #}
+
+  <section class="mb-16">
+    <h2 class="font-heading text-2xl font-bold text-primary-700 border-b-3 border-primary-500 pb-2 mb-6">Files Reference</h2>
+    <div class="prose prose-lg">
+      <ul>
+        <li><code>src/css/input.css</code> — Source of truth for design tokens (<code>@theme</code> block)</li>
+        <li><code>src/style-guide.njk</code> — This page (living reference)</li>
+        <li><code>whitelabel.config.js</code> — Brand identity configuration</li>
+        <li><code>data/scraped-styles.json</code> — Raw scraped design data</li>
+        <li><code>data/merged-blueprint.json</code> — Final merged blueprint</li>
+      </ul>
+    </div>
+  </section>
+
+</div>

@@ -1,0 +1,15 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["theme", "plugin", "import", "tailwind", "apply", "layer"]
+      }
+    ],
+    "import-notation": null,
+    "value-keyword-case": null,
+    "custom-property-pattern": null,
+    "color-hex-length": null
+  }
+}

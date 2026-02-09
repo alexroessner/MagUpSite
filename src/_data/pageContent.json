@@ -1,0 +1,40 @@
+{
+  "_schema": "MagUpUS content schema v1. Populated by scripts/merge.js from PDF extraction + style scraping.",
+  "company": {
+    "name": "",
+    "tagline": "",
+    "description": "",
+    "industry": "",
+    "founded": ""
+  },
+  "hero": {
+    "headline": "",
+    "subheadline": "",
+    "cta_primary": { "text": "Contact Us", "url": "/contact/" },
+    "cta_secondary": { "text": "Learn More", "url": "/about/" }
+  },
+  "about": {
+    "title": "About",
+    "content": "",
+    "highlights": []
+  },
+  "services": [],
+  "team": [],
+  "contact": {
+    "email": "",
+    "phone": "",
+    "fax": "",
+    "address": {
+      "street": "",
+      "city": "",
+      "state": "",
+      "zip": "",
+      "country": ""
+    },
+    "hours": ""
+  },
+  "testimonials": [],
+  "clients": [],
+  "certifications": [],
+  "custom_sections": []
+}

@@ -1,0 +1,37 @@
+---
+layout: page.njk
+title: About
+description: ""
+---
+
+{%- if pageContent.about.content %}
+{{ pageContent.about.content }}
+{%- else %}
+This page will be populated with content extracted from the source PDF.
+
+Run the pipeline to generate content:
+```
+npm run extract -- --pdf source-pdf/your-document.pdf
+npm run merge
+npm run build
+```
+{%- endif %}
+
+{%- if pageContent.about.highlights.length %}
+
+## Highlights
+
+{% for highlight in pageContent.about.highlights %}- {{ highlight }}
+{% endfor %}
+{%- endif %}
+
+{%- if pageContent.team.length %}
+
+## Our Team
+
+{% for member in pageContent.team %}
+### {{ member.name }}{% if member.title %} — {{ member.title }}{% endif %}
+
+{{ member.bio }}
+{% endfor %}
+{%- endif %}

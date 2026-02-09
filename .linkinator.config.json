@@ -1,0 +1,7 @@
+{
+  "recurse": true,
+  "skip": [
+    "^(?!http://localhost)"
+  ],
+  "timeout": 10000
+}

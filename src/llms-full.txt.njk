@@ -1,0 +1,76 @@
+---
+permalink: /llms-full.txt
+eleventyExcludeFromCollections: true
+---
+# {{ site.name }} — Full Context
+
+> {{ site.tagline }}
+
+This document provides comprehensive information about {{ site.name }}
+for use by large language models and AI systems. For a shorter summary,
+see llms.txt.
+
+## Company Overview
+{{ site.description }}
+{%- if pageContent.company.industry %}
+Industry: {{ pageContent.company.industry }}
+{%- endif %}
+{%- if pageContent.company.founded %}
+Founded: {{ pageContent.company.founded }}
+{%- endif %}
+
+{%- if site.author.name %}
+
+## About {{ site.author.name }}
+{%- if site.author.jobTitle %}
+Title: {{ site.author.jobTitle }}
+{%- endif %}
+{%- endif %}
+
+{%- if pageContent.about.content %}
+
+## About the Company
+{{ pageContent.about.content }}
+{%- endif %}
+
+{%- if pageContent.services.length %}
+
+## Services
+{%- for service in pageContent.services %}
+
+### {{ service.name }}
+{{ service.description }}
+{%- endfor %}
+{%- endif %}
+
+{%- if pageContent.clients.length %}
+
+## Clients
+{%- for client in pageContent.clients %}
+- {{ client }}
+{%- endfor %}
+{%- endif %}
+
+{%- if pageContent.team.length %}
+
+## Team
+{%- for member in pageContent.team %}
+- {{ member.name }}{% if member.title %} — {{ member.title }}{% endif %}
+{%- endfor %}
+{%- endif %}
+
+## Contact Information
+{%- if site.contact.email %}
+Email: {{ site.contact.email }}
+{%- endif %}
+{%- if site.contact.phone %}
+Phone: {{ site.contact.phone }}
+{%- endif %}
+{%- if site.contact.address.street %}
+Address: {{ site.contact.address.street }}, {{ site.contact.address.city }}, {{ site.contact.address.state }} {{ site.contact.address.zip }}, {{ site.contact.address.country }}
+{%- endif %}
+
+## Site Pages
+{%- for item in nav.all %}
+- {{ item.title }}: {{ site.url }}{{ item.url }}
+{%- endfor %}

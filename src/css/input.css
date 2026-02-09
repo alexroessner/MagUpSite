@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+
+/* ===== Skip link: visually hidden until focused ===== */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  background-color: var(--color-primary-800);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+@theme {
+  /* ===== Typography =====
+   *
+   * These defaults are overwritten by the merge script when a reference
+   * URL is scraped. The fallback values provide a clean, professional
+   * starting point for any business.
+   */
+
+  /* Headings: system serif stack for institutional credibility */
+  --font-heading: Georgia, "Times New Roman", serif;
+
+  /* Body: system sans stack for screen readability */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Technical identifiers, code references */
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+
+  /* Body text size: 17px for comfortable reading of business content */
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.7;
+
+  /* ===== Colors =====
+   *
+   * Default palette provides a professional blue/orange scheme.
+   * The merge script replaces these with colors extracted from the
+   * reference URL or derived from the PDF's visual identity.
+   */
+
+  /* Primary scale — the dominant brand color */
+  --color-primary-50: #E6F0F5;
+  --color-primary-100: #CCE1EB;
+  --color-primary-200: #99C3D7;
+  --color-primary-300: #66A5C3;
+  --color-primary-400: #3387AF;
+  --color-primary-500: #006699;
+  --color-primary-600: #00527A;
+  --color-primary-700: #003D5C;
+  --color-primary-800: #00293D;
+  --color-primary-900: #00141F;
+
+  /* Accent scale — for CTAs, emphasis, and highlights */
+  --color-accent-50: #FEF3EF;
+  --color-accent-100: #FDE7DF;
+  --color-accent-200: #FBCFBF;
+  --color-accent-300: #F9B79F;
+  --color-accent-400: #F79F7F;
+  --color-accent-500: #CC3300;
+  --color-accent-600: #A32900;
+  --color-accent-700: #7A1F00;
+  --color-accent-800: #521400;
+  --color-accent-900: #290A00;
+}

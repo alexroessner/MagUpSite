@@ -1,0 +1,61 @@
+---
+layout: page.njk
+title: Contact
+description: ""
+---
+
+{%- if site.contact.email or site.contact.phone or site.contact.address.street %}
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10 not-prose">
+  <div>
+    <h2 class="font-heading text-xl font-semibold text-primary-700 mb-4 border-b-3 border-primary-500 pb-2">
+      Get in Touch
+    </h2>
+    <div class="space-y-4 text-gray-700">
+      {%- if site.contact.email %}
+      <p>
+        <strong>Email:</strong><br>
+        <a href="mailto:{{ site.contact.email }}" class="text-primary-600 underline hover:text-primary-700">
+          {{ site.contact.email }}
+        </a>
+      </p>
+      {%- endif %}
+      {%- if site.contact.phone %}
+      <p>
+        <strong>Phone:</strong><br>
+        {{ site.contact.phone }}
+      </p>
+      {%- endif %}
+      {%- if site.contact.fax %}
+      <p>
+        <strong>Fax:</strong><br>
+        {{ site.contact.fax }}
+      </p>
+      {%- endif %}
+    </div>
+  </div>
+
+  {%- if site.contact.address.street %}
+  <div>
+    <h2 class="font-heading text-xl font-semibold text-primary-700 mb-4 border-b-3 border-primary-500 pb-2">
+      Location
+    </h2>
+    <address class="not-italic text-gray-700 space-y-1">
+      <p>{{ site.contact.address.street }}</p>
+      <p>{{ site.contact.address.city }}{% if site.contact.address.state %}, {{ site.contact.address.state }}{% endif %} {{ site.contact.address.zip }}</p>
+      {%- if site.contact.address.country %}
+      <p>{{ site.contact.address.country }}</p>
+      {%- endif %}
+    </address>
+  </div>
+  {%- endif %}
+</div>
+{%- else %}
+Contact information will be populated from the source PDF.
+
+Run the pipeline to generate content:
+```
+npm run extract -- --pdf source-pdf/your-document.pdf
+npm run merge
+npm run build
+```
+{%- endif %}

@@ -1,0 +1,46 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
+# {{ site.name }}
+
+> {{ site.tagline }}
+
+{{ site.description }}
+
+{%- if site.author.name %}
+
+## About {{ site.author.name }}
+{{ site.author.jobTitle }}{% if site.author.email %} — {{ site.author.email }}{% endif %}
+{%- endif %}
+
+{%- if pageContent.services.length %}
+
+## Services
+{%- for service in pageContent.services %}
+- {{ service.name }}: {{ service.description }}
+{%- endfor %}
+{%- endif %}
+
+{%- if site.contact.email or site.contact.phone %}
+
+## Contact
+{%- if site.contact.email %}
+- Email: {{ site.contact.email }}
+{%- endif %}
+{%- if site.contact.phone %}
+- Phone: {{ site.contact.phone }}
+{%- endif %}
+{%- if site.contact.address.street %}
+- Address: {{ site.contact.address.street }}, {{ site.contact.address.city }}, {{ site.contact.address.state }} {{ site.contact.address.zip }}
+{%- endif %}
+{%- if site.url %}
+- Website: {{ site.url }}/
+{%- endif %}
+{%- endif %}
+
+## Pages
+{%- for item in nav.all %}
+- [{{ item.title }}]({{ site.url }}{{ item.url }})
+{%- endfor %}
+- [Full context for LLMs]({{ site.url }}/llms-full.txt)
