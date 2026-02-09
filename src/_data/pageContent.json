@@ -87,9 +87,10 @@
     }
   ],
   "contact": {
-    "email": "",
+    "email": "hello@magup.io",
     "phone": "",
     "fax": "",
+    "url": "https://www.magup.io",
     "address": {}
   },
   "testimonials": [],
@@ -114,90 +115,112 @@
   "custom_sections": [
     {
       "title": "6 Walls Enterprises Face in Content Marketing",
+      "slug": "6-walls-enterprises-face-in-content-marketing",
       "content": "Global enterprises face six critical walls when attempting content marketing at scale. The Rule Wall: Navigating complex regulatory and compliance requirements across different markets. The Trust Wall: Building authentic credibility with audiences who are increasingly skeptical of brand messaging. The Brand Wall: Maintaining consistent brand voice and positioning across global markets. The Talent Wall: Finding and retaining specialized content marketing professionals who understand both AI and SEO. The Operation Wall: Scaling content operations efficiently across multiple languages, markets, and channels. The Funding Wall: Justifying and optimizing content marketing budgets with measurable ROI. MagUp's platform addresses all six walls through its integrated GEO + SEO approach."
     },
     {
       "title": "Key Shift in Brand Growth in the AI Era",
+      "slug": "key-shift-in-brand-growth-in-the-ai-era",
       "content": "The AI era has fundamentally changed how brands grow. MagUp's Visibility Flywheel Growth Model operates in three key positions: First, Become the Answer — position your brand as the authoritative source that AI engines reference when users ask questions in your category. Second, Win Trust — build credibility through consistent, high-quality AI-optimized content that earns citations and mentions across AI platforms. Third, Facilitate Transaction — convert AI-driven visibility into measurable business outcomes by bridging the gap between AI discovery and customer acquisition. This flywheel creates a compounding effect: more visibility leads to more trust, which drives more transactions, which in turn generates more content signals that increase visibility."
     },
     {
       "title": "Search Demand Has Not Changed But Entry Points Are Changing",
+      "slug": "search-demand-has-not-changed-but-entry-points-are-changing",
       "content": "Search demand remains strong, but the entry points are fundamentally shifting. There is a 34x gap between traditional search volume and AI search adoption — representing a massive untapped opportunity. AI chatbot traffic has grown 1000x, signaling a seismic shift in how consumers discover brands and products. While traditional search engines still command the majority of queries, AI-powered answer engines like ChatGPT, Perplexity, Claude, and Google AI Overviews are rapidly capturing user intent at the top of the funnel. Brands that optimize for both traditional and AI search will capture disproportionate market share."
     },
     {
       "title": "AI Visibility & Brand Presence",
+      "slug": "ai-visibility-brand-presence",
       "content": "MagUp tracks and optimizes core AI visibility metrics including how often your brand appears in AI answers, brand mentions in AI responses, share of visibility and ranking in AI answers, source citations showing which sites AI uses when mentioning you, brand sentiment in AI outputs, and content AEO (Answer Engine Optimization) performance effectiveness. These are the headline KPIs that drive modern brand discovery."
     },
     {
       "title": "Prompt & Demand Intelligence",
+      "slug": "prompt-demand-intelligence",
       "content": "MagUp provides real-time search volume insights for AI answer engines. The platform discovers what people ask AI, including prompt and search volume in AI tools, topic-level demand trends, audience question patterns, conversation trends compared to traditional search, and brand performance versus specific prompts and topics."
     },
     {
       "title": "AI Response & Citation Analytics",
+      "slug": "ai-response-citation-analytics",
       "content": "MagUp analyzes how AI models talk about your brand with detailed metrics including frequency of appearance in AI responses, response analysis showing what AI says about you, citation sources driving AI answers, pages referenced in AI outputs, and ranking and exposure improvements over time. All framed under Answer Engine Insights."
     },
     {
       "title": "AI Crawler & Technical Optimization",
+      "slug": "ai-crawler-technical-optimization",
       "content": "MagUp provides technical SEO-style metrics for AI including AI crawler visibility, crawler frequency showing how often bots access your site, identification of which AI bots visit, technical indexing and readability analysis, and content accessibility for AI retrieval. These Agent Analytics ensure your content is fully optimized for AI consumption."
     },
     {
       "title": "Traffic & Attribution",
+      "slug": "traffic-attribution",
       "content": "MagUp delivers downstream impact metrics as proof of ROI including human traffic originating from AI search, attribution from AI platforms, pages driving AI-sourced traffic, and content performance in AI responses."
     },
     {
       "title": "Shopping & Product Visibility",
+      "slug": "shopping-product-visibility",
       "content": "For ecommerce brands, MagUp tracks shopping visibility in AI tools, product placement in AI shopping tiles, shopping trigger keywords, response-level product analysis, product performance across visibility, retailers, and reviews, and traffic and conversion impact from AI shopping. Specifically optimized for ChatGPT-style shopping experiences."
     },
     {
       "title": "Proven Results",
+      "slug": "proven-results",
       "content": "MagUp has helped clients achieve measurable results including 7x visibility growth multiples, significant category ranking improvements, and global visibility rank advancement. Case studies demonstrate enterprises becoming among the most visible brands in their category within weeks of implementation."
     },
     {
       "title": "Industry Verticals",
+      "slug": "industry-verticals",
       "content": "MagUp deeply cultivates niche industries, helping enterprises quickly build AI content marketing systems overseas. The platform serves four core industry verticals: Software & AI, Advanced Manufacturing, E-commerce & Consumer, and Professional Services. Clients span global enterprises from China, Singapore, the United States, and beyond."
     },
     {
       "title": "AI Platform Coverage",
+      "slug": "ai-platform-coverage",
       "content": "MagUp provides comprehensive coverage across all major AI answer engines and platforms. The platform monitors and optimizes brand visibility across ChatGPT (including ChatGPT Shopping), Google AI Overviews (SGE), Perplexity, Claude, Gemini, Microsoft Copilot, Doubao, DeepSeek, Tongyi Qianwen (Qwen), and Kimi. This multi-platform approach ensures brands maintain visibility wherever their audience seeks AI-powered answers, covering both Western and Chinese AI ecosystems."
     },
     {
       "title": "Core Value of GEO",
+      "slug": "core-value-of-geo",
       "content": "Generative Engine Optimization (GEO) represents a fundamental shift in how brands achieve visibility. Unlike traditional SEO which optimizes for search engine crawlers and ranking algorithms, GEO optimizes for AI model comprehension and citation. The core value proposition: when AI answer engines like ChatGPT, Perplexity, or Google AI Overviews respond to user queries, GEO-optimized brands become the cited source. This creates a new form of authority — being the answer that AI recommends, not just a link in search results. GEO transforms content from passive indexing targets into active knowledge that AI systems reference, quote, and recommend to users."
     },
     {
       "title": "SEO vs GEO Comparison",
+      "slug": "seo-vs-geo-comparison",
       "content": "SEO and GEO represent fundamentally different competitive paradigms. Traditional SEO follows a Linear Distribution model with progressive ranking — sites climb from position 10 to position 1 through incremental improvements. Multiple sites can coexist on page one, and rankings shift gradually. GEO operates under a Cliff-Edge or Binary Opposition model — it is a zero-sum game where AI answer engines cite a handful of sources (often just one) per response. You are either the cited answer or you are invisible. There is no page two in an AI response. This binary nature makes GEO both higher-stakes and higher-reward than traditional SEO. Brands that win GEO positions capture disproportionate authority and trust, while those that don't are completely absent from AI-driven discovery."
     },
     {
       "title": "Market Size Evolution",
+      "slug": "market-size-evolution",
       "content": "The AI search and content marketing market is experiencing exponential growth. AI chatbot usage has grown 1000x, fundamentally reshaping how consumers discover products and services. The gap between traditional search volume and AI search adoption stands at 34x — representing a massive greenfield opportunity for early movers. Market projections show AI-powered search capturing an increasing share of total search queries year over year, with enterprise adoption of AI content optimization tools accelerating. MagUp is positioned at the intersection of this market shift, serving the 1000+ global enterprises that need to optimize for both traditional and AI-powered discovery channels simultaneously."
     },
     {
       "title": "End-to-End Process",
+      "slug": "end-to-end-process",
       "content": "MagUp delivers a complete end-to-end GEO + SEO content marketing workflow. The process follows five key stages: Stage 1 — Solution Planning: Define content strategy, identify target keywords and AI prompts, map competitive landscape, and build the optimization roadmap. Stage 2 — Data Collection: Gather AI visibility baselines, monitor competitor positioning, collect prompt intelligence, and establish benchmark metrics. Stage 3 — Content Writing: AI-assisted content creation using MagUp's Professional Writer agent, optimized for both search engines and AI answer engines using 10+ overseas marketing writing techniques. Stage 4 — Platform Publishing: One-click distribution to 16 global search engines and content platforms through the DevOps Engineer agent. Stage 5 — Data Collection & Optimization: Continuous monitoring of AI visibility metrics, automated optimization suggestions, data-driven content refinement, and ROI reporting through the Data Analyst agent."
     },
     {
       "title": "Real-Time Monitoring Dashboard",
+      "slug": "real-time-monitoring-dashboard",
       "content": "MagUp's real-time monitoring dashboard provides instant visibility into brand performance across AI platforms. Key dashboard metrics include: Visibility Rate (e.g., 28.75%) measuring how often your brand appears in AI responses, Recommendation Rate (e.g., 18.44%) tracking how frequently AI recommends your brand, AI Answers Count (e.g., 320) showing total AI responses mentioning your brand, and Source Platforms (e.g., 97) indicating how many distinct sources AI uses when citing you. The dashboard includes Brand Visibility Ranking charts comparing your position against competitors, and AI Platform Performance Comparison showing visibility share and recommendation share across platforms like Doubao, DeepSeek, Tongyi Qianwen, and Kimi. All data updates in real-time for actionable decision-making."
     },
     {
       "title": "Project Progress Tracking",
+      "slug": "project-progress-tracking",
       "content": "MagUp includes built-in project management for GEO campaigns. The project tracker shows overall campaign progress (e.g., CN Domestic GEO at 32%) with a detailed 5-step workflow view: Solution Planning (completion status), Data Collection (completion status), Content Writing (in-progress tracking), Platform Publishing (percentage complete), and Data Collection & Optimization (not-started/pending). Projects are organized by market — Domestic GEO and Overseas GEO — with dedicated project managers and team assignments. Quick-access tools include Website Configuration, Prompt Research, and Materials Management. This structured approach ensures every GEO campaign follows best practices from strategy through optimization."
     },
     {
       "title": "GEO Intelligent Dashboard",
+      "slug": "geo-intelligent-dashboard",
       "content": "The GEO Intelligent Dashboard serves as the operational command center for all AI content marketing activities. It provides a visual overview of Brand GEO Operational Status with separate project cards for Domestic GEO and Overseas GEO campaigns, each showing progress bars and key milestones. Quick-access tools include Website Config Query for technical SEO/GEO settings, Prompt Research for discovering high-value AI prompts, and My Materials for content asset management. The dashboard also integrates a message center for team collaboration and file management for campaign assets, creating a unified workspace for GEO operations."
     },
     {
       "title": "7 AI Agents",
+      "slug": "7-ai-agents",
       "content": "MagUp's platform is powered by seven specialized AI agents under the philosophy: One Human for Decisions Only, Let Seven AI Agents Do the Hard Work. Agent 1 — Idea Excavation Agent: Discovers new keywords and topics, monitors competitors, and tracks market changes to identify content opportunities. Agent 2 — Brand Operation Agent: Manages company brand building and monitors competitor content strategies. Agent 3 — Professional Writer: An AI writer skilled in 10+ overseas marketing writing techniques, producing GEO and SEO-optimized content at scale. Agent 4 — Evaluation & Optimization Editor: Evaluates content quality, provides targeted improvement suggestions, and simulates reader perspectives to ensure content resonates. Agent 5 — Intelligent Engineer: Generates beautiful, high-performance web pages without requiring technical teams. Agent 6 — DevOps Engineer: Enables one-click distribution to 16 global search engines and content platforms. Agent 7 — Data Analyst: Collects exposure, click, and reading data to drive automated optimization through data-driven insights."
     },
     {
       "title": "Product Architecture",
+      "slug": "product-architecture",
       "content": "MagUp's product architecture is built on two application layers, an agent layer, and four core engines. Application Layer: MagUp (Intelligent Interactive Writing) provides the primary content creation interface, while MagUp.app (Competition Evaluation & Insights) delivers competitive intelligence and market analysis. Agent Layer: Seven specialized AI agents (Idea Excavation, Brand Operation, Professional Writer, Evaluation & Optimization Editor, Intelligent Engineer, DevOps Engineer, Data Analyst) orchestrate the entire content lifecycle. Four Core Engines power the platform: The Long-form Engine supports multiple writing styles, structured content generation, deep content creation, and SEO optimization suggestions. The Image Engine provides intelligent image generation, image style transfer, batch image processing, and copyright compliance checking. The Data Engine handles data collection and cleaning, real-time data analysis, trend prediction models, and data visualization reports. The Knowledge Base maintains an industry knowledge graph, intelligent Q&A system, document management and retrieval, and continuous learning and updates."
     },
     {
       "title": "Case Study: Regaining AI Voice Share",
+      "slug": "case-study-regaining-ai-voice-share",
       "content": "MagUp helped a leading robot vacuum cleaner brand regain AI voice share in a Gemini-dominated category. Before GEO optimization, the brand had 0% visibility — completely drowned by competitors. When users asked AI assistants about robot vacuums, the response was generic, listing competitors like iRobot Roomba, Roborock, and Ecovacs DEEBOT without mentioning the client's brand at all. After MagUp's GEO optimization, the brand achieved Share of Voice 1st Position — becoming the top answer. AI responses now lead with the client's brand as the top recommendation, highlighting specific product strengths like precision laser navigation and 5000Pa strong suction power. The brand also dominates related queries such as 'strong suction robot vacuum.' Platform coverage extends across Gemini, ChatGPT, Perplexity, and DeepSeek. Key result metrics: Brand Mentions increased by +450%, Sentiment Score shifted to Positive (Trust), and Direct Traffic from AI search grew significantly. This case study demonstrates MagUp's ability to transform a brand from complete AI invisibility to category leadership across multiple AI platforms."
     }
   ]

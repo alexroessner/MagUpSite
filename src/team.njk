@@ -1,0 +1,16 @@
+---
+layout: page.njk
+title: MagUp Delivery Team
+description: "MagUp's hub-and-spoke delivery team: Project Leader, Data Analysts, Knowledge Base Architects, Content Channel Leads, and Content Operations."
+---
+
+MagUp operates with a hub-and-spoke delivery team structure ensuring every GEO campaign has dedicated expertise at each stage.
+
+{%- if pageContent.team.length %}
+
+{% for member in pageContent.team %}
+## {{ member.name }}{% if member.title %} — {{ member.title }}{% endif %}
+
+{{ member.bio }}
+{% endfor %}
+{%- endif %}

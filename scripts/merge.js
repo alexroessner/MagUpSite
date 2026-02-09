@@ -82,6 +82,7 @@ function mergeContact(extract) {
     email: raw.email || "",
     phone: raw.phone || "",
     fax: raw.fax || "",
+    url: raw.url || "",
     address,
   };
 }
@@ -261,6 +262,10 @@ function buildContent(extract) {
       )
       .map((s) => ({
         title: s.heading,
+        slug: s.heading
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-|-$/g, ""),
         content: s.content,
       })),
   };
@@ -291,6 +296,7 @@ module.exports = {
     email: ${JSON.stringify(contact.email)},
     phone: ${JSON.stringify(contact.phone)},
     fax: ${JSON.stringify(contact.fax)},
+    url: ${JSON.stringify(contact.url || "")},
     address: ${JSON.stringify(contact.address, null, 6).replace(/\n/g, "\n    ")},
   },
   colors: {

@@ -11,13 +11,14 @@ module.exports = {
   },
   author: {
     name: "",
-    email: "",
+    email: "hello@magup.io",
     jobTitle: "",
   },
   contact: {
-    email: "",
+    email: "hello@magup.io",
     phone: "",
     fax: "",
+    url: "https://www.magup.io",
     address: {},
   },
   colors: {
@@ -28,7 +29,7 @@ module.exports = {
     heading: "InterVariable, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
     body: "InterVariable, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
     mono: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
-    googleFontsUrl: "",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
   },
   siteUrl: "",
   pathPrefix: "/",

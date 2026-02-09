@@ -227,6 +227,13 @@
               </a>
             </p>
             {%- endif %}
+            {%- if site.contact.url %}
+            <p>
+              <a href="{{ site.contact.url }}" class="text-primary-200 underline hover:text-white transition-colors" target="_blank" rel="noopener">
+                {{ site.contact.url | replace("https://www.", "") | replace("https://", "") }}
+              </a>
+            </p>
+            {%- endif %}
           </address>
         </div>
 

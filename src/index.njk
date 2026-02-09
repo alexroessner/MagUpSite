@@ -2,7 +2,7 @@
 layout: base.njk
 title: Home
 fullWidth: true
-description: ""
+description: "MagUp is the GEO + SEO content marketing platform helping 1000+ global enterprises get cited by ChatGPT, Perplexity, Gemini, and Google AI Overviews."
 ---
 
 {# ============================================ #}
@@ -12,28 +12,22 @@ description: ""
 <section class="bg-primary-900 text-white pt-16 pb-20 sm:pt-24 sm:pb-28 lg:pt-32 lg:pb-36">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
     <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-white">
-      {{ pageContent.hero.headline | default(site.name) }}
+      Get Your Brand Cited by AI
     </h1>
-    {%- if pageContent.hero.subheadline %}
-    <p class="text-lg sm:text-xl text-primary-300 max-w-3xl mx-auto mb-10">
-      {{ pageContent.hero.subheadline }}
+    <p class="text-lg sm:text-xl text-primary-200 max-w-3xl mx-auto mb-10">
+      MagUp combines GEO + SEO to make your brand the answer when customers ask ChatGPT, Perplexity, Gemini, and Google AI Overviews.
     </p>
-    {%- elif site.description %}
-    <p class="text-lg sm:text-xl text-primary-300 max-w-3xl mx-auto mb-10">
-      {{ site.description }}
-    </p>
-    {%- endif %}
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
       {%- if pageContent.hero.cta_primary.text %}
       <a href="{{ pageContent.hero.cta_primary.url | url }}"
          class="inline-block bg-accent-500 hover:bg-accent-600 text-white font-medium px-8 py-3 rounded-lg transition-all duration-200 text-lg">
-        {{ pageContent.hero.cta_primary.text }}
+        Get a Demo
       </a>
       {%- endif %}
       {%- if pageContent.hero.cta_secondary.text %}
-      <a href="{{ pageContent.hero.cta_secondary.url | url }}"
-         class="inline-block border border-primary-500 text-primary-200 hover:bg-primary-800 hover:text-white font-medium px-8 py-3 rounded-lg transition-all duration-200 text-lg">
-        {{ pageContent.hero.cta_secondary.text }}
+      <a href="{{ '/case-study-regaining-ai-voice-share/' | url }}"
+         class="inline-block border border-accent-500 text-accent-300 hover:bg-accent-500 hover:text-white font-medium px-8 py-3 rounded-lg transition-all duration-200 text-lg">
+        See Case Study
       </a>
       {%- endif %}
     </div>
@@ -50,7 +44,7 @@ description: ""
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
       <div>
         <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-6 border-b-2 border-accent-500 pb-3">
-          {{ pageContent.about.title | default("About Us") }}
+          The Content Marketing Brain for Global Enterprises
         </h2>
         <div class="text-primary-200 space-y-4">
           <p>{{ pageContent.about.content }}</p>
@@ -67,8 +61,23 @@ description: ""
         {%- endif %}
       </div>
       <div class="hidden lg:block">
-        <div class="bg-primary-800 border border-primary-700 rounded-xl aspect-video flex items-center justify-center text-primary-500">
-          <span class="text-sm">Company image</span>
+        <div class="bg-primary-800 border border-primary-700 rounded-xl p-8 space-y-4">
+          <div class="flex items-center gap-3">
+            <span class="inline-block w-3 h-3 bg-accent-500 rounded-full"></span>
+            <span class="text-white font-medium">7 Specialized AI Agents</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="inline-block w-3 h-3 bg-accent-500 rounded-full"></span>
+            <span class="text-white font-medium">10+ AI Platforms Covered</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="inline-block w-3 h-3 bg-accent-500 rounded-full"></span>
+            <span class="text-white font-medium">1000+ Global Enterprises</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="inline-block w-3 h-3 bg-accent-500 rounded-full"></span>
+            <span class="text-white font-medium">End-to-End GEO + SEO</span>
+          </div>
         </div>
       </div>
     </div>
@@ -83,12 +92,15 @@ description: ""
 {%- if pageContent.services.length %}
 <section class="py-16 sm:py-20 lg:py-24 bg-primary-900 border-t border-primary-700">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-12 text-center">
+    <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-4 text-center border-b-2 border-accent-500 pb-3 max-w-xs mx-auto">
       Our Services
     </h2>
+    <p class="text-primary-300 text-center mb-12 max-w-2xl mx-auto">
+      Full-stack AI visibility across every major answer engine
+    </p>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {%- for service in pageContent.services %}
-      <div class="bg-primary-900 border border-primary-700 rounded-xl p-6 sm:p-8 hover:border-accent-500 transition-colors">
+      <div class="bg-primary-800 border border-primary-700 rounded-xl p-6 sm:p-8 hover:border-accent-500 transition-colors">
         <h3 class="font-heading text-xl font-semibold text-white mb-3">
           {{ service.name }}
         </h3>
@@ -103,18 +115,61 @@ description: ""
 {%- endif %}
 
 {# ============================================ #}
+{# Featured Case Study                          #}
+{# ============================================ #}
+
+<section class="py-16 sm:py-20 lg:py-24 bg-primary-800 border-t border-primary-700">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-10 text-center border-b-2 border-accent-500 pb-3 max-w-xs mx-auto">
+      Results
+    </h2>
+    <div class="bg-primary-900 border border-primary-700 rounded-xl p-8 sm:p-10 max-w-4xl mx-auto">
+      <p class="text-accent-400 font-medium text-sm uppercase tracking-wide mb-3">Case Study</p>
+      <h3 class="font-heading text-2xl sm:text-3xl font-bold text-white mb-4">
+        From 0% AI Visibility to #1 Share of Voice
+      </h3>
+      <p class="text-primary-200 mb-8">
+        A leading robot vacuum brand was completely invisible in AI responses. After MagUp's GEO optimization, they became the top recommendation across Gemini, ChatGPT, Perplexity, and DeepSeek.
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-8">
+        <div class="text-center">
+          <div class="text-accent-400 text-3xl font-bold">+450%</div>
+          <div class="text-primary-400 text-sm mt-1">Brand Mentions</div>
+        </div>
+        <div class="text-center">
+          <div class="text-accent-400 text-3xl font-bold">#1</div>
+          <div class="text-primary-400 text-sm mt-1">Share of Voice</div>
+        </div>
+        <div class="text-center">
+          <div class="text-accent-400 text-3xl font-bold">4</div>
+          <div class="text-primary-400 text-sm mt-1">AI Platforms</div>
+        </div>
+        <div class="text-center">
+          <div class="text-accent-400 text-3xl font-bold">Trust</div>
+          <div class="text-primary-400 text-sm mt-1">Sentiment Score</div>
+        </div>
+      </div>
+      <a href="{{ '/case-study-regaining-ai-voice-share/' | url }}"
+         class="text-accent-400 hover:text-accent-300 font-medium underline">
+        Read the full case study &rarr;
+      </a>
+    </div>
+  </div>
+</section>
+
+{# ============================================ #}
 {# Clients / Trust                              #}
 {# ============================================ #}
 
 {%- if pageContent.clients.length %}
 <section class="py-16 sm:py-20 lg:py-24 bg-primary-900 border-t border-primary-700">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-10">
+    <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-10 border-b-2 border-accent-500 pb-3 max-w-xs mx-auto">
       Trusted By
     </h2>
     <div class="flex flex-wrap justify-center gap-8 items-center">
       {%- for client in pageContent.clients %}
-      <span class="text-primary-400 font-medium text-lg">{{ client }}</span>
+      <span class="text-primary-200 font-medium text-lg">{{ client }}</span>
       {%- endfor %}
     </div>
   </div>
@@ -128,18 +183,14 @@ description: ""
 <section class="bg-primary-800 border-t border-primary-700 text-white py-16 sm:py-20">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
     <h2 class="font-heading text-3xl sm:text-4xl font-bold mb-4">
-      Get Started
+      Ready to Become the AI Answer?
     </h2>
     <p class="text-lg text-primary-300 max-w-2xl mx-auto mb-8">
-      {%- if site.description %}
-      {{ site.description }}
-      {%- else %}
-      Ready to see how AI-powered content marketing can grow your brand?
-      {%- endif %}
+      See how MagUp can transform your brand from invisible to indispensable across every AI platform.
     </p>
     <a href="{{ '/contact/' | url }}"
        class="inline-block bg-accent-500 hover:bg-accent-600 text-white font-medium px-8 py-3 rounded-lg transition-all duration-200 text-lg">
-      Contact Us
+      Get a Demo
     </a>
   </div>
 </section>

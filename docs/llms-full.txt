@@ -62,12 +62,14 @@ Create AI-optimized content that performs across both generative engines and tra
 - Content Operations — Content Production Team
 
 ## Contact Information
+Email: hello@magup.io
 
 ## Site Pages
 - Home: /
 - About: /about/
 - Services: /services/
 - Team: /team/
+- Contact: /contact/
 - 6 Walls Enterprises Face in Content Marketing: /6-walls-enterprises-face-in-content-marketing/
 - Key Shift in Brand Growth in the AI Era: /key-shift-in-brand-growth-in-the-ai-era/
 - Search Demand Has Not Changed But Entry Points Are Changing: /search-demand-has-not-changed-but-entry-points-are-changing/

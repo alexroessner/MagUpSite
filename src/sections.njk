@@ -1,0 +1,13 @@
+---
+layout: page.njk
+pagination:
+  data: pageContent.custom_sections
+  size: 1
+  alias: section
+eleventyComputed:
+  title: "{{ section.title }}"
+  description: "{{ section.content | truncate(155, true, '...') }}"
+permalink: "{{ section.slug }}/"
+---
+
+{{ section.content }}

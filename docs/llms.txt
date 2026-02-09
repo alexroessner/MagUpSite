@@ -13,11 +13,15 @@ GEO + SEO Content Marketing platform that helps global enterprises efficiently a
 - AI Shopping &amp; Product Visibility: Boost product visibility in ChatGPT Shopping and AI assistants. Track shopping placement, trigger keywords, response-level product analysis, and measure traffic and conversion impact from AI shopping.
 - GEO + SEO Content Marketing: Create AI-optimized content that performs across both generative engines and traditional search. MagUp&#39;s Content Marketing Brain efficiently acquires global customers through integrated GEO and SEO strategies.
 
+## Contact
+- Email: hello@magup.io
+
 ## Pages
 - [Home](/)
 - [About](/about/)
 - [Services](/services/)
 - [Team](/team/)
+- [Contact](/contact/)
 - [6 Walls Enterprises Face in Content Marketing](/6-walls-enterprises-face-in-content-marketing/)
 - [Key Shift in Brand Growth in the AI Era](/key-shift-in-brand-growth-in-the-ai-era/)
 - [Search Demand Has Not Changed But Entry Points Are Changing](/search-demand-has-not-changed-but-entry-points-are-changing/)

@@ -31,6 +31,7 @@ module.exports = {
     email: config.contact?.email || "",
     phone: config.contact?.phone || "",
     fax: config.contact?.fax || "",
+    url: config.contact?.url || "",
     address: config.contact?.address || {
       street: "",
       city: "",

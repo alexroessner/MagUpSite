@@ -1,9 +1,6 @@
 // Single source of truth for all page URLs.
 //
-// This file is updated by the merge script based on extracted content.
-// You can also edit it manually to add, remove, or reorder pages.
-//
-// main:         items shown in the header navigation bar
+// main:         items shown in the header navigation bar (5-6 max)
 // footerGroups: categorized groups shown in the footer
 // all:          flat list of every page (for sitemaps, mobile menu, etc.)
 
@@ -11,7 +8,7 @@ const fs = require("fs");
 const path = require("path");
 
 // Default pages that every generated site has
-const defaultPages = {
+const corePages = {
   home: { title: "Home", url: "/" },
   about: { title: "About", url: "/about/" },
   services: { title: "Services", url: "/services/" },
@@ -20,43 +17,63 @@ const defaultPages = {
 
 // Try to load dynamically generated pages from blueprint
 const blueprintPath = path.join(__dirname, "..", "..", "data", "merged-blueprint.json");
-let pages = { ...defaultPages };
+let allPages = { ...corePages };
+let customPages = [];
 
 if (fs.existsSync(blueprintPath)) {
   try {
     const blueprint = JSON.parse(fs.readFileSync(blueprintPath, "utf-8"));
     if (blueprint.navigation?.pages) {
-      pages = {};
+      allPages = {};
       for (const [key, page] of Object.entries(blueprint.navigation.pages)) {
-        pages[key] = { title: page.title, url: page.url };
+        allPages[key] = { title: page.title, url: page.url };
       }
+
+      // Separate core from custom section pages
+      const coreKeys = ["home", "about", "services", "contact", "team"];
+      customPages = Object.entries(allPages)
+        .filter(([k]) => !coreKeys.includes(k))
+        .map(([, v]) => v);
     }
   } catch (e) {
     // Fall back to defaults if blueprint is malformed
   }
 }
 
+// Find the case study page (high-value for conversion)
+const caseStudy = customPages.find((p) =>
+  /case.study/i.test(p.title)
+);
+
 module.exports = {
-  // Header nav — maps to the visitor's journey:
-  // Awareness (Home) → Interest (About) → Evaluation (Services) → Decision (Contact)
-  main: Object.values(pages),
+  // Header nav — clean 5-item journey:
+  // Awareness (Home) → Interest (About) → Evaluation (Services, Case Study) → Decision (Contact)
+  main: [
+    allPages.home || corePages.home,
+    allPages.about || corePages.about,
+    allPages.services || corePages.services,
+    caseStudy,
+    allPages.contact || corePages.contact,
+  ].filter(Boolean),
 
   // Footer nav — pages organized by category
   footerGroups: [
     {
       heading: "Company",
-      items: [pages.home, pages.about].filter(Boolean),
+      items: [allPages.home, allPages.about, allPages.team].filter(Boolean),
     },
     {
       heading: "Services",
-      items: [pages.services].filter(Boolean),
+      items: [allPages.services].filter(Boolean),
     },
     {
-      heading: "Connect",
-      items: [pages.contact].filter(Boolean),
+      heading: "Resources",
+      items: customPages.filter((p) =>
+        /case.study|geo|seo|agent|architecture|process/i.test(p.title)
+      ).slice(0, 6),
     },
   ],
 
   // Flat list of every page (for sitemaps, mobile menu, etc.)
-  all: Object.values(pages),
+  all: Object.values(allPages),
 };
