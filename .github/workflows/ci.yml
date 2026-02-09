@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build site
+      - name: Build site (no prefix, for linting)
         run: npm run build
 
       - name: Lint HTML
@@ -61,18 +61,23 @@ jobs:
         run: node scripts/audit.js --gate ALL
         continue-on-error: true
 
-      - name: Rebuild with path prefix for MagUpSite Pages
+      # --- Deploy to MagUpSite repo (primary) ---
+      - name: Build for MagUpSite
         if: github.event_name == 'push'
         run: npm run build
         env:
           PATH_PREFIX: /MagUpSite/
           SITE_URL: https://alexroessner.github.io/MagUpSite
 
-      - name: Deploy to MagUpSite repo
+      - name: Push to MagUpSite repo
         if: github.event_name == 'push'
         env:
           DEPLOY_TOKEN: ${{ secrets.MAGUPSITE_DEPLOY_TOKEN }}
         run: |
+          if [ -z "$DEPLOY_TOKEN" ]; then
+            echo "::warning::MAGUPSITE_DEPLOY_TOKEN not set. Skipping MagUpSite deploy."
+            exit 0
+          fi
           cd dist
           git init
           git config user.name "DeckSiteAgent CI"
@@ -80,17 +85,19 @@ jobs:
           git checkout -b main
           git add -A
           git commit -m "Deploy MagUp site from DeckSiteAgent @ $(git -C $GITHUB_WORKSPACE rev-parse --short HEAD)"
+          git remote add origin "https://x-access-token:${DEPLOY_TOKEN}@github.com/alexroessner/MagUpSite.git"
+          git push -f origin main
+          echo "Deployed to MagUpSite"
 
-          if [ -n "$DEPLOY_TOKEN" ]; then
-            git remote add origin "https://x-access-token:${DEPLOY_TOKEN}@github.com/alexroessner/MagUpSite.git"
-            git push -f origin main
-            echo "Deployed to MagUpSite"
-          else
-            echo "::warning::MAGUPSITE_DEPLOY_TOKEN secret not set. Skipping MagUpSite deploy."
-            echo "To enable: create a PAT with repo scope and add it as MAGUPSITE_DEPLOY_TOKEN in DeckSiteAgent repo secrets."
-          fi
+      # --- Fallback: Deploy via DeckSiteAgent GitHub Pages ---
+      - name: Build for DeckSiteAgent Pages
+        if: github.event_name == 'push'
+        run: npm run build
+        env:
+          PATH_PREFIX: /DeckSiteAgent/
+          SITE_URL: https://alexroessner.github.io/DeckSiteAgent
 
-      - name: Upload Pages artifact (fallback DeckSiteAgent deploy)
+      - name: Upload Pages artifact
         if: github.event_name == 'push'
         uses: actions/upload-pages-artifact@v3
         with:
@@ -128,16 +135,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Wait for deployment propagation
-        run: sleep 10
+        run: sleep 15
 
-      - name: Verify MagUpSite responds
-        run: |
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://alexroessner.github.io/MagUpSite/)
-          echo "MagUpSite HTTP status: $STATUS"
-        continue-on-error: true
-
-      - name: Verify DeckSiteAgent fallback responds
+      - name: Verify DeckSiteAgent site
         run: |
           STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://alexroessner.github.io/DeckSiteAgent/)
           echo "DeckSiteAgent HTTP status: $STATUS"
+          [ "$STATUS" = "200" ]
+
+      - name: Verify MagUpSite (if deployed)
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://alexroessner.github.io/MagUpSite/)
+          echo "MagUpSite HTTP status: $STATUS"
         continue-on-error: true
