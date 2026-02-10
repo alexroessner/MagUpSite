@@ -88,7 +88,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 
 {# ---- Product Showcase — Real Dashboard Carousel ---- #}
 
-<section class="py-20 sm:py-28 lg:py-32 bg-primary-950 section-divider accent-stripe">
+<section class="py-20 sm:py-28 lg:py-32 bg-primary-950 section-divider accent-stripe overflow-hidden">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-8 sm:mb-12 reveal">
       <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-4 sm:mb-5">Product Preview</p>
@@ -118,38 +118,8 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
               <span class="font-heading text-[10px] font-semibold text-primary-300 uppercase tracking-wider">GEO Intelligent Agent</span>
               <span class="ml-auto text-[10px] px-2 py-0.5 bg-accent-500/10 rounded-full text-accent-400 font-medium">Prompt Research</span>
             </div>
-            {%- set prompts = [
-              { id: "Q001", text: "Best enterprise AI visibility platform", c: "g", g: "g", p: "y" },
-              { id: "Q002", text: "GEO optimization tools for brands", c: "g", g: "y", p: "g" },
-              { id: "Q003", text: "How to monitor AI brand citations", c: "y", g: "g", p: "g" },
-              { id: "Q004", text: "AI search recommendation tracking", c: "g", g: "r", p: "y" },
-              { id: "Q005", text: "Generative engine optimization service", c: "g", g: "g", p: "g" },
-              { id: "Q006", text: "Brand visibility across AI platforms", c: "y", g: "y", p: "r" },
-              { id: "Q007", text: "AI content strategy for enterprise", c: "g", g: "g", p: "y" },
-              { id: "Q008", text: "Cross-platform AI monitoring tools", c: "g", g: "y", p: "g" }
-            ] %}
-            {# Mobile: compact card layout #}
-            <div class="sm:hidden space-y-1.5">
-              {%- for q in prompts %}
-              {% if loop.index <= 5 %}
-              <div class="flex items-start gap-2 bg-primary-900/30 rounded-lg px-2.5 py-2 border border-primary-800/20">
-                <span class="text-primary-600 font-mono text-[9px] mt-0.5 shrink-0">{{ q.id }}</span>
-                <div class="flex-1 min-w-0">
-                  <div class="text-[10px] text-primary-200 leading-snug">{{ q.text }}</div>
-                  <div class="flex items-center gap-3 mt-1.5">
-                    <span class="flex items-center gap-1 text-[8px] text-primary-500"><span class="w-1.5 h-1.5 rounded-full {% if q.c == 'g' %}bg-emerald-400{% elif q.c == 'y' %}bg-amber-400{% else %}bg-red-400{% endif %}"></span>GPT</span>
-                    <span class="flex items-center gap-1 text-[8px] text-primary-500"><span class="w-1.5 h-1.5 rounded-full {% if q.g == 'g' %}bg-emerald-400{% elif q.g == 'y' %}bg-amber-400{% else %}bg-red-400{% endif %}"></span>Google</span>
-                    <span class="flex items-center gap-1 text-[8px] text-primary-500"><span class="w-1.5 h-1.5 rounded-full {% if q.p == 'g' %}bg-emerald-400{% elif q.p == 'y' %}bg-amber-400{% else %}bg-red-400{% endif %}"></span>Pplx</span>
-                  </div>
-                </div>
-              </div>
-              {% endif %}
-              {%- endfor %}
-              <div class="text-[9px] text-primary-600 text-center pt-1">+3 more prompts tracked</div>
-            </div>
-            {# Desktop: full data table #}
-            <div class="hidden sm:block overflow-x-auto -mx-1">
-              <table class="w-full text-xs">
+            <div class="overflow-x-auto -mx-1">
+              <table class="w-full text-[11px] sm:text-xs" style="min-width: 420px">
                 <thead>
                   <tr class="border-b border-primary-700/30">
                     <th class="text-left py-2 px-2 text-primary-500 font-medium">ID</th>
@@ -160,10 +130,20 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
                   </tr>
                 </thead>
                 <tbody>
+                  {%- set prompts = [
+                    { id: "Q001", text: "Best enterprise AI visibility platform", c: "g", g: "g", p: "y" },
+                    { id: "Q002", text: "GEO optimization tools for brands", c: "g", g: "y", p: "g" },
+                    { id: "Q003", text: "How to monitor AI brand citations", c: "y", g: "g", p: "g" },
+                    { id: "Q004", text: "AI search recommendation tracking", c: "g", g: "r", p: "y" },
+                    { id: "Q005", text: "Generative engine optimization service", c: "g", g: "g", p: "g" },
+                    { id: "Q006", text: "Brand visibility across AI platforms", c: "y", g: "y", p: "r" },
+                    { id: "Q007", text: "AI content strategy for enterprise", c: "g", g: "g", p: "y" },
+                    { id: "Q008", text: "Cross-platform AI monitoring tools", c: "g", g: "y", p: "g" }
+                  ] %}
                   {%- for q in prompts %}
                   <tr class="border-b border-primary-800/30{% if loop.last %} border-b-0{% endif %}">
                     <td class="py-1.5 px-2 text-primary-500 font-mono text-[10px]">{{ q.id }}</td>
-                    <td class="py-1.5 px-2 text-primary-200 truncate max-w-[200px]">{{ q.text }}</td>
+                    <td class="py-1.5 px-2 text-primary-200 whitespace-nowrap">{{ q.text }}</td>
                     <td class="py-1.5 px-1.5 text-center"><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-semibold {% if q.c == 'g' %}bg-emerald-500/15 text-emerald-400{% elif q.c == 'y' %}bg-amber-500/15 text-amber-400{% else %}bg-red-500/15 text-red-400{% endif %}">{% if q.c == 'g' %}Cited{% elif q.c == 'y' %}Partial{% else %}None{% endif %}</span></td>
                     <td class="py-1.5 px-1.5 text-center"><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-semibold {% if q.g == 'g' %}bg-emerald-500/15 text-emerald-400{% elif q.g == 'y' %}bg-amber-500/15 text-amber-400{% else %}bg-red-500/15 text-red-400{% endif %}">{% if q.g == 'g' %}Cited{% elif q.g == 'y' %}Partial{% else %}None{% endif %}</span></td>
                     <td class="py-1.5 px-1.5 text-center"><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-semibold {% if q.p == 'g' %}bg-emerald-500/15 text-emerald-400{% elif q.p == 'y' %}bg-amber-500/15 text-amber-400{% else %}bg-red-500/15 text-red-400{% endif %}">{% if q.p == 'g' %}Cited{% elif q.p == 'y' %}Partial{% else %}None{% endif %}</span></td>
