@@ -9,7 +9,7 @@
   var prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // ── Scroll-triggered reveals via IntersectionObserver ──
-  var revealEls = document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger");
+  var revealEls = document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger, .stagger-pop, .glow-reveal");
   if (revealEls.length && "IntersectionObserver" in window && !prefersReducedMotion) {
     var observer = new IntersectionObserver(
       function (entries) {
@@ -26,6 +26,33 @@
   } else {
     // Fallback: show everything immediately
     revealEls.forEach(function (el) { el.classList.add("visible"); });
+  }
+
+  // ── Animated bar fills on scroll ──
+  var barEls = document.querySelectorAll("[data-bar-width]");
+  if (barEls.length && "IntersectionObserver" in window) {
+    var barObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          var targetWidth = el.getAttribute("data-bar-width");
+          var delay = parseInt(el.getAttribute("data-bar-delay") || "0", 10);
+          setTimeout(function () {
+            el.style.width = targetWidth;
+          }, delay);
+          barObserver.unobserve(el);
+        });
+      },
+      { threshold: 0.3 }
+    );
+    barEls.forEach(function (el) {
+      if (prefersReducedMotion) {
+        el.style.width = el.getAttribute("data-bar-width");
+      } else {
+        barObserver.observe(el);
+      }
+    });
   }
 
   // ── Animated counters ──
