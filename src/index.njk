@@ -679,13 +679,20 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
         <div class="text-xs font-medium text-primary-400 mt-3 uppercase tracking-[0.2em]">AI Platforms</div>
       </div>
       <div class="glass-card kpi-glow text-center p-6 sm:p-8 rounded-2xl">
-        <div class="text-4xl sm:text-5xl lg:text-7xl font-heading font-extrabold text-accent-400 counter" data-count="1000" data-suffix="+" aria-label="Leading Enterprises">0</div>
-        <div class="text-xs font-medium text-primary-400 mt-3 uppercase tracking-[0.2em]">Enterprises</div>
+        <div class="text-4xl sm:text-5xl lg:text-7xl font-heading font-extrabold text-accent-400" aria-label="Global Enterprises">Global</div>
+        <div class="text-xs font-medium text-primary-400 mt-3 uppercase tracking-[0.2em]">Enterprise Reach</div>
       </div>
       <div class="glass-card kpi-glow text-center p-6 sm:p-8 rounded-2xl">
         <div class="text-4xl sm:text-5xl lg:text-7xl font-heading font-extrabold text-accent-400 counter" data-count="450" data-prefix="+" data-suffix="%" aria-label="+450% Brand Mentions">0</div>
         <div class="text-xs font-medium text-primary-400 mt-3 uppercase tracking-[0.2em]">Brand Mentions</div>
       </div>
+    </div>
+    <div class="text-center mt-10 reveal">
+      <a href="{{ '/contact/' | url }}"
+         class="btn-press inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors text-base">
+        See these numbers for your brand
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -761,6 +768,13 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
           </div>
         </div>
       </div>
+    </div>
+    <div class="text-center mt-10 reveal">
+      <a href="{{ '/contact/' | url }}"
+         class="btn-press inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors text-base">
+        Start your flywheel
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -917,6 +931,13 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
       </div>
       </div>{# /terminal-frame content wrapper #}
     </div>
+    <div class="text-center mt-10 reveal">
+      <a href="{{ '/contact/' | url }}"
+         class="btn-press hero-cta inline-flex items-center justify-center gap-2 text-white font-bold px-8 py-3 rounded-full transition-all duration-300 text-base hover:scale-[1.03]">
+        Get Your 90-Day Visibility Forecast
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -1018,6 +1039,13 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
       </div>
       {%- endfor %}
     </div>
+    <div class="text-center mt-10 reveal">
+      <a href="{{ '/contact/' | url }}"
+         class="btn-press inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors text-base">
+        See GEO 42 for your industry
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 {%- endif %}
@@ -1066,6 +1094,13 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
       </div>
       {%- endfor %}
     </div>
+    <div class="text-center mt-10 reveal">
+      <a href="{{ '/contact/' | url }}"
+         class="btn-press inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors text-base">
+        Be part of what's next
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 {%- endif %}
@@ -1097,7 +1132,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
       ] %}
       {%- for faq in faqs %}
       <div class="glass-card rounded-2xl overflow-hidden group">
-        <button type="button" class="faq-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left" aria-expanded="false" aria-controls="faq-panel-{{ loop.index }}">
+        <button type="button" id="faq-q-{{ loop.index }}" class="faq-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left" aria-expanded="false" aria-controls="faq-panel-{{ loop.index }}">
           <span class="font-heading font-semibold text-primary-50 text-sm sm:text-base pr-4">{{ faq.q }}</span>
           <svg class="w-5 h-5 text-accent-400 flex-shrink-0 transition-transform duration-300 group-[.open]:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
         </button>
@@ -1108,6 +1143,13 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
         </div>
       </div>
       {%- endfor %}
+    </div>
+    <div class="text-center mt-8 reveal">
+      <a href="{{ '/contact/' | url }}"
+         class="btn-press inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors text-base">
+        Still have questions? Let's talk
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
     </div>
   </div>
 </section>
