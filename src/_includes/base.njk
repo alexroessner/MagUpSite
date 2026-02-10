@@ -302,11 +302,13 @@
   </footer>
 
   <script src="{{ '/js/animations.js' | url }}" defer></script>
-  {# Three.js hero — conditionally loaded on desktop pointer devices only #}
+  {# Three.js scenes — conditionally loaded on desktop pointer devices only #}
   <script type="module">
     if (window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
         !(window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
       import("{{ '/js/three-hero.js' | url }}");
+      import("{{ '/js/three-flywheel.js' | url }}");
+      import("{{ '/js/three-cta.js' | url }}");
     }
   </script>
   <script>

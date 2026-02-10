@@ -100,6 +100,13 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 </section>
 {%- endif %}
 
+{# ---- Section boundary geometry ---- #}
+<div class="section-3d-boundary" aria-hidden="true">
+  <div class="s3d s3d--octa s3d-1"></div>
+  <div class="s3d s3d--tetra s3d-2"></div>
+  <div class="s3d s3d--diamond s3d-3"></div>
+</div>
+
 {# ============================================ #}
 {# PROBLEM                                       #}
 {# ============================================ #}
@@ -602,6 +609,12 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
   </div>
 </section>
 
+{# ---- Section boundary geometry ---- #}
+<div class="section-3d-boundary" aria-hidden="true">
+  <div class="s3d s3d--tetra s3d-4"></div>
+  <div class="s3d s3d--octa s3d-5"></div>
+</div>
+
 {# ---- 6 Walls — Enterprise challenges (Slide 5) ---- #}
 
 <section class="py-20 sm:py-28 lg:py-32 bg-primary-950 section-divider" aria-labelledby="h-six-walls">
@@ -710,9 +723,10 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
         </div>
       </div>
       <div class="reveal-right flex justify-center">
-        {# Flywheel SVG — animated circular diagram #}
+        {# 3D Flywheel — Three.js on desktop, SVG fallback on mobile #}
         <div class="relative w-80 h-80 sm:w-96 sm:h-96 flywheel-3d-container">
-          <svg viewBox="0 0 400 400" class="w-full h-full flywheel-spin reveal" role="img" aria-label="Visibility Flywheel: Become the Answer, Win Trust, Facilitate Transaction">
+          <canvas id="flywheel-3d" class="flywheel-3d-canvas" aria-hidden="true"></canvas>
+          <svg viewBox="0 0 400 400" class="w-full h-full flywheel-spin flywheel-svg-fallback reveal" role="img" aria-label="Visibility Flywheel: Become the Answer, Win Trust, Facilitate Transaction">
             <defs>
               <linearGradient id="fw-accent" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stop-color="#B197FC"/>
@@ -723,30 +737,26 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
                 <stop offset="100%" stop-color="#1A1242"/>
               </linearGradient>
             </defs>
-            {# Outer ring #}
             <circle cx="200" cy="200" r="180" fill="none" stroke="url(#fw-accent)" stroke-width="2" opacity="0.3"/>
             <circle cx="200" cy="200" r="140" fill="none" stroke="url(#fw-accent)" stroke-width="1" opacity="0.15"/>
-            {# Three arc segments #}
             <path d="M200 20 A180 180 0 0 1 355.88 290" fill="none" stroke="#B197FC" stroke-width="3" stroke-linecap="round"/>
             <path d="M355.88 290 A180 180 0 0 1 44.12 290" fill="none" stroke="#9775FA" stroke-width="3" stroke-linecap="round"/>
             <path d="M44.12 290 A180 180 0 0 1 200 20" fill="none" stroke="#7C5CF7" stroke-width="3" stroke-linecap="round"/>
-            {# Arrow nodes at each position #}
             <circle cx="200" cy="28" r="8" fill="#B197FC"/>
             <circle cx="350" cy="286" r="8" fill="#9775FA"/>
             <circle cx="50" cy="286" r="8" fill="#7C5CF7"/>
-            {# Center hub #}
             <circle cx="200" cy="200" r="60" fill="url(#fw-dark)" stroke="#9775FA" stroke-width="2"/>
             <text x="200" y="192" text-anchor="middle" fill="#B197FC" font-family="system-ui" font-weight="700" font-size="24">42</text>
             <text x="200" y="214" text-anchor="middle" fill="#B8A0E8" font-family="system-ui" font-weight="400" font-size="11">FLYWHEEL</text>
           </svg>
-          {# Labels positioned around the flywheel #}
-          <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 text-center">
+          {# Labels positioned around the flywheel — visible on both desktop + mobile #}
+          <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 text-center z-10">
             <span class="text-xs sm:text-sm font-semibold text-accent-300 bg-primary-900/90 px-2 py-1 rounded">Become the Answer</span>
           </div>
-          <div class="absolute bottom-2 right-0 text-center">
+          <div class="absolute bottom-2 right-0 text-center z-10">
             <span class="text-xs sm:text-sm font-semibold text-accent-400 bg-primary-900/90 px-2 py-1 rounded">Win Trust</span>
           </div>
-          <div class="absolute bottom-2 left-0 text-center">
+          <div class="absolute bottom-2 left-0 text-center z-10">
             <span class="text-xs sm:text-sm font-semibold text-accent-500 bg-primary-900/90 px-2 py-1 rounded">Facilitate Transaction</span>
           </div>
         </div>
@@ -754,6 +764,12 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
     </div>
   </div>
 </section>
+
+{# ---- Section boundary geometry ---- #}
+<div class="section-3d-boundary" aria-hidden="true">
+  <div class="s3d s3d--diamond s3d-6"></div>
+  <div class="s3d s3d--octa s3d-7"></div>
+</div>
 
 {# ---- Services — 7 Pillars ---- #}
 
@@ -1101,6 +1117,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 <section class="relative overflow-hidden py-24 sm:py-32 bg-primary-950 section-divider" aria-labelledby="h-cta">
   <div class="hero-noise" aria-hidden="true"></div>
   <div class="ambient-glow" aria-hidden="true"></div>
+  <canvas id="cta-3d" class="cta-3d-canvas" aria-hidden="true"></canvas>
   <div class="section-orb section-orb--lg" style="top: 10%; left: -5%;" aria-hidden="true"></div>
   <div class="section-orb section-orb--md" style="bottom: 5%; right: -8%;" aria-hidden="true"></div>
   <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal-3d">

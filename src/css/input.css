@@ -723,6 +723,87 @@ button:focus-visible {
   .hero-shapes {
     display: none;
   }
+
+  /* Hide SVG flywheel fallback on desktop (Three.js replaces it) */
+  .flywheel-svg-fallback {
+    display: none;
+  }
+}
+
+/* ===== Flywheel 3D canvas ===== */
+.flywheel-3d-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ===== CTA 3D terrain canvas ===== */
+.cta-3d-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ===== Section boundary floating geometry ===== */
+.section-3d-boundary {
+  position: relative;
+  height: 0;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.s3d {
+  position: absolute;
+  border: 1px solid rgb(151 117 250 / 12%);
+  opacity: 0;
+  animation: s3d-drift 18s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.s3d--octa {
+  width: 16px;
+  height: 16px;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.s3d--tetra {
+  width: 14px;
+  height: 14px;
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+.s3d--diamond {
+  width: 12px;
+  height: 18px;
+  clip-path: polygon(50% 0%, 100% 35%, 50% 100%, 0% 35%);
+}
+
+.s3d-1 { left: 12%; top: -20px; animation-delay: 0s; animation-duration: 22s; }
+.s3d-2 { left: 65%; top: -14px; animation-delay: -4s; animation-duration: 19s; }
+.s3d-3 { left: 88%; top: -24px; animation-delay: -8s; animation-duration: 25s; }
+.s3d-4 { left: 25%; top: -18px; animation-delay: -2s; animation-duration: 20s; }
+.s3d-5 { left: 75%; top: -22px; animation-delay: -6s; animation-duration: 23s; }
+.s3d-6 { left: 15%; top: -16px; animation-delay: -3s; animation-duration: 21s; }
+.s3d-7 { left: 55%; top: -20px; animation-delay: -7s; animation-duration: 24s; }
+
+@keyframes s3d-drift {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(0) rotate(0deg) scale(0.8);
+  }
+  15% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(-12px) rotate(180deg) scale(1.2);
+  }
+  85% {
+    opacity: 1;
+  }
 }
 
 /* ===== Gold particle canvas ===== */
@@ -1541,6 +1622,17 @@ button:focus-visible {
   }
 
   .constellation-canvas {
+    display: none;
+  }
+
+  .hero-3d-canvas,
+  .flywheel-3d-canvas,
+  .cta-3d-canvas {
+    display: none;
+  }
+
+  .s3d {
+    animation: none;
     display: none;
   }
 

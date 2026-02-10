@@ -1,8 +1,9 @@
 /**
  * GEO 42 — Three.js Hero 3D Scene
  * Wireframe icosahedron with breathing vertices, orbital rings,
- * floating satellite shapes, wireframe terrain, physically-based lighting.
- * Desktop-only: skipped on touch devices / reduced motion for performance.
+ * floating satellites, wireframe terrain, physically-based lighting.
+ * Scroll-reactive: camera pulls back and geometry recedes as user scrolls.
+ * Desktop-only: skipped on touch devices / reduced motion.
  */
 import * as THREE from "three";
 
@@ -34,77 +35,70 @@ import * as THREE from "three";
 
   // ── Scene ──
   var scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x0a0620, 0.04);
+  var baseFogDensity = 0.04;
+  scene.fog = new THREE.FogExp2(0x0a0620, baseFogDensity);
 
   // ── Camera ──
+  var baseCamZ = 7;
   var camera = new THREE.PerspectiveCamera(60, w / h, 0.1, 100);
-  camera.position.set(0, 1.5, 7);
+  camera.position.set(0, 1.5, baseCamZ);
   camera.lookAt(0, 0, 0);
+
+  // ── Scroll tracking ──
+  var scrollProgress = 0;
+  var heroHeight = parent.offsetHeight || 800;
+  var scrollRafPending = false;
+
+  window.addEventListener("scroll", function () {
+    if (!scrollRafPending) {
+      scrollRafPending = true;
+      requestAnimationFrame(function () {
+        scrollProgress = Math.min(1, Math.max(0, window.scrollY / heroHeight));
+        scrollRafPending = false;
+      });
+    }
+  }, { passive: true });
 
   // ── Central wireframe icosahedron ──
   var icoDetail = 2;
   var icoGeo = new THREE.IcosahedronGeometry(2.2, icoDetail);
-  var icosahedron = new THREE.Mesh(icoGeo, new THREE.MeshBasicMaterial({
-    color: 0x9775FA,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.18
-  }));
+  var icoMat = new THREE.MeshBasicMaterial({
+    color: 0x9775FA, wireframe: true, transparent: true, opacity: 0.18
+  });
+  var icosahedron = new THREE.Mesh(icoGeo, icoMat);
   scene.add(icosahedron);
 
   // Inner solid — emissive purple glow
-  var innerMesh = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(2.1, icoDetail),
-    new THREE.MeshStandardMaterial({
-      color: 0x110B30,
-      emissive: 0x9775FA,
-      emissiveIntensity: 0.04,
-      metalness: 0.7,
-      roughness: 0.4,
-      transparent: true,
-      opacity: 0.2
-    })
-  );
+  var innerMat = new THREE.MeshStandardMaterial({
+    color: 0x110B30, emissive: 0x9775FA, emissiveIntensity: 0.04,
+    metalness: 0.7, roughness: 0.4, transparent: true, opacity: 0.2
+  });
+  var innerMesh = new THREE.Mesh(new THREE.IcosahedronGeometry(2.1, icoDetail), innerMat);
   scene.add(innerMesh);
 
-  // Store original positions for breathing displacement
   var origPos = new Float32Array(icoGeo.attributes.position.array);
 
   // ── Outer wireframe shell (counter-rotating) ──
-  var outerShell = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(3.0, 1),
-    new THREE.MeshBasicMaterial({
-      color: 0x9775FA,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.05
-    })
-  );
+  var outerMat = new THREE.MeshBasicMaterial({
+    color: 0x9775FA, wireframe: true, transparent: true, opacity: 0.05
+  });
+  var outerShell = new THREE.Mesh(new THREE.IcosahedronGeometry(3.0, 1), outerMat);
   scene.add(outerShell);
 
   // ── Orbital rings ──
-  var ringMat = new THREE.MeshBasicMaterial({
-    color: 0x9775FA,
-    transparent: true,
-    opacity: 0.16
-  });
-
-  var ring1 = new THREE.Mesh(new THREE.TorusGeometry(3.5, 0.015, 8, 100), ringMat);
+  var ring1Mat = new THREE.MeshBasicMaterial({ color: 0x9775FA, transparent: true, opacity: 0.16 });
+  var ring1 = new THREE.Mesh(new THREE.TorusGeometry(3.5, 0.015, 8, 100), ring1Mat);
   ring1.rotation.x = Math.PI / 3;
   scene.add(ring1);
 
-  var ring2 = new THREE.Mesh(
-    new THREE.TorusGeometry(3.5, 0.015, 8, 100),
-    new THREE.MeshBasicMaterial({ color: 0x9775FA, transparent: true, opacity: 0.09 })
-  );
+  var ring2Mat = new THREE.MeshBasicMaterial({ color: 0x9775FA, transparent: true, opacity: 0.09 });
+  var ring2 = new THREE.Mesh(new THREE.TorusGeometry(3.5, 0.015, 8, 100), ring2Mat);
   ring2.rotation.x = -Math.PI / 4;
   ring2.rotation.z = Math.PI / 5;
   scene.add(ring2);
 
-  var ring3 = new THREE.Mesh(
-    new THREE.TorusGeometry(4.5, 0.01, 8, 100),
-    new THREE.MeshBasicMaterial({ color: 0xB197FC, transparent: true, opacity: 0.05 })
-  );
+  var ring3Mat = new THREE.MeshBasicMaterial({ color: 0xB197FC, transparent: true, opacity: 0.05 });
+  var ring3 = new THREE.Mesh(new THREE.TorusGeometry(4.5, 0.01, 8, 100), ring3Mat);
   ring3.rotation.x = Math.PI / 2.5;
   ring3.rotation.y = Math.PI / 6;
   scene.add(ring3);
@@ -116,25 +110,22 @@ import * as THREE from "three";
     new THREE.IcosahedronGeometry(0.1, 0)
   ];
   var satellites = [];
-
   for (var i = 0; i < 18; i++) {
-    var m = new THREE.Mesh(shapeGeos[i % 3], new THREE.MeshBasicMaterial({
-      color: 0xB197FC,
-      wireframe: true,
-      transparent: true,
+    var sm = new THREE.Mesh(shapeGeos[i % 3], new THREE.MeshBasicMaterial({
+      color: 0xB197FC, wireframe: true, transparent: true,
       opacity: 0.1 + Math.random() * 0.22
     }));
     var theta = Math.random() * Math.PI * 2;
     var phi = Math.acos(Math.random() * 2 - 1);
     var r = 3.5 + Math.random() * 5;
-    m.position.set(
+    sm.position.set(
       r * Math.sin(phi) * Math.cos(theta),
       r * Math.sin(phi) * Math.sin(theta),
       r * Math.cos(phi)
     );
-    m.userData = { theta: theta, phi: phi, r: r, speed: 0.04 + Math.random() * 0.12, rs: Math.random() * 0.015 };
-    scene.add(m);
-    satellites.push(m);
+    sm.userData = { theta: theta, phi: phi, r: r, speed: 0.04 + Math.random() * 0.12, rs: Math.random() * 0.015, baseOpacity: sm.material.opacity };
+    scene.add(sm);
+    satellites.push(sm);
   }
 
   // ── Wireframe terrain floor — FBM-like displacement ──
@@ -149,19 +140,16 @@ import * as THREE from "three";
          + Math.sin(x * 1.0 + 5.0) * Math.cos(z * 0.8 + 4.0) * 0.12;
   }
 
-  // Initial displacement
   var tPos = terrainGeo.attributes.position.array;
   for (var ti = 0; ti < tPos.length; ti += 3) {
     tPos[ti + 1] = fbm(tPos[ti], tPos[ti + 2], 0);
   }
   terrainGeo.computeVertexNormals();
 
-  var terrain = new THREE.Mesh(terrainGeo, new THREE.MeshBasicMaterial({
-    color: 0x9775FA,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.03
-  }));
+  var terrainMat = new THREE.MeshBasicMaterial({
+    color: 0x9775FA, wireframe: true, transparent: true, opacity: 0.03
+  });
+  var terrain = new THREE.Mesh(terrainGeo, terrainMat);
   terrain.position.y = -5;
   scene.add(terrain);
 
@@ -176,21 +164,15 @@ import * as THREE from "three";
   var dustGeo = new THREE.BufferGeometry();
   dustGeo.setAttribute("position", new THREE.BufferAttribute(dustPositions, 3));
   var dust = new THREE.Points(dustGeo, new THREE.PointsMaterial({
-    color: 0xB197FC,
-    size: 0.03,
-    transparent: true,
-    opacity: 0.35,
-    sizeAttenuation: true
+    color: 0xB197FC, size: 0.03, transparent: true, opacity: 0.35, sizeAttenuation: true
   }));
   scene.add(dust);
 
   // ── Lighting ──
   scene.add(new THREE.HemisphereLight(0x1a1040, 0x050208, 0.4));
-
   var pLight1 = new THREE.PointLight(0x9775FA, 4, 30, 2);
   pLight1.position.set(4, 2, 4);
   scene.add(pLight1);
-
   var pLight2 = new THREE.PointLight(0x7C5CF7, 2.5, 25, 2);
   pLight2.position.set(-3, -1, 3);
   scene.add(pLight2);
@@ -209,6 +191,7 @@ import * as THREE from "three";
     resizeTimer = setTimeout(function () {
       var nw = parent.offsetWidth;
       var nh = parent.offsetHeight;
+      heroHeight = nh || 800;
       camera.aspect = nw / nh;
       camera.updateProjectionMatrix();
       renderer.setSize(nw, nh);
@@ -225,16 +208,33 @@ import * as THREE from "three";
     if (!heroVisible || document.hidden) return;
 
     var t = clock.getElapsedTime();
+    var sp = scrollProgress; // cached for this frame
+    var fadeOut = 1 - sp * 0.8; // 1.0 → 0.2 as you scroll
 
-    // Central geometry rotation
+    // ── Scroll-reactive camera ──
+    var scrollZ = baseCamZ + sp * 10; // 7 → 17
+    mouseX += (targetMX - mouseX) * 0.03;
+    mouseY += (targetMY - mouseY) * 0.03;
+    camera.position.x = mouseX * 1.5 * fadeOut;
+    camera.position.y = (1.5 - mouseY * 0.7) - sp * 2;
+    camera.position.z = scrollZ;
+    camera.lookAt(0, -sp * 1.5, 0);
+
+    // ── Scroll-reactive fog ──
+    scene.fog.density = baseFogDensity + sp * 0.06;
+
+    // ── Central geometry ──
     icosahedron.rotation.x = t * 0.05;
     icosahedron.rotation.y = t * 0.08;
     innerMesh.rotation.x = t * 0.05;
     innerMesh.rotation.y = t * 0.08;
+    icoMat.opacity = 0.18 * fadeOut;
+    innerMat.opacity = 0.2 * fadeOut;
 
-    // Outer shell counter-rotation
+    // Outer shell
     outerShell.rotation.x = -t * 0.03;
     outerShell.rotation.y = -t * 0.05;
+    outerMat.opacity = 0.05 * fadeOut;
 
     // Vertex breathing
     var pos = icoGeo.attributes.position.array;
@@ -247,32 +247,39 @@ import * as THREE from "three";
     }
     icoGeo.attributes.position.needsUpdate = true;
 
-    // Ring rotation
+    // Rings — scroll fade
     ring1.rotation.z = t * 0.1;
     ring2.rotation.y = t * 0.08;
     ring3.rotation.z = -t * 0.06;
+    ring1Mat.opacity = 0.16 * fadeOut;
+    ring2Mat.opacity = 0.09 * fadeOut;
+    ring3Mat.opacity = 0.05 * fadeOut;
 
-    // Satellite orbits
+    // Satellites
     for (var si = 0; si < satellites.length; si++) {
       var sat = satellites[si];
       sat.userData.theta += sat.userData.speed * 0.006;
-      var th = sat.userData.theta, ph = sat.userData.phi, sr = sat.userData.r;
-      sat.position.x = sr * Math.sin(ph) * Math.cos(th);
-      sat.position.y = sr * Math.sin(ph) * Math.sin(th) + Math.sin(t * 0.25 + si) * 0.15;
-      sat.position.z = sr * Math.cos(ph);
+      var sth = sat.userData.theta, sph = sat.userData.phi, sr = sat.userData.r;
+      sat.position.x = sr * Math.sin(sph) * Math.cos(sth);
+      sat.position.y = sr * Math.sin(sph) * Math.sin(sth) + Math.sin(t * 0.25 + si) * 0.15;
+      sat.position.z = sr * Math.cos(sph);
       sat.rotation.x += sat.userData.rs;
       sat.rotation.y += sat.userData.rs * 0.7;
+      sat.material.opacity = sat.userData.baseOpacity * fadeOut;
     }
 
-    // Terrain wave animation (only first FBM octave moves)
+    // Terrain wave — scroll shifts terrain down
+    terrain.position.y = -5 - sp * 3;
     var tp = terrainGeo.attributes.position.array;
     for (var tii = 0; tii < tp.length; tii += 3) {
       tp[tii + 1] = fbm(tp[tii], tp[tii + 2], t);
     }
     terrainGeo.attributes.position.needsUpdate = true;
+    terrainMat.opacity = 0.03 * fadeOut;
 
-    // Dust rotation
+    // Dust
     dust.rotation.y = t * 0.02;
+    dust.material.opacity = 0.35 * fadeOut;
 
     // Orbit lights
     pLight1.position.x = Math.cos(t * 0.2) * 5;
@@ -280,13 +287,8 @@ import * as THREE from "three";
     pLight1.position.y = 2 + Math.sin(t * 0.35);
     pLight2.position.x = Math.cos(t * 0.3 + 2) * 4;
     pLight2.position.z = Math.sin(t * 0.3 + 2) * 4;
-
-    // Mouse parallax (smooth)
-    mouseX += (targetMX - mouseX) * 0.03;
-    mouseY += (targetMY - mouseY) * 0.03;
-    camera.position.x = mouseX * 1.5;
-    camera.position.y = 1.5 - mouseY * 0.7;
-    camera.lookAt(0, 0, 0);
+    pLight1.intensity = 4 * fadeOut;
+    pLight2.intensity = 2.5 * fadeOut;
 
     renderer.render(scene, camera);
   }
@@ -301,9 +303,7 @@ import * as THREE from "three";
   document.addEventListener("visibilitychange", function () {
     if (document.hidden) {
       if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
-    } else if (!rafId) {
-      animate();
-    }
+    } else if (!rafId) { animate(); }
   });
 
   animate();
