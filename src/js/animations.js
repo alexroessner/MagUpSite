@@ -154,6 +154,48 @@
     }
   }
 
+  // ── Mobile: maximize hero font to fill viewport for longest word ──
+  function optimizeHeroSize() {
+    if (window.innerWidth >= 640) return; // desktop unchanged
+    var twEl = document.querySelector("[data-typewriter]");
+    if (!twEl) return;
+    var line = twEl.parentElement;
+    var line1 = line.previousElementSibling;
+    var words = twEl.getAttribute("data-typewriter").split("|");
+    var prefixEl = line.querySelector(".gradient-text");
+    var prefix = prefixEl ? prefixEl.textContent : "";
+
+    // Measure widest phrase using hidden probe with same font
+    var cs = getComputedStyle(line);
+    var probe = document.createElement("span");
+    probe.style.cssText = "position:absolute;left:-9999px;white-space:nowrap;" +
+      "font:" + cs.font + ";letter-spacing:" + cs.letterSpacing;
+    document.body.appendChild(probe);
+
+    var maxW = 0;
+    words.forEach(function (w) {
+      probe.textContent = prefix + w;
+      var pw = probe.getBoundingClientRect().width;
+      if (pw > maxW) maxW = pw;
+    });
+    document.body.removeChild(probe);
+
+    if (maxW > 0) {
+      var curSize = parseFloat(cs.fontSize);
+      // Scale so widest text fills 97% of viewport (1.5% margin each side)
+      var optimal = Math.floor(curSize * (window.innerWidth * 0.97) / maxW);
+      optimal = Math.min(optimal, 96); // cap at 6rem
+      line.style.fontSize = optimal + "px";
+      if (line1) line1.style.fontSize = optimal + "px";
+    }
+  }
+  // Run after fonts load for accurate measurement
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(optimizeHeroSize);
+  } else {
+    optimizeHeroSize();
+  }
+
   // ── Typewriter cycling — with visibility gating for iOS battery ──
   var typers = document.querySelectorAll("[data-typewriter]");
   typers.forEach(function (el) {
