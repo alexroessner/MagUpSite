@@ -275,6 +275,23 @@ button:focus-visible {
   100% { transform: translateX(-50%); }
 }
 
+/* ===== Hero CTA button — gradient pill with warm glow ===== */
+.hero-cta {
+  background: linear-gradient(135deg, #FBBF24, #D4A017 60%, #B8860B);
+  box-shadow:
+    0 4px 20px -4px rgb(212 160 23 / 30%),
+    0 0 40px -12px rgb(251 191 36 / 20%),
+    inset 0 1px 0 rgb(255 255 255 / 20%);
+}
+
+.hero-cta:hover {
+  background: linear-gradient(135deg, #FCD34D, #FBBF24 60%, #D4A017);
+  box-shadow:
+    0 6px 28px -4px rgb(212 160 23 / 40%),
+    0 0 50px -8px rgb(251 191 36 / 25%),
+    inset 0 1px 0 rgb(255 255 255 / 25%);
+}
+
 /* ===== Card hover lift ===== */
 .card-lift {
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),

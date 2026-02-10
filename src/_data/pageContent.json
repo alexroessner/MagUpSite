@@ -189,34 +189,14 @@
       "content": "The AI search and content marketing market is experiencing exponential growth. AI chatbot usage has grown 1000x, fundamentally reshaping how consumers discover products and services. The gap between traditional search volume and AI search adoption stands at 34x — representing a massive greenfield opportunity for early movers. Market projections show AI-powered search capturing an increasing share of total search queries year over year, with enterprise adoption of AI content optimization tools accelerating. GEO 42 is positioned at the intersection of this market shift, serving the 1000+ global enterprises that need to optimize for both traditional and AI-powered discovery channels simultaneously."
     },
     {
-      "title": "End-to-End Process",
-      "slug": "end-to-end-process",
-      "content": "GEO 42 delivers a complete end-to-end GEO + SEO content marketing workflow. The process follows five key stages: Stage 1 — Solution Planning: Define content strategy, identify target keywords and AI prompts, map competitive landscape, and build the optimization roadmap. Stage 2 — Data Collection: Gather AI visibility baselines, monitor competitor positioning, collect prompt intelligence, and establish benchmark metrics. Stage 3 — Content Writing: AI-assisted content creation using GEO 42's Professional Writer agent, optimized for both search engines and AI answer engines using 10+ proven content frameworks. Stage 4 — Platform Publishing: One-click distribution to 16 global search engines and content platforms through the DevOps Engineer agent. Stage 5 — Data Collection & Optimization: Continuous monitoring of AI visibility metrics, automated optimization suggestions, data-driven content refinement, and ROI reporting through the Data Analyst agent."
-    },
-    {
       "title": "Real-Time Monitoring Dashboard",
       "slug": "real-time-monitoring-dashboard",
       "content": "GEO 42's real-time monitoring dashboard provides instant visibility into brand performance across AI platforms. Key dashboard metrics include: Visibility Rate (e.g., 28.75%) measuring how often your brand appears in AI responses, Recommendation Rate (e.g., 18.44%) tracking how frequently AI recommends your brand, AI Answers Count (e.g., 320) showing total AI responses mentioning your brand, and Source Platforms (e.g., 97) indicating how many distinct sources AI uses when citing you. The dashboard includes Brand Visibility Ranking charts comparing your position against competitors, and AI Platform Performance Comparison showing visibility share and recommendation share across platforms like Doubao, DeepSeek, Tongyi Qianwen, and Kimi. All data updates in real-time for actionable decision-making."
     },
     {
-      "title": "Project Progress Tracking",
-      "slug": "project-progress-tracking",
-      "content": "GEO 42 includes built-in project management for GEO campaigns. The project tracker shows overall campaign progress (e.g., CN Domestic GEO at 32%) with a detailed 5-step workflow view: Solution Planning (completion status), Data Collection (completion status), Content Writing (in-progress tracking), Platform Publishing (percentage complete), and Data Collection & Optimization (not-started/pending). Projects are organized by market — Domestic GEO and Overseas GEO — with dedicated project managers and team assignments. Quick-access tools include Website Configuration, Prompt Research, and Materials Management. This structured approach ensures every GEO campaign follows best practices from strategy through optimization."
-    },
-    {
       "title": "GEO Intelligent Dashboard",
       "slug": "geo-intelligent-dashboard",
       "content": "The GEO Intelligent Dashboard serves as the operational command center for all AI content marketing activities. It provides a visual overview of Brand GEO Operational Status with separate project cards for Domestic GEO and Overseas GEO campaigns, each showing progress bars and key milestones. Quick-access tools include Website Config Query for technical SEO/GEO settings, Prompt Research for discovering high-value AI prompts, and My Materials for content asset management. The dashboard also integrates a message center for team collaboration and file management for campaign assets, creating a unified workspace for GEO operations."
-    },
-    {
-      "title": "7 AI Agents",
-      "slug": "7-ai-agents",
-      "content": "GEO 42's platform is powered by seven specialized AI agents under the philosophy: One Human for Decisions, Seven Agents for Execution. Agent 1 — Discovery Agent: Surfaces high-intent keywords, emerging topics, and competitive gaps. Continuously scans the market to identify untapped visibility opportunities. Agent 2 — Brand Intelligence Agent: Monitors your brand's AI presence across every platform. Tracks competitor positioning and alerts you to shifts in share of voice. Agent 3 — Content Strategist: Produces publication-ready content using 10+ proven frameworks. Writes native-quality, audience-specific material at enterprise scale. Agent 4 — QA Editor: Reviews every piece of content against AI citation criteria. Simulates how engines and readers interpret your material, then optimizes in one pass. Agent 5 — Engineering Agent: Transforms content into high-performance, schema-rich web pages. Gives any team enterprise-grade technical publishing capabilities. Agent 6 — Distribution Agent: Publishes and syndicates content across 16+ global search engines and AI platforms in one click. Maximizes reach and indexation speed. Agent 7 — Analytics Agent: Tracks impressions, citations, clicks, and engagement across every AI platform. Feeds performance data back into the optimization loop."
-    },
-    {
-      "title": "Product Architecture",
-      "slug": "product-architecture",
-      "content": "GEO 42's product architecture is built on two application layers, an agent layer, and four core engines. Application Layer: The primary content creation interface provides intelligent interactive writing, while the insights module delivers competitive intelligence and market analysis. Agent Layer: Seven specialized AI agents (Discovery, Brand Intelligence, Content Strategist, QA Editor, Engineering, Distribution, Analytics) orchestrate the entire content lifecycle. Four Core Engines power the platform: The Long-form Engine supports multiple writing styles, structured content generation, deep content creation, and SEO optimization suggestions. The Image Engine provides intelligent image generation, image style transfer, batch image processing, and copyright compliance checking. The Data Engine handles data collection and cleaning, real-time data analysis, trend prediction models, and data visualization reports. The Knowledge Base maintains an industry knowledge graph, intelligent Q&A system, document management and retrieval, and continuous learning and updates."
     },
     {
       "title": "Case Study: Regaining AI Voice Share",
@@ -336,76 +316,6 @@
       ]
     },
     {
-      "caption": "7 AI Agents",
-      "headers": [
-        "Agent",
-        "Role",
-        "Key Capabilities"
-      ],
-      "rows": [
-        [
-          "Discovery Agent",
-          "Research & opportunity identification",
-          "Surfaces high-intent keywords, emerging topics, and competitive gaps"
-        ],
-        [
-          "Brand Intelligence Agent",
-          "Brand monitoring & competitive analysis",
-          "Monitors AI presence across platforms, tracks competitor positioning and share of voice"
-        ],
-        [
-          "Content Strategist",
-          "Content creation at scale",
-          "Produces publication-ready content using 10+ proven frameworks, native-quality at enterprise scale"
-        ],
-        [
-          "QA Editor",
-          "Quality assurance & optimization",
-          "Reviews content against AI citation criteria, simulates engine interpretation, optimizes in one pass"
-        ],
-        [
-          "Engineering Agent",
-          "Technical publishing",
-          "Transforms content into schema-rich, high-performance web pages"
-        ],
-        [
-          "Distribution Agent",
-          "Multi-platform syndication",
-          "Publishes across 16+ global search engines and AI platforms in one click"
-        ],
-        [
-          "Analytics Agent",
-          "Performance tracking & feedback",
-          "Tracks impressions, citations, clicks across every AI platform, feeds optimization loop"
-        ]
-      ]
-    },
-    {
-      "caption": "Product Architecture — Four Core Engines",
-      "headers": [
-        "Engine",
-        "Capabilities"
-      ],
-      "rows": [
-        [
-          "Long-form Engine",
-          "Multiple writing styles, structured content generation, deep content creation, SEO optimization suggestions"
-        ],
-        [
-          "Image Engine",
-          "Intelligent image generation, style transfer, batch processing, copyright compliance checking"
-        ],
-        [
-          "Data Engine",
-          "Data collection/cleaning, real-time analysis, trend prediction models, data visualization reports"
-        ],
-        [
-          "Knowledge Base",
-          "Industry knowledge graph, intelligent Q&A, document management/retrieval, continuous learning"
-        ]
-      ]
-    },
-    {
       "caption": "Case Study: Robot Vacuum GEO Results",
       "headers": [
         "Metric",
@@ -437,35 +347,6 @@
           "Platform Coverage",
           "None",
           "Gemini, ChatGPT, Perplexity, DeepSeek"
-        ]
-      ]
-    },
-    {
-      "caption": "GEO 42 Delivery Team",
-      "headers": [
-        "Role",
-        "Responsibilities"
-      ],
-      "rows": [
-        [
-          "Leader (Hub)",
-          "Campaign scheduling, content strategy design, package optimization, custom roadmap development"
-        ],
-        [
-          "Data Analysts",
-          "Targeted data analysis, deliver actionable insights for content strategy"
-        ],
-        [
-          "Knowledge Base Architects",
-          "Overall knowledge base structure setup, content review"
-        ],
-        [
-          "Content Channel Leads",
-          "Multi-platform multi-channel content seeding, AI training, ensure content indexing"
-        ],
-        [
-          "Content Operations",
-          "Customized content production based on different AI platform characteristics"
         ]
       ]
     }
