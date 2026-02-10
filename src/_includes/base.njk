@@ -28,9 +28,13 @@
   <meta property="og:type" content="{% if page.url == '/' %}website{% else %}article{% endif %}">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:image" content="{{ site.url }}/images/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
   {# ---- Twitter Card ---- #}
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{ site.url }}/images/og-image.svg">
   {%- if page.url == "/" %}
   <meta name="twitter:title" content="{{ site.name }} — {{ site.tagline }}">
   {%- else %}
@@ -38,11 +42,12 @@
   {%- endif %}
   <meta name="twitter:description" content="{{ description | default(site.description) }}">
 
-  {# ---- Fonts ---- #}
+  {# ---- Fonts (non-render-blocking preload pattern) ---- #}
   {%- if site.fonts.googleFontsUrl %}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="{{ site.fonts.googleFontsUrl }}" rel="stylesheet">
+  <link rel="preload" as="style" href="{{ site.fonts.googleFontsUrl }}" onload="this.rel='stylesheet'">
+  <noscript><link href="{{ site.fonts.googleFontsUrl }}" rel="stylesheet"></noscript>
   {%- endif %}
   <link rel="stylesheet" href="{{ '/css/style.css' | url }}">
 
@@ -88,15 +93,7 @@
             "name": "What is Generative Engine Optimization (GEO)?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Generative Engine Optimization (GEO) is the practice of optimizing your brand's presence in AI-generated answers. Unlike traditional SEO where you compete for page rankings, GEO is binary — you are either the cited answer or you are invisible."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What AI platforms does GEO 42 cover?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "GEO 42 monitors and optimizes brand visibility across 10+ AI platforms including ChatGPT, Google AI, Perplexity, Gemini, Claude, Copilot, DeepSeek, Doubao, Qwen, and Kimi."
+              "text": "GEO is the practice of optimizing your brand's presence in AI-generated answers. Unlike traditional SEO where you compete for page rankings, GEO is binary — you are either the cited answer or invisible. There is no page two in AI search."
             }
           },
           {
@@ -104,16 +101,67 @@
             "name": "How is GEO different from SEO?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "SEO is linear — sites gradually climb rankings and multiple results coexist on page one. GEO is binary — AI cites a handful of sources per response. You are either the answer or invisible. There is no page two in AI search."
+              "text": "SEO is linear — sites gradually climb rankings and multiple results coexist on page one. GEO is binary — AI engines cite a handful of sources per response. You are either the definitive answer or you don't exist. GEO 42 ensures you're the answer."
             }
           },
           {
             "@type": "Question",
-            "name": "What are the 7 AI Agents in GEO 42?",
+            "name": "What AI platforms does GEO 42 cover?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "GEO 42 deploys 7 specialized AI agents: Discovery Agent (keyword research), Brand Intelligence Agent (brand monitoring), Content Strategist (content creation), QA Editor (quality assurance), Engineering Agent (web publishing), Distribution Agent (multi-platform syndication), and Analytics Agent (performance tracking)."
+              "text": "GEO 42 monitors and optimizes brand visibility across 10+ AI platforms including ChatGPT, Google AI, Perplexity, Gemini, Claude, Copilot, DeepSeek, Doubao, Qwen, and Kimi — covering both Western and Chinese AI ecosystems."
             }
+          },
+          {
+            "@type": "Question",
+            "name": "Who should use GEO 42?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "GEO 42 is built for enterprise brands that need to maintain visibility as search shifts from traditional engines to AI-powered answers. If your customers are asking AI about your industry, you need to be the answer they receive."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How quickly can I see results?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most enterprise clients begin seeing measurable improvements in AI visibility within the first 30 days. Our real-time dashboard tracks citation rates, recommendation frequency, and brand sentiment across all major AI platforms from day one."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What makes GEO 42 different from traditional SEO tools?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Traditional SEO tools track rankings on search engine results pages. GEO 42 tracks whether AI engines cite, recommend, and trust your brand. We operate in a fundamentally different space — the binary world of AI-generated answers where you're either the source or invisible."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I get started?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Request a demo through our See It in Action button. Our team will walk you through the platform, show you your current AI visibility baseline, and outline a roadmap to becoming the definitive answer in your category."
+            }
+          }
+        ]
+      }
+      {%- endif %}
+      {%- if page.url != "/" %},
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "{{ site.url }}/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "{{ title | default('Page') }}",
+            "item": "{{ site.url }}{{ page.url }}"
           }
         ]
       }
@@ -189,7 +237,7 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         <div>
-          <a href="{{ '/' | url }}" class="logo-mark mb-3 inline-flex">
+          <a href="{{ '/' | url }}" class="logo-mark mb-3 inline-flex" aria-label="GEO 42 — Home">
             <span class="logo-icon" aria-hidden="true">42</span>
             <span class="logo-text"><span class="logo-geo">GEO</span><span class="logo-42"> 42</span></span>
           </a>
@@ -197,7 +245,7 @@
         </div>
         {%- for group in nav.footerGroups -%}
         <div>
-          <h2 class="font-heading text-sm font-semibold text-accent-400 mb-4 uppercase tracking-wider">{{ group.heading }}</h2>
+          <p class="font-heading text-sm font-semibold text-accent-400 mb-4 uppercase tracking-wider">{{ group.heading }}</p>
           <ul class="space-y-2">
             {%- for item in group.items -%}
             {%- if item %}
@@ -208,7 +256,7 @@
         </div>
         {%- endfor -%}
         <div>
-          <h2 class="font-heading text-sm font-semibold text-accent-400 mb-4 uppercase tracking-wider">Contact</h2>
+          <p class="font-heading text-sm font-semibold text-accent-400 mb-4 uppercase tracking-wider">Contact</p>
           <address class="not-italic text-sm space-y-2 text-primary-300">
             {%- if site.contact.email %}
             <p><a href="mailto:{{ site.contact.email }}" class="hover:text-white transition-colors">{{ site.contact.email }}</a></p>

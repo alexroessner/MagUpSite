@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#110B30"/>
+      <stop offset="100%" stop-color="#1A1242"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7C5CF7"/>
+      <stop offset="100%" stop-color="#B197FC"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#9775FA" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#110B30" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <!-- Top accent line -->
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+  <!-- Logo -->
+  <rect x="80" y="80" width="56" height="56" rx="12" fill="#9775FA" opacity="0.15" stroke="#9775FA" stroke-width="1.5"/>
+  <text x="108" y="116" text-anchor="middle" fill="#B197FC" font-family="system-ui, sans-serif" font-weight="800" font-size="24">42</text>
+  <text x="150" y="113" fill="#E8E0FF" font-family="system-ui, sans-serif" font-weight="700" font-size="28" letter-spacing="1">GEO <tspan fill="#B197FC">42</tspan></text>
+  <!-- Main headline -->
+  <text x="80" y="280" fill="#F5F0FF" font-family="system-ui, sans-serif" font-weight="800" font-size="72" letter-spacing="-2">Become the Answer</text>
+  <text x="80" y="360" fill="#F5F0FF" font-family="system-ui, sans-serif" font-weight="800" font-size="72" letter-spacing="-2">on <tspan fill="#9775FA">ChatGPT</tspan></text>
+  <!-- Subline -->
+  <text x="80" y="430" fill="#B8A0E8" font-family="system-ui, sans-serif" font-weight="400" font-size="28">Generative Engine Optimization for Enterprise Brands</text>
+  <!-- Bottom info -->
+  <text x="80" y="560" fill="#8B72B8" font-family="system-ui, sans-serif" font-weight="500" font-size="20">geo42.ai</text>
+  <!-- Bottom accent line -->
+  <rect x="0" y="626" width="1200" height="4" fill="url(#accent)"/>
+</svg>

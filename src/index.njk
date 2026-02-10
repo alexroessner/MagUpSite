@@ -19,7 +19,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
   <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
     {# Compact trust signal — NOT a green dot badge like Profound #}
     <div class="reveal mb-10">
-      <span class="text-xs sm:text-sm font-medium tracking-[0.2em] uppercase text-accent-400/80">Trusted by 1,000+ enterprise brands worldwide</span>
+      <span class="text-xs sm:text-sm font-medium tracking-[0.2em] uppercase text-accent-400/80">Trusted by leading enterprise brands worldwide</span>
     </div>
 
     <h1 class="reveal text-display mb-8 text-glow">
@@ -28,7 +28,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
     </h1>
 
     <p class="reveal text-lg sm:text-xl lg:text-2xl text-primary-300 max-w-3xl mx-auto mb-12 text-pretty leading-relaxed">
-      GEO 42 makes your brand the definitive answer across every AI engine. Track visibility, optimize citations, and dominate generative search.
+      <span class="text-primary-200 font-medium">Generative Engine Optimization (GEO)</span> — GEO 42 makes your brand the definitive answer across every AI engine. Track visibility, optimize citations, and dominate generative search.
     </p>
 
     <div class="reveal flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
@@ -52,6 +52,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
   <div class="relative">
     <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-primary-950 to-transparent z-10 pointer-events-none"></div>
     <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-primary-950 to-transparent z-10 pointer-events-none"></div>
+    <button type="button" id="marquee-pause" class="sr-only focus:not-sr-only focus:absolute focus:z-20 focus:top-2 focus:left-1/2 focus:-translate-x-1/2 focus:bg-primary-800 focus:text-accent-400 focus:px-3 focus:py-1.5 focus:rounded-lg focus:text-sm focus:font-medium" aria-pressed="false">Pause</button>
     {# Row 1 — scrolls left (default) #}
     <div class="overflow-hidden">
       <div class="logo-marquee gap-16 items-center whitespace-nowrap">
@@ -88,18 +89,19 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 
 {# ---- Product Showcase — Real Dashboard Carousel ---- #}
 
-<section class="py-20 sm:py-28 lg:py-32 bg-primary-950 section-divider accent-stripe overflow-hidden">
+<section class="py-20 sm:py-28 lg:py-32 bg-primary-950 section-divider accent-stripe overflow-hidden" aria-labelledby="h-product-preview">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-8 sm:mb-12 reveal">
       <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-4 sm:mb-5">Product Preview</p>
-      <h2 class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 mb-5 text-glow">
+      <h2 id="h-product-preview" class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 mb-5 text-glow">
         See the Platform in Action
       </h2>
       <p class="text-primary-300 text-lg lg:text-xl max-w-2xl mx-auto text-pretty">
         Real dashboards powering enterprise AI visibility — from prompt research to real-time monitoring.
       </p>
+      <p class="text-accent-500/60 text-sm mt-3">Live product preview — Day 1 baseline metrics</p>
     </div>
-    <div class="relative reveal-scale" id="dash-carousel">
+    <div class="relative reveal-scale" id="dash-carousel" role="region" aria-roledescription="carousel" aria-label="Product dashboard previews">
       {# Arrow buttons — desktop only #}
       <button type="button" class="dash-arrow dash-arrow-prev hidden lg:flex" aria-label="Previous dashboard">
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
@@ -111,22 +113,23 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
       <div class="dash-carousel-track flex gap-3 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-4" id="dash-track">
 
         {# ── Slide 1: Prompt Research ── #}
-        <div class="dash-slide snap-center shrink-0 w-[84vw] sm:w-[560px] lg:w-[680px]">
+        <div class="dash-slide snap-center shrink-0 w-[84vw] sm:w-[560px] lg:w-[680px]" role="group" aria-roledescription="slide" aria-label="Slide 1 of 5: Prompt Research">
           <div class="glass-card rounded-2xl p-3 sm:p-6 h-full" style="border-color: rgba(151,117,250,0.12)">
             <div class="flex items-center gap-2 pb-3 mb-4 border-b border-primary-700/20">
               <div class="w-2 h-2 rounded-full bg-accent-500"></div>
-              <span class="font-heading text-[10px] font-semibold text-primary-300 uppercase tracking-wider">GEO Intelligent Agent</span>
+              <h3 class="font-heading text-[10px] font-semibold text-primary-300 uppercase tracking-wider">GEO Intelligent Agent</h3>
               <span class="ml-auto text-[10px] px-2 py-0.5 bg-accent-500/10 rounded-full text-accent-400 font-medium">Prompt Research</span>
             </div>
             <div class="overflow-x-auto -mx-1">
               <table class="w-full text-[11px] sm:text-xs" style="min-width: 420px">
+                <caption class="sr-only">Prompt Research — AI Platform Citation Status</caption>
                 <thead>
                   <tr class="border-b border-primary-700/30">
-                    <th class="text-left py-2 px-2 text-primary-500 font-medium">ID</th>
-                    <th class="text-left py-2 px-2 text-primary-500 font-medium">Prompt</th>
-                    <th class="text-center py-2 px-1.5 text-primary-500 font-medium">ChatGPT</th>
-                    <th class="text-center py-2 px-1.5 text-primary-500 font-medium">Google AI</th>
-                    <th class="text-center py-2 px-1.5 text-primary-500 font-medium">Perplexity</th>
+                    <th scope="col" class="text-left py-2 px-2 text-primary-500 font-medium">ID</th>
+                    <th scope="col" class="text-left py-2 px-2 text-primary-500 font-medium">Prompt</th>
+                    <th scope="col" class="text-center py-2 px-1.5 text-primary-500 font-medium">ChatGPT</th>
+                    <th scope="col" class="text-center py-2 px-1.5 text-primary-500 font-medium">Google AI</th>
+                    <th scope="col" class="text-center py-2 px-1.5 text-primary-500 font-medium">Perplexity</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -144,9 +147,9 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
                   <tr class="border-b border-primary-800/30{% if loop.last %} border-b-0{% endif %}">
                     <td class="py-1.5 px-2 text-primary-500 font-mono text-[10px]">{{ q.id }}</td>
                     <td class="py-1.5 px-2 text-primary-200 whitespace-nowrap">{{ q.text }}</td>
-                    <td class="py-1.5 px-1.5 text-center"><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-semibold {% if q.c == 'g' %}bg-emerald-500/15 text-emerald-400{% elif q.c == 'y' %}bg-amber-500/15 text-amber-400{% else %}bg-red-500/15 text-red-400{% endif %}">{% if q.c == 'g' %}Cited{% elif q.c == 'y' %}Partial{% else %}None{% endif %}</span></td>
-                    <td class="py-1.5 px-1.5 text-center"><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-semibold {% if q.g == 'g' %}bg-emerald-500/15 text-emerald-400{% elif q.g == 'y' %}bg-amber-500/15 text-amber-400{% else %}bg-red-500/15 text-red-400{% endif %}">{% if q.g == 'g' %}Cited{% elif q.g == 'y' %}Partial{% else %}None{% endif %}</span></td>
-                    <td class="py-1.5 px-1.5 text-center"><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-semibold {% if q.p == 'g' %}bg-emerald-500/15 text-emerald-400{% elif q.p == 'y' %}bg-amber-500/15 text-amber-400{% else %}bg-red-500/15 text-red-400{% endif %}">{% if q.p == 'g' %}Cited{% elif q.p == 'y' %}Partial{% else %}None{% endif %}</span></td>
+                    <td class="py-1.5 px-1.5 text-center"><span class="inline-block px-1.5 py-0.5 rounded-full text-[11px] font-semibold {% if q.c == 'g' %}bg-emerald-500/15 text-emerald-400{% elif q.c == 'y' %}bg-amber-500/15 text-amber-400{% else %}bg-red-500/15 text-red-400{% endif %}">{% if q.c == 'g' %}Cited{% elif q.c == 'y' %}Partial{% else %}None{% endif %}</span></td>
+                    <td class="py-1.5 px-1.5 text-center"><span class="inline-block px-1.5 py-0.5 rounded-full text-[11px] font-semibold {% if q.g == 'g' %}bg-emerald-500/15 text-emerald-400{% elif q.g == 'y' %}bg-amber-500/15 text-amber-400{% else %}bg-red-500/15 text-red-400{% endif %}">{% if q.g == 'g' %}Cited{% elif q.g == 'y' %}Partial{% else %}None{% endif %}</span></td>
+                    <td class="py-1.5 px-1.5 text-center"><span class="inline-block px-1.5 py-0.5 rounded-full text-[11px] font-semibold {% if q.p == 'g' %}bg-emerald-500/15 text-emerald-400{% elif q.p == 'y' %}bg-amber-500/15 text-amber-400{% else %}bg-red-500/15 text-red-400{% endif %}">{% if q.p == 'g' %}Cited{% elif q.p == 'y' %}Partial{% else %}None{% endif %}</span></td>
                   </tr>
                   {%- endfor %}
                 </tbody>
@@ -156,11 +159,11 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
         </div>
 
         {# ── Slide 2: Brand Multi-dimensional Analysis ── #}
-        <div class="dash-slide snap-center shrink-0 w-[84vw] sm:w-[560px] lg:w-[680px]">
+        <div class="dash-slide snap-center shrink-0 w-[84vw] sm:w-[560px] lg:w-[680px]" role="group" aria-roledescription="slide" aria-label="Slide 2 of 5: Brand Intelligence">
           <div class="glass-card rounded-2xl p-3 sm:p-6 h-full" style="border-color: rgba(151,117,250,0.12)">
             <div class="flex items-center gap-2 pb-3 mb-4 border-b border-primary-700/20">
               <div class="w-2 h-2 rounded-full bg-accent-400"></div>
-              <span class="font-heading text-[10px] font-semibold text-primary-300 uppercase tracking-wider">Brand Intelligence</span>
+              <h3 class="font-heading text-[10px] font-semibold text-primary-300 uppercase tracking-wider">Brand Intelligence</h3>
               <span class="ml-auto text-[10px] px-2 py-0.5 bg-accent-500/10 rounded-full text-accent-400 font-medium">Multi-dimensional</span>
             </div>
             {# Platform KPI cards #}
@@ -182,25 +185,26 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
             {# Heatmap visualization #}
             <div class="bg-primary-900/30 rounded-xl p-3 sm:p-4 border border-primary-700/15">
               <div class="text-[10px] text-primary-500 uppercase tracking-wider mb-2 sm:mb-3">Competitor Heatmap</div>
-              <div class="grid grid-cols-5 gap-1">
+              <span class="sr-only">Competitor visibility heatmap showing varying brand presence levels across AI platforms, from low to high intensity.</span>
+              <div class="grid grid-cols-5 gap-1" aria-hidden="true">
                 {%- for i in range(20) %}
                 <div class="h-5 rounded-sm" style="background: rgba(151, 117, 250, {{ [0.08, 0.15, 0.25, 0.38, 0.5, 0.12, 0.32, 0.45, 0.2, 0.1, 0.42, 0.22, 0.18, 0.38, 0.28, 0.48, 0.14, 0.35, 0.52, 0.06][i] }})"></div>
                 {%- endfor %}
               </div>
               <div class="flex justify-between mt-2">
-                <span class="text-[9px] text-primary-500">Low visibility</span>
-                <span class="text-[9px] text-primary-500">High visibility</span>
+                <span class="text-[11px] text-primary-500">Low visibility</span>
+                <span class="text-[11px] text-primary-500">High visibility</span>
               </div>
             </div>
           </div>
         </div>
 
         {# ── Slide 3: Real-time Monitoring ── #}
-        <div class="dash-slide snap-center shrink-0 w-[84vw] sm:w-[560px] lg:w-[680px]">
+        <div class="dash-slide snap-center shrink-0 w-[84vw] sm:w-[560px] lg:w-[680px]" role="group" aria-roledescription="slide" aria-label="Slide 3 of 5: Real-time Monitoring">
           <div class="glass-card rounded-2xl p-3 sm:p-6 h-full" style="border-color: rgba(151,117,250,0.12)">
             <div class="flex items-center gap-2 pb-3 mb-4 border-b border-primary-700/20">
               <div class="w-2 h-2 rounded-full bg-emerald-400"></div>
-              <span class="font-heading text-[10px] font-semibold text-primary-300 uppercase tracking-wider">Real-time Monitoring</span>
+              <h3 class="font-heading text-[10px] font-semibold text-primary-300 uppercase tracking-wider">Real-time Monitoring</h3>
               <span class="ml-auto text-[10px] px-2 py-0.5 bg-emerald-500/10 rounded-full text-emerald-400 font-medium">Live</span>
             </div>
             {# KPI cards #}
@@ -240,7 +244,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
                 {%- for b in brandRanks %}
                 <div class="flex items-center gap-2">
                   <span class="text-[10px] w-16 sm:w-20 shrink-0 {% if b.hl %}text-accent-400 font-semibold{% else %}text-primary-400{% endif %}">{{ b.name }}</span>
-                  <div class="flex-1 h-1.5 bg-primary-800/50 rounded-full overflow-hidden">
+                  <div class="flex-1 h-1.5 bg-primary-800/50 rounded-full overflow-hidden" role="meter" aria-valuenow="{{ b.pct }}" aria-valuemin="0" aria-valuemax="100" aria-label="{{ b.name }} visibility">
                     <div class="h-full rounded-full" style="width: {{ b.pct }}%; background: {% if b.hl %}linear-gradient(90deg, #7C5CF7, #B197FC){% else %}rgba(139, 114, 184, 0.3){% endif %}"></div>
                   </div>
                   <span class="text-[10px] w-8 text-right {% if b.hl %}text-accent-400{% else %}text-primary-500{% endif %}">{{ b.pct }}%</span>
@@ -252,11 +256,11 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
         </div>
 
         {# ── Slide 4: Project Progress ── #}
-        <div class="dash-slide snap-center shrink-0 w-[84vw] sm:w-[560px] lg:w-[680px]">
+        <div class="dash-slide snap-center shrink-0 w-[84vw] sm:w-[560px] lg:w-[680px]" role="group" aria-roledescription="slide" aria-label="Slide 4 of 5: Project Progress">
           <div class="glass-card rounded-2xl p-3 sm:p-6 h-full" style="border-color: rgba(151,117,250,0.12)">
             <div class="flex items-center gap-2 pb-3 mb-4 border-b border-primary-700/20">
               <div class="w-2 h-2 rounded-full bg-accent-500"></div>
-              <span class="font-heading text-[10px] font-semibold text-primary-300 uppercase tracking-wider">Project Progress</span>
+              <h3 class="font-heading text-[10px] font-semibold text-primary-300 uppercase tracking-wider">Project Progress</h3>
               <span class="ml-auto text-[10px] px-2 py-0.5 bg-accent-500/10 rounded-full text-accent-400 font-medium">Tracking</span>
             </div>
             <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
@@ -286,7 +290,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
                     {% if step.st == 'done' %}<svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>{% else %}{{ loop.index }}{% endif %}
                   </div>
                   <span class="text-xs {% if step.st == 'done' %}text-primary-300{% elif step.st == 'active' %}text-accent-400 font-medium{% else %}text-primary-500{% endif %}">{{ step.name }}</span>
-                  {% if step.st == 'active' %}<span class="ml-auto text-[9px] px-1.5 py-0.5 bg-accent-500/10 rounded-full text-accent-400">In Progress</span>{% endif %}
+                  {% if step.st == 'active' %}<span class="ml-auto text-[11px] px-1.5 py-0.5 bg-accent-500/10 rounded-full text-accent-400">In Progress</span>{% endif %}
                 </div>
                 {%- endfor %}
               </div>
@@ -295,11 +299,11 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
         </div>
 
         {# ── Slide 5: Dashboard Home ── #}
-        <div class="dash-slide snap-center shrink-0 w-[84vw] sm:w-[560px] lg:w-[680px]">
+        <div class="dash-slide snap-center shrink-0 w-[84vw] sm:w-[560px] lg:w-[680px]" role="group" aria-roledescription="slide" aria-label="Slide 5 of 5: Dashboard Home">
           <div class="glass-card rounded-2xl p-3 sm:p-6 h-full" style="border-color: rgba(151,117,250,0.12)">
             <div class="flex items-center gap-2 pb-3 mb-4 border-b border-primary-700/20">
               <div class="w-2 h-2 rounded-full bg-accent-500"></div>
-              <span class="font-heading text-[10px] font-semibold text-primary-300 uppercase tracking-wider">GEO 42 Dashboard</span>
+              <h3 class="font-heading text-[10px] font-semibold text-primary-300 uppercase tracking-wider">GEO 42 Dashboard</h3>
               <span class="ml-auto flex gap-1.5" aria-hidden="true">
                 <span class="w-2 h-2 rounded-full bg-primary-600"></span>
                 <span class="w-2 h-2 rounded-full bg-primary-600"></span>
@@ -347,17 +351,17 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
                 <div class="flex items-center gap-2">
                   <span class="w-1 h-1 rounded-full bg-accent-400 shrink-0"></span>
                   <span class="text-[10px] text-primary-300 truncate">Brand visibility increased +3.2% on ChatGPT</span>
-                  <span class="text-[9px] text-primary-600 ml-auto shrink-0">2m</span>
+                  <span class="text-[11px] text-primary-600 ml-auto shrink-0">2m</span>
                 </div>
                 <div class="flex items-center gap-2">
                   <span class="w-1 h-1 rounded-full bg-emerald-400 shrink-0"></span>
                   <span class="text-[10px] text-primary-300 truncate">Content optimization batch complete</span>
-                  <span class="text-[9px] text-primary-600 ml-auto shrink-0">15m</span>
+                  <span class="text-[11px] text-primary-600 ml-auto shrink-0">15m</span>
                 </div>
                 <div class="flex items-center gap-2">
                   <span class="w-1 h-1 rounded-full bg-amber-400 shrink-0"></span>
                   <span class="text-[10px] text-primary-300 truncate">New competitor detected on Perplexity</span>
-                  <span class="text-[9px] text-primary-600 ml-auto shrink-0">1h</span>
+                  <span class="text-[11px] text-primary-600 ml-auto shrink-0">1h</span>
                 </div>
               </div>
             </div>
@@ -372,6 +376,13 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
         {%- endfor %}
       </div>
     </div>
+    <div class="text-center mt-10 reveal">
+      <a href="{{ '/contact/' | url }}"
+         class="btn-press hero-cta inline-flex items-center justify-center gap-2 text-white font-bold px-8 py-3 rounded-full transition-all duration-300 text-base hover:scale-[1.03]">
+        See Your Brand's AI Visibility
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -381,11 +392,11 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 
 {# ---- Case Study — Before/After ---- #}
 
-<section class="py-20 sm:py-28 lg:py-32 bg-primary-900 section-divider mesh-bg">
+<section class="py-20 sm:py-28 lg:py-32 bg-primary-900 section-divider mesh-bg" aria-labelledby="h-proven-results">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-14 reveal">
       <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-4">Proven Results</p>
-      <h2 class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 text-glow">
+      <h2 id="h-proven-results" class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 text-glow">
         From Invisible to #1
       </h2>
     </div>
@@ -400,6 +411,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
             </div>
             <span class="text-sm font-semibold text-primary-300">Gemini</span>
             <span class="ml-auto text-xs px-2 py-0.5 bg-primary-700 rounded text-primary-400">BEFORE</span>
+            <span class="sr-only">Before GEO 42 optimization:</span>
           </div>
           <div class="mb-3 p-3 bg-primary-900/50 rounded-lg border border-primary-700/50">
             <p class="text-xs text-primary-500 mb-1">User</p>
@@ -422,6 +434,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
             </div>
             <span class="text-sm font-semibold text-white">Gemini</span>
             <span class="ml-auto text-xs px-2 py-0.5 bg-accent-500/20 rounded text-accent-400">AFTER GEO 42</span>
+            <span class="sr-only">After GEO 42 optimization:</span>
           </div>
           <div class="mb-3 p-3 bg-primary-900/50 rounded-lg border border-primary-700/50">
             <p class="text-xs text-primary-500 mb-1">User</p>
@@ -483,19 +496,19 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="reveal grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
       <div class="glass-card kpi-glow text-center p-6 rounded-2xl">
-        <div class="text-4xl sm:text-5xl font-heading font-extrabold text-accent-400 counter" data-count="7">0</div>
+        <div class="text-4xl sm:text-5xl font-heading font-extrabold text-accent-400 counter" data-count="7" aria-label="7 AI Agents">0</div>
         <div class="text-xs font-medium text-primary-400 mt-2 uppercase tracking-[0.2em]">AI Agents</div>
       </div>
       <div class="glass-card kpi-glow text-center p-6 rounded-2xl">
-        <div class="text-4xl sm:text-5xl font-heading font-extrabold text-accent-400 counter" data-count="10" data-suffix="+">0</div>
+        <div class="text-4xl sm:text-5xl font-heading font-extrabold text-accent-400 counter" data-count="10" data-suffix="+" aria-label="10+ AI Platforms">0</div>
         <div class="text-xs font-medium text-primary-400 mt-2 uppercase tracking-[0.2em]">AI Platforms</div>
       </div>
       <div class="glass-card kpi-glow text-center p-6 rounded-2xl">
-        <div class="text-4xl sm:text-5xl font-heading font-extrabold text-accent-400 counter" data-count="1000" data-suffix="+">0</div>
+        <div class="text-4xl sm:text-5xl font-heading font-extrabold text-accent-400 counter" data-count="1000" data-suffix="+" aria-label="Leading Enterprises">0</div>
         <div class="text-xs font-medium text-primary-400 mt-2 uppercase tracking-[0.2em]">Enterprises</div>
       </div>
       <div class="glass-card kpi-glow text-center p-6 rounded-2xl">
-        <div class="text-4xl sm:text-5xl font-heading font-extrabold text-accent-400 counter" data-count="450" data-prefix="+" data-suffix="%">0</div>
+        <div class="text-4xl sm:text-5xl font-heading font-extrabold text-accent-400 counter" data-count="450" data-prefix="+" data-suffix="%" aria-label="+450% Brand Mentions">0</div>
         <div class="text-xs font-medium text-primary-400 mt-2 uppercase tracking-[0.2em]">Brand Mentions</div>
       </div>
     </div>
@@ -508,11 +521,11 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 
 {# ---- SEO vs GEO — Binary comparison ---- #}
 
-<section class="py-20 sm:py-28 lg:py-32 bg-primary-900 section-divider mesh-bg">
+<section class="py-20 sm:py-28 lg:py-32 bg-primary-900 section-divider mesh-bg" aria-labelledby="h-seo-geo">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16 reveal">
       <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-5">The Shift</p>
-      <h2 class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 mb-5 text-glow">
+      <h2 id="h-seo-geo" class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 mb-5 text-glow">
         SEO is Linear.<br class="hidden sm:block"> GEO is Binary.
       </h2>
       <p class="text-primary-300 text-lg lg:text-xl max-w-2xl mx-auto text-pretty">
@@ -571,16 +584,23 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
         <p class="text-xs text-accent-500 mt-3">Binary outcome — cited or invisible</p>
       </div>
     </div>
+    <div class="text-center mt-12 reveal">
+      <a href="{{ '/contact/' | url }}"
+         class="btn-press inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors text-base">
+        Break through the binary
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
 {# ---- 6 Walls — Enterprise challenges (Slide 5) ---- #}
 
-<section class="py-20 sm:py-28 lg:py-32 bg-primary-950 section-divider">
+<section class="py-20 sm:py-28 lg:py-32 bg-primary-950 section-divider" aria-labelledby="h-six-walls">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="mb-16 reveal max-w-3xl">
       <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-5">The Challenge</p>
-      <h2 class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 mb-5 text-glow">
+      <h2 id="h-six-walls" class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 mb-5 text-glow">
         6 Walls Enterprises Face
       </h2>
       <p class="text-primary-300 text-lg lg:text-xl text-pretty">
@@ -598,7 +618,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
         { name: "ROI Wall", icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z", desc: "Agency outsourcing is expensive and disconnected. In-house production is slow. Verification cycles eat months before you see results." }
       ] %}
       {%- for wall in walls %}
-      <div class="card-lift glass-card glow-border shimmer rounded-2xl p-6 group">
+      <div class="card-lift glass-card rounded-2xl p-6 group">
         <div class="flex items-center gap-3 mb-4">
           <div class="w-10 h-10 bg-accent-500/10 rounded-lg flex items-center justify-center icon-reveal">
             <svg class="w-5 h-5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="{{ wall.icon }}"/></svg>
@@ -623,15 +643,15 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 <section class="py-20 sm:py-28 bg-primary-900 section-divider mesh-bg">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="glow-reveal shimmer glass-card rounded-2xl p-10 sm:p-12 text-center">
-        <div class="text-7xl sm:text-8xl font-extrabold gradient-text-accent font-heading mb-4 float text-glow">34x</div>
+      <div class="glow-reveal glass-card rounded-2xl p-10 sm:p-12 text-center">
+        <div class="text-7xl sm:text-8xl font-extrabold gradient-text-accent font-heading mb-4 text-glow">34x</div>
         <h3 class="font-heading text-xl font-bold text-primary-50 mb-3">The Search Gap</h3>
         <p class="text-primary-300 text-sm leading-relaxed">
           The gap between traditional search volume and AI search adoption — a massive untapped opportunity for early movers.
         </p>
       </div>
-      <div class="glow-reveal shimmer glass-card rounded-2xl p-10 sm:p-12 text-center">
-        <div class="text-7xl sm:text-8xl font-extrabold gradient-text-accent font-heading mb-4 float text-glow" style="animation-delay: 1s">1000x</div>
+      <div class="glow-reveal glass-card rounded-2xl p-10 sm:p-12 text-center">
+        <div class="text-7xl sm:text-8xl font-extrabold gradient-text-accent font-heading mb-4 text-glow">1000x</div>
         <h3 class="font-heading text-xl font-bold text-primary-50 mb-3">AI Chatbot Growth</h3>
         <p class="text-primary-300 text-sm leading-relaxed">
           AI chatbot traffic has grown 1000x, fundamentally reshaping how consumers discover brands and products.
@@ -647,12 +667,12 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 
 {# ---- Flywheel — The Visibility Growth Model ---- #}
 
-<section class="py-20 sm:py-28 lg:py-36 bg-primary-950 section-divider section-angle">
+<section class="py-20 sm:py-28 lg:py-36 bg-primary-950 section-divider section-angle" aria-labelledby="h-flywheel">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
       <div class="reveal-left">
         <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-5">Growth Model</p>
-        <h2 class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 mb-6 text-glow">
+        <h2 id="h-flywheel" class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 mb-6 text-glow">
           The Visibility Flywheel
         </h2>
         <p class="text-primary-300 text-lg leading-relaxed mb-8">
@@ -732,11 +752,11 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 ] %}
 
 {%- if pageContent.services.length %}
-<section class="py-20 sm:py-28 lg:py-32 bg-primary-900 section-divider mesh-bg">
+<section class="py-20 sm:py-28 lg:py-32 bg-primary-900 section-divider mesh-bg" aria-labelledby="h-services">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="mb-16 reveal max-w-3xl">
       <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-5">What We Do</p>
-      <h2 class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 mb-5 text-glow">
+      <h2 id="h-services" class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 mb-5 text-glow">
         Full-Stack AI Visibility
       </h2>
       <p class="text-primary-300 text-lg lg:text-xl text-pretty">
@@ -763,7 +783,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
         </div>
       </div>
       {%- else %}
-      <div class="card-lift glass-card glow-border shimmer rounded-2xl p-6 group">
+      <div class="card-lift glass-card rounded-2xl p-6 group">
         <div class="w-11 h-11 bg-accent-500/10 rounded-xl flex items-center justify-center mb-4 text-accent-400 group-hover:bg-accent-500/20 transition-colors icon-reveal">
           {{ serviceIcons[loop.index0] | default(serviceIcons[0]) | safe }}
         </div>
@@ -793,16 +813,17 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 
 {# ---- Intelligence Dashboard — Deep Dive ---- #}
 
-<section class="py-20 sm:py-28 lg:py-32 bg-primary-900 section-divider mesh-bg">
+<section class="py-20 sm:py-28 lg:py-32 bg-primary-900 section-divider mesh-bg" aria-labelledby="h-dashboard">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16 reveal">
       <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-5">Intelligence Dashboard</p>
-      <h2 class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 mb-5 text-glow">
+      <h2 id="h-dashboard" class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 mb-5 text-glow">
         Real-Time AI Visibility
       </h2>
       <p class="text-primary-300 text-lg lg:text-xl max-w-2xl mx-auto text-pretty">
         Track how AI engines see, cite, and recommend your brand — all in one intelligent dashboard.
       </p>
+      <p class="text-accent-500/60 text-sm mt-3">Results shown after 90 days of GEO 42 optimization</p>
     </div>
     <div class="reveal-scale glass-card rounded-2xl p-6 sm:p-8 max-w-5xl mx-auto" style="backdrop-filter: blur(30px); border: 1px solid rgba(151, 117, 250, 0.15)">
       {# Header bar #}
@@ -819,22 +840,22 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
       </div>
       {# KPI row #}
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6 stagger-pop">
-        <div class="kpi-glow shimmer glass-card rounded-xl p-4">
+        <div class="kpi-glow glass-card rounded-xl p-4">
           <div class="text-xs text-primary-500 uppercase tracking-wider mb-1">Visibility Rate</div>
           <div class="text-2xl font-bold text-accent-400">87.3%</div>
           <div class="text-xs text-accent-500 mt-1">+12.4% this week</div>
         </div>
-        <div class="kpi-glow shimmer glass-card rounded-xl p-4">
+        <div class="kpi-glow glass-card rounded-xl p-4">
           <div class="text-xs text-primary-500 uppercase tracking-wider mb-1">Recommendation Rate</div>
           <div class="text-2xl font-bold text-accent-400">64.1%</div>
           <div class="text-xs text-accent-500 mt-1">+8.7% this week</div>
         </div>
-        <div class="kpi-glow shimmer glass-card rounded-xl p-4">
+        <div class="kpi-glow glass-card rounded-xl p-4">
           <div class="text-xs text-primary-500 uppercase tracking-wider mb-1">AI Answers</div>
           <div class="text-2xl font-bold text-accent-400">2,847</div>
           <div class="text-xs text-accent-500 mt-1">+341 this week</div>
         </div>
-        <div class="kpi-glow shimmer glass-card rounded-xl p-4">
+        <div class="kpi-glow glass-card rounded-xl p-4">
           <div class="text-xs text-primary-500 uppercase tracking-wider mb-1">Brand Sentiment</div>
           <div class="text-2xl font-bold text-accent-400">Trust</div>
           <div class="text-xs text-accent-500 mt-1">Positive across 10 engines</div>
@@ -872,11 +893,11 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 
 {# ---- Platform Coverage — AI engine grid ---- #}
 
-<section class="py-20 sm:py-28 lg:py-32 bg-primary-900 section-divider mesh-bg">
+<section class="py-20 sm:py-28 lg:py-32 bg-primary-900 section-divider mesh-bg" aria-labelledby="h-platforms">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16 reveal">
       <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-5">Platform Coverage</p>
-      <h2 class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 mb-5 text-glow">
+      <h2 id="h-platforms" class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 mb-5 text-glow">
         Every AI Engine. One Dashboard.
       </h2>
       <p class="text-primary-300 text-lg lg:text-xl max-w-2xl mx-auto text-pretty">
@@ -897,7 +918,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
         { name: "Kimi", icon: "moon", tier: "secondary" }
       ] %}
       {%- for platform in platforms %}
-      <div class="card-lift glass-card glow-border rounded-xl p-5 text-center group">
+      <div class="card-lift glass-card rounded-xl p-5 text-center group">
         <div class="w-12 h-12 mx-auto mb-3 bg-accent-500/10 rounded-xl flex items-center justify-center group-hover:bg-accent-500/20 transition-colors">
           {%- if platform.icon == "chat" %}
           <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
@@ -925,17 +946,24 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
       </div>
       {%- endfor %}
     </div>
+    <div class="text-center mt-10 reveal">
+      <a href="{{ '/contact/' | url }}"
+         class="btn-press inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors text-base">
+        Get coverage across all platforms
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
 {# ---- Industries ---- #}
 
 {%- if pageContent.industries.length %}
-<section class="py-20 sm:py-28 lg:py-32 bg-primary-900 section-divider mesh-bg">
+<section class="py-20 sm:py-28 lg:py-32 bg-primary-900 section-divider mesh-bg" aria-labelledby="h-industries">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-14 reveal">
       <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-5">Industries</p>
-      <h2 class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 text-glow">
+      <h2 id="h-industries" class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 text-glow">
         Built for Your Vertical
       </h2>
     </div>
@@ -947,7 +975,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
     ] %}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-pop">
       {%- for industry in pageContent.industries %}
-      <div class="card-lift glass-card glow-border shimmer rounded-2xl p-6 text-center group">
+      <div class="card-lift glass-card rounded-2xl p-6 text-center group">
         <div class="w-14 h-14 mx-auto bg-accent-500/10 rounded-2xl flex items-center justify-center mb-4 text-accent-400 group-hover:bg-accent-500/20 transition-colors icon-reveal">
           {{ industryIcons[loop.index0] | safe }}
         </div>
@@ -966,12 +994,12 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 
 {# ---- FAQ — Accordion ---- #}
 
-<section class="py-20 sm:py-28 lg:py-32 bg-primary-950 section-divider">
+<section class="py-20 sm:py-28 lg:py-32 bg-primary-950 section-divider" aria-labelledby="h-faq">
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-14 reveal">
       <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-5">FAQ</p>
-      <h2 class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 text-glow">
-        We Have the Answers
+      <h2 id="h-faq" class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 text-glow">
+        Your Questions, Answered
       </h2>
     </div>
     <div class="space-y-3 reveal" id="faq-accordion">
@@ -1003,13 +1031,13 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 
 {# ---- CTA — Purple gradient ---- #}
 
-<section class="relative overflow-hidden py-24 sm:py-32 bg-primary-950 section-divider">
+<section class="relative overflow-hidden py-24 sm:py-32 bg-primary-950 section-divider" aria-labelledby="h-cta">
   <div class="hero-noise" aria-hidden="true"></div>
   <div class="hero-glow" aria-hidden="true"></div>
   <div class="ambient-glow" aria-hidden="true"></div>
   <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal-scale">
     <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-6">Get Started</p>
-    <h2 class="text-display text-4xl sm:text-5xl lg:text-7xl text-primary-50 mb-8 text-glow">
+    <h2 id="h-cta" class="text-display text-4xl sm:text-5xl lg:text-7xl text-primary-50 mb-8 text-glow">
       Ready to Become<br>the AI Answer?
     </h2>
     <p class="text-xl lg:text-2xl text-primary-300 max-w-2xl mx-auto mb-12 text-pretty leading-relaxed">

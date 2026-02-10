@@ -594,8 +594,10 @@ button:focus-visible {
   height: 3px;
   background: linear-gradient(90deg, var(--color-accent-600), var(--color-accent-400), var(--color-accent-300));
   z-index: 60;
-  width: 0%;
-  transition: width 0.1s linear;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  will-change: transform;
 }
 
 /* ===== Cursor glow — follows pointer on desktop ===== */
@@ -695,18 +697,20 @@ button:focus-visible {
   transform: scale(0.97);
 }
 
-/* ===== Flywheel animation — single rotation on scroll reveal ===== */
+/* ===== Flywheel animation — subtle pulse glow on scroll reveal ===== */
 .flywheel-spin {
-  animation: none;
+  opacity: 0.6;
+  transition: opacity 0.5s ease;
 }
 
 .flywheel-spin.visible {
-  animation: spin-slow 10s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 1;
+  animation: flywheel-pulse 4s ease-in-out infinite;
 }
 
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes flywheel-pulse {
+  0%, 100% { filter: drop-shadow(0 0 6px rgb(151 117 250 / 30%)); }
+  50% { filter: drop-shadow(0 0 16px rgb(151 117 250 / 50%)); }
 }
 
 /* ===== Shimmer effect for premium feel ===== */
@@ -956,6 +960,7 @@ button:focus-visible {
 
 .dash-slide {
   scroll-snap-align: center;
+  scroll-snap-stop: always;
 }
 
 /* Carousel navigation dots */
@@ -967,7 +972,8 @@ button:focus-visible {
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  padding: 0;
+  padding: 18px;
+  background-clip: content-box;
 }
 
 .dash-dot.active {
@@ -1018,16 +1024,6 @@ button:focus-visible {
   }
 }
 
-/* ===== Text gradient reveal ===== */
-.gradient-reveal {
-  background-size: 200% 100%;
-  background-position: 100% 0;
-  transition: background-position 1.2s ease;
-}
-
-.gradient-reveal.visible {
-  background-position: 0 0;
-}
 
 /* ===== Mobile GPU optimizations — reduce blur radii to maintain smooth scroll ===== */
 @media (width <= 768px) {
@@ -1156,10 +1152,6 @@ button:focus-visible {
 
   .glow-border::before {
     animation: none;
-  }
-
-  .gradient-reveal {
-    transition: none;
   }
 
   .card-lift:active,

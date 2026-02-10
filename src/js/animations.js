@@ -8,10 +8,10 @@
 (function () {
   "use strict";
 
-  var motionQuery = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
-  var prefersReducedMotion = motionQuery && motionQuery.matches;
-  var isTouch = window.matchMedia && window.matchMedia("(hover: none)").matches;
-  var hasPointer = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const motionQuery = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
+  let prefersReducedMotion = motionQuery && motionQuery.matches;
+  const isTouch = window.matchMedia && window.matchMedia("(hover: none)").matches;
+  const hasPointer = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   // Listen for runtime reduced-motion changes (e.g. iOS Settings toggle)
   if (motionQuery && motionQuery.addEventListener) {
@@ -21,12 +21,12 @@
   }
 
   // ── Scroll-triggered reveals via IntersectionObserver ──
-  var isMobile = window.innerWidth < 640;
-  var revealEls = document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale, .glow-reveal");
-  var staggerEls = document.querySelectorAll(".stagger, .stagger-pop");
+  const isMobile = window.innerWidth < 640;
+  const revealEls = document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale, .glow-reveal");
+  const staggerEls = document.querySelectorAll(".stagger, .stagger-pop");
 
   if ("IntersectionObserver" in window && !prefersReducedMotion) {
-    var observer = new IntersectionObserver(
+    const observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
@@ -48,8 +48,8 @@
     // Stagger: on mobile (single-column), observe each child individually for smooth per-card reveal
     staggerEls.forEach(function (container) {
       if (isMobile) {
-        var children = container.children;
-        for (var i = 0; i < children.length; i++) {
+        const children = container.children;
+        for (let i = 0; i < children.length; i++) {
           children[i].setAttribute("data-stagger-child", "");
           observer.observe(children[i]);
         }
@@ -64,9 +64,9 @@
 
   // ── Mobile: scroll-triggered glow-border activation ──
   if (isTouch && !prefersReducedMotion && "IntersectionObserver" in window) {
-    var glowCards = document.querySelectorAll(".glow-border");
+    const glowCards = document.querySelectorAll(".glow-border");
     if (glowCards.length) {
-      var glowObserver = new IntersectionObserver(
+      const glowObserver = new IntersectionObserver(
         function (entries) {
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
@@ -82,15 +82,15 @@
   }
 
   // ── Animated bar fills on scroll ──
-  var barEls = document.querySelectorAll("[data-bar-width]");
+  const barEls = document.querySelectorAll("[data-bar-width]");
   if (barEls.length && "IntersectionObserver" in window) {
-    var barObserver = new IntersectionObserver(
+    const barObserver = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
           if (!entry.isIntersecting) return;
-          var el = entry.target;
-          var targetWidth = el.getAttribute("data-bar-width");
-          var delay = parseInt(el.getAttribute("data-bar-delay") || "0", 10);
+          const el = entry.target;
+          const targetWidth = el.getAttribute("data-bar-width");
+          const delay = parseInt(el.getAttribute("data-bar-delay") || "0", 10);
           setTimeout(function () {
             el.style.width = targetWidth;
           }, delay);
@@ -109,37 +109,37 @@
   }
 
   // ── Animated counters ──
-  var counters = document.querySelectorAll("[data-count]");
+  const counters = document.querySelectorAll("[data-count]");
   if (counters.length && "IntersectionObserver" in window) {
     if (prefersReducedMotion) {
       counters.forEach(function (el) {
-        var target = el.getAttribute("data-count");
-        var prefix = el.getAttribute("data-prefix") || "";
-        var suffix = el.getAttribute("data-suffix") || "";
+        const target = el.getAttribute("data-count");
+        const prefix = el.getAttribute("data-prefix") || "";
+        const suffix = el.getAttribute("data-suffix") || "";
         el.textContent = prefix + target + suffix;
       });
     } else {
-      var countObserver = new IntersectionObserver(
+      const countObserver = new IntersectionObserver(
         function (entries) {
           entries.forEach(function (entry) {
             if (!entry.isIntersecting) return;
-            var el = entry.target;
-            var target = el.getAttribute("data-count");
-            var prefix = el.getAttribute("data-prefix") || "";
-            var suffix = el.getAttribute("data-suffix") || "";
-            var num = parseFloat(target);
-            var isNum = !isNaN(num);
+            const el = entry.target;
+            const target = el.getAttribute("data-count");
+            const prefix = el.getAttribute("data-prefix") || "";
+            const suffix = el.getAttribute("data-suffix") || "";
+            const num = parseFloat(target);
+            const isNum = !isNaN(num);
             if (!isNum) {
               el.textContent = prefix + target + suffix;
               countObserver.unobserve(el);
               return;
             }
-            var duration = 1800;
-            var start = performance.now();
+            const duration = 1800;
+            const start = performance.now();
             function animate(now) {
-              var progress = Math.min((now - start) / duration, 1);
-              var ease = 1 - Math.pow(1 - progress, 3);
-              var current = Math.round(num * ease);
+              const progress = Math.min((now - start) / duration, 1);
+              const ease = 1 - Math.pow(1 - progress, 3);
+              const current = Math.round(num * ease);
               el.textContent = prefix + current + suffix;
               if (progress < 1) requestAnimationFrame(animate);
               else el.textContent = prefix + target + suffix;
@@ -157,49 +157,56 @@
   // ── Mobile: maximize hero font to fill viewport for longest word ──
   function optimizeHeroSize() {
     if (window.innerWidth >= 640) return; // desktop unchanged
-    var twEl = document.querySelector("[data-typewriter]");
+    const twEl = document.querySelector("[data-typewriter]");
     if (!twEl) return;
-    var line = twEl.parentElement;
-    var line1 = line.previousElementSibling;
-    var words = twEl.getAttribute("data-typewriter").split("|");
-    var prefixEl = line.querySelector(".gradient-text");
-    var prefix = prefixEl ? prefixEl.textContent : "";
+    const line = twEl.parentElement;
+    const line1 = line.previousElementSibling;
+    const words = twEl.getAttribute("data-typewriter").split("|");
+    const prefixEl = line.querySelector(".gradient-text");
+    const prefix = prefixEl ? prefixEl.textContent : "";
 
     // Measure widest phrase using hidden probe with same font
-    var cs = getComputedStyle(line);
-    var probe = document.createElement("span");
+    const cs = getComputedStyle(line);
+    const probe = document.createElement("span");
     probe.style.cssText = "position:absolute;left:-9999px;white-space:nowrap;" +
       "font:" + cs.font + ";letter-spacing:" + cs.letterSpacing;
     document.body.appendChild(probe);
 
-    var maxW = 0;
+    let maxW = 0;
     words.forEach(function (w) {
       probe.textContent = prefix + w;
-      var pw = probe.getBoundingClientRect().width;
+      const pw = probe.getBoundingClientRect().width;
       if (pw > maxW) maxW = pw;
     });
     document.body.removeChild(probe);
 
     if (maxW > 0) {
-      var curSize = parseFloat(cs.fontSize);
+      const curSize = parseFloat(cs.fontSize);
       // Scale so widest text fills 97% of viewport (1.5% margin each side)
-      var optimal = Math.floor(curSize * (window.innerWidth * 0.97) / maxW);
+      let optimal = Math.floor(curSize * (window.innerWidth * 0.97) / maxW);
       optimal = Math.min(optimal, 96); // cap at 6rem
       line.style.fontSize = optimal + "px";
       if (line1) line1.style.fontSize = optimal + "px";
     }
   }
-  // Run after fonts load for accurate measurement
+  // Run after fonts load — use requestIdleCallback when available for non-blocking init
+  function scheduleHeroSize() {
+    if (typeof requestIdleCallback === "function") {
+      requestIdleCallback(optimizeHeroSize);
+    } else {
+      optimizeHeroSize();
+    }
+  }
   if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(optimizeHeroSize);
+    document.fonts.ready.then(scheduleHeroSize);
   } else {
-    optimizeHeroSize();
+    scheduleHeroSize();
   }
 
   // ── Typewriter cycling — with visibility gating for iOS battery ──
-  var typers = document.querySelectorAll("[data-typewriter]");
+  const typers = document.querySelectorAll("[data-typewriter]");
   typers.forEach(function (el) {
-    var words = el.getAttribute("data-typewriter").split("|");
+    const words = el.getAttribute("data-typewriter").split("|");
     if (words.length < 2) return;
 
     if (prefersReducedMotion) {
@@ -207,16 +214,16 @@
       return;
     }
 
-    var wordIndex = 0;
-    var charIndex = 0;
-    var deleting = false;
-    var speed = 80;
-    var typeTimerId = null;
-    var paused = false;
+    let wordIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+    const speed = 80;
+    let typeTimerId = null;
+    let paused = false;
 
     function tick() {
       if (paused) return;
-      var current = words[wordIndex];
+      const current = words[wordIndex];
       if (deleting) {
         charIndex--;
         el.textContent = current.substring(0, charIndex);
@@ -253,22 +260,25 @@
   });
 
   // ── FAQ accordion toggle ──
-  var faqToggles = document.querySelectorAll(".faq-toggle");
+  const faqToggles = document.querySelectorAll(".faq-toggle");
   faqToggles.forEach(function (btn) {
     btn.addEventListener("click", function () {
-      var parent = btn.parentElement;
-      var content = parent.querySelector(".faq-content");
-      var isOpen = parent.classList.contains("open");
+      const parent = btn.parentElement;
+      const content = parent.querySelector(".faq-content");
+      const isOpen = parent.classList.contains("open");
 
       // Close all others
       faqToggles.forEach(function (other) {
-        var otherParent = other.parentElement;
+        const otherParent = other.parentElement;
         if (otherParent !== parent && otherParent.classList.contains("open")) {
           otherParent.classList.remove("open");
           other.setAttribute("aria-expanded", "false");
-          var otherContent = otherParent.querySelector(".faq-content");
+          const otherContent = otherParent.querySelector(".faq-content");
           otherContent.style.maxHeight = null;
-          setTimeout(function () { otherContent.classList.add("hidden"); }, 300);
+          otherContent.addEventListener("transitionend", function handler() {
+            otherContent.classList.add("hidden");
+            otherContent.removeEventListener("transitionend", handler);
+          });
         }
       });
 
@@ -276,7 +286,10 @@
         parent.classList.remove("open");
         btn.setAttribute("aria-expanded", "false");
         content.style.maxHeight = null;
-        setTimeout(function () { content.classList.add("hidden"); }, 300);
+        content.addEventListener("transitionend", function handler() {
+          content.classList.add("hidden");
+          content.removeEventListener("transitionend", handler);
+        });
       } else {
         parent.classList.add("open");
         btn.setAttribute("aria-expanded", "true");
@@ -287,48 +300,57 @@
   });
 
   // ── Dashboard carousel navigation ──
-  var dashTrack = document.getElementById("dash-track");
-  var dashDots = document.querySelectorAll(".dash-dot");
-  var dashPrev = document.querySelector(".dash-arrow-prev");
-  var dashNext = document.querySelector(".dash-arrow-next");
+  const dashTrack = document.getElementById("dash-track");
+  const dashDots = document.querySelectorAll(".dash-dot");
+  const dashPrev = document.querySelector(".dash-arrow-prev");
+  const dashNext = document.querySelector(".dash-arrow-next");
 
   if (dashTrack && dashDots.length) {
     // Measure slide step dynamically (slide width + gap)
     function getSlideStep() {
-      var slides = dashTrack.querySelectorAll(".dash-slide");
+      const slides = dashTrack.querySelectorAll(".dash-slide");
       if (slides.length < 2) return slides.length ? slides[0].offsetWidth + 16 : 0;
       return slides[1].offsetLeft - slides[0].offsetLeft;
     }
 
     function updateDashDots() {
-      var step = getSlideStep();
+      const step = getSlideStep();
       if (!step) return;
-      var activeIndex = Math.round(dashTrack.scrollLeft / step);
+      let activeIndex = Math.round(dashTrack.scrollLeft / step);
       activeIndex = Math.max(0, Math.min(activeIndex, dashDots.length - 1));
       dashDots.forEach(function (dot, i) {
         dot.classList.toggle("active", i === activeIndex);
       });
     }
 
-    dashTrack.addEventListener("scroll", updateDashDots, { passive: true });
+    let dashScrollRafPending = false;
+    dashTrack.addEventListener("scroll", function () {
+      if (!dashScrollRafPending) {
+        dashScrollRafPending = true;
+        requestAnimationFrame(function () {
+          updateDashDots();
+          dashScrollRafPending = false;
+        });
+      }
+    }, { passive: true });
 
     dashDots.forEach(function (dot, i) {
       dot.addEventListener("click", function () {
-        var step = getSlideStep();
+        const step = getSlideStep();
         if (step) dashTrack.scrollTo({ left: step * i, behavior: "smooth" });
       });
     });
 
     if (dashPrev) {
       dashPrev.addEventListener("click", function () {
-        var step = getSlideStep();
+        const step = getSlideStep();
         if (step) dashTrack.scrollBy({ left: -step, behavior: "smooth" });
       });
     }
 
     if (dashNext) {
       dashNext.addEventListener("click", function () {
-        var step = getSlideStep();
+        const step = getSlideStep();
         if (step) dashTrack.scrollBy({ left: step, behavior: "smooth" });
       });
     }
@@ -337,26 +359,26 @@
     updateDashDots();
   }
 
-  // ── Scroll progress indicator — clamped for iOS rubber-band scrolling ──
-  var progressBar = document.querySelector(".scroll-progress");
+  // ── Scroll progress indicator — compositor-friendly scaleX, clamped for iOS rubber-band ──
+  const progressBar = document.querySelector(".scroll-progress");
   if (progressBar) {
     window.addEventListener("scroll", function () {
-      var scrollTop = window.scrollY;
-      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      progress = Math.max(0, Math.min(100, progress));
-      progressBar.style.width = progress + "%";
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      let progress = docHeight > 0 ? scrollTop / docHeight : 0;
+      progress = Math.max(0, Math.min(1, progress));
+      progressBar.style.transform = "scaleX(" + progress + ")";
     }, { passive: true });
   }
 
   // ── Cursor glow — pointer devices only (not touch iPads) ──
   if (!prefersReducedMotion && hasPointer) {
-    var glow = document.querySelector(".cursor-glow");
+    const glow = document.querySelector(".cursor-glow");
     if (glow) {
-      var glowVisible = false;
-      var rafPending = false;
-      var glowX = 0;
-      var glowY = 0;
+      let glowVisible = false;
+      let rafPending = false;
+      let glowX = 0;
+      let glowY = 0;
 
       document.addEventListener("mousemove", function (e) {
         glowX = e.clientX;
@@ -384,14 +406,14 @@
 
   // ── Touch ripple — purple burst on tap (mobile replacement for cursor glow) ──
   if (isTouch && !prefersReducedMotion) {
-    var ripple = document.createElement("div");
+    const ripple = document.createElement("div");
     ripple.className = "touch-ripple";
     ripple.setAttribute("aria-hidden", "true");
     document.body.appendChild(ripple);
 
     document.addEventListener("touchstart", function (e) {
       if (!e.touches || !e.touches.length) return;
-      var touch = e.touches[0];
+      const touch = e.touches[0];
 
       ripple.style.left = touch.clientX + "px";
       ripple.style.top = touch.clientY + "px";
@@ -407,34 +429,50 @@
     }, { passive: true });
   }
 
-  // ── Logo marquee — tap to toggle pause on touch devices ──
-  if (isTouch) {
-    var marqueeContainer = document.querySelector(".logo-marquee");
-    if (marqueeContainer) {
-      var marqueePaused = false;
-      var marqueeParent = marqueeContainer.parentElement;
-      if (marqueeParent) {
-        marqueeParent.addEventListener("touchstart", function () {
-          marqueePaused = !marqueePaused;
-          marqueeContainer.style.animationPlayState = marqueePaused ? "paused" : "running";
-        }, { passive: true });
-      }
+  // ── Logo marquee — tap to toggle pause on touch devices, keyboard accessible ──
+  const marqueeContainer = document.querySelector(".logo-marquee");
+  if (marqueeContainer) {
+    let marqueePaused = false;
+    const marqueeParent = marqueeContainer.parentElement;
+
+    function toggleMarquee() {
+      marqueePaused = !marqueePaused;
+      // Pause all marquee tracks in the section
+      const allTracks = marqueeParent ? marqueeParent.parentElement.querySelectorAll(".logo-marquee") : [marqueeContainer];
+      allTracks.forEach(function (track) {
+        track.style.animationPlayState = marqueePaused ? "paused" : "running";
+      });
+    }
+
+    if (isTouch && marqueeParent) {
+      marqueeParent.addEventListener("touchstart", toggleMarquee, { passive: true });
+    }
+
+    // Keyboard-accessible pause button
+    const pauseBtn = document.getElementById("marquee-pause");
+    if (pauseBtn) {
+      pauseBtn.addEventListener("click", function () {
+        toggleMarquee();
+        pauseBtn.setAttribute("aria-pressed", String(marqueePaused));
+        pauseBtn.textContent = marqueePaused ? "Play" : "Pause";
+      });
     }
   }
 
   // ── Gold particle canvas — with visibility + viewport gating ──
-  var canvas = document.querySelector(".particle-canvas canvas");
+  const canvas = document.querySelector(".particle-canvas canvas");
   if (canvas && !prefersReducedMotion) {
-    var ctx = canvas.getContext("2d");
-    var particles = [];
-    var particleCount = isTouch ? 20 : 40;
-    var particleRafId = null;
-    var resizeTimer = null;
-    var heroVisible = true;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    const particles = [];
+    const particleCount = isTouch ? 20 : 40;
+    let particleRafId = null;
+    let resizeTimer = null;
+    let heroVisible = true;
 
     function resizeCanvas() {
-      var newW = canvas.parentElement.offsetWidth;
-      var newH = canvas.parentElement.offsetHeight;
+      const newW = canvas.parentElement.offsetWidth;
+      const newH = canvas.parentElement.offsetHeight;
       if (canvas.width !== newW || canvas.height !== newH) {
         canvas.width = newW;
         canvas.height = newH;
@@ -447,7 +485,7 @@
       resizeTimer = setTimeout(resizeCanvas, 150);
     }, { passive: true });
 
-    for (var i = 0; i < particleCount; i++) {
+    for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
@@ -473,8 +511,8 @@
 
     function drawParticles() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (var j = 0; j < particles.length; j++) {
-        var p = particles[j];
+      for (let j = 0; j < particles.length; j++) {
+        const p = particles[j];
         p.x += p.speedX;
         p.y += p.speedY;
         p.pulse += 0.02;
@@ -484,7 +522,7 @@
         if (p.y < 0) p.y = canvas.height;
         if (p.y > canvas.height) p.y = 0;
 
-        var flickerOpacity = p.opacity * (0.7 + 0.3 * Math.sin(p.pulse));
+        const flickerOpacity = p.opacity * (0.7 + 0.3 * Math.sin(p.pulse));
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = "rgba(151, 117, 250, " + flickerOpacity + ")";
@@ -495,7 +533,7 @@
 
     // IntersectionObserver to pause particles when hero is off-screen
     if ("IntersectionObserver" in window) {
-      var heroObserver = new IntersectionObserver(
+      const heroObserver = new IntersectionObserver(
         function (entries) {
           entries.forEach(function (entry) {
             heroVisible = entry.isIntersecting;
