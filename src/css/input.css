@@ -307,9 +307,88 @@ button:focus-visible {
   50% { transform: scale(1.8); opacity: 0; }
 }
 
-/* ===== Section divider ===== */
+/* ===== Section divider — angled clip for differentiation ===== */
 .section-divider {
   border-image: linear-gradient(90deg, transparent, var(--color-primary-700), transparent) 1;
+}
+
+/* Angled top edge on alternating sections */
+.section-angle {
+  position: relative;
+  clip-path: polygon(0 3vw, 100% 0, 100% 100%, 0 100%);
+  margin-top: -3vw;
+  padding-top: calc(3vw + 4rem);
+}
+
+.section-angle-reverse {
+  position: relative;
+  clip-path: polygon(0 0, 100% 3vw, 100% 100%, 0 100%);
+  margin-top: -3vw;
+  padding-top: calc(3vw + 4rem);
+}
+
+/* ===== Scroll progress bar ===== */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-accent-600), var(--color-accent-400), var(--color-accent-300));
+  z-index: 60;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+/* ===== Cursor glow — follows pointer on desktop ===== */
+.cursor-glow {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 160, 23, 0.06), transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  filter: blur(40px);
+}
+
+/* ===== Gold particle canvas ===== */
+.particle-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* ===== Diagonal gold accent stripe ===== */
+.gold-stripe {
+  position: relative;
+  overflow: hidden;
+}
+
+.gold-stripe::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 1px;
+  height: 200%;
+  background: linear-gradient(180deg, transparent, rgba(212, 160, 23, 0.3), transparent);
+  transform: rotate(15deg);
+}
+
+.gold-stripe::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: 25%;
+  width: 1px;
+  height: 200%;
+  background: linear-gradient(180deg, transparent, rgba(212, 160, 23, 0.15), transparent);
+  transform: rotate(15deg);
 }
 
 /* ===== Button press ===== */
@@ -614,6 +693,21 @@ button:focus-visible {
     animation: none;
     opacity: 1;
     transform: none;
+  }
+
+  .cursor-glow {
+    display: none;
+  }
+
+  .particle-canvas {
+    display: none;
+  }
+
+  .section-angle,
+  .section-angle-reverse {
+    clip-path: none;
+    margin-top: 0;
+    padding-top: 4rem;
   }
 }
 

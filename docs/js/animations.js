@@ -145,4 +145,87 @@
 
     setTimeout(tick, 800);
   });
+
+  // ── Scroll progress indicator ──
+  var progressBar = document.querySelector(".scroll-progress");
+  if (progressBar) {
+    window.addEventListener("scroll", function () {
+      var scrollTop = window.scrollY;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = progress + "%";
+    }, { passive: true });
+  }
+
+  // ── Cursor glow — desktop only ──
+  if (!prefersReducedMotion && window.innerWidth > 768) {
+    var glow = document.querySelector(".cursor-glow");
+    if (glow) {
+      var glowVisible = false;
+      document.addEventListener("mousemove", function (e) {
+        if (!glowVisible) {
+          glow.style.opacity = "1";
+          glowVisible = true;
+        }
+        glow.style.left = e.clientX + "px";
+        glow.style.top = e.clientY + "px";
+      }, { passive: true });
+
+      document.addEventListener("mouseleave", function () {
+        glow.style.opacity = "0";
+        glowVisible = false;
+      });
+    }
+  }
+
+  // ── Gold particle canvas — floating dots in hero ──
+  var canvas = document.querySelector(".particle-canvas canvas");
+  if (canvas && !prefersReducedMotion) {
+    var ctx = canvas.getContext("2d");
+    var particles = [];
+    var particleCount = 40;
+
+    function resizeCanvas() {
+      canvas.width = canvas.parentElement.offsetWidth;
+      canvas.height = canvas.parentElement.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas, { passive: true });
+
+    for (var i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 1.5 + 0.5,
+        opacity: Math.random() * 0.4 + 0.1,
+        speedX: (Math.random() - 0.5) * 0.3,
+        speedY: (Math.random() - 0.5) * 0.2 - 0.1,
+        pulse: Math.random() * Math.PI * 2
+      });
+    }
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (var j = 0; j < particles.length; j++) {
+        var p = particles[j];
+        p.x += p.speedX;
+        p.y += p.speedY;
+        p.pulse += 0.02;
+
+        // Wrap around edges
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+
+        var flickerOpacity = p.opacity * (0.7 + 0.3 * Math.sin(p.pulse));
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(212, 160, 23, " + flickerOpacity + ")";
+        ctx.fill();
+      }
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+  }
 })();
