@@ -22,8 +22,8 @@ module.exports = {
     address: {},
   },
   colors: {
-    primary: "#0F0E0A",
-    accent: "#D4A017",
+    primary: "#110B30",
+    accent: "#9775FA",
   },
   fonts: {
     heading: "'Space Grotesk', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",

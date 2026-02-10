@@ -252,6 +252,40 @@
     });
   });
 
+  // ── FAQ accordion toggle ──
+  var faqToggles = document.querySelectorAll(".faq-toggle");
+  faqToggles.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var parent = btn.parentElement;
+      var content = parent.querySelector(".faq-content");
+      var isOpen = parent.classList.contains("open");
+
+      // Close all others
+      faqToggles.forEach(function (other) {
+        var otherParent = other.parentElement;
+        if (otherParent !== parent && otherParent.classList.contains("open")) {
+          otherParent.classList.remove("open");
+          other.setAttribute("aria-expanded", "false");
+          var otherContent = otherParent.querySelector(".faq-content");
+          otherContent.style.maxHeight = null;
+          setTimeout(function () { otherContent.classList.add("hidden"); }, 300);
+        }
+      });
+
+      if (isOpen) {
+        parent.classList.remove("open");
+        btn.setAttribute("aria-expanded", "false");
+        content.style.maxHeight = null;
+        setTimeout(function () { content.classList.add("hidden"); }, 300);
+      } else {
+        parent.classList.add("open");
+        btn.setAttribute("aria-expanded", "true");
+        content.classList.remove("hidden");
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    });
+  });
+
   // ── Scroll progress indicator — clamped for iOS rubber-band scrolling ──
   var progressBar = document.querySelector(".scroll-progress");
   if (progressBar) {
@@ -297,7 +331,7 @@
     }
   }
 
-  // ── Touch ripple — gold burst on tap (mobile replacement for cursor glow) ──
+  // ── Touch ripple — purple burst on tap (mobile replacement for cursor glow) ──
   if (isTouch && !prefersReducedMotion) {
     var ripple = document.createElement("div");
     ripple.className = "touch-ripple";
