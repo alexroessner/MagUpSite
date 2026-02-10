@@ -1,14 +1,17 @@
 /**
  * GEO 42 Animation Engine
- * Scroll reveals, animated counters, and typewriter effects
+ * Scroll reveals, animated counters, typewriter effects, and touch interactions
  * Respects prefers-reduced-motion for all animations
  * Optimized for iOS Safari: visibility gating, touch detection, debounced resize
+ * Mobile-first: touch ripple, tap-to-pause marquee, reduced particle count
  */
 (function () {
   "use strict";
 
   var motionQuery = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
   var prefersReducedMotion = motionQuery && motionQuery.matches;
+  var isTouch = window.matchMedia && window.matchMedia("(hover: none)").matches;
+  var hasPointer = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   // Listen for runtime reduced-motion changes (e.g. iOS Settings toggle)
   if (motionQuery && motionQuery.addEventListener) {
@@ -33,8 +36,26 @@
     );
     revealEls.forEach(function (el) { observer.observe(el); });
   } else {
-    // Fallback: show everything immediately
     revealEls.forEach(function (el) { el.classList.add("visible"); });
+  }
+
+  // ── Mobile: scroll-triggered glow-border activation ──
+  if (isTouch && !prefersReducedMotion && "IntersectionObserver" in window) {
+    var glowCards = document.querySelectorAll(".glow-border");
+    if (glowCards.length) {
+      var glowObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              glowObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      glowCards.forEach(function (el) { glowObserver.observe(el); });
+    }
   }
 
   // ── Animated bar fills on scroll ──
@@ -68,7 +89,6 @@
   var counters = document.querySelectorAll("[data-count]");
   if (counters.length && "IntersectionObserver" in window) {
     if (prefersReducedMotion) {
-      // Show final values immediately for reduced motion
       counters.forEach(function (el) {
         var target = el.getAttribute("data-count");
         var prefix = el.getAttribute("data-prefix") || "";
@@ -117,7 +137,6 @@
     var words = el.getAttribute("data-typewriter").split("|");
     if (words.length < 2) return;
 
-    // Show first word statically for reduced motion
     if (prefersReducedMotion) {
       el.textContent = words[0];
       return;
@@ -157,7 +176,6 @@
 
     typeTimerId = setTimeout(tick, 800);
 
-    // Pause typewriter when page is hidden (iOS battery optimization)
     document.addEventListener("visibilitychange", function () {
       if (document.hidden) {
         paused = true;
@@ -182,7 +200,6 @@
   }
 
   // ── Cursor glow — pointer devices only (not touch iPads) ──
-  var hasPointer = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   if (!prefersReducedMotion && hasPointer) {
     var glow = document.querySelector(".cursor-glow");
     if (glow) {
@@ -198,7 +215,6 @@
           glow.style.opacity = "1";
           glowVisible = true;
         }
-        // Batch style updates to rAF to avoid layout thrashing on high-frequency pointers
         if (!rafPending) {
           rafPending = true;
           requestAnimationFrame(function () {
@@ -216,19 +232,59 @@
     }
   }
 
-  // ── Gold particle canvas — with visibility gating for iOS battery ──
+  // ── Touch ripple — gold burst on tap (mobile replacement for cursor glow) ──
+  if (isTouch && !prefersReducedMotion) {
+    var ripple = document.createElement("div");
+    ripple.className = "touch-ripple";
+    ripple.setAttribute("aria-hidden", "true");
+    document.body.appendChild(ripple);
+
+    document.addEventListener("touchstart", function (e) {
+      if (!e.touches || !e.touches.length) return;
+      var touch = e.touches[0];
+
+      ripple.style.left = touch.clientX + "px";
+      ripple.style.top = touch.clientY + "px";
+
+      // Reset and replay animation
+      ripple.classList.remove("active");
+      void ripple.offsetWidth;
+      ripple.classList.add("active");
+
+      setTimeout(function () {
+        ripple.classList.remove("active");
+      }, 600);
+    }, { passive: true });
+  }
+
+  // ── Logo marquee — tap to toggle pause on touch devices ──
+  if (isTouch) {
+    var marqueeContainer = document.querySelector(".logo-marquee");
+    if (marqueeContainer) {
+      var marqueePaused = false;
+      var marqueeParent = marqueeContainer.parentElement;
+      if (marqueeParent) {
+        marqueeParent.addEventListener("touchstart", function () {
+          marqueePaused = !marqueePaused;
+          marqueeContainer.style.animationPlayState = marqueePaused ? "paused" : "running";
+        }, { passive: true });
+      }
+    }
+  }
+
+  // ── Gold particle canvas — with visibility + viewport gating ──
   var canvas = document.querySelector(".particle-canvas canvas");
   if (canvas && !prefersReducedMotion) {
     var ctx = canvas.getContext("2d");
     var particles = [];
-    var particleCount = 40;
+    var particleCount = isTouch ? 20 : 40;
     var particleRafId = null;
     var resizeTimer = null;
+    var heroVisible = true;
 
     function resizeCanvas() {
       var newW = canvas.parentElement.offsetWidth;
       var newH = canvas.parentElement.offsetHeight;
-      // Only resize if dimensions actually changed (avoids iOS address bar flicker)
       if (canvas.width !== newW || canvas.height !== newH) {
         canvas.width = newW;
         canvas.height = newH;
@@ -236,7 +292,6 @@
     }
     resizeCanvas();
 
-    // Debounced resize to avoid iOS address bar transition flicker
     window.addEventListener("resize", function () {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(resizeCanvas, 150);
@@ -254,6 +309,18 @@
       });
     }
 
+    function startParticles() {
+      if (particleRafId || document.hidden || !heroVisible) return;
+      drawParticles();
+    }
+
+    function stopParticles() {
+      if (particleRafId) {
+        cancelAnimationFrame(particleRafId);
+        particleRafId = null;
+      }
+    }
+
     function drawParticles() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       for (var j = 0; j < particles.length; j++) {
@@ -262,7 +329,6 @@
         p.y += p.speedY;
         p.pulse += 0.02;
 
-        // Wrap around edges
         if (p.x < 0) p.x = canvas.width;
         if (p.x > canvas.width) p.x = 0;
         if (p.y < 0) p.y = canvas.height;
@@ -276,18 +342,28 @@
       }
       particleRafId = requestAnimationFrame(drawParticles);
     }
-    drawParticles();
 
-    // Pause particle animation when page is hidden (iOS battery optimization)
+    // IntersectionObserver to pause particles when hero is off-screen
+    if ("IntersectionObserver" in window) {
+      var heroObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            heroVisible = entry.isIntersecting;
+            if (heroVisible) startParticles();
+            else stopParticles();
+          });
+        },
+        { threshold: 0 }
+      );
+      heroObserver.observe(canvas.parentElement);
+    }
+
+    startParticles();
+
+    // Pause when page is hidden (iOS battery optimization)
     document.addEventListener("visibilitychange", function () {
-      if (document.hidden) {
-        if (particleRafId) {
-          cancelAnimationFrame(particleRafId);
-          particleRafId = null;
-        }
-      } else if (!particleRafId) {
-        drawParticles();
-      }
+      if (document.hidden) stopParticles();
+      else startParticles();
     });
   }
 })();

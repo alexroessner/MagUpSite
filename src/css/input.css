@@ -282,11 +282,22 @@ button:focus-visible {
               border-color 0.3s ease;
 }
 
+/* Desktop: hover lift */
 @media (hover: hover) {
   .card-lift:hover {
     transform: translateY(-6px) scale(1.02);
     box-shadow: 0 24px 60px -16px rgb(212 160 23 / 20%),
                 0 0 0 1px rgb(212 160 23 / 15%);
+  }
+}
+
+/* Touch: active press — responsive tap feedback */
+@media (hover: none) {
+  .card-lift:active {
+    transform: scale(0.97);
+    box-shadow: 0 4px 20px -4px rgb(212 160 23 / 25%),
+                inset 0 1px 0 rgb(212 160 23 / 15%);
+    transition-duration: 0.1s;
   }
 }
 
@@ -300,8 +311,10 @@ button:focus-visible {
   border: 1px solid rgb(212 160 23 / 8%);
   box-shadow: 0 8px 32px -8px rgb(0 0 0 / 40%),
               inset 0 1px 0 rgb(212 160 23 / 6%);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Desktop: hover brighten */
 @media (hover: hover) {
   .glass-card:hover {
     background: rgb(24 23 18 / 75%);
@@ -309,6 +322,18 @@ button:focus-visible {
     box-shadow: 0 16px 48px -12px rgb(0 0 0 / 50%),
                 0 0 30px -10px rgb(212 160 23 / 12%),
                 inset 0 1px 0 rgb(212 160 23 / 10%);
+  }
+}
+
+/* Touch: active press — glass brightens on tap */
+@media (hover: none) {
+  .glass-card:active {
+    background: rgb(24 23 18 / 80%);
+    border-color: rgb(212 160 23 / 25%);
+    box-shadow: 0 4px 16px -4px rgb(0 0 0 / 50%),
+                0 0 20px -8px rgb(212 160 23 / 15%),
+                inset 0 1px 0 rgb(212 160 23 / 12%);
+    transition-duration: 0.1s;
   }
 }
 
@@ -384,7 +409,7 @@ button:focus-visible {
   background: linear-gradient(90deg, var(--color-accent-600), var(--color-accent-400), var(--color-accent-600));
 }
 
-/* ===== Glow border — animated gradient border on hover ===== */
+/* ===== Glow border — animated gradient border ===== */
 .glow-border {
   position: relative;
 }
@@ -404,6 +429,7 @@ button:focus-visible {
   transition: opacity 0.4s ease;
 }
 
+/* Desktop: rotate on hover */
 @media (hover: hover) {
   .glow-border:hover::before {
     opacity: 1;
@@ -411,8 +437,43 @@ button:focus-visible {
   }
 }
 
+/* Touch: glow border activates on scroll-reveal — single sweep then fade */
+@media (hover: none) {
+  .glow-border.visible::before {
+    opacity: 1;
+    animation: glow-border-sweep 2s ease forwards;
+  }
+
+  .glow-border:active::before {
+    opacity: 1;
+    animation: rotate-border 2s linear infinite;
+  }
+}
+
 @keyframes rotate-border {
   to { --border-angle: 360deg; }
+}
+
+@keyframes glow-border-sweep {
+  0% {
+    --border-angle: 0deg;
+
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    --border-angle: 360deg;
+
+    opacity: 0;
+  }
 }
 
 @property --border-angle {
@@ -516,9 +577,48 @@ button:focus-visible {
   z-index: 1;
   transform: translate(-50%, -50%);
   opacity: 0;
-  transition: opacity 0.4s ease;
-  filter: blur(40px);
+  display: block;
+}
+
+/* Hide cursor glow on touch devices — replaced by touch ripple */
+@media (hover: none) {
+  .cursor-glow {
+    display: none;
+  }
+}
+
+/* ===== Touch ripple — gold burst on tap (mobile replacement for cursor glow) ===== */
+.touch-ripple {
+  position: fixed;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(212 160 23 / 15%), rgb(212 160 23 / 5%) 40%, transparent 70%);
+  pointer-events: none;
+  z-index: 2;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
   will-change: transform, opacity;
+}
+
+.touch-ripple.active {
+  animation: ripple-burst 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes ripple-burst {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
 }
 
 /* ===== Gold particle canvas ===== */
@@ -814,6 +914,46 @@ button:focus-visible {
   background-position: 0 0;
 }
 
+/* ===== Mobile GPU optimizations — reduce blur radii to maintain smooth scroll ===== */
+@media (width <= 768px) {
+  .site-header {
+    -webkit-backdrop-filter: blur(12px) saturate(1.3);
+    backdrop-filter: blur(12px) saturate(1.3);
+  }
+
+  .glass-card {
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+    backdrop-filter: blur(12px) saturate(1.2);
+  }
+
+  .card-featured {
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+    backdrop-filter: blur(12px) saturate(1.2);
+  }
+
+  .hero-glow {
+    width: 350px;
+    height: 250px;
+    filter: blur(50px);
+  }
+
+  .ambient-glow {
+    width: 300px;
+    height: 180px;
+    filter: blur(40px);
+  }
+
+  /* Shorter shimmer cycle on mobile */
+  .shimmer::after {
+    animation-duration: 4s;
+  }
+
+  /* Smaller hero noise tile for mobile rendering */
+  .hero-noise::before {
+    background-size: 128px 128px;
+  }
+}
+
 /* ===== Reduced motion ===== */
 @media (prefers-reduced-motion: reduce) {
   .reveal,
@@ -877,7 +1017,8 @@ button:focus-visible {
     transform: none;
   }
 
-  .cursor-glow {
+  .cursor-glow,
+  .touch-ripple {
     display: none;
   }
 
@@ -894,6 +1035,16 @@ button:focus-visible {
 
   .glow-border::before {
     animation: none;
+  }
+
+  .gradient-reveal {
+    transition: none;
+  }
+
+  .card-lift:active,
+  .glass-card:active {
+    transform: none;
+    transition: none;
   }
 }
 
