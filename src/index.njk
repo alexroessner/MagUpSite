@@ -22,7 +22,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
       <span class="text-xs sm:text-sm font-medium tracking-[0.2em] uppercase text-accent-400/80">Trusted by 1,000+ enterprise brands worldwide</span>
     </div>
 
-    <h1 class="reveal text-display text-[clamp(1.875rem,8vw,2.75rem)] sm:text-5xl md:text-6xl lg:text-8xl xl:text-[6.5rem] mb-8 text-glow">
+    <h1 class="reveal text-display text-[min(2.75rem,10vw)] sm:text-5xl md:text-6xl lg:text-8xl xl:text-[6.5rem] mb-8 text-glow">
       <span class="gradient-text">Become the</span><br>
       <span class="whitespace-nowrap"><span class="gradient-text">Answer on </span><span class="text-accent-400" data-typewriter="ChatGPT|Perplexity|Gemini|Google AI|DeepSeek|Claude" role="status" aria-live="polite">ChatGPT</span></span>
     </h1>
@@ -55,13 +55,13 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
     <div class="overflow-hidden">
       <div class="logo-marquee gap-16 items-center whitespace-nowrap">
         {%- for client in pageContent.clients %}
-        <div class="flex-shrink-0 flex items-center justify-center h-10 px-4 opacity-40 hover:opacity-80 transition-opacity">
-          <span class="text-primary-200 font-heading font-semibold text-sm tracking-[0.15em] uppercase">{{ client }}</span>
+        <div class="flex-shrink-0 flex items-center justify-center h-10 px-4 opacity-40 sm:opacity-40 max-sm:opacity-55 hover:opacity-80 transition-opacity">
+          <span class="text-primary-200 font-heading font-semibold text-sm sm:text-sm max-sm:text-base tracking-[0.15em] uppercase">{{ client }}</span>
         </div>
         {%- endfor %}
         {%- for client in pageContent.clients %}
-        <div class="flex-shrink-0 flex items-center justify-center h-10 px-4 opacity-40 hover:opacity-80 transition-opacity" aria-hidden="true">
-          <span class="text-primary-200 font-heading font-semibold text-sm tracking-[0.15em] uppercase">{{ client }}</span>
+        <div class="flex-shrink-0 flex items-center justify-center h-10 px-4 opacity-40 sm:opacity-40 max-sm:opacity-55 hover:opacity-80 transition-opacity" aria-hidden="true">
+          <span class="text-primary-200 font-heading font-semibold text-sm sm:text-sm max-sm:text-base tracking-[0.15em] uppercase">{{ client }}</span>
         </div>
         {%- endfor %}
       </div>
@@ -144,7 +144,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
             <div class="text-primary-400 text-sm mt-2">Share of Voice</div>
           </div>
           <div class="text-center p-4 bg-primary-900/50 rounded-xl">
-            <div class="text-accent-400 text-3xl sm:text-4xl font-bold counter" data-count="4">0</div>
+            <div class="text-accent-400 text-3xl sm:text-4xl font-bold counter" data-count="10">0</div>
             <div class="text-primary-400 text-sm mt-2">AI Platforms</div>
           </div>
           <div class="text-center p-4 bg-primary-900/50 rounded-xl">
@@ -152,15 +152,17 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
             <div class="text-primary-400 text-sm mt-2">Direct Traffic from AI</div>
           </div>
         </div>
-        <div class="flex flex-wrap items-center justify-between gap-4">
-          <div class="flex items-center gap-3 text-sm text-primary-400">
-            <span>Deployed across:</span>
-            {%- for platform in ["Gemini", "ChatGPT", "Perplexity", "DeepSeek"] %}
-            <span class="px-2 py-1 bg-primary-900/50 border border-primary-700/50 rounded text-xs text-primary-300">{{ platform }}</span>
-            {%- endfor %}
+        <div class="space-y-4 sm:space-y-0 sm:flex sm:flex-wrap sm:items-center sm:justify-between sm:gap-4">
+          <div class="text-sm text-primary-400">
+            <span class="block sm:inline mb-2 sm:mb-0 sm:mr-2">Deployed across:</span>
+            <span class="flex flex-wrap gap-1.5 sm:inline-flex sm:gap-2">
+              {%- for platform in ["ChatGPT", "Gemini", "Perplexity", "DeepSeek", "Claude", "Google AI", "Copilot", "Meta AI", "Grok", "Mistral"] %}
+              <span class="px-2 py-0.5 sm:py-1 bg-primary-900/50 border border-primary-700/50 rounded text-xs text-primary-300">{{ platform }}</span>
+              {%- endfor %}
+            </span>
           </div>
           <a href="{{ '/case-study-regaining-ai-voice-share/' | url }}"
-             class="btn-press inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors">
+             class="btn-press inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors text-sm">
             Full case study
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
           </a>

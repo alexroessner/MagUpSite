@@ -21,13 +21,22 @@
   }
 
   // ── Scroll-triggered reveals via IntersectionObserver ──
-  var revealEls = document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger, .stagger-pop, .glow-reveal");
-  if (revealEls.length && "IntersectionObserver" in window && !prefersReducedMotion) {
+  var isMobile = window.innerWidth < 640;
+  var revealEls = document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale, .glow-reveal");
+  var staggerEls = document.querySelectorAll(".stagger, .stagger-pop");
+
+  if ("IntersectionObserver" in window && !prefersReducedMotion) {
     var observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
+            // Mobile stagger children: animate directly via style (bypasses parent .visible)
+            if (entry.target.hasAttribute("data-stagger-child")) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+            } else {
+              entry.target.classList.add("visible");
+            }
             observer.unobserve(entry.target);
           }
         });
@@ -35,8 +44,22 @@
       { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
     );
     revealEls.forEach(function (el) { observer.observe(el); });
+
+    // Stagger: on mobile (single-column), observe each child individually for smooth per-card reveal
+    staggerEls.forEach(function (container) {
+      if (isMobile) {
+        var children = container.children;
+        for (var i = 0; i < children.length; i++) {
+          children[i].setAttribute("data-stagger-child", "");
+          observer.observe(children[i]);
+        }
+      } else {
+        observer.observe(container);
+      }
+    });
   } else {
     revealEls.forEach(function (el) { el.classList.add("visible"); });
+    staggerEls.forEach(function (el) { el.classList.add("visible"); });
   }
 
   // ── Mobile: scroll-triggered glow-border activation ──
