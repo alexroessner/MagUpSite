@@ -65,30 +65,30 @@ Create AI-optimized content that performs across both generative engines and tra
 Email: hello@geo42.ai
 
 ## Site Pages
-- Home: https://alexroessner.github.io/MagUpSite/
-- About: https://alexroessner.github.io/MagUpSite/about/
-- Services: https://alexroessner.github.io/MagUpSite/services/
-- Team: https://alexroessner.github.io/MagUpSite/team/
-- Contact: https://alexroessner.github.io/MagUpSite/contact/
-- 6 Walls Enterprises Face in Content Marketing: https://alexroessner.github.io/MagUpSite/6-walls-enterprises-face-in-content-marketing/
-- Key Shift in Brand Growth in the AI Era: https://alexroessner.github.io/MagUpSite/key-shift-in-brand-growth-in-the-ai-era/
-- Search Demand Has Not Changed But Entry Points Are Changing: https://alexroessner.github.io/MagUpSite/search-demand-has-not-changed-but-entry-points-are-changing/
-- AI Visibility &amp; Brand Presence: https://alexroessner.github.io/MagUpSite/ai-visibility-brand-presence/
-- Prompt &amp; Demand Intelligence: https://alexroessner.github.io/MagUpSite/prompt-demand-intelligence/
-- AI Response &amp; Citation Analytics: https://alexroessner.github.io/MagUpSite/ai-response-citation-analytics/
-- AI Crawler &amp; Technical Optimization: https://alexroessner.github.io/MagUpSite/ai-crawler-technical-optimization/
-- Traffic &amp; Attribution: https://alexroessner.github.io/MagUpSite/traffic-attribution/
-- Shopping &amp; Product Visibility: https://alexroessner.github.io/MagUpSite/shopping-product-visibility/
-- Proven Results: https://alexroessner.github.io/MagUpSite/proven-results/
-- Industry Verticals: https://alexroessner.github.io/MagUpSite/industry-verticals/
-- AI Platform Coverage: https://alexroessner.github.io/MagUpSite/ai-platform-coverage/
-- Core Value of GEO: https://alexroessner.github.io/MagUpSite/core-value-of-geo/
-- SEO vs GEO Comparison: https://alexroessner.github.io/MagUpSite/seo-vs-geo-comparison/
-- Market Size Evolution: https://alexroessner.github.io/MagUpSite/market-size-evolution/
-- End-to-End Process: https://alexroessner.github.io/MagUpSite/end-to-end-process/
-- Real-Time Monitoring Dashboard: https://alexroessner.github.io/MagUpSite/real-time-monitoring-dashboard/
-- Project Progress Tracking: https://alexroessner.github.io/MagUpSite/project-progress-tracking/
-- GEO Intelligent Dashboard: https://alexroessner.github.io/MagUpSite/geo-intelligent-dashboard/
-- 7 AI Agents: https://alexroessner.github.io/MagUpSite/7-ai-agents/
-- Product Architecture: https://alexroessner.github.io/MagUpSite/product-architecture/
-- Case Study: Regaining AI Voice Share: https://alexroessner.github.io/MagUpSite/case-study-regaining-ai-voice-share/
+- Home: https://alexroessner.github.io/
+- About: https://alexroessner.github.io/about/
+- Services: https://alexroessner.github.io/services/
+- Team: https://alexroessner.github.io/team/
+- Contact: https://alexroessner.github.io/contact/
+- 6 Walls Enterprises Face in Content Marketing: https://alexroessner.github.io/6-walls-enterprises-face-in-content-marketing/
+- Key Shift in Brand Growth in the AI Era: https://alexroessner.github.io/key-shift-in-brand-growth-in-the-ai-era/
+- Search Demand Has Not Changed But Entry Points Are Changing: https://alexroessner.github.io/search-demand-has-not-changed-but-entry-points-are-changing/
+- AI Visibility &amp; Brand Presence: https://alexroessner.github.io/ai-visibility-brand-presence/
+- Prompt &amp; Demand Intelligence: https://alexroessner.github.io/prompt-demand-intelligence/
+- AI Response &amp; Citation Analytics: https://alexroessner.github.io/ai-response-citation-analytics/
+- AI Crawler &amp; Technical Optimization: https://alexroessner.github.io/ai-crawler-technical-optimization/
+- Traffic &amp; Attribution: https://alexroessner.github.io/traffic-attribution/
+- Shopping &amp; Product Visibility: https://alexroessner.github.io/shopping-product-visibility/
+- Proven Results: https://alexroessner.github.io/proven-results/
+- Industry Verticals: https://alexroessner.github.io/industry-verticals/
+- AI Platform Coverage: https://alexroessner.github.io/ai-platform-coverage/
+- Core Value of GEO: https://alexroessner.github.io/core-value-of-geo/
+- SEO vs GEO Comparison: https://alexroessner.github.io/seo-vs-geo-comparison/
+- Market Size Evolution: https://alexroessner.github.io/market-size-evolution/
+- End-to-End Process: https://alexroessner.github.io/end-to-end-process/
+- Real-Time Monitoring Dashboard: https://alexroessner.github.io/real-time-monitoring-dashboard/
+- Project Progress Tracking: https://alexroessner.github.io/project-progress-tracking/
+- GEO Intelligent Dashboard: https://alexroessner.github.io/geo-intelligent-dashboard/
+- 7 AI Agents: https://alexroessner.github.io/7-ai-agents/
+- Product Architecture: https://alexroessner.github.io/product-architecture/
+- Case Study: Regaining AI Voice Share: https://alexroessner.github.io/case-study-regaining-ai-voice-share/

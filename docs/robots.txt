@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alexroessner.github.io/MagUpSite/sitemap.xml
+Sitemap: https://alexroessner.github.io/sitemap.xml
