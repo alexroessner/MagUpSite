@@ -1,37 +1,52 @@
-# MagUp
+# GEO 42
 
-> Content Marketing Brain for 1000+ Global Enterprises
+> AI Visibility Platform for 1000+ Global Enterprises
 
-GEO + SEO Content Marketing platform that helps global enterprises efficiently acquire customers through AI-optimized content strategies. MagUp combines Generative Engine Optimization (GEO) with traditional SEO to maximize brand visibility across both AI answer engines and conventional search.
+GEO 42 is the AI visibility platform that makes your brand the definitive answer across every generative engine — ChatGPT, Perplexity, Gemini, and beyond. We combine Generative Engine Optimization (GEO) with traditional SEO to maximize brand visibility across both AI answer engines and conventional search.
+
+## What is GEO?
+
+Generative Engine Optimization (GEO) is the practice of optimizing your brand's presence in AI-generated answers. Unlike traditional SEO where you compete for page rankings, GEO is binary — you are either the cited answer or you are invisible. There is no page two in AI search.
 
 ## Services
-- AI Visibility &amp; Brand Presence Tracking: Track how often your brand appears in AI answers, monitor brand mentions, measure share of visibility, analyze source citations, assess brand sentiment, and optimize content AEO performance across all major AI answer engines.
-- Prompt &amp; Demand Intelligence: Discover what millions of people ask AI with real-time search volume insights. Monitor prompt volume trends, topic-level demand, audience question patterns, and conversation trends versus traditional search.
-- AI Response &amp; Citation Analytics: Understand how AI models talk about your brand. Analyze frequency of appearance, response content, citation sources, referenced pages, and track ranking improvements over time through Answer Engine Insights.
-- AI Crawler &amp; Agent Analytics: Gain full visibility into how AI sees your website. Monitor AI crawler access, bot frequency, technical indexing, readability analysis, and content accessibility for AI retrieval.
-- Traffic &amp; Attribution Analytics: Measure the downstream impact of AI visibility. Track human traffic from AI search, attribute conversions to AI platforms, identify pages driving AI-sourced traffic, and prove content marketing ROI.
-- AI Shopping &amp; Product Visibility: Boost product visibility in ChatGPT Shopping and AI assistants. Track shopping placement, trigger keywords, response-level product analysis, and measure traffic and conversion impact from AI shopping.
-- GEO + SEO Content Marketing: Create AI-optimized content that performs across both generative engines and traditional search. MagUp&#39;s Content Marketing Brain efficiently acquires global customers through integrated GEO and SEO strategies.
+- AI Visibility & Brand Presence Tracking: Track how often your brand appears in AI answers, monitor brand mentions, measure share of visibility, analyze source citations, assess brand sentiment, and optimize content AEO performance across all major AI answer engines.
+- Prompt & Demand Intelligence: Discover what millions of people ask AI with real-time search volume insights. Monitor prompt volume trends, topic-level demand, audience question patterns, and conversation trends versus traditional search.
+- AI Response & Citation Analytics: Understand how AI models talk about your brand. Analyze frequency of appearance, response content, citation sources, referenced pages, and track ranking improvements over time through Answer Engine Insights.
+- AI Crawler & Agent Analytics: Gain full visibility into how AI sees your website. Monitor AI crawler access, bot frequency, technical indexing, readability analysis, and content accessibility for AI retrieval.
+- Traffic & Attribution Analytics: Measure the downstream impact of AI visibility. Track human traffic from AI search, attribute conversions to AI platforms, identify pages driving AI-sourced traffic, and prove content marketing ROI.
+- AI Shopping & Product Visibility: Boost product visibility in ChatGPT Shopping and AI assistants. Track shopping placement, trigger keywords, response-level product analysis, and measure traffic and conversion impact from AI shopping.
+- GEO + SEO Content Marketing: Create AI-optimized content that performs across both generative engines and traditional search. GEO 42's 7 AI agents efficiently acquire global customers through integrated GEO and SEO strategies.
+
+## Platform Coverage
+GEO 42 monitors and optimizes brand visibility across 10+ AI platforms: ChatGPT, Google AI, Perplexity, Gemini, Claude, Copilot, DeepSeek, Doubao, Qwen, and Kimi.
+
+## 7 AI Agents
+1. Discovery Agent — Surfaces high-intent keywords, emerging topics, and competitive gaps
+2. Brand Intelligence Agent — Monitors brand AI presence and competitor positioning
+3. Content Strategist — Produces publication-ready content using 10+ proven frameworks
+4. QA Editor — Reviews content against AI citation criteria and optimizes
+5. Engineering Agent — Transforms content into schema-rich web pages
+6. Distribution Agent — Publishes across 16+ global search engines and AI platforms
+7. Analytics Agent — Tracks impressions, citations, clicks, and engagement
 
 ## Contact
-- Email: hello@magup.io
+- Email: hello@geo42.ai
 - Website: https://alexroessner.github.io/MagUpSite/
 
 ## Pages
 - [Home](https://alexroessner.github.io/MagUpSite/)
 - [About](https://alexroessner.github.io/MagUpSite/about/)
 - [Services](https://alexroessner.github.io/MagUpSite/services/)
-- [Team](https://alexroessner.github.io/MagUpSite/team/)
 - [Contact](https://alexroessner.github.io/MagUpSite/contact/)
 - [6 Walls Enterprises Face in Content Marketing](https://alexroessner.github.io/MagUpSite/6-walls-enterprises-face-in-content-marketing/)
 - [Key Shift in Brand Growth in the AI Era](https://alexroessner.github.io/MagUpSite/key-shift-in-brand-growth-in-the-ai-era/)
 - [Search Demand Has Not Changed But Entry Points Are Changing](https://alexroessner.github.io/MagUpSite/search-demand-has-not-changed-but-entry-points-are-changing/)
-- [AI Visibility &amp; Brand Presence](https://alexroessner.github.io/MagUpSite/ai-visibility-brand-presence/)
-- [Prompt &amp; Demand Intelligence](https://alexroessner.github.io/MagUpSite/prompt-demand-intelligence/)
-- [AI Response &amp; Citation Analytics](https://alexroessner.github.io/MagUpSite/ai-response-citation-analytics/)
-- [AI Crawler &amp; Technical Optimization](https://alexroessner.github.io/MagUpSite/ai-crawler-technical-optimization/)
-- [Traffic &amp; Attribution](https://alexroessner.github.io/MagUpSite/traffic-attribution/)
-- [Shopping &amp; Product Visibility](https://alexroessner.github.io/MagUpSite/shopping-product-visibility/)
+- [AI Visibility & Brand Presence](https://alexroessner.github.io/MagUpSite/ai-visibility-brand-presence/)
+- [Prompt & Demand Intelligence](https://alexroessner.github.io/MagUpSite/prompt-demand-intelligence/)
+- [AI Response & Citation Analytics](https://alexroessner.github.io/MagUpSite/ai-response-citation-analytics/)
+- [AI Crawler & Technical Optimization](https://alexroessner.github.io/MagUpSite/ai-crawler-technical-optimization/)
+- [Traffic & Attribution](https://alexroessner.github.io/MagUpSite/traffic-attribution/)
+- [Shopping & Product Visibility](https://alexroessner.github.io/MagUpSite/shopping-product-visibility/)
 - [Proven Results](https://alexroessner.github.io/MagUpSite/proven-results/)
 - [Industry Verticals](https://alexroessner.github.io/MagUpSite/industry-verticals/)
 - [AI Platform Coverage](https://alexroessner.github.io/MagUpSite/ai-platform-coverage/)

@@ -74,6 +74,45 @@
         "isPartOf": { "@id": "{{ site.url }}/#website" },
         "about": { "@id": "{{ site.url }}/#organization" }
       }
+      {%- if page.url == "/" %},
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is Generative Engine Optimization (GEO)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Generative Engine Optimization (GEO) is the practice of optimizing your brand's presence in AI-generated answers. Unlike traditional SEO where you compete for page rankings, GEO is binary — you are either the cited answer or you are invisible."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What AI platforms does GEO 42 cover?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "GEO 42 monitors and optimizes brand visibility across 10+ AI platforms including ChatGPT, Google AI, Perplexity, Gemini, Claude, Copilot, DeepSeek, Doubao, Qwen, and Kimi."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is GEO different from SEO?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "SEO is linear — sites gradually climb rankings and multiple results coexist on page one. GEO is binary — AI cites a handful of sources per response. You are either the answer or invisible. There is no page two in AI search."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are the 7 AI Agents in GEO 42?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "GEO 42 deploys 7 specialized AI agents: Discovery Agent (keyword research), Brand Intelligence Agent (brand monitoring), Content Strategist (content creation), QA Editor (quality assurance), Engineering Agent (web publishing), Distribution Agent (multi-platform syndication), and Analytics Agent (performance tracking)."
+            }
+          }
+        ]
+      }
+      {%- endif %}
     ]
   }
   </script>

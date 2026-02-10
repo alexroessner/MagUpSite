@@ -317,9 +317,13 @@ button:focus-visible {
   transform: scale(0.97);
 }
 
-/* ===== Flywheel animation ===== */
+/* ===== Flywheel animation — single rotation on scroll reveal ===== */
 .flywheel-spin {
-  animation: spin-slow 20s linear infinite;
+  animation: none;
+}
+
+.flywheel-spin.visible {
+  animation: spin-slow 10s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes spin-slow {

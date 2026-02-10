@@ -104,21 +104,30 @@ fullWidth: true
       </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 stagger">
-      {%- set stages = [
-        { num: "1", title: "Expand Sources", subtitle: "Ensure Being Found", desc: "Make the brand a credible and positive information source when AI generates content. Get indexed across all relevant knowledge bases.", color: "accent-600" },
-        { num: "2", title: "Build Reputation", subtitle: "Ensure Being Recognized", desc: "Actively manage and optimize the brand's image and perception in the eyes of AI. Build authoritative endorsements and trust signals.", color: "accent-500" },
-        { num: "3", title: "Gain Recommendations", subtitle: "Ensure Being Adopted", desc: "Actively influence AI to guide and recommend your brand to users, rather than passively waiting for user clicks.", color: "accent-400" }
-      ] %}
-      {%- for stage in stages %}
       <div class="card-gold bg-primary-800 rounded-2xl p-8 border border-primary-700 text-center group hover:border-accent-500/40 transition-colors">
-        <div class="w-14 h-14 mx-auto bg-{{ stage.color }}/10 border border-{{ stage.color }}/30 rounded-2xl flex items-center justify-center mb-5">
-          <span class="text-{{ stage.color }} font-heading font-bold text-xl">{{ stage.num }}</span>
+        <div class="w-14 h-14 mx-auto bg-accent-600/10 border border-accent-600/30 rounded-2xl flex items-center justify-center mb-5">
+          <span class="text-accent-600 font-heading font-bold text-xl">1</span>
         </div>
-        <h3 class="font-heading text-xl font-semibold text-white mb-1">{{ stage.title }}</h3>
-        <p class="text-accent-400 text-sm font-medium mb-4">{{ stage.subtitle }}</p>
-        <p class="text-primary-400 text-sm leading-relaxed">{{ stage.desc }}</p>
+        <h3 class="font-heading text-xl font-semibold text-white mb-1">Expand Sources</h3>
+        <p class="text-accent-400 text-sm font-medium mb-4">Ensure Being Found</p>
+        <p class="text-primary-400 text-sm leading-relaxed">Make the brand a credible and positive information source when AI generates content. Get indexed across all relevant knowledge bases.</p>
       </div>
-      {%- endfor %}
+      <div class="card-gold bg-primary-800 rounded-2xl p-8 border border-primary-700 text-center group hover:border-accent-500/40 transition-colors">
+        <div class="w-14 h-14 mx-auto bg-accent-500/10 border border-accent-500/30 rounded-2xl flex items-center justify-center mb-5">
+          <span class="text-accent-500 font-heading font-bold text-xl">2</span>
+        </div>
+        <h3 class="font-heading text-xl font-semibold text-white mb-1">Build Reputation</h3>
+        <p class="text-accent-400 text-sm font-medium mb-4">Ensure Being Recognized</p>
+        <p class="text-primary-400 text-sm leading-relaxed">Actively manage and optimize the brand's image and perception in the eyes of AI. Build authoritative endorsements and trust signals.</p>
+      </div>
+      <div class="card-gold bg-primary-800 rounded-2xl p-8 border border-primary-700 text-center group hover:border-accent-500/40 transition-colors">
+        <div class="w-14 h-14 mx-auto bg-accent-400/10 border border-accent-400/30 rounded-2xl flex items-center justify-center mb-5">
+          <span class="text-accent-400 font-heading font-bold text-xl">3</span>
+        </div>
+        <h3 class="font-heading text-xl font-semibold text-white mb-1">Gain Recommendations</h3>
+        <p class="text-accent-400 text-sm font-medium mb-4">Ensure Being Adopted</p>
+        <p class="text-primary-400 text-sm leading-relaxed">Actively influence AI to guide and recommend your brand to users, rather than passively waiting for user clicks.</p>
+      </div>
     </div>
   </div>
 </section>

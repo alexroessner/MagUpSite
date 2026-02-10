@@ -6,8 +6,10 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 ---
 
 {# ============================================ #}
-{# Hero — Gold gradient with grid overlay        #}
+{# HOOK                                          #}
 {# ============================================ #}
+
+{# ---- Hero — Gold gradient with grid overlay ---- #}
 
 <section class="relative overflow-hidden bg-primary-950 text-white pt-20 pb-24 sm:pt-28 sm:pb-32 lg:pt-36 lg:pb-40">
   <div class="hero-grid" aria-hidden="true"></div>
@@ -22,7 +24,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 
     <h1 class="reveal font-heading text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] mb-6">
       <span class="gradient-text">Become the Answer</span><br>
-      <span class="text-white">on </span><span class="text-accent-400" data-typewriter="ChatGPT|Perplexity|Gemini|Google AI|DeepSeek|Claude">ChatGPT</span>
+      <span class="text-white">on </span><span class="text-accent-400" data-typewriter="ChatGPT|Perplexity|Gemini|Google AI|DeepSeek|Claude" role="status" aria-live="polite">ChatGPT</span>
     </h1>
 
     <p class="reveal text-lg sm:text-xl text-primary-300 max-w-2xl mx-auto mb-10 text-pretty">
@@ -43,9 +45,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
   </div>
 </section>
 
-{# ============================================ #}
-{# Client logos — Scrolling marquee               #}
-{# ============================================ #}
+{# ---- Client logos — Scrolling marquee ---- #}
 
 {%- if pageContent.clients.length %}
 <section class="py-10 sm:py-14 bg-primary-900 border-t border-b border-primary-800 overflow-hidden">
@@ -63,7 +63,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
         </div>
         {%- endfor %}
         {%- for client in pageContent.clients %}
-        <div class="flex-shrink-0 flex items-center justify-center h-12 px-6 bg-primary-800/50 border border-primary-700/50 rounded-lg">
+        <div class="flex-shrink-0 flex items-center justify-center h-12 px-6 bg-primary-800/50 border border-primary-700/50 rounded-lg" aria-hidden="true">
           <span class="text-primary-300 font-semibold text-base tracking-wide">{{ client }}</span>
         </div>
         {%- endfor %}
@@ -74,562 +74,10 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 {%- endif %}
 
 {# ============================================ #}
-{# KPI Stats — Animated counters with glow       #}
+{# PROOF                                         #}
 {# ============================================ #}
 
-<section class="py-12 sm:py-16 bg-primary-900">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="reveal grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-      <div class="kpi-glow text-center p-6 bg-primary-800/50 rounded-xl border border-primary-700/50">
-        <div class="text-3xl sm:text-4xl font-bold text-accent-400 counter" data-count="7">0</div>
-        <div class="text-sm text-primary-400 mt-2">AI Agents</div>
-      </div>
-      <div class="kpi-glow text-center p-6 bg-primary-800/50 rounded-xl border border-primary-700/50">
-        <div class="text-3xl sm:text-4xl font-bold text-accent-400 counter" data-count="10" data-suffix="+">0</div>
-        <div class="text-sm text-primary-400 mt-2">AI Platforms</div>
-      </div>
-      <div class="kpi-glow text-center p-6 bg-primary-800/50 rounded-xl border border-primary-700/50">
-        <div class="text-3xl sm:text-4xl font-bold text-accent-400 counter" data-count="1000" data-suffix="+">0</div>
-        <div class="text-sm text-primary-400 mt-2">Enterprises</div>
-      </div>
-      <div class="kpi-glow text-center p-6 bg-primary-800/50 rounded-xl border border-primary-700/50">
-        <div class="text-3xl sm:text-4xl font-bold text-accent-400 counter" data-count="450" data-prefix="+" data-suffix="%">0</div>
-        <div class="text-sm text-primary-400 mt-2">Brand Mentions</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-{# ============================================ #}
-{# Flywheel — The Visibility Growth Model         #}
-{# ============================================ #}
-
-<section class="py-16 sm:py-24 lg:py-28 bg-primary-900 border-t section-divider">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-      <div class="reveal-left">
-        <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">Growth Model</p>
-        <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-          The Visibility Flywheel
-        </h2>
-        <p class="text-primary-300 text-lg leading-relaxed mb-8">
-          GEO 42 operates on a compounding flywheel — more visibility leads to more trust, which drives more transactions, which generates more signals that increase visibility.
-        </p>
-        <div class="space-y-4">
-          <div class="arch-layer">
-            <h3 class="font-heading text-lg font-semibold text-white">Become the Answer</h3>
-            <p class="text-primary-400 text-sm">Position your brand as the source AI engines cite when users ask questions in your category.</p>
-          </div>
-          <div class="arch-layer">
-            <h3 class="font-heading text-lg font-semibold text-white">Win Trust</h3>
-            <p class="text-primary-400 text-sm">Build credibility through consistent, high-quality AI-optimized content that earns citations.</p>
-          </div>
-          <div class="arch-layer">
-            <h3 class="font-heading text-lg font-semibold text-white">Facilitate Transaction</h3>
-            <p class="text-primary-400 text-sm">Convert AI-driven visibility into measurable business outcomes and customer acquisition.</p>
-          </div>
-        </div>
-      </div>
-      <div class="reveal-right flex justify-center">
-        {# Flywheel SVG — animated circular diagram #}
-        <div class="relative w-80 h-80 sm:w-96 sm:h-96">
-          <svg viewBox="0 0 400 400" class="w-full h-full flywheel-spin" role="img" aria-label="Visibility Flywheel: Become the Answer, Win Trust, Facilitate Transaction">
-            <defs>
-              <linearGradient id="fw-gold" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#FBBF24"/>
-                <stop offset="100%" stop-color="#D4A017"/>
-              </linearGradient>
-              <linearGradient id="fw-dark" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#262520"/>
-                <stop offset="100%" stop-color="#181712"/>
-              </linearGradient>
-            </defs>
-            {# Outer ring #}
-            <circle cx="200" cy="200" r="180" fill="none" stroke="url(#fw-gold)" stroke-width="2" opacity="0.3"/>
-            <circle cx="200" cy="200" r="140" fill="none" stroke="url(#fw-gold)" stroke-width="1" opacity="0.15"/>
-            {# Three arc segments #}
-            <path d="M200 20 A180 180 0 0 1 355.88 290" fill="none" stroke="#FBBF24" stroke-width="3" stroke-linecap="round"/>
-            <path d="M355.88 290 A180 180 0 0 1 44.12 290" fill="none" stroke="#D4A017" stroke-width="3" stroke-linecap="round"/>
-            <path d="M44.12 290 A180 180 0 0 1 200 20" fill="none" stroke="#B8860B" stroke-width="3" stroke-linecap="round"/>
-            {# Arrow nodes at each position #}
-            <circle cx="200" cy="28" r="8" fill="#FBBF24"/>
-            <circle cx="350" cy="286" r="8" fill="#D4A017"/>
-            <circle cx="50" cy="286" r="8" fill="#B8860B"/>
-            {# Center hub #}
-            <circle cx="200" cy="200" r="60" fill="url(#fw-dark)" stroke="#D4A017" stroke-width="2"/>
-            <text x="200" y="192" text-anchor="middle" fill="#FBBF24" font-family="system-ui" font-weight="700" font-size="24">42</text>
-            <text x="200" y="214" text-anchor="middle" fill="#B5B2A5" font-family="system-ui" font-weight="400" font-size="11">FLYWHEEL</text>
-          </svg>
-          {# Labels positioned around the flywheel #}
-          <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 text-center">
-            <span class="text-xs sm:text-sm font-semibold text-accent-300 bg-primary-900/90 px-2 py-1 rounded">Become the Answer</span>
-          </div>
-          <div class="absolute bottom-2 right-0 text-center">
-            <span class="text-xs sm:text-sm font-semibold text-accent-400 bg-primary-900/90 px-2 py-1 rounded">Win Trust</span>
-          </div>
-          <div class="absolute bottom-2 left-0 text-center">
-            <span class="text-xs sm:text-sm font-semibold text-accent-500 bg-primary-900/90 px-2 py-1 rounded">Facilitate Transaction</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-{# ============================================ #}
-{# 6 Walls — Enterprise challenges (Slide 5)      #}
-{# ============================================ #}
-
-<section class="py-16 sm:py-24 lg:py-28 bg-primary-950 border-t section-divider">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-14 reveal">
-      <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">The Challenge</p>
-      <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-        6 Walls Enterprises Face
-      </h2>
-      <p class="text-primary-400 text-lg max-w-2xl mx-auto text-pretty">
-        Most enterprises hit these barriers when trying to build AI visibility. GEO 42 breaks through all six.
-      </p>
-    </div>
-    {# Hexagonal grid — 6 walls #}
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 stagger">
-      {%- set walls = [
-        { name: "Rule Wall", icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2", desc: "Website built well but no traffic. Doesn't fit Google rules. Page homogeneity leads to low indexing." },
-        { name: "Trust Wall", icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z", desc: "Content professionalism insufficient. Marketing traces too obvious. Content has 'Chinese characteristics'." },
-        { name: "Brand Wall", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4", desc: "Brand awareness not enough. Lack of understanding of local ability. Single promotion channel." },
-        { name: "Talent Wall", icon: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z", desc: "Haven't done overseas content before. Team lacks relevant talent. Lack of foreign language writing ability." },
-        { name: "Operation Wall", icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0", desc: "Lack of content strategy. Lack of operation planning. Lack of professional tools and guidance." },
-        { name: "Funding Wall", icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z", desc: "Outsourcing high cost, poor effect. Content production efficiency low. Trial and error verification cycle too long." }
-      ] %}
-      {%- for wall in walls %}
-      <div class="card-lift card-gold bg-primary-800 rounded-2xl p-6 hover:border-accent-500/50 group">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 bg-accent-500/10 border border-accent-500/20 rounded-lg flex items-center justify-center">
-            <svg class="w-5 h-5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="{{ wall.icon }}"/></svg>
-          </div>
-          <h3 class="font-heading text-lg font-semibold text-white group-hover:text-accent-300 transition-colors">{{ wall.name }}</h3>
-        </div>
-        <p class="text-primary-400 text-sm leading-relaxed">{{ wall.desc }}</p>
-      </div>
-      {%- endfor %}
-    </div>
-    <div class="text-center mt-8 reveal">
-      <a href="{{ '/6-walls-enterprises-face-in-content-marketing/' | url }}" class="inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors">
-        Learn how we break through each wall
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-{# ============================================ #}
-{# Platform Coverage — AI engine grid             #}
-{# ============================================ #}
-
-<section class="py-16 sm:py-24 lg:py-28 bg-primary-950 border-t section-divider">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-14 reveal">
-      <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">Platform Coverage</p>
-      <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-        Every AI Engine. One Dashboard.
-      </h2>
-      <p class="text-primary-400 text-lg max-w-2xl mx-auto text-pretty">
-        Monitor and optimize your brand visibility across all major generative engines — Western and Chinese ecosystems alike.
-      </p>
-    </div>
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 stagger">
-      {%- set platforms = [
-        { name: "ChatGPT", icon: "chat", tier: "primary" },
-        { name: "Google AI", icon: "search", tier: "primary" },
-        { name: "Perplexity", icon: "compass", tier: "primary" },
-        { name: "Gemini", icon: "sparkle", tier: "primary" },
-        { name: "Claude", icon: "brain", tier: "primary" },
-        { name: "Copilot", icon: "code", tier: "secondary" },
-        { name: "DeepSeek", icon: "deep", tier: "secondary" },
-        { name: "Doubao", icon: "globe", tier: "secondary" },
-        { name: "Qwen", icon: "star", tier: "secondary" },
-        { name: "Kimi", icon: "moon", tier: "secondary" }
-      ] %}
-      {%- for platform in platforms %}
-      <div class="card-gold card-lift bg-primary-800 rounded-xl p-5 text-center hover:border-accent-500/50 group">
-        <div class="w-12 h-12 mx-auto mb-3 bg-accent-500/10 border border-accent-500/20 rounded-xl flex items-center justify-center group-hover:bg-accent-500/20 transition-colors">
-          {%- if platform.icon == "chat" %}
-          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-          {%- elif platform.icon == "search" %}
-          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-          {%- elif platform.icon == "compass" %}
-          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
-          {%- elif platform.icon == "sparkle" %}
-          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
-          {%- elif platform.icon == "brain" %}
-          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-          {%- elif platform.icon == "code" %}
-          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-          {%- elif platform.icon == "deep" %}
-          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
-          {%- elif platform.icon == "globe" %}
-          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          {%- elif platform.icon == "star" %}
-          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
-          {%- else %}
-          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-          {%- endif %}
-        </div>
-        <span class="font-heading text-sm font-semibold {% if platform.tier == 'primary' %}text-white{% else %}text-primary-200{% endif %}">{{ platform.name }}</span>
-      </div>
-      {%- endfor %}
-    </div>
-  </div>
-</section>
-
-{# ============================================ #}
-{# Product Architecture — 4-layer stack           #}
-{# ============================================ #}
-
-<section class="py-16 sm:py-24 lg:py-28 bg-primary-900 border-t section-divider">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-      <div class="reveal-right order-2 lg:order-1">
-        {# Architecture Stack SVG #}
-        <div class="space-y-3">
-          {%- set archLayers = [
-            { label: "Application Layer", desc: "Dashboard · Reports · Alerts", color: "accent-300" },
-            { label: "Agent Layer", desc: "7 Specialized AI Agents", color: "accent-400" },
-            { label: "Engine Layer", desc: "GEO + SEO Optimization Core", color: "accent-500" },
-            { label: "Knowledge Base", desc: "Content Library · AI Models · Data Lake", color: "accent-600" }
-          ] %}
-          {%- for layer in archLayers %}
-          <div class="card-gold bg-primary-800 rounded-xl p-5 border border-primary-700 hover:border-accent-500/40 transition-colors group">
-            <div class="flex items-center gap-4">
-              <div class="flex-shrink-0 w-10 h-10 bg-{{ layer.color }}/10 border border-{{ layer.color }}/30 rounded-lg flex items-center justify-center">
-                <span class="text-{{ layer.color }} font-heading font-bold text-sm">{{ loop.index }}</span>
-              </div>
-              <div>
-                <h3 class="font-heading text-base font-semibold text-white group-hover:text-accent-300 transition-colors">{{ layer.label }}</h3>
-                <p class="text-primary-400 text-sm">{{ layer.desc }}</p>
-              </div>
-            </div>
-          </div>
-          {%- endfor %}
-          {# Connecting lines #}
-          <svg class="absolute left-9 top-0 bottom-0 w-px hidden" aria-hidden="true">
-            <line x1="0" y1="0" x2="0" y2="100%" stroke="#D4A017" stroke-width="2" stroke-dasharray="4 4"/>
-          </svg>
-        </div>
-      </div>
-      <div class="reveal-left order-1 lg:order-2">
-        <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">Architecture</p>
-        <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-          Four Layers. One Platform.
-        </h2>
-        <p class="text-primary-300 text-lg leading-relaxed mb-6">
-          GEO 42's product architecture is built in four integrated layers — from the knowledge base that powers AI comprehension to the application layer that delivers actionable insights.
-        </p>
-        <div class="flex items-center gap-3 p-4 bg-primary-800/50 border border-primary-700/50 rounded-xl">
-          <div class="flex-shrink-0 w-10 h-10 bg-accent-500/10 border border-accent-500/20 rounded-lg flex items-center justify-center">
-            <svg class="w-5 h-5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          </div>
-          <div>
-            <span class="text-white font-semibold">7 Specialized AI Agents</span>
-            <p class="text-primary-400 text-sm">Automate the entire content lifecycle end-to-end</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-{# ============================================ #}
-{# 7 AI Agents — From deck slide 12               #}
-{# ============================================ #}
-
-<section class="py-16 sm:py-24 lg:py-28 bg-primary-950 border-t section-divider">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-14 reveal">
-      <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">AI Workforce</p>
-      <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-        One Human for Decisions. Seven Agents for Execution.
-      </h2>
-      <p class="text-primary-400 text-lg max-w-2xl mx-auto text-pretty">
-        Let seven specialized AI agents do the hard work — from market research to content creation to distribution.
-      </p>
-    </div>
-    {%- set agents = [
-      { name: "Idea Excavation Agent", desc: "Find new keywords, topics, and observe competitor differences. Track market changes, discover new opportunities.", icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" },
-      { name: "Brand Operation Agent", desc: "Company brand building, competitor content monitoring. Closely monitor changes, optimize own brand.", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5" },
-      { name: "Professional Writer", desc: "AI professional writer familiar with 10+ overseas marketing writing techniques. Quickly write high-quality, localized content.", icon: "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" },
-      { name: "Evaluation & Optimization Editor", desc: "Evaluate content and provide targeted suggestions for improvement. Simulate real readers and editors, optimize in one step.", icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" },
-      { name: "Intelligent Engineer", desc: "AI generates beautiful, high-performance web pages. Enable companies without technical teams to have technical capabilities.", icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" },
-      { name: "DevOps Engineer", desc: "One-click distribution to 16 global search engines. Make content quickly appear in front of readers.", icon: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" },
-      { name: "Data Analyst", desc: "Collect exposure, click, reading, and other data. Data-driven automated optimization.", icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" }
-    ] %}
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 stagger">
-      {%- for agent in agents %}
-      <div class="card-lift card-gold bg-primary-800 rounded-2xl p-5 hover:border-accent-500/50 group{% if loop.index0 >= 4 and loop.index0 < 6 %} lg:col-span-1{% endif %}{% if loop.last and agents.length == 7 %} sm:col-span-2 lg:col-span-1{% endif %}">
-        <div class="w-10 h-10 bg-accent-500/10 border border-accent-500/20 rounded-lg flex items-center justify-center mb-4">
-          <svg class="w-5 h-5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="{{ agent.icon }}"/></svg>
-        </div>
-        <h3 class="font-heading text-sm font-semibold text-white mb-2 group-hover:text-accent-300 transition-colors">{{ agent.name }}</h3>
-        <p class="text-primary-400 text-xs leading-relaxed">{{ agent.desc }}</p>
-      </div>
-      {%- endfor %}
-    </div>
-    <div class="text-center mt-8 reveal">
-      <a href="{{ '/7-ai-agents/' | url }}" class="inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors">
-        Deep dive into all 7 agents
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-{# ============================================ #}
-{# Services — 7 Pillars                           #}
-{# ============================================ #}
-
-{%- set serviceIcons = [
-  '<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>',
-  '<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
-  '<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>',
-  '<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>',
-  '<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>',
-  '<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z"/></svg>',
-  '<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>'
-] %}
-
-{%- if pageContent.services.length %}
-<section class="py-16 sm:py-24 lg:py-28 bg-primary-950 border-t section-divider">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-14 reveal">
-      <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">What We Do</p>
-      <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-        Full-Stack AI Visibility
-      </h2>
-      <p class="text-primary-400 text-lg max-w-2xl mx-auto text-pretty">
-        Seven service pillars covering every dimension of AI-powered brand discovery
-      </p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
-      {%- for service in pageContent.services %}
-      <div class="card-lift card-gold bg-primary-800 rounded-2xl p-7 hover:border-accent-500/50 group">
-        <div class="w-12 h-12 bg-accent-500/10 border border-accent-500/20 rounded-xl flex items-center justify-center mb-5 text-accent-400 group-hover:bg-accent-500/20 transition-colors">
-          {{ serviceIcons[loop.index0] | default(serviceIcons[0]) | safe }}
-        </div>
-        <h3 class="font-heading text-lg font-semibold text-white mb-3 group-hover:text-accent-300 transition-colors">
-          {{ service.name }}
-        </h3>
-        <p class="text-primary-400 text-sm leading-relaxed">
-          {{ service.description }}
-        </p>
-      </div>
-      {%- endfor %}
-    </div>
-    <div class="text-center mt-10 reveal">
-      <a href="{{ '/services/' | url }}" class="inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors">
-        View all services
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-{%- endif %}
-
-{# ============================================ #}
-{# SEO vs GEO — Binary comparison                 #}
-{# ============================================ #}
-
-<section class="py-16 sm:py-24 lg:py-28 bg-primary-900 border-t section-divider">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-14 reveal">
-      <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">The Shift</p>
-      <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-        SEO is Linear. GEO is Binary.
-      </h2>
-      <p class="text-primary-400 text-lg max-w-2xl mx-auto text-pretty">
-        In AI search, you are either the cited answer or you are invisible. There is no page two.
-      </p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal">
-      {# SEO Card #}
-      <div class="bg-primary-800 border border-primary-700 rounded-2xl p-8 sm:p-10">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="w-10 h-10 bg-primary-700 rounded-lg flex items-center justify-center">
-            <span class="text-primary-300 font-heading font-bold text-sm">SEO</span>
-          </div>
-          <h3 class="font-heading text-xl font-semibold text-primary-200">Traditional SEO</h3>
-        </div>
-        <p class="text-primary-400 text-sm leading-relaxed mb-6">Linear distribution model — sites climb from position 10 to position 1 through incremental improvements. Multiple sites coexist on page one.</p>
-        {# Visual: progressive bars #}
-        <div class="space-y-2">
-          {%- for i in range(5) %}
-          <div class="flex items-center gap-3">
-            <span class="text-xs text-primary-500 w-4">#{{ i + 1 }}</span>
-            <div class="flex-1 h-2 bg-primary-700 rounded-full overflow-hidden">
-              <div class="h-full bg-primary-500 rounded-full" style="width: {{ 100 - (i * 18) }}%"></div>
-            </div>
-          </div>
-          {%- endfor %}
-        </div>
-        <p class="text-xs text-primary-500 mt-3">Progressive ranking — gradual climb</p>
-      </div>
-      {# GEO Card #}
-      <div class="card-gold bg-primary-800 rounded-2xl p-8 sm:p-10 border border-accent-500/30">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="w-10 h-10 bg-accent-500/20 rounded-lg flex items-center justify-center">
-            <span class="text-accent-400 font-heading font-bold text-sm">GEO</span>
-          </div>
-          <h3 class="font-heading text-xl font-semibold text-white">Generative Engine Optimization</h3>
-        </div>
-        <p class="text-primary-300 text-sm leading-relaxed mb-6">Binary opposition model — AI cites a handful of sources per response. You are either the answer or invisible. Zero-sum, winner-take-all.</p>
-        {# Visual: binary bars #}
-        <div class="space-y-2">
-          <div class="flex items-center gap-3">
-            <span class="text-xs text-accent-400 w-4">#1</span>
-            <div class="flex-1 h-2 bg-primary-700 rounded-full overflow-hidden">
-              <div class="h-full bg-accent-500 rounded-full" style="width: 100%"></div>
-            </div>
-          </div>
-          {%- for i in range(4) %}
-          <div class="flex items-center gap-3">
-            <span class="text-xs text-primary-500 w-4"></span>
-            <div class="flex-1 h-2 bg-primary-700 rounded-full overflow-hidden">
-              <div class="h-full bg-primary-700 rounded-full" style="width: 0%"></div>
-            </div>
-          </div>
-          {%- endfor %}
-        </div>
-        <p class="text-xs text-accent-500 mt-3">Binary outcome — cited or invisible</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-{# ============================================ #}
-{# GEO Service Process — 6 steps (Slides 18-19)   #}
-{# ============================================ #}
-
-<section class="py-16 sm:py-24 lg:py-28 bg-primary-950 border-t section-divider">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-14 reveal">
-      <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">Our Process</p>
-      <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-        6-Step GEO Optimization
-      </h2>
-      <p class="text-primary-400 text-lg max-w-2xl mx-auto text-pretty">
-        From intent analysis to continuous monitoring — a rigorous end-to-end process that turns brands into AI answers.
-      </p>
-    </div>
-    {%- set steps = [
-      { num: "1", title: "Intent Analysis", desc: "Research target users' core questions and information needs. Assess current AI performance and identify gaps." },
-      { num: "2", title: "Data Analysis & Review", desc: "Synthesize AI performance, search volume across platforms. Comprehensive content asset audit." },
-      { num: "3", title: "Content Structuring", desc: "Convert unstructured text into AI-friendly structured data. Build centralized Brand Knowledge Base." },
-      { num: "4", title: "Semantic Optimization", desc: "Optimize content semantics around strategies to improve GEO performance. Inject authoritative endorsements." },
-      { num: "5", title: "Multimodal Adaptation", desc: "Adapt content into forms suitable for various AI scenarios. Ensure multi-platform compatibility." },
-      { num: "6", title: "Continuous Monitoring", desc: "Track AI citation effectiveness in real-time. Collect user evaluations and iterate on content quality." }
-    ] %}
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 stagger">
-      {%- for step in steps %}
-      <div class="relative card-gold bg-primary-800 rounded-2xl p-6 border border-primary-700 group hover:border-accent-500/40 transition-colors">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 bg-accent-500 rounded-lg flex items-center justify-center flex-shrink-0">
-            <span class="text-primary-950 font-heading font-bold text-lg">{{ step.num }}</span>
-          </div>
-          <h3 class="font-heading text-base font-semibold text-white group-hover:text-accent-300 transition-colors">{{ step.title }}</h3>
-        </div>
-        <p class="text-primary-400 text-sm leading-relaxed">{{ step.desc }}</p>
-      </div>
-      {%- endfor %}
-    </div>
-    <div class="text-center mt-8 reveal">
-      <a href="{{ '/end-to-end-process/' | url }}" class="inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors">
-        View the full end-to-end process
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-{# ============================================ #}
-{# Dashboard Preview — Mock KPI cards             #}
-{# ============================================ #}
-
-<section class="py-16 sm:py-24 lg:py-28 bg-primary-950 border-t section-divider">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-14 reveal">
-      <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">Intelligence Dashboard</p>
-      <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-        Real-Time AI Visibility
-      </h2>
-      <p class="text-primary-400 text-lg max-w-2xl mx-auto text-pretty">
-        Track how AI engines see, cite, and recommend your brand — all in one intelligent dashboard.
-      </p>
-    </div>
-    {# Dashboard mock #}
-    <div class="reveal-scale bg-primary-800 border border-primary-700 rounded-2xl p-6 sm:p-8 max-w-5xl mx-auto">
-      {# Header bar #}
-      <div class="flex items-center justify-between mb-6">
-        <div class="flex items-center gap-2">
-          <div class="w-3 h-3 rounded-full bg-accent-500" aria-hidden="true"></div>
-          <span class="font-heading text-sm font-semibold text-white">GEO 42 Dashboard</span>
-        </div>
-        <div class="flex gap-1.5" aria-hidden="true">
-          <div class="w-2.5 h-2.5 rounded-full bg-primary-600"></div>
-          <div class="w-2.5 h-2.5 rounded-full bg-primary-600"></div>
-          <div class="w-2.5 h-2.5 rounded-full bg-accent-500"></div>
-        </div>
-      </div>
-      {# KPI row #}
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6 stagger">
-        <div class="kpi-glow bg-primary-900/80 rounded-xl p-4 border border-primary-700/50">
-          <div class="text-xs text-primary-500 uppercase tracking-wider mb-1">Visibility Rate</div>
-          <div class="text-2xl font-bold text-accent-400">87.3%</div>
-          <div class="text-xs text-accent-500 mt-1">+12.4% this week</div>
-        </div>
-        <div class="kpi-glow bg-primary-900/80 rounded-xl p-4 border border-primary-700/50">
-          <div class="text-xs text-primary-500 uppercase tracking-wider mb-1">Recommendation Rate</div>
-          <div class="text-2xl font-bold text-accent-400">64.1%</div>
-          <div class="text-xs text-accent-500 mt-1">+8.7% this week</div>
-        </div>
-        <div class="kpi-glow bg-primary-900/80 rounded-xl p-4 border border-primary-700/50">
-          <div class="text-xs text-primary-500 uppercase tracking-wider mb-1">AI Answers</div>
-          <div class="text-2xl font-bold text-accent-400">2,847</div>
-          <div class="text-xs text-accent-500 mt-1">+341 this week</div>
-        </div>
-        <div class="kpi-glow bg-primary-900/80 rounded-xl p-4 border border-primary-700/50">
-          <div class="text-xs text-primary-500 uppercase tracking-wider mb-1">Brand Sentiment</div>
-          <div class="text-2xl font-bold text-accent-400">Trust</div>
-          <div class="text-xs text-accent-500 mt-1">Positive across 10 engines</div>
-        </div>
-      </div>
-      {# Platform comparison bars #}
-      <div class="bg-primary-900/50 rounded-xl p-5 border border-primary-700/30">
-        <div class="text-xs text-primary-500 uppercase tracking-wider mb-4">Platform Visibility</div>
-        <div class="space-y-3">
-          {%- set dashPlatforms = [
-            { name: "ChatGPT", pct: 92 },
-            { name: "Perplexity", pct: 88 },
-            { name: "Gemini", pct: 76 },
-            { name: "Google AI", pct: 71 },
-            { name: "Claude", pct: 68 }
-          ] %}
-          {%- for p in dashPlatforms %}
-          <div class="flex items-center gap-3">
-            <span class="text-xs text-primary-300 w-20 flex-shrink-0">{{ p.name }}</span>
-            <div class="flex-1 h-2 bg-primary-700 rounded-full overflow-hidden">
-              <div class="h-full rounded-full" style="width: {{ p.pct }}%; background: linear-gradient(90deg, #D4A017, #FBBF24)"></div>
-            </div>
-            <span class="text-xs text-accent-400 w-10 text-right">{{ p.pct }}%</span>
-          </div>
-          {%- endfor %}
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-{# ============================================ #}
-{# Case Study — Before/After                      #}
-{# ============================================ #}
+{# ---- Case Study — Before/After ---- #}
 
 <section class="py-16 sm:py-24 lg:py-28 bg-primary-900 border-t section-divider">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -725,11 +173,150 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
   </div>
 </section>
 
+{# ---- KPI Stats — Animated counters with glow ---- #}
+
+<section class="py-12 sm:py-16 bg-primary-950">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="reveal grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+      <div class="kpi-glow text-center p-6 bg-primary-800/50 rounded-xl border border-primary-700/50">
+        <div class="text-3xl sm:text-4xl font-bold text-accent-400 counter" data-count="7">0</div>
+        <div class="text-sm text-primary-400 mt-2">AI Agents</div>
+      </div>
+      <div class="kpi-glow text-center p-6 bg-primary-800/50 rounded-xl border border-primary-700/50">
+        <div class="text-3xl sm:text-4xl font-bold text-accent-400 counter" data-count="10" data-suffix="+">0</div>
+        <div class="text-sm text-primary-400 mt-2">AI Platforms</div>
+      </div>
+      <div class="kpi-glow text-center p-6 bg-primary-800/50 rounded-xl border border-primary-700/50">
+        <div class="text-3xl sm:text-4xl font-bold text-accent-400 counter" data-count="1000" data-suffix="+">0</div>
+        <div class="text-sm text-primary-400 mt-2">Enterprises</div>
+      </div>
+      <div class="kpi-glow text-center p-6 bg-primary-800/50 rounded-xl border border-primary-700/50">
+        <div class="text-3xl sm:text-4xl font-bold text-accent-400 counter" data-count="450" data-prefix="+" data-suffix="%">0</div>
+        <div class="text-sm text-primary-400 mt-2">Brand Mentions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 {# ============================================ #}
-{# Market Data — The 34x Opportunity              #}
+{# PROBLEM                                       #}
 {# ============================================ #}
 
-<section class="py-16 sm:py-24 bg-primary-950 border-t section-divider">
+{# ---- SEO vs GEO — Binary comparison ---- #}
+
+<section class="py-16 sm:py-24 lg:py-28 bg-primary-900 border-t section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">The Shift</p>
+      <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+        SEO is Linear. GEO is Binary.
+      </h2>
+      <p class="text-primary-400 text-lg max-w-2xl mx-auto text-pretty">
+        In AI search, you are either the cited answer or you are invisible. There is no page two.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal">
+      {# SEO Card #}
+      <div class="bg-primary-800 border border-primary-700 rounded-2xl p-8 sm:p-10">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 bg-primary-700 rounded-lg flex items-center justify-center">
+            <span class="text-primary-300 font-heading font-bold text-sm">SEO</span>
+          </div>
+          <h3 class="font-heading text-xl font-semibold text-primary-200">Traditional SEO</h3>
+        </div>
+        <p class="text-primary-400 text-sm leading-relaxed mb-6">Linear distribution model — sites climb from position 10 to position 1 through incremental improvements. Multiple sites coexist on page one.</p>
+        {# Visual: progressive bars #}
+        <div class="space-y-2">
+          {%- for i in range(5) %}
+          <div class="flex items-center gap-3">
+            <span class="text-xs text-primary-500 w-4">#{{ i + 1 }}</span>
+            <div class="flex-1 h-2 bg-primary-700 rounded-full overflow-hidden">
+              <div class="h-full bg-primary-500 rounded-full" style="width: {{ 100 - (i * 18) }}%"></div>
+            </div>
+          </div>
+          {%- endfor %}
+        </div>
+        <p class="text-xs text-primary-500 mt-3">Progressive ranking — gradual climb</p>
+      </div>
+      {# GEO Card #}
+      <div class="card-gold bg-primary-800 rounded-2xl p-8 sm:p-10 border border-accent-500/30">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 bg-accent-500/20 rounded-lg flex items-center justify-center">
+            <span class="text-accent-400 font-heading font-bold text-sm">GEO</span>
+          </div>
+          <h3 class="font-heading text-xl font-semibold text-white">Generative Engine Optimization</h3>
+        </div>
+        <p class="text-primary-300 text-sm leading-relaxed mb-6">Binary opposition model — AI cites a handful of sources per response. You are either the answer or invisible. Zero-sum, winner-take-all.</p>
+        {# Visual: binary bars #}
+        <div class="space-y-2">
+          <div class="flex items-center gap-3">
+            <span class="text-xs text-accent-400 w-4">#1</span>
+            <div class="flex-1 h-2 bg-primary-700 rounded-full overflow-hidden">
+              <div class="h-full bg-accent-500 rounded-full" style="width: 100%"></div>
+            </div>
+          </div>
+          {%- for i in range(4) %}
+          <div class="flex items-center gap-3">
+            <span class="text-xs text-primary-500 w-4"></span>
+            <div class="flex-1 h-2 bg-primary-700 rounded-full overflow-hidden">
+              <div class="h-full bg-primary-700 rounded-full" style="width: 0%"></div>
+            </div>
+          </div>
+          {%- endfor %}
+        </div>
+        <p class="text-xs text-accent-500 mt-3">Binary outcome — cited or invisible</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ---- 6 Walls — Enterprise challenges (Slide 5) ---- #}
+
+<section class="py-16 sm:py-24 lg:py-28 bg-primary-950 border-t section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">The Challenge</p>
+      <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+        6 Walls Enterprises Face
+      </h2>
+      <p class="text-primary-400 text-lg max-w-2xl mx-auto text-pretty">
+        Most enterprises hit these barriers when trying to build AI visibility. GEO 42 breaks through all six.
+      </p>
+    </div>
+    {# Hexagonal grid — 6 walls #}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 stagger">
+      {%- set walls = [
+        { name: "Discovery Wall", icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2", desc: "Your site is well-built but invisible. Low indexation and homogeneous pages mean AI crawlers skip you entirely." },
+        { name: "Credibility Wall", icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z", desc: "Your content reads like marketing, not expertise. AI engines prioritize authoritative, third-party-validated sources over promotional material." },
+        { name: "Brand Wall", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4", desc: "Insufficient brand awareness in target markets. Limited local market understanding. Over-reliance on a single promotion channel." },
+        { name: "Capability Wall", icon: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z", desc: "Your team lacks the cross-cultural content expertise to produce native-quality material that resonates with global audiences and AI models." },
+        { name: "Operations Wall", icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0", desc: "No content strategy, no operational playbook, and no specialized tooling to execute at the pace AI platforms demand." },
+        { name: "ROI Wall", icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z", desc: "Agency outsourcing is expensive and disconnected. In-house production is slow. Verification cycles eat months before you see results." }
+      ] %}
+      {%- for wall in walls %}
+      <div class="card-lift card-gold bg-primary-800 rounded-2xl p-6 hover:border-accent-500/50 group">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-accent-500/10 border border-accent-500/20 rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="{{ wall.icon }}"/></svg>
+          </div>
+          <h3 class="font-heading text-lg font-semibold text-white group-hover:text-accent-300 transition-colors">{{ wall.name }}</h3>
+        </div>
+        <p class="text-primary-400 text-sm leading-relaxed">{{ wall.desc }}</p>
+      </div>
+      {%- endfor %}
+    </div>
+    <div class="text-center mt-8 reveal">
+      <a href="{{ '/6-walls-enterprises-face-in-content-marketing/' | url }}" class="inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors">
+        Learn how we break through each wall
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+{# ---- Market Data — The 34x Opportunity ---- #}
+
+<section class="py-16 sm:py-24 bg-primary-900 border-t section-divider">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal">
       <div class="shimmer kpi-glow bg-primary-800 rounded-2xl p-8 sm:p-10 text-center border border-primary-700">
@@ -751,8 +338,436 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 </section>
 
 {# ============================================ #}
-{# Industries                                      #}
+{# SOLUTION                                      #}
 {# ============================================ #}
+
+{# ---- Flywheel — The Visibility Growth Model ---- #}
+
+<section class="py-16 sm:py-24 lg:py-28 bg-primary-950 border-t section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div class="reveal-left">
+        <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">Growth Model</p>
+        <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+          The Visibility Flywheel
+        </h2>
+        <p class="text-primary-300 text-lg leading-relaxed mb-8">
+          GEO 42 operates on a compounding flywheel — more visibility leads to more trust, which drives more transactions, which generates more signals that increase visibility.
+        </p>
+        <div class="space-y-4">
+          <div class="arch-layer">
+            <h3 class="font-heading text-lg font-semibold text-white">Become the Answer</h3>
+            <p class="text-primary-400 text-sm">Position your brand as the source AI engines cite when users ask questions in your category.</p>
+          </div>
+          <div class="arch-layer">
+            <h3 class="font-heading text-lg font-semibold text-white">Win Trust</h3>
+            <p class="text-primary-400 text-sm">Build credibility through consistent, high-quality AI-optimized content that earns citations.</p>
+          </div>
+          <div class="arch-layer">
+            <h3 class="font-heading text-lg font-semibold text-white">Facilitate Transaction</h3>
+            <p class="text-primary-400 text-sm">Convert AI-driven visibility into measurable business outcomes and customer acquisition.</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-right flex justify-center">
+        {# Flywheel SVG — animated circular diagram #}
+        <div class="relative w-80 h-80 sm:w-96 sm:h-96">
+          <svg viewBox="0 0 400 400" class="w-full h-full flywheel-spin reveal" role="img" aria-label="Visibility Flywheel: Become the Answer, Win Trust, Facilitate Transaction">
+            <defs>
+              <linearGradient id="fw-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FBBF24"/>
+                <stop offset="100%" stop-color="#D4A017"/>
+              </linearGradient>
+              <linearGradient id="fw-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#262520"/>
+                <stop offset="100%" stop-color="#181712"/>
+              </linearGradient>
+            </defs>
+            {# Outer ring #}
+            <circle cx="200" cy="200" r="180" fill="none" stroke="url(#fw-gold)" stroke-width="2" opacity="0.3"/>
+            <circle cx="200" cy="200" r="140" fill="none" stroke="url(#fw-gold)" stroke-width="1" opacity="0.15"/>
+            {# Three arc segments #}
+            <path d="M200 20 A180 180 0 0 1 355.88 290" fill="none" stroke="#FBBF24" stroke-width="3" stroke-linecap="round"/>
+            <path d="M355.88 290 A180 180 0 0 1 44.12 290" fill="none" stroke="#D4A017" stroke-width="3" stroke-linecap="round"/>
+            <path d="M44.12 290 A180 180 0 0 1 200 20" fill="none" stroke="#B8860B" stroke-width="3" stroke-linecap="round"/>
+            {# Arrow nodes at each position #}
+            <circle cx="200" cy="28" r="8" fill="#FBBF24"/>
+            <circle cx="350" cy="286" r="8" fill="#D4A017"/>
+            <circle cx="50" cy="286" r="8" fill="#B8860B"/>
+            {# Center hub #}
+            <circle cx="200" cy="200" r="60" fill="url(#fw-dark)" stroke="#D4A017" stroke-width="2"/>
+            <text x="200" y="192" text-anchor="middle" fill="#FBBF24" font-family="system-ui" font-weight="700" font-size="24">42</text>
+            <text x="200" y="214" text-anchor="middle" fill="#B5B2A5" font-family="system-ui" font-weight="400" font-size="11">FLYWHEEL</text>
+          </svg>
+          {# Labels positioned around the flywheel #}
+          <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 text-center">
+            <span class="text-xs sm:text-sm font-semibold text-accent-300 bg-primary-900/90 px-2 py-1 rounded">Become the Answer</span>
+          </div>
+          <div class="absolute bottom-2 right-0 text-center">
+            <span class="text-xs sm:text-sm font-semibold text-accent-400 bg-primary-900/90 px-2 py-1 rounded">Win Trust</span>
+          </div>
+          <div class="absolute bottom-2 left-0 text-center">
+            <span class="text-xs sm:text-sm font-semibold text-accent-500 bg-primary-900/90 px-2 py-1 rounded">Facilitate Transaction</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ---- Services — 7 Pillars ---- #}
+
+{%- set serviceIcons = [
+  '<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>',
+  '<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+  '<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>',
+  '<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>',
+  '<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>',
+  '<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z"/></svg>',
+  '<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>'
+] %}
+
+{%- if pageContent.services.length %}
+<section class="py-16 sm:py-24 lg:py-28 bg-primary-900 border-t section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">What We Do</p>
+      <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+        Full-Stack AI Visibility
+      </h2>
+      <p class="text-primary-400 text-lg max-w-2xl mx-auto text-pretty">
+        Seven service pillars covering every dimension of AI-powered brand discovery
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
+      {%- for service in pageContent.services %}
+      <div class="card-lift card-gold bg-primary-800 rounded-2xl p-7 hover:border-accent-500/50 group">
+        <div class="w-12 h-12 bg-accent-500/10 border border-accent-500/20 rounded-xl flex items-center justify-center mb-5 text-accent-400 group-hover:bg-accent-500/20 transition-colors">
+          {{ serviceIcons[loop.index0] | default(serviceIcons[0]) | safe }}
+        </div>
+        <h3 class="font-heading text-lg font-semibold text-white mb-3 group-hover:text-accent-300 transition-colors">
+          {{ service.name }}
+        </h3>
+        <p class="text-primary-400 text-sm leading-relaxed">
+          {{ service.description }}
+        </p>
+      </div>
+      {%- endfor %}
+    </div>
+    <div class="text-center mt-10 reveal">
+      <a href="{{ '/services/' | url }}" class="inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors">
+        View all services
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+{%- endif %}
+
+{# ============================================ #}
+{# HOW                                           #}
+{# ============================================ #}
+
+{# ---- Product Architecture — 4-layer stack ---- #}
+
+<section class="py-16 sm:py-24 lg:py-28 bg-primary-950 border-t section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div class="reveal-right order-2 lg:order-1">
+        {# Architecture Stack — explicit classes to avoid Tailwind purge issue #}
+        <div class="space-y-3">
+          <div class="card-gold bg-primary-800 rounded-xl p-5 border border-primary-700 hover:border-accent-500/40 transition-colors group">
+            <div class="flex items-center gap-4">
+              <div class="flex-shrink-0 w-10 h-10 bg-accent-300/10 border border-accent-300/30 rounded-lg flex items-center justify-center">
+                <span class="text-accent-300 font-heading font-bold text-sm">1</span>
+              </div>
+              <div>
+                <h3 class="font-heading text-base font-semibold text-white group-hover:text-accent-300 transition-colors">Application Layer</h3>
+                <p class="text-primary-400 text-sm">Dashboard · Reports · Alerts</p>
+              </div>
+            </div>
+          </div>
+          <div class="card-gold bg-primary-800 rounded-xl p-5 border border-primary-700 hover:border-accent-500/40 transition-colors group">
+            <div class="flex items-center gap-4">
+              <div class="flex-shrink-0 w-10 h-10 bg-accent-400/10 border border-accent-400/30 rounded-lg flex items-center justify-center">
+                <span class="text-accent-400 font-heading font-bold text-sm">2</span>
+              </div>
+              <div>
+                <h3 class="font-heading text-base font-semibold text-white group-hover:text-accent-300 transition-colors">Agent Layer</h3>
+                <p class="text-primary-400 text-sm">7 Specialized AI Agents</p>
+              </div>
+            </div>
+          </div>
+          <div class="card-gold bg-primary-800 rounded-xl p-5 border border-primary-700 hover:border-accent-500/40 transition-colors group">
+            <div class="flex items-center gap-4">
+              <div class="flex-shrink-0 w-10 h-10 bg-accent-500/10 border border-accent-500/30 rounded-lg flex items-center justify-center">
+                <span class="text-accent-500 font-heading font-bold text-sm">3</span>
+              </div>
+              <div>
+                <h3 class="font-heading text-base font-semibold text-white group-hover:text-accent-300 transition-colors">Engine Layer</h3>
+                <p class="text-primary-400 text-sm">GEO + SEO Optimization Core</p>
+              </div>
+            </div>
+          </div>
+          <div class="card-gold bg-primary-800 rounded-xl p-5 border border-primary-700 hover:border-accent-500/40 transition-colors group">
+            <div class="flex items-center gap-4">
+              <div class="flex-shrink-0 w-10 h-10 bg-accent-600/10 border border-accent-600/30 rounded-lg flex items-center justify-center">
+                <span class="text-accent-600 font-heading font-bold text-sm">4</span>
+              </div>
+              <div>
+                <h3 class="font-heading text-base font-semibold text-white group-hover:text-accent-300 transition-colors">Knowledge Base</h3>
+                <p class="text-primary-400 text-sm">Content Library · AI Models · Data Lake</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-left order-1 lg:order-2">
+        <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">Architecture</p>
+        <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+          Four Layers. One Platform.
+        </h2>
+        <p class="text-primary-300 text-lg leading-relaxed mb-6">
+          GEO 42's product architecture is built in four integrated layers — from the knowledge base that powers AI comprehension to the application layer that delivers actionable insights.
+        </p>
+        <div class="flex items-center gap-3 p-4 bg-primary-800/50 border border-primary-700/50 rounded-xl">
+          <div class="flex-shrink-0 w-10 h-10 bg-accent-500/10 border border-accent-500/20 rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <div>
+            <span class="text-white font-semibold">7 Specialized AI Agents</span>
+            <p class="text-primary-400 text-sm">Automate the entire content lifecycle end-to-end</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ---- 7 AI Agents — From deck slide 12 ---- #}
+
+<section class="py-16 sm:py-24 lg:py-28 bg-primary-900 border-t section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">AI Workforce</p>
+      <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+        One Human for Decisions. Seven Agents for Execution.
+      </h2>
+      <p class="text-primary-400 text-lg max-w-2xl mx-auto text-pretty">
+        Let seven specialized AI agents do the hard work — from market research to content creation to distribution.
+      </p>
+    </div>
+    {%- set agents = [
+      { name: "Discovery Agent", desc: "Surfaces high-intent keywords, emerging topics, and competitive gaps. Continuously scans the market to identify untapped visibility opportunities.", icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" },
+      { name: "Brand Intelligence Agent", desc: "Monitors your brand's AI presence across every platform. Tracks competitor positioning and alerts you to shifts in share of voice.", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5" },
+      { name: "Content Strategist", desc: "Produces publication-ready content using 10+ proven frameworks. Writes native-quality, audience-specific material at enterprise scale.", icon: "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" },
+      { name: "QA Editor", desc: "Reviews every piece of content against AI citation criteria. Simulates how engines and readers interpret your material, then optimizes in one pass.", icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" },
+      { name: "Engineering Agent", desc: "Transforms content into high-performance, schema-rich web pages. Gives any team enterprise-grade technical publishing capabilities.", icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" },
+      { name: "Distribution Agent", desc: "Publishes and syndicates content across 16+ global search engines and AI platforms in one click. Maximizes reach and indexation speed.", icon: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" },
+      { name: "Analytics Agent", desc: "Tracks impressions, citations, clicks, and engagement across every AI platform. Feeds performance data back into the optimization loop.", icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" }
+    ] %}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 stagger">
+      {%- for agent in agents %}
+      <div class="card-lift card-gold bg-primary-800 rounded-2xl p-5 hover:border-accent-500/50 group{% if loop.index0 >= 4 and loop.index0 < 6 %} lg:col-span-1{% endif %}{% if loop.last and agents.length == 7 %} sm:col-span-2 lg:col-span-1{% endif %}">
+        <div class="w-10 h-10 bg-accent-500/10 border border-accent-500/20 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="{{ agent.icon }}"/></svg>
+        </div>
+        <h3 class="font-heading text-sm font-semibold text-white mb-2 group-hover:text-accent-300 transition-colors">{{ agent.name }}</h3>
+        <p class="text-primary-400 text-xs leading-relaxed">{{ agent.desc }}</p>
+      </div>
+      {%- endfor %}
+    </div>
+    <div class="text-center mt-8 reveal">
+      <a href="{{ '/7-ai-agents/' | url }}" class="inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors">
+        Deep dive into all 7 agents
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+{# ---- GEO Service Process — 6 steps (Slides 18-19) ---- #}
+
+<section class="py-16 sm:py-24 lg:py-28 bg-primary-950 border-t section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">Our Process</p>
+      <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+        6-Step GEO Optimization
+      </h2>
+      <p class="text-primary-400 text-lg max-w-2xl mx-auto text-pretty">
+        From intent analysis to continuous monitoring — a rigorous end-to-end process that turns brands into AI answers.
+      </p>
+    </div>
+    {%- set steps = [
+      { num: "1", title: "Intent Analysis", desc: "Research target users' core questions and information needs. Assess current AI performance and identify gaps." },
+      { num: "2", title: "Data Analysis & Review", desc: "Synthesize AI performance, search volume across platforms. Comprehensive content asset audit." },
+      { num: "3", title: "Content Structuring", desc: "Convert unstructured text into AI-friendly structured data. Build centralized Brand Knowledge Base." },
+      { num: "4", title: "Semantic Optimization", desc: "Optimize content semantics around strategies to improve GEO performance. Inject authoritative endorsements." },
+      { num: "5", title: "Multimodal Adaptation", desc: "Adapt content into forms suitable for various AI scenarios. Ensure multi-platform compatibility." },
+      { num: "6", title: "Continuous Monitoring", desc: "Track AI citation effectiveness in real-time. Collect user evaluations and iterate on content quality." }
+    ] %}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 stagger">
+      {%- for step in steps %}
+      <div class="relative card-gold bg-primary-800 rounded-2xl p-6 border border-primary-700 group hover:border-accent-500/40 transition-colors">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-accent-500 rounded-lg flex items-center justify-center flex-shrink-0">
+            <span class="text-primary-950 font-heading font-bold text-lg">{{ step.num }}</span>
+          </div>
+          <h3 class="font-heading text-base font-semibold text-white group-hover:text-accent-300 transition-colors">{{ step.title }}</h3>
+        </div>
+        <p class="text-primary-400 text-sm leading-relaxed">{{ step.desc }}</p>
+      </div>
+      {%- endfor %}
+    </div>
+    <div class="text-center mt-8 reveal">
+      <a href="{{ '/end-to-end-process/' | url }}" class="inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors">
+        View the full end-to-end process
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+{# ============================================ #}
+{# TRUST                                         #}
+{# ============================================ #}
+
+{# ---- Platform Coverage — AI engine grid ---- #}
+
+<section class="py-16 sm:py-24 lg:py-28 bg-primary-900 border-t section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">Platform Coverage</p>
+      <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+        Every AI Engine. One Dashboard.
+      </h2>
+      <p class="text-primary-400 text-lg max-w-2xl mx-auto text-pretty">
+        Monitor and optimize your brand visibility across all major generative engines — Western and Chinese ecosystems alike.
+      </p>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 stagger">
+      {%- set platforms = [
+        { name: "ChatGPT", icon: "chat", tier: "primary" },
+        { name: "Google AI", icon: "search", tier: "primary" },
+        { name: "Perplexity", icon: "compass", tier: "primary" },
+        { name: "Gemini", icon: "sparkle", tier: "primary" },
+        { name: "Claude", icon: "brain", tier: "primary" },
+        { name: "Copilot", icon: "code", tier: "secondary" },
+        { name: "DeepSeek", icon: "deep", tier: "secondary" },
+        { name: "Doubao", icon: "globe", tier: "secondary" },
+        { name: "Qwen", icon: "star", tier: "secondary" },
+        { name: "Kimi", icon: "moon", tier: "secondary" }
+      ] %}
+      {%- for platform in platforms %}
+      <div class="card-gold card-lift bg-primary-800 rounded-xl p-5 text-center hover:border-accent-500/50 group">
+        <div class="w-12 h-12 mx-auto mb-3 bg-accent-500/10 border border-accent-500/20 rounded-xl flex items-center justify-center group-hover:bg-accent-500/20 transition-colors">
+          {%- if platform.icon == "chat" %}
+          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+          {%- elif platform.icon == "search" %}
+          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          {%- elif platform.icon == "compass" %}
+          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+          {%- elif platform.icon == "sparkle" %}
+          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+          {%- elif platform.icon == "brain" %}
+          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          {%- elif platform.icon == "code" %}
+          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+          {%- elif platform.icon == "deep" %}
+          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+          {%- elif platform.icon == "globe" %}
+          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          {%- elif platform.icon == "star" %}
+          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+          {%- else %}
+          <svg class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          {%- endif %}
+        </div>
+        <span class="font-heading text-sm font-semibold {% if platform.tier == 'primary' %}text-white{% else %}text-primary-200{% endif %}">{{ platform.name }}</span>
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+{# ---- Dashboard Preview — Mock KPI cards ---- #}
+
+<section class="py-16 sm:py-24 lg:py-28 bg-primary-950 border-t section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="text-accent-400 font-medium text-sm uppercase tracking-widest mb-4">Intelligence Dashboard</p>
+      <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+        Real-Time AI Visibility
+      </h2>
+      <p class="text-primary-400 text-lg max-w-2xl mx-auto text-pretty">
+        Track how AI engines see, cite, and recommend your brand — all in one intelligent dashboard.
+      </p>
+    </div>
+    {# Dashboard mock #}
+    <div class="reveal-scale bg-primary-800 border border-primary-700 rounded-2xl p-6 sm:p-8 max-w-5xl mx-auto">
+      {# Header bar #}
+      <div class="flex items-center justify-between mb-6">
+        <div class="flex items-center gap-2">
+          <div class="w-3 h-3 rounded-full bg-accent-500" aria-hidden="true"></div>
+          <span class="font-heading text-sm font-semibold text-white">GEO 42 Dashboard</span>
+        </div>
+        <div class="flex gap-1.5" aria-hidden="true">
+          <div class="w-2.5 h-2.5 rounded-full bg-primary-600"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-primary-600"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-accent-500"></div>
+        </div>
+      </div>
+      {# KPI row #}
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6 stagger">
+        <div class="kpi-glow bg-primary-900/80 rounded-xl p-4 border border-primary-700/50">
+          <div class="text-xs text-primary-500 uppercase tracking-wider mb-1">Visibility Rate</div>
+          <div class="text-2xl font-bold text-accent-400">87.3%</div>
+          <div class="text-xs text-accent-500 mt-1">+12.4% this week</div>
+        </div>
+        <div class="kpi-glow bg-primary-900/80 rounded-xl p-4 border border-primary-700/50">
+          <div class="text-xs text-primary-500 uppercase tracking-wider mb-1">Recommendation Rate</div>
+          <div class="text-2xl font-bold text-accent-400">64.1%</div>
+          <div class="text-xs text-accent-500 mt-1">+8.7% this week</div>
+        </div>
+        <div class="kpi-glow bg-primary-900/80 rounded-xl p-4 border border-primary-700/50">
+          <div class="text-xs text-primary-500 uppercase tracking-wider mb-1">AI Answers</div>
+          <div class="text-2xl font-bold text-accent-400">2,847</div>
+          <div class="text-xs text-accent-500 mt-1">+341 this week</div>
+        </div>
+        <div class="kpi-glow bg-primary-900/80 rounded-xl p-4 border border-primary-700/50">
+          <div class="text-xs text-primary-500 uppercase tracking-wider mb-1">Brand Sentiment</div>
+          <div class="text-2xl font-bold text-accent-400">Trust</div>
+          <div class="text-xs text-accent-500 mt-1">Positive across 10 engines</div>
+        </div>
+      </div>
+      {# Platform comparison bars #}
+      <div class="bg-primary-900/50 rounded-xl p-5 border border-primary-700/30">
+        <div class="text-xs text-primary-500 uppercase tracking-wider mb-4">Platform Visibility</div>
+        <div class="space-y-3">
+          {%- set dashPlatforms = [
+            { name: "ChatGPT", pct: 92 },
+            { name: "Perplexity", pct: 88 },
+            { name: "Gemini", pct: 76 },
+            { name: "Google AI", pct: 71 },
+            { name: "Claude", pct: 68 }
+          ] %}
+          {%- for p in dashPlatforms %}
+          <div class="flex items-center gap-3">
+            <span class="text-xs text-primary-300 w-20 flex-shrink-0" id="dash-label-{{ loop.index0 }}">{{ p.name }}</span>
+            <div class="flex-1 h-2 bg-primary-700 rounded-full overflow-hidden" role="meter" aria-valuenow="{{ p.pct }}" aria-valuemin="0" aria-valuemax="100" aria-labelledby="dash-label-{{ loop.index0 }}">
+              <div class="h-full rounded-full" style="width: {{ p.pct }}%; background: linear-gradient(90deg, #D4A017, #FBBF24)"></div>
+            </div>
+            <span class="text-xs text-accent-400 w-10 text-right">{{ p.pct }}%</span>
+          </div>
+          {%- endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ---- Industries ---- #}
 
 {%- if pageContent.industries.length %}
 <section class="py-16 sm:py-24 lg:py-28 bg-primary-900 border-t section-divider">
@@ -785,8 +800,10 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 {%- endif %}
 
 {# ============================================ #}
-{# CTA — Gold gradient                            #}
+{# ACTION                                        #}
 {# ============================================ #}
+
+{# ---- CTA — Gold gradient ---- #}
 
 <section class="relative overflow-hidden py-20 sm:py-28 bg-primary-950 border-t section-divider">
   <div class="hero-glow" aria-hidden="true"></div>
