@@ -286,6 +286,62 @@
     });
   });
 
+  // ── Dashboard carousel navigation ──
+  var dashTrack = document.getElementById("dash-track");
+  var dashDots = document.querySelectorAll(".dash-dot");
+  var dashPrev = document.querySelector(".dash-arrow-prev");
+  var dashNext = document.querySelector(".dash-arrow-next");
+
+  if (dashTrack && dashDots.length) {
+    function updateDashDots() {
+      var slides = dashTrack.querySelectorAll(".dash-slide");
+      if (!slides.length) return;
+      var scrollLeft = dashTrack.scrollLeft;
+      var gap = 24; // gap-6 = 1.5rem = 24px
+      var slideWidth = slides[0].offsetWidth + gap;
+      var activeIndex = Math.round(scrollLeft / slideWidth);
+      activeIndex = Math.max(0, Math.min(activeIndex, dashDots.length - 1));
+      dashDots.forEach(function (dot, i) {
+        dot.classList.toggle("active", i === activeIndex);
+      });
+    }
+
+    dashTrack.addEventListener("scroll", updateDashDots, { passive: true });
+
+    dashDots.forEach(function (dot, i) {
+      dot.addEventListener("click", function () {
+        var slides = dashTrack.querySelectorAll(".dash-slide");
+        if (!slides.length) return;
+        var gap = 24;
+        var slideWidth = slides[0].offsetWidth + gap;
+        dashTrack.scrollTo({ left: slideWidth * i, behavior: "smooth" });
+      });
+    });
+
+    if (dashPrev) {
+      dashPrev.addEventListener("click", function () {
+        var slides = dashTrack.querySelectorAll(".dash-slide");
+        if (!slides.length) return;
+        var gap = 24;
+        var slideWidth = slides[0].offsetWidth + gap;
+        dashTrack.scrollBy({ left: -slideWidth, behavior: "smooth" });
+      });
+    }
+
+    if (dashNext) {
+      dashNext.addEventListener("click", function () {
+        var slides = dashTrack.querySelectorAll(".dash-slide");
+        if (!slides.length) return;
+        var gap = 24;
+        var slideWidth = slides[0].offsetWidth + gap;
+        dashTrack.scrollBy({ left: slideWidth, behavior: "smooth" });
+      });
+    }
+
+    // Initial dot state
+    updateDashDots();
+  }
+
   // ── Scroll progress indicator — clamped for iOS rubber-band scrolling ──
   var progressBar = document.querySelector(".scroll-progress");
   if (progressBar) {
@@ -436,7 +492,7 @@
         var flickerOpacity = p.opacity * (0.7 + 0.3 * Math.sin(p.pulse));
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(212, 160, 23, " + flickerOpacity + ")";
+        ctx.fillStyle = "rgba(151, 117, 250, " + flickerOpacity + ")";
         ctx.fill();
       }
       particleRafId = requestAnimationFrame(drawParticles);

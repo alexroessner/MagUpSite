@@ -202,7 +202,7 @@ button:focus-visible {
 
 /* ===== Gradient text ===== */
 .gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, var(--color-accent-300) 50%, var(--color-accent-500) 100%);
+  background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-accent-300) 50%, var(--color-accent-500) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -933,6 +933,83 @@ button:focus-visible {
 .dash-bar-fill {
   width: 0%;
   transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ===== Dashboard carousel ===== */
+.dash-carousel-track {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scroll-padding-inline: 1rem;
+}
+
+.dash-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.dash-slide {
+  scroll-snap-align: center;
+}
+
+/* Carousel navigation dots */
+.dash-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: rgb(151 117 250 / 20%);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.dash-dot.active {
+  background: var(--color-accent-500);
+  width: 1.5rem;
+}
+
+.dash-dot:hover {
+  background: rgb(151 117 250 / 40%);
+}
+
+/* Carousel arrows */
+.dash-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: rgb(20 16 45 / 80%);
+  border: 1px solid rgb(151 117 250 / 20%);
+  color: var(--color-accent-400);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.dash-arrow:hover {
+  background: rgb(20 16 45 / 95%);
+  border-color: rgb(151 117 250 / 40%);
+}
+
+.dash-arrow-prev {
+  left: -1.25rem;
+}
+
+.dash-arrow-next {
+  right: -1.25rem;
+}
+
+@media (width <= 1024px) {
+  .dash-arrow {
+    display: none;
+  }
 }
 
 /* ===== Text gradient reveal ===== */
