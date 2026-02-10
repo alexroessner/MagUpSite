@@ -22,9 +22,9 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
       <span class="text-xs sm:text-sm font-medium tracking-[0.2em] uppercase text-accent-400/80">Trusted by 1,000+ enterprise brands worldwide</span>
     </div>
 
-    <h1 class="reveal text-display text-[min(3rem,11vw)] sm:text-5xl md:text-6xl lg:text-8xl xl:text-[6.5rem] mb-8 text-glow">
-      <span class="gradient-text">Become the</span><br>
-      <span class="gradient-text">Answer on </span><span class="text-accent-400" data-typewriter="ChatGPT|Perplexity|Gemini|Google AI|DeepSeek|Claude" role="status" aria-live="polite">ChatGPT</span>
+    <h1 class="reveal text-display mb-8 text-glow">
+      <span class="block text-[min(3rem,11vw)] sm:text-5xl md:text-6xl lg:text-8xl xl:text-[6.5rem] gradient-text">Become the</span>
+      <span class="block whitespace-nowrap text-[min(2.75rem,9.5vw)] sm:text-5xl md:text-6xl lg:text-8xl xl:text-[6.5rem]"><span class="gradient-text">Answer on </span><span class="text-accent-400" data-typewriter="ChatGPT|Perplexity|Gemini|Google AI|DeepSeek|Claude" role="status" aria-live="polite">ChatGPT</span></span>
     </h1>
 
     <p class="reveal text-lg sm:text-xl lg:text-2xl text-primary-300 max-w-3xl mx-auto mb-12 text-pretty leading-relaxed">
@@ -48,10 +48,11 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 {# ---- Client logos — Scrolling marquee ---- #}
 
 {%- if pageContent.clients.length %}
-<section class="py-10 sm:py-14 bg-primary-950/80 overflow-hidden">
+<section class="py-8 sm:py-12 bg-primary-950/80 overflow-hidden">
   <div class="relative">
     <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-primary-950 to-transparent z-10 pointer-events-none"></div>
     <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-primary-950 to-transparent z-10 pointer-events-none"></div>
+    {# Row 1 — scrolls left (default) #}
     <div class="overflow-hidden">
       <div class="logo-marquee gap-16 items-center whitespace-nowrap">
         {%- for client in pageContent.clients %}
@@ -62,6 +63,21 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
         {%- for client in pageContent.clients %}
         <div class="flex-shrink-0 flex items-center justify-center h-10 px-4 opacity-40 sm:opacity-40 max-sm:opacity-55 hover:opacity-80 transition-opacity" aria-hidden="true">
           <span class="text-primary-200 font-heading font-semibold text-sm sm:text-sm max-sm:text-base tracking-[0.15em] uppercase">{{ client }}</span>
+        </div>
+        {%- endfor %}
+      </div>
+    </div>
+    {# Row 2 — scrolls right (reversed list, reversed direction) #}
+    <div class="overflow-hidden mt-4">
+      <div class="logo-marquee logo-marquee-reverse gap-16 items-center whitespace-nowrap">
+        {%- for client in pageContent.clients | reverse %}
+        <div class="flex-shrink-0 flex items-center justify-center h-10 px-4 opacity-30 sm:opacity-30 max-sm:opacity-45 hover:opacity-70 transition-opacity">
+          <span class="text-primary-300 font-heading font-semibold text-sm sm:text-sm max-sm:text-base tracking-[0.15em] uppercase">{{ client }}</span>
+        </div>
+        {%- endfor %}
+        {%- for client in pageContent.clients | reverse %}
+        <div class="flex-shrink-0 flex items-center justify-center h-10 px-4 opacity-30 sm:opacity-30 max-sm:opacity-45 hover:opacity-70 transition-opacity" aria-hidden="true">
+          <span class="text-primary-300 font-heading font-semibold text-sm sm:text-sm max-sm:text-base tracking-[0.15em] uppercase">{{ client }}</span>
         </div>
         {%- endfor %}
       </div>

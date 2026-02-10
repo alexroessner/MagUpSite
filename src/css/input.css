@@ -275,6 +275,10 @@ button:focus-visible {
   100% { transform: translateX(-50%); }
 }
 
+.logo-marquee-reverse {
+  animation-direction: reverse;
+}
+
 /* ===== Hero CTA button — gradient pill with warm glow ===== */
 .hero-cta {
   background: linear-gradient(135deg, #FBBF24, #D4A017 60%, #B8860B);
