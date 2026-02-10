@@ -61,10 +61,30 @@
         "@id": "{{ site.url }}/#organization",
         "name": "{{ site.name }}",
         "url": "{{ site.url }}/",
-        "description": "{{ site.description }}"
+        "description": "{{ site.description }}",
+        "foundingDate": "2025",
+        "logo": "{{ site.url }}/favicon.svg",
+        "sameAs": ["{{ site.url }}/"]
         {%- if site.contact.email %},
         "email": "{{ site.contact.email }}"
         {%- endif %}
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "{{ site.url }}/#software",
+        "name": "{{ site.name }} Platform",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "description": "{{ site.description }}",
+        "provider": { "@id": "{{ site.url }}/#organization" },
+        "featureList": "AI Visibility Tracking, Prompt Intelligence, Citation Analytics, Crawler Analytics, Traffic Attribution, Shopping Visibility, GEO+SEO Content Marketing",
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/OnlineOnly",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "Enterprise plans available — contact for pricing"
+        }
       },
       {%- if page.url == "/" %}
       {
@@ -290,8 +310,20 @@
       }
       var header = document.getElementById('site-header');
       if (header) {
+        var headerScrolled = false;
+        var headerRafPending = false;
         window.addEventListener('scroll', function () {
-          header.classList.toggle('scrolled', window.scrollY > 20);
+          if (!headerRafPending) {
+            headerRafPending = true;
+            requestAnimationFrame(function () {
+              var shouldScroll = window.scrollY > 20;
+              if (shouldScroll !== headerScrolled) {
+                header.classList.toggle('scrolled', shouldScroll);
+                headerScrolled = shouldScroll;
+              }
+              headerRafPending = false;
+            });
+          }
         }, { passive: true });
       }
     })();

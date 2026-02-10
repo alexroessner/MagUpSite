@@ -351,6 +351,56 @@
       ]
     }
   ],
+  "roadmap": [
+    {
+      "phase": "Foundation",
+      "quarter": "Q1 2025",
+      "status": "completed",
+      "description": "Core platform infrastructure, multi-model API integration, initial AI visibility tracking across ChatGPT, Perplexity, and Google AI."
+    },
+    {
+      "phase": "Intelligence Layer",
+      "quarter": "Q2 2025",
+      "status": "completed",
+      "description": "Real-time citation analytics, prompt demand intelligence, competitive benchmarking, and 7-agent AI workflow engine."
+    },
+    {
+      "phase": "Global Expansion",
+      "quarter": "Q3 2025",
+      "status": "completed",
+      "description": "Chinese AI ecosystem coverage (Doubao, DeepSeek, Qwen, Kimi), multi-language content optimization, and regional compliance."
+    },
+    {
+      "phase": "Content Brain",
+      "quarter": "Q4 2025",
+      "status": "completed",
+      "description": "AI-powered content generation engine, dual GEO+SEO optimization, automated knowledge base architecture, and content scoring."
+    },
+    {
+      "phase": "Commerce Intelligence",
+      "quarter": "Q1 2026",
+      "status": "in-progress",
+      "description": "ChatGPT Shopping integration, product visibility tracking, AI shopping attribution, and e-commerce conversion analytics."
+    },
+    {
+      "phase": "Predictive Engine",
+      "quarter": "Q2 2026",
+      "status": "upcoming",
+      "description": "Predictive visibility modeling, trend forecasting, proactive content recommendations, and automated opportunity detection."
+    },
+    {
+      "phase": "Agentic Workflows",
+      "quarter": "Q3 2026",
+      "status": "upcoming",
+      "description": "Autonomous GEO agents, self-optimizing content pipelines, cross-platform orchestration, and real-time response to AI model updates."
+    },
+    {
+      "phase": "Enterprise Intelligence Network",
+      "quarter": "Q4 2026",
+      "status": "upcoming",
+      "description": "Industry benchmarking consortiums, anonymized competitive intelligence sharing, and enterprise-grade API for custom integrations."
+    }
+  ],
   "industries": [
     {
       "name": "Software & AI",

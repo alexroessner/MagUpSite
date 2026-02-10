@@ -355,19 +355,68 @@
       });
     }
 
+    // Keyboard navigation for carousel
+    var dashCarousel = document.getElementById("dash-carousel");
+    if (dashCarousel) {
+      dashCarousel.addEventListener("keydown", function (e) {
+        var step = getSlideStep();
+        if (!step) return;
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+          e.preventDefault();
+          dashTrack.scrollBy({ left: step, behavior: "smooth" });
+        } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+          e.preventDefault();
+          dashTrack.scrollBy({ left: -step, behavior: "smooth" });
+        }
+      });
+    }
+
+    // Update aria-current on active dot
+    function updateDashDotsAria() {
+      dashDots.forEach(function (dot, i) {
+        if (dot.classList.contains("active")) {
+          dot.setAttribute("aria-current", "true");
+        } else {
+          dot.removeAttribute("aria-current");
+        }
+      });
+    }
+
+    // Wrap original updateDashDots to also update aria
+    var origUpdateDots = updateDashDots;
+    updateDashDots = function () {
+      origUpdateDots();
+      updateDashDotsAria();
+    };
+
     // Initial dot state
     updateDashDots();
   }
 
-  // ── Scroll progress indicator — compositor-friendly scaleX, clamped for iOS rubber-band ──
+  // ── Scroll progress indicator — RAF-throttled, cached docHeight ──
   const progressBar = document.querySelector(".scroll-progress");
   if (progressBar) {
+    let progressRafPending = false;
+    let cachedDocHeight = document.documentElement.scrollHeight - window.innerHeight;
+    // Recalculate on resize (debounced)
+    let docHeightTimer = null;
+    window.addEventListener("resize", function () {
+      clearTimeout(docHeightTimer);
+      docHeightTimer = setTimeout(function () {
+        cachedDocHeight = document.documentElement.scrollHeight - window.innerHeight;
+      }, 200);
+    }, { passive: true });
+
     window.addEventListener("scroll", function () {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      let progress = docHeight > 0 ? scrollTop / docHeight : 0;
-      progress = Math.max(0, Math.min(1, progress));
-      progressBar.style.transform = "scaleX(" + progress + ")";
+      if (!progressRafPending) {
+        progressRafPending = true;
+        requestAnimationFrame(function () {
+          var progress = cachedDocHeight > 0 ? window.scrollY / cachedDocHeight : 0;
+          progress = Math.max(0, Math.min(1, progress));
+          progressBar.style.transform = "scaleX(" + progress + ")";
+          progressRafPending = false;
+        });
+      }
     }, { passive: true });
   }
 
@@ -429,6 +478,24 @@
     }, { passive: true });
   }
 
+  // ── Platform card 3D tilt on hover (desktop pointer devices only) ──
+  if (hasPointer && !prefersReducedMotion) {
+    var tiltCards = document.querySelectorAll(".tilt-card");
+    tiltCards.forEach(function (card) {
+      card.addEventListener("mousemove", function (e) {
+        var rect = card.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width;
+        var y = (e.clientY - rect.top) / rect.height;
+        var tiltX = (0.5 - y) * 12; // max 6 degrees
+        var tiltY = (x - 0.5) * 12;
+        card.style.transform = "perspective(600px) rotateX(" + tiltX + "deg) rotateY(" + tiltY + "deg) translateY(-4px)";
+      }, { passive: true });
+      card.addEventListener("mouseleave", function () {
+        card.style.transform = "";
+      }, { passive: true });
+    });
+  }
+
   // ── Logo marquee — tap to toggle pause on touch devices, keyboard accessible ──
   const marqueeContainer = document.querySelector(".logo-marquee");
   if (marqueeContainer) {
@@ -459,99 +526,212 @@
     }
   }
 
-  // ── Gold particle canvas — with visibility + viewport gating ──
+  // ── WebGL particle system — GPU-accelerated GL_POINTS with depth + mouse reactivity ──
+  // Falls back to 2D canvas on devices without WebGL support
   const canvas = document.querySelector(".particle-canvas canvas");
   if (canvas && !prefersReducedMotion) {
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-    const particles = [];
-    const particleCount = isTouch ? 20 : 40;
-    let particleRafId = null;
-    let resizeTimer = null;
-    let heroVisible = true;
+    var particleRafId = null;
+    var resizeTimer = null;
+    var heroVisible = true;
+    var particleCount = isTouch ? 80 : 200;
+    var mouseX = 0.5, mouseY = 0.5; // normalized [0,1]
 
     function resizeCanvas() {
-      const newW = canvas.parentElement.offsetWidth;
-      const newH = canvas.parentElement.offsetHeight;
+      var newW = canvas.parentElement.offsetWidth;
+      var newH = canvas.parentElement.offsetHeight;
       if (canvas.width !== newW || canvas.height !== newH) {
         canvas.width = newW;
         canvas.height = newH;
       }
     }
     resizeCanvas();
-
     window.addEventListener("resize", function () {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(resizeCanvas, 150);
+      resizeTimer = setTimeout(function () {
+        resizeCanvas();
+        if (gl) gl.viewport(0, 0, canvas.width, canvas.height);
+      }, 150);
     }, { passive: true });
 
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 1.5 + 0.5,
-        opacity: Math.random() * 0.4 + 0.1,
-        speedX: (Math.random() - 0.5) * 0.3,
-        speedY: (Math.random() - 0.5) * 0.2 - 0.1,
-        pulse: Math.random() * Math.PI * 2
-      });
+    // Track mouse for force-field effect
+    if (hasPointer) {
+      canvas.parentElement.addEventListener("mousemove", function (e) {
+        var rect = canvas.getBoundingClientRect();
+        mouseX = (e.clientX - rect.left) / rect.width;
+        mouseY = (e.clientY - rect.top) / rect.height;
+      }, { passive: true });
     }
 
-    function startParticles() {
-      if (particleRafId || document.hidden || !heroVisible) return;
-      drawParticles();
-    }
+    // Try WebGL first
+    var gl = canvas.getContext("webgl2") || canvas.getContext("webgl");
+    if (gl) {
+      // === WebGL path ===
+      var vsSource = [
+        "attribute vec4 a_pos;", // x, y, z(depth), size
+        "attribute vec2 a_vel;",
+        "attribute float a_phase;",
+        "uniform float u_time;",
+        "uniform vec2 u_mouse;",
+        "uniform vec2 u_res;",
+        "varying float v_alpha;",
+        "void main() {",
+        "  float t = u_time;",
+        "  vec2 pos = a_pos.xy + a_vel * t;",
+        "  pos = fract(pos);", // wrap [0,1]
+        "  // Mouse repulsion force field",
+        "  vec2 diff = pos - u_mouse;",
+        "  float dist = length(diff);",
+        "  if (dist < 0.15) {",
+        "    pos += normalize(diff) * (0.15 - dist) * 0.3;",
+        "    pos = clamp(pos, 0.0, 1.0);",
+        "  }",
+        "  float depth = a_pos.z;", // 0-1, 0=far
+        "  float flicker = 0.6 + 0.4 * sin(a_phase + t * 2.0);",
+        "  v_alpha = flicker * (0.15 + depth * 0.35);",
+        "  float size = a_pos.w * (0.5 + depth * 0.5);",
+        "  gl_Position = vec4(pos * 2.0 - 1.0, 0.0, 1.0);",
+        "  gl_PointSize = size * min(u_res.x, u_res.y) / 600.0;",
+        "}"
+      ].join("\n");
 
-    function stopParticles() {
-      if (particleRafId) {
-        cancelAnimationFrame(particleRafId);
-        particleRafId = null;
+      var fsSource = [
+        "precision mediump float;",
+        "varying float v_alpha;",
+        "void main() {",
+        "  float d = length(gl_PointCoord - 0.5) * 2.0;",
+        "  if (d > 1.0) discard;",
+        "  float soft = 1.0 - d * d;",
+        "  gl_FragColor = vec4(0.592, 0.459, 0.98, v_alpha * soft);",
+        "}"
+      ].join("\n");
+
+      function compileShader(src, type) {
+        var s = gl.createShader(type);
+        gl.shaderSource(s, src);
+        gl.compileShader(s);
+        return s;
       }
-    }
+      var vs = compileShader(vsSource, gl.VERTEX_SHADER);
+      var fs = compileShader(fsSource, gl.FRAGMENT_SHADER);
+      var prog = gl.createProgram();
+      gl.attachShader(prog, vs);
+      gl.attachShader(prog, fs);
+      gl.linkProgram(prog);
+      gl.useProgram(prog);
 
-    function drawParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let j = 0; j < particles.length; j++) {
-        const p = particles[j];
-        p.x += p.speedX;
-        p.y += p.speedY;
-        p.pulse += 0.02;
+      var aPos = gl.getAttribLocation(prog, "a_pos");
+      var aVel = gl.getAttribLocation(prog, "a_vel");
+      var aPhase = gl.getAttribLocation(prog, "a_phase");
+      var uTime = gl.getUniformLocation(prog, "u_time");
+      var uMouse = gl.getUniformLocation(prog, "u_mouse");
+      var uRes = gl.getUniformLocation(prog, "u_res");
 
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
-
-        const flickerOpacity = p.opacity * (0.7 + 0.3 * Math.sin(p.pulse));
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(151, 117, 250, " + flickerOpacity + ")";
-        ctx.fill();
+      // Generate particle data
+      var posData = new Float32Array(particleCount * 4);
+      var velData = new Float32Array(particleCount * 2);
+      var phaseData = new Float32Array(particleCount);
+      for (var i = 0; i < particleCount; i++) {
+        posData[i * 4]     = Math.random(); // x
+        posData[i * 4 + 1] = Math.random(); // y
+        posData[i * 4 + 2] = Math.random(); // depth (z)
+        posData[i * 4 + 3] = Math.random() * 3.0 + 1.0; // size
+        velData[i * 2]     = (Math.random() - 0.5) * 0.01;
+        velData[i * 2 + 1] = (Math.random() - 0.5) * 0.008 - 0.002;
+        phaseData[i]        = Math.random() * 6.283;
       }
-      particleRafId = requestAnimationFrame(drawParticles);
-    }
 
-    // IntersectionObserver to pause particles when hero is off-screen
-    if ("IntersectionObserver" in window) {
-      const heroObserver = new IntersectionObserver(
-        function (entries) {
+      function createBuffer(data, attr, size) {
+        var buf = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+        gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
+        gl.enableVertexAttribArray(attr);
+        gl.vertexAttribPointer(attr, size, gl.FLOAT, false, 0, 0);
+      }
+      createBuffer(posData, aPos, 4);
+      createBuffer(velData, aVel, 2);
+      createBuffer(phaseData, aPhase, 1);
+
+      gl.enable(gl.BLEND);
+      gl.blendFunc(gl.SRC_ALPHA, gl.ONE); // additive blend for glow
+      gl.clearColor(0, 0, 0, 0);
+
+      var startTime = performance.now();
+
+      function drawGL() {
+        gl.viewport(0, 0, canvas.width, canvas.height);
+        gl.clear(gl.COLOR_BUFFER_BIT);
+        gl.uniform1f(uTime, (performance.now() - startTime) / 1000);
+        gl.uniform2f(uMouse, mouseX, 1.0 - mouseY);
+        gl.uniform2f(uRes, canvas.width, canvas.height);
+        gl.drawArrays(gl.POINTS, 0, particleCount);
+        particleRafId = requestAnimationFrame(drawGL);
+      }
+
+      function startParticles() {
+        if (particleRafId || document.hidden || !heroVisible) return;
+        drawGL();
+      }
+      function stopParticles() {
+        if (particleRafId) { cancelAnimationFrame(particleRafId); particleRafId = null; }
+      }
+
+      if ("IntersectionObserver" in window) {
+        var heroObserver = new IntersectionObserver(function (entries) {
           entries.forEach(function (entry) {
             heroVisible = entry.isIntersecting;
-            if (heroVisible) startParticles();
-            else stopParticles();
+            if (heroVisible) startParticles(); else stopParticles();
           });
-        },
-        { threshold: 0 }
-      );
-      heroObserver.observe(canvas.parentElement);
+        }, { threshold: 0 });
+        heroObserver.observe(canvas.parentElement);
+      }
+      startParticles();
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) stopParticles(); else startParticles();
+      });
+
+    } else {
+      // === 2D Canvas fallback ===
+      var ctx = canvas.getContext("2d");
+      if (ctx) {
+        var particles2d = [];
+        var count2d = isTouch ? 20 : 40;
+        for (var j = 0; j < count2d; j++) {
+          particles2d.push({
+            x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+            radius: Math.random() * 1.5 + 0.5, opacity: Math.random() * 0.4 + 0.1,
+            speedX: (Math.random() - 0.5) * 0.3, speedY: (Math.random() - 0.5) * 0.2 - 0.1,
+            pulse: Math.random() * Math.PI * 2
+          });
+        }
+        function startParticles2d() { if (particleRafId || document.hidden || !heroVisible) return; draw2d(); }
+        function stopParticles2d() { if (particleRafId) { cancelAnimationFrame(particleRafId); particleRafId = null; } }
+        function draw2d() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          for (var k = 0; k < particles2d.length; k++) {
+            var p = particles2d[k];
+            p.x += p.speedX; p.y += p.speedY; p.pulse += 0.02;
+            if (p.x < 0) p.x = canvas.width; if (p.x > canvas.width) p.x = 0;
+            if (p.y < 0) p.y = canvas.height; if (p.y > canvas.height) p.y = 0;
+            ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fillStyle = "rgba(151, 117, 250, " + (p.opacity * (0.7 + 0.3 * Math.sin(p.pulse))) + ")";
+            ctx.fill();
+          }
+          particleRafId = requestAnimationFrame(draw2d);
+        }
+        if ("IntersectionObserver" in window) {
+          var heroObs2d = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              heroVisible = entry.isIntersecting;
+              if (heroVisible) startParticles2d(); else stopParticles2d();
+            });
+          }, { threshold: 0 });
+          heroObs2d.observe(canvas.parentElement);
+        }
+        startParticles2d();
+        document.addEventListener("visibilitychange", function () {
+          if (document.hidden) stopParticles2d(); else startParticles2d();
+        });
+      }
     }
-
-    startParticles();
-
-    // Pause when page is hidden (iOS battery optimization)
-    document.addEventListener("visibilitychange", function () {
-      if (document.hidden) stopParticles();
-      else startParticles();
-    });
   }
 })();

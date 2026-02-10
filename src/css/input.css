@@ -279,6 +279,59 @@ button:focus-visible {
   animation-direction: reverse;
 }
 
+/* ===== FAQ conditional border — accent glow when open ===== */
+.group.open.glass-card {
+  border-color: rgb(151 117 250 / 25%);
+  box-shadow: 0 8px 32px -8px rgb(8 5 30 / 40%),
+              inset 0 1px 0 rgb(151 117 250 / 6%),
+              0 0 20px -8px rgb(151 117 250 / 12%);
+}
+
+/* ===== Terminal window frame ===== */
+.terminal-frame {
+  position: relative;
+}
+
+.terminal-frame::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2.5rem;
+  background: rgb(12 10 30 / 90%);
+  border-bottom: 1px solid rgb(151 117 250 / 12%);
+  border-radius: 1rem 1rem 0 0;
+  z-index: 1;
+}
+
+.terminal-dots {
+  position: absolute;
+  top: 0.85rem;
+  left: 1.25rem;
+  display: flex;
+  gap: 0.4rem;
+  z-index: 2;
+}
+
+.terminal-dots span {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+}
+
+.terminal-title {
+  position: absolute;
+  top: 0.65rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-primary-400);
+  letter-spacing: 0.05em;
+}
+
 /* ===== Hero CTA button — gradient pill with warm glow ===== */
 .hero-cta {
   background: linear-gradient(135deg, #9775FA, #7C5CF7 60%, #6741F0);
@@ -293,10 +346,6 @@ button:focus-visible {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
-}
-
-.faq-content:not(.hidden) {
-  max-height: 300px;
 }
 
 .hero-cta:hover {
@@ -333,23 +382,28 @@ button:focus-visible {
   }
 }
 
-/* ===== Glassmorphism card — frosted translucent (NOT border-based like Profound) ===== */
+/* ===== Glassmorphism card — solid translucent (blur removed for perf — 50+ instances on homepage) ===== */
 .glass-card {
   position: relative;
   overflow: hidden;
-  background: rgb(20 16 45 / 60%);
-  -webkit-backdrop-filter: blur(20px) saturate(1.4);
-  backdrop-filter: blur(20px) saturate(1.4);
+  background: rgb(20 16 45 / 85%);
   border: 1px solid rgb(151 117 250 / 8%);
   box-shadow: 0 8px 32px -8px rgb(8 5 30 / 40%),
               inset 0 1px 0 rgb(151 117 250 / 6%);
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Opt-in blur for hero-adjacent or featured elements (use sparingly) */
+.glass-blur {
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  backdrop-filter: blur(20px) saturate(1.4);
+  background: rgb(20 16 45 / 60%);
+}
+
 /* Desktop: hover brighten */
 @media (hover: hover) {
   .glass-card:hover {
-    background: rgb(20 16 45 / 75%);
+    background: rgb(20 16 45 / 92%);
     border-color: rgb(151 117 250 / 20%);
     box-shadow: 0 16px 48px -12px rgb(0 0 0 / 50%),
                 0 0 30px -10px rgb(151 117 250 / 12%),
@@ -360,7 +414,7 @@ button:focus-visible {
 /* Touch: active press — glass brightens on tap */
 @media (hover: none) {
   .glass-card:active {
-    background: rgb(20 16 45 / 80%);
+    background: rgb(20 16 45 / 95%);
     border-color: rgb(151 117 250 / 25%);
     box-shadow: 0 4px 16px -4px rgb(0 0 0 / 50%),
                 0 0 20px -8px rgb(151 117 250 / 15%),
@@ -697,20 +751,56 @@ button:focus-visible {
   transform: scale(0.97);
 }
 
-/* ===== Flywheel animation — subtle pulse glow on scroll reveal ===== */
+/* ===== Flywheel 3D rotation + glow ===== */
+.flywheel-3d-container {
+  perspective: 800px;
+  transform-style: preserve-3d;
+}
+
 .flywheel-spin {
   opacity: 0.6;
   transition: opacity 0.5s ease;
+  transform-style: preserve-3d;
 }
 
 .flywheel-spin.visible {
   opacity: 1;
-  animation: flywheel-pulse 4s ease-in-out infinite;
+  animation: flywheel-rotate 24s linear infinite, flywheel-glow 4s ease-in-out infinite;
 }
 
-@keyframes flywheel-pulse {
-  0%, 100% { filter: drop-shadow(0 0 6px rgb(151 117 250 / 30%)); }
-  50% { filter: drop-shadow(0 0 16px rgb(151 117 250 / 50%)); }
+@keyframes flywheel-rotate {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+@keyframes flywheel-glow {
+  0%, 100% { box-shadow: 0 0 20px -4px rgb(151 117 250 / 15%); }
+  50% { box-shadow: 0 0 40px -4px rgb(151 117 250 / 30%); }
+}
+
+/* ===== 3D depth stagger reveal — cards emerge from depth ===== */
+.depth-stagger {
+  perspective: 1200px;
+}
+
+.depth-stagger > * {
+  opacity: 0;
+  transform: translateZ(-200px) rotateX(8deg) rotateY(-4deg);
+  transform-style: preserve-3d;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.depth-stagger.visible > *:nth-child(1) { transition-delay: 0ms;   transform: translateZ(-200px) rotateX(8deg) rotateY(-4deg); }
+.depth-stagger.visible > *:nth-child(2) { transition-delay: 100ms; transform: translateZ(-250px) rotateX(6deg) rotateY(3deg); }
+.depth-stagger.visible > *:nth-child(3) { transition-delay: 200ms; transform: translateZ(-300px) rotateX(10deg) rotateY(-6deg); }
+.depth-stagger.visible > *:nth-child(4) { transition-delay: 300ms; transform: translateZ(-180px) rotateX(5deg) rotateY(5deg); }
+.depth-stagger.visible > *:nth-child(5) { transition-delay: 400ms; transform: translateZ(-260px) rotateX(7deg) rotateY(-3deg); }
+.depth-stagger.visible > *:nth-child(6) { transition-delay: 500ms; transform: translateZ(-220px) rotateX(9deg) rotateY(4deg); }
+
+.depth-stagger.visible > * {
+  opacity: 1;
+  transform: translateZ(0) rotateX(0) rotateY(0);
 }
 
 /* ===== Shimmer effect for premium feel ===== */
@@ -737,10 +827,39 @@ button:focus-visible {
   100% { transform: translateX(100%); }
 }
 
+/* ===== KPI card 3D flip reveal ===== */
+.kpi-flip-container {
+  perspective: 800px;
+}
+
+.kpi-flip-container > * {
+  opacity: 0;
+  transform: rotateX(90deg) translateY(20px);
+  transform-origin: center bottom;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.kpi-flip-container.visible > *:nth-child(1) { transition-delay: 0ms; }
+.kpi-flip-container.visible > *:nth-child(2) { transition-delay: 120ms; }
+.kpi-flip-container.visible > *:nth-child(3) { transition-delay: 240ms; }
+.kpi-flip-container.visible > *:nth-child(4) { transition-delay: 360ms; }
+
+.kpi-flip-container.visible > * {
+  opacity: 1;
+  transform: rotateX(0) translateY(0);
+}
+
 /* ===== KPI card glow ===== */
 .kpi-glow {
   box-shadow: 0 0 0 1px rgb(151 117 250 / 10%),
               0 4px 24px -4px rgb(151 117 250 / 8%);
+}
+
+/* ===== Platform card 3D tilt on hover (desktop only) ===== */
+.tilt-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
 }
 
 /* ===== Architecture layer ===== */
@@ -1032,11 +1151,6 @@ button:focus-visible {
     backdrop-filter: blur(12px) saturate(1.3);
   }
 
-  .glass-card {
-    -webkit-backdrop-filter: blur(12px) saturate(1.2);
-    backdrop-filter: blur(12px) saturate(1.2);
-  }
-
   .card-featured {
     -webkit-backdrop-filter: blur(12px) saturate(1.2);
     backdrop-filter: blur(12px) saturate(1.2);
@@ -1108,6 +1222,7 @@ button:focus-visible {
   .flywheel-spin,
   .flywheel-spin.visible {
     animation: none;
+    transform: none;
   }
 
   .shimmer::after {
@@ -1148,6 +1263,13 @@ button:focus-visible {
     clip-path: none;
     margin-top: 0;
     padding-top: 4rem;
+  }
+
+  .depth-stagger > *,
+  .kpi-flip-container > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 
   .glow-border::before {
