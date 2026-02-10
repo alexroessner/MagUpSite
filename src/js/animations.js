@@ -526,15 +526,22 @@
     }
   }
 
-  // ── WebGL particle system — GPU-accelerated GL_POINTS with depth + mouse reactivity ──
+  // ── WebGL particle system + constellation lines ──
+  // GPU-accelerated GL_POINTS with depth + mouse reactivity
+  // 2D canvas overlay draws connecting lines between nearby particles
   // Falls back to 2D canvas on devices without WebGL support
-  const canvas = document.querySelector(".particle-canvas canvas");
+  var canvas = document.getElementById("particle-canvas");
+  if (!canvas) canvas = document.querySelector(".particle-canvas canvas");
+  var conCanvas = document.getElementById("constellation-canvas");
   if (canvas && !prefersReducedMotion) {
     var particleRafId = null;
     var resizeTimer = null;
     var heroVisible = true;
     var particleCount = isTouch ? 80 : 200;
-    var mouseX = 0.5, mouseY = 0.5; // normalized [0,1]
+    var mouseX = 0.5, mouseY = 0.5;
+    var connectDist = isTouch ? 0.09 : 0.11;
+    var connectDistSq = connectDist * connectDist;
+    var maxLines = isTouch ? 80 : 250;
 
     function resizeCanvas() {
       var newW = canvas.parentElement.offsetWidth;
@@ -542,6 +549,10 @@
       if (canvas.width !== newW || canvas.height !== newH) {
         canvas.width = newW;
         canvas.height = newH;
+      }
+      if (conCanvas && (conCanvas.width !== newW || conCanvas.height !== newH)) {
+        conCanvas.width = newW;
+        conCanvas.height = newH;
       }
     }
     resizeCanvas();
@@ -553,7 +564,6 @@
       }, 150);
     }, { passive: true });
 
-    // Track mouse for force-field effect
     if (hasPointer) {
       canvas.parentElement.addEventListener("mousemove", function (e) {
         var rect = canvas.getBoundingClientRect();
@@ -562,12 +572,13 @@
       }, { passive: true });
     }
 
-    // Try WebGL first
     var gl = canvas.getContext("webgl2") || canvas.getContext("webgl");
+    var conCtx = conCanvas ? conCanvas.getContext("2d") : null;
+
     if (gl) {
       // === WebGL path ===
       var vsSource = [
-        "attribute vec4 a_pos;", // x, y, z(depth), size
+        "attribute vec4 a_pos;",
         "attribute vec2 a_vel;",
         "attribute float a_phase;",
         "uniform float u_time;",
@@ -577,15 +588,14 @@
         "void main() {",
         "  float t = u_time;",
         "  vec2 pos = a_pos.xy + a_vel * t;",
-        "  pos = fract(pos);", // wrap [0,1]
-        "  // Mouse repulsion force field",
+        "  pos = fract(pos);",
         "  vec2 diff = pos - u_mouse;",
         "  float dist = length(diff);",
         "  if (dist < 0.15) {",
         "    pos += normalize(diff) * (0.15 - dist) * 0.3;",
         "    pos = clamp(pos, 0.0, 1.0);",
         "  }",
-        "  float depth = a_pos.z;", // 0-1, 0=far
+        "  float depth = a_pos.z;",
         "  float flicker = 0.6 + 0.4 * sin(a_phase + t * 2.0);",
         "  v_alpha = flicker * (0.15 + depth * 0.35);",
         "  float size = a_pos.w * (0.5 + depth * 0.5);",
@@ -626,15 +636,14 @@
       var uMouse = gl.getUniformLocation(prog, "u_mouse");
       var uRes = gl.getUniformLocation(prog, "u_res");
 
-      // Generate particle data
       var posData = new Float32Array(particleCount * 4);
       var velData = new Float32Array(particleCount * 2);
       var phaseData = new Float32Array(particleCount);
       for (var i = 0; i < particleCount; i++) {
-        posData[i * 4]     = Math.random(); // x
-        posData[i * 4 + 1] = Math.random(); // y
-        posData[i * 4 + 2] = Math.random(); // depth (z)
-        posData[i * 4 + 3] = Math.random() * 3.0 + 1.0; // size
+        posData[i * 4]     = Math.random();
+        posData[i * 4 + 1] = Math.random();
+        posData[i * 4 + 2] = Math.random();
+        posData[i * 4 + 3] = Math.random() * 3.0 + 1.0;
         velData[i * 2]     = (Math.random() - 0.5) * 0.01;
         velData[i * 2 + 1] = (Math.random() - 0.5) * 0.008 - 0.002;
         phaseData[i]        = Math.random() * 6.283;
@@ -652,18 +661,66 @@
       createBuffer(phaseData, aPhase, 1);
 
       gl.enable(gl.BLEND);
-      gl.blendFunc(gl.SRC_ALPHA, gl.ONE); // additive blend for glow
+      gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
       gl.clearColor(0, 0, 0, 0);
 
       var startTime = performance.now();
 
+      // CPU-side particle position cache for constellation lines
+      var cpuPositions = new Float32Array(particleCount * 2);
+
       function drawGL() {
+        var t = (performance.now() - startTime) / 1000;
         gl.viewport(0, 0, canvas.width, canvas.height);
         gl.clear(gl.COLOR_BUFFER_BIT);
-        gl.uniform1f(uTime, (performance.now() - startTime) / 1000);
+        gl.uniform1f(uTime, t);
         gl.uniform2f(uMouse, mouseX, 1.0 - mouseY);
         gl.uniform2f(uRes, canvas.width, canvas.height);
         gl.drawArrays(gl.POINTS, 0, particleCount);
+
+        // Constellation lines — compute positions on CPU, draw on 2D overlay
+        if (conCtx) {
+          var cw = conCanvas.width, ch = conCanvas.height;
+          conCtx.clearRect(0, 0, cw, ch);
+
+          var mx = mouseX, my = 1.0 - mouseY;
+          for (var ci = 0; ci < particleCount; ci++) {
+            var px = posData[ci * 4] + velData[ci * 2] * t;
+            var py = posData[ci * 4 + 1] + velData[ci * 2 + 1] * t;
+            px = px - Math.floor(px);
+            py = py - Math.floor(py);
+            var dx = px - mx, dy = py - my;
+            var d = Math.sqrt(dx * dx + dy * dy);
+            if (d < 0.15 && d > 0.001) {
+              var f = (0.15 - d) * 0.3;
+              px = Math.max(0, Math.min(1, px + (dx / d) * f));
+              py = Math.max(0, Math.min(1, py + (dy / d) * f));
+            }
+            cpuPositions[ci * 2] = px * cw;
+            cpuPositions[ci * 2 + 1] = (1 - py) * ch;
+          }
+
+          conCtx.lineWidth = 0.8;
+          var lc = 0;
+          for (var ci = 0; ci < particleCount && lc < maxLines; ci++) {
+            var ax = cpuPositions[ci * 2], ay = cpuPositions[ci * 2 + 1];
+            for (var cj = ci + 1; cj < particleCount && lc < maxLines; cj++) {
+              var bx = cpuPositions[cj * 2], by = cpuPositions[cj * 2 + 1];
+              var ndx = (ax - bx) / cw, ndy = (ay - by) / ch;
+              var ndSq = ndx * ndx + ndy * ndy;
+              if (ndSq < connectDistSq) {
+                var alpha = (1 - ndSq / connectDistSq) * 0.18;
+                conCtx.strokeStyle = "rgba(151, 117, 250, " + alpha.toFixed(3) + ")";
+                conCtx.beginPath();
+                conCtx.moveTo(ax, ay);
+                conCtx.lineTo(bx, by);
+                conCtx.stroke();
+                lc++;
+              }
+            }
+          }
+        }
+
         particleRafId = requestAnimationFrame(drawGL);
       }
 
@@ -690,15 +747,15 @@
       });
 
     } else {
-      // === 2D Canvas fallback ===
+      // === 2D Canvas fallback with constellation ===
       var ctx = canvas.getContext("2d");
       if (ctx) {
         var particles2d = [];
-        var count2d = isTouch ? 20 : 40;
+        var count2d = isTouch ? 30 : 60;
         for (var j = 0; j < count2d; j++) {
           particles2d.push({
             x: Math.random() * canvas.width, y: Math.random() * canvas.height,
-            radius: Math.random() * 1.5 + 0.5, opacity: Math.random() * 0.4 + 0.1,
+            radius: Math.random() * 2 + 0.5, opacity: Math.random() * 0.4 + 0.1,
             speedX: (Math.random() - 0.5) * 0.3, speedY: (Math.random() - 0.5) * 0.2 - 0.1,
             pulse: Math.random() * Math.PI * 2
           });
@@ -706,12 +763,38 @@
         function startParticles2d() { if (particleRafId || document.hidden || !heroVisible) return; draw2d(); }
         function stopParticles2d() { if (particleRafId) { cancelAnimationFrame(particleRafId); particleRafId = null; } }
         function draw2d() {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          var cw = canvas.width, ch = canvas.height;
+          ctx.clearRect(0, 0, cw, ch);
+
+          // Draw constellation lines first (behind particles)
+          var cd2d = isTouch ? 80 : 120;
+          var cd2dSq = cd2d * cd2d;
+          ctx.lineWidth = 0.6;
+          var lc2 = 0;
+          for (var ci = 0; ci < particles2d.length && lc2 < maxLines; ci++) {
+            var pa = particles2d[ci];
+            for (var cj = ci + 1; cj < particles2d.length && lc2 < maxLines; cj++) {
+              var pb = particles2d[cj];
+              var ddx = pa.x - pb.x, ddy = pa.y - pb.y;
+              var dSq = ddx * ddx + ddy * ddy;
+              if (dSq < cd2dSq) {
+                var la = (1 - dSq / cd2dSq) * 0.15;
+                ctx.strokeStyle = "rgba(151, 117, 250, " + la.toFixed(3) + ")";
+                ctx.beginPath();
+                ctx.moveTo(pa.x, pa.y);
+                ctx.lineTo(pb.x, pb.y);
+                ctx.stroke();
+                lc2++;
+              }
+            }
+          }
+
+          // Draw particles
           for (var k = 0; k < particles2d.length; k++) {
             var p = particles2d[k];
             p.x += p.speedX; p.y += p.speedY; p.pulse += 0.02;
-            if (p.x < 0) p.x = canvas.width; if (p.x > canvas.width) p.x = 0;
-            if (p.y < 0) p.y = canvas.height; if (p.y > canvas.height) p.y = 0;
+            if (p.x < 0) p.x = cw; if (p.x > cw) p.x = 0;
+            if (p.y < 0) p.y = ch; if (p.y > ch) p.y = 0;
             ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
             ctx.fillStyle = "rgba(151, 117, 250, " + (p.opacity * (0.7 + 0.3 * Math.sin(p.pulse))) + ")";
             ctx.fill();
@@ -732,6 +815,82 @@
           if (document.hidden) stopParticles2d(); else startParticles2d();
         });
       }
+    }
+  }
+
+  // ── Universal 3D card tilt with light shine (desktop pointer devices) ──
+  if (hasPointer && !prefersReducedMotion) {
+    var allTiltCards = document.querySelectorAll(".tilt-card");
+    allTiltCards.forEach(function (card) {
+      // Add shine element if not present
+      var shine = card.querySelector(".card-shine");
+      if (!shine) {
+        shine = document.createElement("div");
+        shine.className = "card-shine";
+        shine.setAttribute("aria-hidden", "true");
+        card.style.position = "relative";
+        card.appendChild(shine);
+      }
+
+      card.addEventListener("mousemove", function (e) {
+        var rect = card.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width;
+        var y = (e.clientY - rect.top) / rect.height;
+        var tiltX = (0.5 - y) * 14;
+        var tiltY = (x - 0.5) * 14;
+        card.style.transform = "perspective(800px) rotateX(" + tiltX + "deg) rotateY(" + tiltY + "deg) translateY(-4px) scale(1.02)";
+        shine.style.opacity = "1";
+        shine.style.setProperty("--shine-x", (x * 100).toFixed(1) + "%");
+        shine.style.setProperty("--shine-y", (y * 100).toFixed(1) + "%");
+      }, { passive: true });
+
+      card.addEventListener("mouseleave", function () {
+        card.style.transform = "";
+        shine.style.opacity = "0";
+      }, { passive: true });
+    });
+  }
+
+  // ── Parallax scroll for hero floating shapes ──
+  if (!prefersReducedMotion && !isTouch) {
+    var heroShapes = document.querySelectorAll(".hero-shape");
+    if (heroShapes.length) {
+      var parallaxRafPending = false;
+      var depths = [0.3, 0.5, 0.2, 0.6, 0.35, 0.45, 0.15, 0.25];
+      window.addEventListener("scroll", function () {
+        if (!parallaxRafPending) {
+          parallaxRafPending = true;
+          requestAnimationFrame(function () {
+            var scrollY = window.scrollY;
+            heroShapes.forEach(function (shape, i) {
+              var depth = depths[i] || 0.3;
+              var yOffset = scrollY * depth * 0.5;
+              shape.style.transform = shape.style.transform || "";
+              shape.style.marginTop = -yOffset + "px";
+            });
+            parallaxRafPending = false;
+          });
+        }
+      }, { passive: true });
+    }
+  }
+
+  // ── 3D reveal observer for new reveal-3d classes ──
+  if ("IntersectionObserver" in window && !prefersReducedMotion) {
+    var reveal3dEls = document.querySelectorAll(".reveal-3d, .reveal-3d-left, .reveal-3d-right");
+    if (reveal3dEls.length) {
+      var reveal3dObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              reveal3dObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -30px 0px" }
+      );
+      reveal3dEls.forEach(function (el) { reveal3dObserver.observe(el); });
     }
   }
 })();
