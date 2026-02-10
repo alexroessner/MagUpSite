@@ -72,11 +72,12 @@ jobs:
       - name: Push to MagUpSite repo
         if: github.event_name == 'push'
         env:
+          DEPLOY_TOKEN_V3: ${{ secrets.MAGUPSITE_DEPLOY_TOKEN3 }}
           DEPLOY_TOKEN_V2: ${{ secrets.MAGUPSITE_DEPLOY_TOKEN2 }}
           DEPLOY_TOKEN_V1: ${{ secrets.MAGUPSITE_DEPLOY_TOKEN }}
         run: |
-          # Try v2 token first, fall back to v1
-          DEPLOY_TOKEN="${DEPLOY_TOKEN_V2:-$DEPLOY_TOKEN_V1}"
+          # Try v3 first, then v2, then v1
+          DEPLOY_TOKEN="${DEPLOY_TOKEN_V3:-${DEPLOY_TOKEN_V2:-$DEPLOY_TOKEN_V1}}"
           if [ -z "$DEPLOY_TOKEN" ]; then
             echo "::warning::No MAGUPSITE_DEPLOY_TOKEN set. Skipping MagUpSite deploy."
             exit 0
