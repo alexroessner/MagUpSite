@@ -709,6 +709,22 @@ button:focus-visible {
   }
 }
 
+/* ===== Three.js hero 3D scene canvas ===== */
+.hero-3d-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Desktop: hide CSS hero shapes — Three.js provides real 3D */
+@media (hover: hover) and (pointer: fine) {
+  .hero-shapes {
+    display: none;
+  }
+}
+
 /* ===== Gold particle canvas ===== */
 .particle-canvas {
   position: absolute;
@@ -765,7 +781,7 @@ button:focus-visible {
 
 .flywheel-spin.visible {
   opacity: 1;
-  animation: flywheel-rotate 24s linear infinite, flywheel-glow 4s ease-in-out infinite;
+  animation: flywheel-glow 4s ease-in-out infinite;
 }
 
 @keyframes flywheel-rotate {
