@@ -27,31 +27,31 @@
   "services": [
     {
       "name": "AI Visibility & Brand Presence Tracking",
-      "description": "Track how often your brand appears in AI answers, monitor brand mentions, measure share of visibility, analyze source citations, assess brand sentiment, and optimize content AEO performance across all major AI answer engines."
+      "description": "Know exactly where you appear — and where you don't. Real-time monitoring across 10+ AI platforms shows your brand's visibility score, citation rate, and competitive position so you can act before competitors do."
     },
     {
       "name": "Prompt & Demand Intelligence",
-      "description": "Discover what millions of people ask AI with real-time search volume insights. Monitor prompt volume trends, topic-level demand, audience question patterns, and conversation trends versus traditional search."
+      "description": "Discover what millions of people ask AI before your competitors do. Real-time prompt volume data reveals untapped demand, emerging topics, and the exact questions where your brand should be the answer."
     },
     {
       "name": "AI Response & Citation Analytics",
-      "description": "Understand how AI models talk about your brand. Analyze frequency of appearance, response content, citation sources, referenced pages, and track ranking improvements over time through Answer Engine Insights."
+      "description": "See exactly what AI says about you — and why. Deep analysis of AI responses reveals which sources get cited, how your brand is positioned, and where to improve for higher recommendation rates."
     },
     {
       "name": "AI Crawler & Agent Analytics",
-      "description": "Gain full visibility into how AI sees your website. Monitor AI crawler access, bot frequency, technical indexing, readability analysis, and content accessibility for AI retrieval."
+      "description": "Ensure AI can read, understand, and trust your content. Technical diagnostics show how AI crawlers access your site, what they index, and what's blocking your content from being cited."
     },
     {
       "name": "Traffic & Attribution Analytics",
-      "description": "Measure the downstream impact of AI visibility. Track human traffic from AI search, attribute conversions to AI platforms, identify pages driving AI-sourced traffic, and prove content marketing ROI."
+      "description": "Prove the ROI of AI visibility with real numbers. Track every visitor that comes from AI search, attribute conversions to specific platforms, and show stakeholders the revenue impact of GEO."
     },
     {
       "name": "AI Shopping & Product Visibility",
-      "description": "Boost product visibility in ChatGPT Shopping and AI assistants. Track shopping placement, trigger keywords, response-level product analysis, and measure traffic and conversion impact from AI shopping."
+      "description": "Get your products recommended in ChatGPT Shopping and AI assistants. Track which products appear, what triggers placement, and how AI shopping drives measurable traffic and conversions."
     },
     {
       "name": "GEO + SEO Content Marketing",
-      "description": "Create AI-optimized content that performs across both generative engines and traditional search. GEO 42's Content Marketing Brain efficiently acquires global customers through integrated GEO and SEO strategies."
+      "description": "Content that ranks in Google and gets cited by AI — in one workflow. Our Content Marketing Brain creates dual-optimized content that captures demand from both traditional and AI-powered discovery channels."
     }
   ],
   "team": [

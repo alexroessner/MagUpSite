@@ -60,7 +60,7 @@ fullWidth: true
           <p class="text-primary-300 mb-6">
             Fill out the form and our team will reach out with a personalized AI visibility audit.
           </p>
-          <form action="https://formspree.io/f/{{ site.contact.email | default('hello@geo42.ai') }}" method="POST" class="space-y-4">
+          <form action="https://formspree.io/{{ site.contact.email | default('hello@geo42.ai') }}" method="POST" class="space-y-4">
             <div>
               <label for="contact-name" class="block text-sm text-primary-400 mb-1">Name</label>
               <input type="text" id="contact-name" name="name" required

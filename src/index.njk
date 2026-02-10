@@ -87,6 +87,282 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 </section>
 {%- endif %}
 
+{# ============================================ #}
+{# PROBLEM                                       #}
+{# ============================================ #}
+
+{# ---- SEO vs GEO — Binary comparison ---- #}
+
+<section class="py-20 sm:py-28 lg:py-32 bg-primary-900 section-divider mesh-bg" aria-labelledby="h-seo-geo">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 reveal">
+      <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-5">The Shift</p>
+      <h2 id="h-seo-geo" class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 mb-5 text-glow">
+        SEO is Linear.<br class="hidden sm:block"> GEO is Binary.
+      </h2>
+      <p class="text-primary-300 text-lg lg:text-xl max-w-2xl mx-auto text-pretty">
+        In AI search, you are either the cited answer or you are invisible. There is no page two.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {# SEO Card — slides in from left #}
+      <div class="reveal-left glass-card rounded-2xl p-8 sm:p-10">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 bg-primary-700 rounded-lg flex items-center justify-center">
+            <span class="text-primary-300 font-heading font-bold text-sm">SEO</span>
+          </div>
+          <h3 class="font-heading text-xl font-semibold text-primary-200">Traditional SEO</h3>
+        </div>
+        <p class="text-primary-400 text-sm leading-relaxed mb-6">Linear distribution model — sites climb from position 10 to position 1 through incremental improvements. Multiple sites coexist on page one.</p>
+        {# Visual: animated progressive bars — fill sequentially on scroll #}
+        <div class="space-y-2">
+          {%- for i in range(5) %}
+          <div class="flex items-center gap-3">
+            <span class="text-xs text-primary-500 w-4">#{{ i + 1 }}</span>
+            <div class="flex-1 h-2 bg-primary-700 rounded-full overflow-hidden">
+              <div class="h-full bg-primary-500 rounded-full bar-fill" data-bar-width="{{ 100 - (i * 18) }}%" data-bar-delay="{{ i * 150 }}"></div>
+            </div>
+          </div>
+          {%- endfor %}
+        </div>
+        <p class="text-xs text-primary-500 mt-3">Progressive ranking — gradual climb</p>
+      </div>
+      {# GEO Card — slides in from right with shimmer #}
+      <div class="reveal-right shimmer card-featured rounded-2xl p-8 sm:p-10">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 bg-accent-500/20 rounded-lg flex items-center justify-center">
+            <span class="text-accent-400 font-heading font-bold text-sm">GEO</span>
+          </div>
+          <h3 class="font-heading text-xl font-semibold text-primary-50">Generative Engine Optimization</h3>
+        </div>
+        <p class="text-primary-300 text-sm leading-relaxed mb-6">Binary opposition model — AI cites a handful of sources per response. You are either the answer or invisible. Zero-sum, winner-take-all.</p>
+        {# Visual: animated binary bars — #1 fills dramatically, rest stay empty #}
+        <div class="space-y-2">
+          <div class="flex items-center gap-3">
+            <span class="text-xs text-accent-400 w-4">#1</span>
+            <div class="flex-1 h-2 bg-primary-700 rounded-full overflow-hidden">
+              <div class="h-full bg-accent-500 rounded-full bar-fill" data-bar-width="100%" data-bar-delay="400"></div>
+            </div>
+          </div>
+          {%- for i in range(4) %}
+          <div class="flex items-center gap-3">
+            <span class="text-xs text-primary-500 w-4"></span>
+            <div class="flex-1 h-2 bg-primary-700 rounded-full overflow-hidden">
+              <div class="h-full bg-primary-700 rounded-full" style="width: 0%"></div>
+            </div>
+          </div>
+          {%- endfor %}
+        </div>
+        <p class="text-xs text-accent-500 mt-3">Binary outcome — cited or invisible</p>
+      </div>
+    </div>
+    {# Market data — integrated from standalone section #}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 stagger">
+      <div class="glow-reveal glass-card rounded-2xl p-8 sm:p-10 text-center">
+        <div class="text-6xl sm:text-7xl font-extrabold gradient-text-accent font-heading mb-3 text-glow">34x</div>
+        <h3 class="font-heading text-lg font-bold text-primary-50 mb-2">The Search Gap</h3>
+        <p class="text-primary-400 text-sm leading-relaxed">
+          The gap between traditional search volume and AI search adoption — a massive untapped opportunity for early movers.
+        </p>
+      </div>
+      <div class="glow-reveal glass-card rounded-2xl p-8 sm:p-10 text-center">
+        <div class="text-6xl sm:text-7xl font-extrabold gradient-text-accent font-heading mb-3 text-glow">1000x</div>
+        <h3 class="font-heading text-lg font-bold text-primary-50 mb-2">AI Chatbot Growth</h3>
+        <p class="text-primary-400 text-sm leading-relaxed">
+          AI chatbot traffic has grown 1000x, fundamentally reshaping how consumers discover brands and products.
+        </p>
+      </div>
+    </div>
+    <div class="text-center mt-10 reveal">
+      <a href="{{ '/contact/' | url }}"
+         class="btn-press inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors text-base">
+        Break through the binary
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+{# ---- 6 Walls — Enterprise challenges (Slide 5) ---- #}
+
+<section class="py-20 sm:py-28 lg:py-32 bg-primary-950 section-divider" aria-labelledby="h-six-walls">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-16 reveal max-w-3xl">
+      <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-5">The Challenge</p>
+      <h2 id="h-six-walls" class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 mb-5 text-glow">
+        6 Walls Enterprises Face
+      </h2>
+      <p class="text-primary-300 text-lg lg:text-xl text-pretty">
+        Most enterprises hit these barriers when trying to build AI visibility. GEO 42 breaks through all six.
+      </p>
+    </div>
+    {# Hexagonal grid — 6 walls #}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 stagger">
+      {%- set walls = [
+        { name: "Discovery Wall", icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2", desc: "Your site is well-built but invisible. Low indexation and homogeneous pages mean AI crawlers skip you entirely." },
+        { name: "Credibility Wall", icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z", desc: "Your content reads like marketing, not expertise. AI engines prioritize authoritative, third-party-validated sources over promotional material." },
+        { name: "Brand Wall", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4", desc: "Insufficient brand awareness in target markets. Limited local market understanding. Over-reliance on a single promotion channel." },
+        { name: "Capability Wall", icon: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z", desc: "Your team lacks the cross-cultural content expertise to produce native-quality material that resonates with global audiences and AI models." },
+        { name: "Operations Wall", icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0", desc: "No content strategy, no operational playbook, and no specialized tooling to execute at the pace AI platforms demand." },
+        { name: "ROI Wall", icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z", desc: "Agency outsourcing is expensive and disconnected. In-house production is slow. Verification cycles eat months before you see results." }
+      ] %}
+      {%- for wall in walls %}
+      <div class="card-lift glass-card rounded-2xl p-6 group">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-accent-500/10 rounded-lg flex items-center justify-center icon-reveal">
+            <svg class="w-5 h-5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="{{ wall.icon }}"/></svg>
+          </div>
+          <h3 class="font-heading text-lg font-semibold text-primary-50 group-hover:text-accent-300 transition-colors">{{ wall.name }}</h3>
+        </div>
+        <p class="text-primary-400 text-sm leading-relaxed">{{ wall.desc }}</p>
+      </div>
+      {%- endfor %}
+    </div>
+    <div class="text-center mt-8 reveal">
+      <a href="{{ '/6-walls-enterprises-face-in-content-marketing/' | url }}" class="inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors">
+        Learn how we break through each wall
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+{# ============================================ #}
+{# PROOF                                         #}
+{# ============================================ #}
+
+{# ---- Case Study — Before/After ---- #}
+
+<section class="py-20 sm:py-28 lg:py-32 bg-primary-900 section-divider mesh-bg" aria-labelledby="h-proven-results">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-4">Proven Results</p>
+      <h2 id="h-proven-results" class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 text-glow">
+        From Invisible to #1
+      </h2>
+    </div>
+    <div class="reveal-scale max-w-5xl mx-auto">
+      {# Before / After conversation mockup #}
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        {# BEFORE #}
+        <div class="glass-card rounded-2xl p-6 sm:p-8">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-6 h-6 rounded bg-primary-600 flex items-center justify-center">
+              <svg class="w-4 h-4 text-primary-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+            </div>
+            <span class="text-sm font-semibold text-primary-300">Gemini</span>
+            <span class="ml-auto text-xs px-2 py-0.5 bg-primary-700 rounded text-primary-400">BEFORE</span>
+            <span class="sr-only">Before GEO 42 optimization:</span>
+          </div>
+          <div class="mb-3 p-3 bg-primary-900/50 rounded-lg border border-primary-700/50">
+            <p class="text-xs text-primary-500 mb-1">User</p>
+            <p class="text-sm text-primary-200">Which robot vacuum has the best smart navigation?</p>
+          </div>
+          <div class="p-3 bg-primary-900/50 rounded-lg border border-primary-700/50">
+            <p class="text-xs text-primary-500 mb-1">Gemini</p>
+            <p class="text-sm text-primary-300">Based on general market data, the best robot vacuums for navigation are: 1. Roborock 2. Ecovacs 3. iRobot...</p>
+          </div>
+          <div class="mt-4 flex items-center gap-2">
+            <div class="w-2 h-2 rounded-full bg-primary-600" aria-hidden="true"></div>
+            <span class="text-xs text-primary-500">Brand Visibility: <strong class="text-primary-300">0%</strong> — Completely invisible</span>
+          </div>
+        </div>
+        {# AFTER #}
+        <div class="card-featured rounded-2xl p-6 sm:p-8">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-6 h-6 rounded bg-accent-500/20 flex items-center justify-center">
+              <svg class="w-4 h-4 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+            </div>
+            <span class="text-sm font-semibold text-white">Gemini</span>
+            <span class="ml-auto text-xs px-2 py-0.5 bg-accent-500/20 rounded text-accent-400">AFTER GEO 42</span>
+            <span class="sr-only">After GEO 42 optimization:</span>
+          </div>
+          <div class="mb-3 p-3 bg-primary-900/50 rounded-lg border border-primary-700/50">
+            <p class="text-xs text-primary-500 mb-1">User</p>
+            <p class="text-sm text-primary-200">Which robot vacuum has the best smart navigation?</p>
+          </div>
+          <div class="p-3 bg-primary-900/50 rounded-lg border border-accent-500/10">
+            <p class="text-xs text-accent-500 mb-1">Gemini</p>
+            <p class="text-sm text-primary-200">When looking for the best smart navigation, <strong class="text-accent-300">the client's robot vacuum</strong> is now the top recommendation. Key reasons: precision laser navigation, obstacle avoidance, 5000Pa strong suction...</p>
+          </div>
+          <div class="mt-4 flex items-center gap-2">
+            <div class="w-2 h-2 rounded-full bg-accent-400 pulse-dot" aria-hidden="true"></div>
+            <span class="text-xs text-accent-400">Share of Voice: <strong class="text-white">#1 Position</strong> — The AI Answer</span>
+          </div>
+        </div>
+      </div>
+      {# Stats row #}
+      <div class="card-featured rounded-2xl p-8">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-8 stagger">
+          <div class="text-center p-4 bg-primary-900/50 rounded-xl">
+            <div class="text-accent-400 text-3xl sm:text-4xl font-bold counter" data-count="450" data-prefix="+" data-suffix="%">0</div>
+            <div class="text-primary-400 text-sm mt-2">Brand Mentions</div>
+          </div>
+          <div class="text-center p-4 bg-primary-900/50 rounded-xl">
+            <div class="text-accent-400 text-3xl sm:text-4xl font-bold">#1</div>
+            <div class="text-primary-400 text-sm mt-2">Share of Voice</div>
+          </div>
+          <div class="text-center p-4 bg-primary-900/50 rounded-xl">
+            <div class="text-accent-400 text-3xl sm:text-4xl font-bold counter" data-count="10">0</div>
+            <div class="text-primary-400 text-sm mt-2">AI Platforms</div>
+          </div>
+          <div class="text-center p-4 bg-primary-900/50 rounded-xl">
+            <div class="text-accent-400 text-3xl sm:text-4xl font-bold counter" data-count="30" data-prefix="+" data-suffix="%">0</div>
+            <div class="text-primary-400 text-sm mt-2">Direct Traffic from AI</div>
+          </div>
+        </div>
+        <div class="space-y-4 sm:space-y-0 sm:flex sm:flex-wrap sm:items-center sm:justify-between sm:gap-4">
+          <div class="text-sm text-primary-400">
+            <span class="block sm:inline mb-2 sm:mb-0 sm:mr-2">Deployed across:</span>
+            <span class="flex flex-wrap gap-1.5 sm:inline-flex sm:gap-2">
+              {%- for platform in ["ChatGPT", "Gemini", "Perplexity", "DeepSeek", "Claude", "Google AI", "Copilot", "Meta AI", "Grok", "Mistral"] %}
+              <span class="px-2 py-0.5 sm:py-1 bg-primary-900/50 border border-primary-700/50 rounded text-xs text-primary-300">{{ platform }}</span>
+              {%- endfor %}
+            </span>
+          </div>
+          <a href="{{ '/case-study-regaining-ai-voice-share/' | url }}"
+             class="btn-press inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors text-sm">
+            Full case study
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ---- KPI Stats — Animated counters with glow ---- #}
+
+<section class="py-14 sm:py-20 bg-primary-950">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="reveal grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+      <div class="glass-card kpi-glow text-center p-6 rounded-2xl">
+        <div class="text-4xl sm:text-5xl font-heading font-extrabold text-accent-400 counter" data-count="7" aria-label="7 AI Agents">0</div>
+        <div class="text-xs font-medium text-primary-400 mt-2 uppercase tracking-[0.2em]">AI Agents</div>
+      </div>
+      <div class="glass-card kpi-glow text-center p-6 rounded-2xl">
+        <div class="text-4xl sm:text-5xl font-heading font-extrabold text-accent-400 counter" data-count="10" data-suffix="+" aria-label="10+ AI Platforms">0</div>
+        <div class="text-xs font-medium text-primary-400 mt-2 uppercase tracking-[0.2em]">AI Platforms</div>
+      </div>
+      <div class="glass-card kpi-glow text-center p-6 rounded-2xl">
+        <div class="text-4xl sm:text-5xl font-heading font-extrabold text-accent-400 counter" data-count="1000" data-suffix="+" aria-label="Leading Enterprises">0</div>
+        <div class="text-xs font-medium text-primary-400 mt-2 uppercase tracking-[0.2em]">Enterprises</div>
+      </div>
+      <div class="glass-card kpi-glow text-center p-6 rounded-2xl">
+        <div class="text-4xl sm:text-5xl font-heading font-extrabold text-accent-400 counter" data-count="450" data-prefix="+" data-suffix="%" aria-label="+450% Brand Mentions">0</div>
+        <div class="text-xs font-medium text-primary-400 mt-2 uppercase tracking-[0.2em]">Brand Mentions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{# ============================================ #}
+{# SOLUTION                                      #}
+{# ============================================ #}
+
+{# ---- Flywheel — The Visibility Growth Model ---- #}
 {# ---- Product Showcase — Real Dashboard Carousel ---- #}
 
 <section class="py-20 sm:py-28 lg:py-32 bg-primary-950 section-divider accent-stripe overflow-hidden" aria-labelledby="h-product-preview">
@@ -287,7 +563,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
                 {%- for step in pipeSteps %}
                 <div class="flex items-center gap-3">
                   <div class="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 {% if step.st == 'done' %}bg-emerald-500/20 text-emerald-400{% elif step.st == 'active' %}bg-accent-500/20 text-accent-400{% else %}bg-primary-700/30 text-primary-500{% endif %}">
-                    {% if step.st == 'done' %}<svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>{% else %}{{ loop.index }}{% endif %}
+                    {% if step.st == 'done' %}<svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>{% else %}{{ loop.index }}{% endif %}
                   </div>
                   <span class="text-xs {% if step.st == 'done' %}text-primary-300{% elif step.st == 'active' %}text-accent-400 font-medium{% else %}text-primary-500{% endif %}">{{ step.name }}</span>
                   {% if step.st == 'active' %}<span class="ml-auto text-[11px] px-1.5 py-0.5 bg-accent-500/10 rounded-full text-accent-400">In Progress</span>{% endif %}
@@ -386,286 +662,6 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
   </div>
 </section>
 
-{# ============================================ #}
-{# PROOF                                         #}
-{# ============================================ #}
-
-{# ---- Case Study — Before/After ---- #}
-
-<section class="py-20 sm:py-28 lg:py-32 bg-primary-900 section-divider mesh-bg" aria-labelledby="h-proven-results">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-14 reveal">
-      <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-4">Proven Results</p>
-      <h2 id="h-proven-results" class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 text-glow">
-        From Invisible to #1
-      </h2>
-    </div>
-    <div class="reveal-scale max-w-5xl mx-auto">
-      {# Before / After conversation mockup #}
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-        {# BEFORE #}
-        <div class="glass-card rounded-2xl p-6 sm:p-8">
-          <div class="flex items-center gap-2 mb-4">
-            <div class="w-6 h-6 rounded bg-primary-600 flex items-center justify-center">
-              <svg class="w-4 h-4 text-primary-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
-            </div>
-            <span class="text-sm font-semibold text-primary-300">Gemini</span>
-            <span class="ml-auto text-xs px-2 py-0.5 bg-primary-700 rounded text-primary-400">BEFORE</span>
-            <span class="sr-only">Before GEO 42 optimization:</span>
-          </div>
-          <div class="mb-3 p-3 bg-primary-900/50 rounded-lg border border-primary-700/50">
-            <p class="text-xs text-primary-500 mb-1">User</p>
-            <p class="text-sm text-primary-200">Which robot vacuum has the best smart navigation?</p>
-          </div>
-          <div class="p-3 bg-primary-900/50 rounded-lg border border-primary-700/50">
-            <p class="text-xs text-primary-500 mb-1">Gemini</p>
-            <p class="text-sm text-primary-300">Based on general market data, the best robot vacuums for navigation are: 1. Roborock 2. Ecovacs 3. iRobot...</p>
-          </div>
-          <div class="mt-4 flex items-center gap-2">
-            <div class="w-2 h-2 rounded-full bg-primary-600" aria-hidden="true"></div>
-            <span class="text-xs text-primary-500">Brand Visibility: <strong class="text-primary-300">0%</strong> — Completely invisible</span>
-          </div>
-        </div>
-        {# AFTER #}
-        <div class="card-featured rounded-2xl p-6 sm:p-8">
-          <div class="flex items-center gap-2 mb-4">
-            <div class="w-6 h-6 rounded bg-accent-500/20 flex items-center justify-center">
-              <svg class="w-4 h-4 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
-            </div>
-            <span class="text-sm font-semibold text-white">Gemini</span>
-            <span class="ml-auto text-xs px-2 py-0.5 bg-accent-500/20 rounded text-accent-400">AFTER GEO 42</span>
-            <span class="sr-only">After GEO 42 optimization:</span>
-          </div>
-          <div class="mb-3 p-3 bg-primary-900/50 rounded-lg border border-primary-700/50">
-            <p class="text-xs text-primary-500 mb-1">User</p>
-            <p class="text-sm text-primary-200">Which robot vacuum has the best smart navigation?</p>
-          </div>
-          <div class="p-3 bg-primary-900/50 rounded-lg border border-accent-500/10">
-            <p class="text-xs text-accent-500 mb-1">Gemini</p>
-            <p class="text-sm text-primary-200">When looking for the best smart navigation, <strong class="text-accent-300">the client's robot vacuum</strong> is now the top recommendation. Key reasons: precision laser navigation, obstacle avoidance, 5000Pa strong suction...</p>
-          </div>
-          <div class="mt-4 flex items-center gap-2">
-            <div class="w-2 h-2 rounded-full bg-accent-400 pulse-dot" aria-hidden="true"></div>
-            <span class="text-xs text-accent-400">Share of Voice: <strong class="text-white">#1 Position</strong> — The AI Answer</span>
-          </div>
-        </div>
-      </div>
-      {# Stats row #}
-      <div class="card-featured rounded-2xl p-8">
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-8 stagger">
-          <div class="text-center p-4 bg-primary-900/50 rounded-xl">
-            <div class="text-accent-400 text-3xl sm:text-4xl font-bold counter" data-count="450" data-prefix="+" data-suffix="%">0</div>
-            <div class="text-primary-400 text-sm mt-2">Brand Mentions</div>
-          </div>
-          <div class="text-center p-4 bg-primary-900/50 rounded-xl">
-            <div class="text-accent-400 text-3xl sm:text-4xl font-bold">#1</div>
-            <div class="text-primary-400 text-sm mt-2">Share of Voice</div>
-          </div>
-          <div class="text-center p-4 bg-primary-900/50 rounded-xl">
-            <div class="text-accent-400 text-3xl sm:text-4xl font-bold counter" data-count="10">0</div>
-            <div class="text-primary-400 text-sm mt-2">AI Platforms</div>
-          </div>
-          <div class="text-center p-4 bg-primary-900/50 rounded-xl">
-            <div class="text-accent-400 text-3xl sm:text-4xl font-bold counter" data-count="30" data-prefix="+" data-suffix="%">0</div>
-            <div class="text-primary-400 text-sm mt-2">Direct Traffic from AI</div>
-          </div>
-        </div>
-        <div class="space-y-4 sm:space-y-0 sm:flex sm:flex-wrap sm:items-center sm:justify-between sm:gap-4">
-          <div class="text-sm text-primary-400">
-            <span class="block sm:inline mb-2 sm:mb-0 sm:mr-2">Deployed across:</span>
-            <span class="flex flex-wrap gap-1.5 sm:inline-flex sm:gap-2">
-              {%- for platform in ["ChatGPT", "Gemini", "Perplexity", "DeepSeek", "Claude", "Google AI", "Copilot", "Meta AI", "Grok", "Mistral"] %}
-              <span class="px-2 py-0.5 sm:py-1 bg-primary-900/50 border border-primary-700/50 rounded text-xs text-primary-300">{{ platform }}</span>
-              {%- endfor %}
-            </span>
-          </div>
-          <a href="{{ '/case-study-regaining-ai-voice-share/' | url }}"
-             class="btn-press inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors text-sm">
-            Full case study
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-{# ---- KPI Stats — Animated counters with glow ---- #}
-
-<section class="py-14 sm:py-20 bg-primary-950">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="reveal grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-      <div class="glass-card kpi-glow text-center p-6 rounded-2xl">
-        <div class="text-4xl sm:text-5xl font-heading font-extrabold text-accent-400 counter" data-count="7" aria-label="7 AI Agents">0</div>
-        <div class="text-xs font-medium text-primary-400 mt-2 uppercase tracking-[0.2em]">AI Agents</div>
-      </div>
-      <div class="glass-card kpi-glow text-center p-6 rounded-2xl">
-        <div class="text-4xl sm:text-5xl font-heading font-extrabold text-accent-400 counter" data-count="10" data-suffix="+" aria-label="10+ AI Platforms">0</div>
-        <div class="text-xs font-medium text-primary-400 mt-2 uppercase tracking-[0.2em]">AI Platforms</div>
-      </div>
-      <div class="glass-card kpi-glow text-center p-6 rounded-2xl">
-        <div class="text-4xl sm:text-5xl font-heading font-extrabold text-accent-400 counter" data-count="1000" data-suffix="+" aria-label="Leading Enterprises">0</div>
-        <div class="text-xs font-medium text-primary-400 mt-2 uppercase tracking-[0.2em]">Enterprises</div>
-      </div>
-      <div class="glass-card kpi-glow text-center p-6 rounded-2xl">
-        <div class="text-4xl sm:text-5xl font-heading font-extrabold text-accent-400 counter" data-count="450" data-prefix="+" data-suffix="%" aria-label="+450% Brand Mentions">0</div>
-        <div class="text-xs font-medium text-primary-400 mt-2 uppercase tracking-[0.2em]">Brand Mentions</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-{# ============================================ #}
-{# PROBLEM                                       #}
-{# ============================================ #}
-
-{# ---- SEO vs GEO — Binary comparison ---- #}
-
-<section class="py-20 sm:py-28 lg:py-32 bg-primary-900 section-divider mesh-bg" aria-labelledby="h-seo-geo">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16 reveal">
-      <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-5">The Shift</p>
-      <h2 id="h-seo-geo" class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 mb-5 text-glow">
-        SEO is Linear.<br class="hidden sm:block"> GEO is Binary.
-      </h2>
-      <p class="text-primary-300 text-lg lg:text-xl max-w-2xl mx-auto text-pretty">
-        In AI search, you are either the cited answer or you are invisible. There is no page two.
-      </p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {# SEO Card — slides in from left #}
-      <div class="reveal-left glass-card rounded-2xl p-8 sm:p-10">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="w-10 h-10 bg-primary-700 rounded-lg flex items-center justify-center">
-            <span class="text-primary-300 font-heading font-bold text-sm">SEO</span>
-          </div>
-          <h3 class="font-heading text-xl font-semibold text-primary-200">Traditional SEO</h3>
-        </div>
-        <p class="text-primary-400 text-sm leading-relaxed mb-6">Linear distribution model — sites climb from position 10 to position 1 through incremental improvements. Multiple sites coexist on page one.</p>
-        {# Visual: animated progressive bars — fill sequentially on scroll #}
-        <div class="space-y-2">
-          {%- for i in range(5) %}
-          <div class="flex items-center gap-3">
-            <span class="text-xs text-primary-500 w-4">#{{ i + 1 }}</span>
-            <div class="flex-1 h-2 bg-primary-700 rounded-full overflow-hidden">
-              <div class="h-full bg-primary-500 rounded-full bar-fill" data-bar-width="{{ 100 - (i * 18) }}%" data-bar-delay="{{ i * 150 }}"></div>
-            </div>
-          </div>
-          {%- endfor %}
-        </div>
-        <p class="text-xs text-primary-500 mt-3">Progressive ranking — gradual climb</p>
-      </div>
-      {# GEO Card — slides in from right with shimmer #}
-      <div class="reveal-right shimmer card-featured rounded-2xl p-8 sm:p-10">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="w-10 h-10 bg-accent-500/20 rounded-lg flex items-center justify-center">
-            <span class="text-accent-400 font-heading font-bold text-sm">GEO</span>
-          </div>
-          <h3 class="font-heading text-xl font-semibold text-primary-50">Generative Engine Optimization</h3>
-        </div>
-        <p class="text-primary-300 text-sm leading-relaxed mb-6">Binary opposition model — AI cites a handful of sources per response. You are either the answer or invisible. Zero-sum, winner-take-all.</p>
-        {# Visual: animated binary bars — #1 fills dramatically, rest stay empty #}
-        <div class="space-y-2">
-          <div class="flex items-center gap-3">
-            <span class="text-xs text-accent-400 w-4">#1</span>
-            <div class="flex-1 h-2 bg-primary-700 rounded-full overflow-hidden">
-              <div class="h-full bg-accent-500 rounded-full bar-fill" data-bar-width="100%" data-bar-delay="400"></div>
-            </div>
-          </div>
-          {%- for i in range(4) %}
-          <div class="flex items-center gap-3">
-            <span class="text-xs text-primary-500 w-4"></span>
-            <div class="flex-1 h-2 bg-primary-700 rounded-full overflow-hidden">
-              <div class="h-full bg-primary-700 rounded-full" style="width: 0%"></div>
-            </div>
-          </div>
-          {%- endfor %}
-        </div>
-        <p class="text-xs text-accent-500 mt-3">Binary outcome — cited or invisible</p>
-      </div>
-    </div>
-    <div class="text-center mt-12 reveal">
-      <a href="{{ '/contact/' | url }}"
-         class="btn-press inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors text-base">
-        Break through the binary
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-{# ---- 6 Walls — Enterprise challenges (Slide 5) ---- #}
-
-<section class="py-20 sm:py-28 lg:py-32 bg-primary-950 section-divider" aria-labelledby="h-six-walls">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="mb-16 reveal max-w-3xl">
-      <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-5">The Challenge</p>
-      <h2 id="h-six-walls" class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 mb-5 text-glow">
-        6 Walls Enterprises Face
-      </h2>
-      <p class="text-primary-300 text-lg lg:text-xl text-pretty">
-        Most enterprises hit these barriers when trying to build AI visibility. GEO 42 breaks through all six.
-      </p>
-    </div>
-    {# Hexagonal grid — 6 walls #}
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 stagger">
-      {%- set walls = [
-        { name: "Discovery Wall", icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2", desc: "Your site is well-built but invisible. Low indexation and homogeneous pages mean AI crawlers skip you entirely." },
-        { name: "Credibility Wall", icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z", desc: "Your content reads like marketing, not expertise. AI engines prioritize authoritative, third-party-validated sources over promotional material." },
-        { name: "Brand Wall", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4", desc: "Insufficient brand awareness in target markets. Limited local market understanding. Over-reliance on a single promotion channel." },
-        { name: "Capability Wall", icon: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z", desc: "Your team lacks the cross-cultural content expertise to produce native-quality material that resonates with global audiences and AI models." },
-        { name: "Operations Wall", icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0", desc: "No content strategy, no operational playbook, and no specialized tooling to execute at the pace AI platforms demand." },
-        { name: "ROI Wall", icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z", desc: "Agency outsourcing is expensive and disconnected. In-house production is slow. Verification cycles eat months before you see results." }
-      ] %}
-      {%- for wall in walls %}
-      <div class="card-lift glass-card rounded-2xl p-6 group">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 bg-accent-500/10 rounded-lg flex items-center justify-center icon-reveal">
-            <svg class="w-5 h-5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="{{ wall.icon }}"/></svg>
-          </div>
-          <h3 class="font-heading text-lg font-semibold text-primary-50 group-hover:text-accent-300 transition-colors">{{ wall.name }}</h3>
-        </div>
-        <p class="text-primary-400 text-sm leading-relaxed">{{ wall.desc }}</p>
-      </div>
-      {%- endfor %}
-    </div>
-    <div class="text-center mt-8 reveal">
-      <a href="{{ '/6-walls-enterprises-face-in-content-marketing/' | url }}" class="inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors">
-        Learn how we break through each wall
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-{# ---- Market Data — The 34x Opportunity ---- #}
-
-<section class="py-20 sm:py-28 bg-primary-900 section-divider mesh-bg">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="glow-reveal glass-card rounded-2xl p-10 sm:p-12 text-center">
-        <div class="text-7xl sm:text-8xl font-extrabold gradient-text-accent font-heading mb-4 text-glow">34x</div>
-        <h3 class="font-heading text-xl font-bold text-primary-50 mb-3">The Search Gap</h3>
-        <p class="text-primary-300 text-sm leading-relaxed">
-          The gap between traditional search volume and AI search adoption — a massive untapped opportunity for early movers.
-        </p>
-      </div>
-      <div class="glow-reveal glass-card rounded-2xl p-10 sm:p-12 text-center">
-        <div class="text-7xl sm:text-8xl font-extrabold gradient-text-accent font-heading mb-4 text-glow">1000x</div>
-        <h3 class="font-heading text-xl font-bold text-primary-50 mb-3">AI Chatbot Growth</h3>
-        <p class="text-primary-300 text-sm leading-relaxed">
-          AI chatbot traffic has grown 1000x, fundamentally reshaping how consumers discover brands and products.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-{# ============================================ #}
-{# SOLUTION                                      #}
-{# ============================================ #}
-
-{# ---- Flywheel — The Visibility Growth Model ---- #}
 
 <section class="py-20 sm:py-28 lg:py-36 bg-primary-950 section-divider section-angle" aria-labelledby="h-flywheel">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -807,6 +803,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 </section>
 {%- endif %}
 
+
 {# ============================================ #}
 {# HOW                                           #}
 {# ============================================ #}
@@ -886,6 +883,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
     </div>
   </div>
 </section>
+
 
 {# ============================================ #}
 {# TRUST                                         #}
@@ -987,6 +985,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
   </div>
 </section>
 {%- endif %}
+
 
 {# ============================================ #}
 {# ACTION                                        #}

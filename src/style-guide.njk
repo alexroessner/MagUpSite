@@ -1,239 +1,392 @@
 ---
 layout: base.njk
-title: Style Guide
-description: "Living design system reference for the generated site."
+title: Design System
+description: "Living design system reference — glassmorphism components, color tokens, typography, and accessibility patterns."
+fullWidth: true
 eleventyExcludeFromCollections: true
 ---
 
-<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+{# ---- Hero ---- #}
+<section class="relative overflow-hidden py-16 sm:py-24 bg-primary-950">
+  <div class="hero-noise" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-4">Reference</p>
+    <h1 class="text-display text-4xl sm:text-5xl lg:text-6xl text-white mb-4 text-glow">
+      Design System
+    </h1>
+    <p class="text-primary-300 text-lg max-w-2xl">
+      Living reference for the GEO 42 glassmorphism design language. Every component, token, and pattern used across the site.
+    </p>
+  </div>
+</section>
 
-  <h1 class="font-heading text-4xl sm:text-5xl font-bold text-primary-700 leading-tight mb-4">Style Guide</h1>
-  <p class="text-lg text-gray-600 mb-10">Living design system reference. Updated by the merge pipeline.</p>
+{# ---- Color Tokens ---- #}
+<section class="py-16 sm:py-20 bg-primary-900 section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-10">
+      <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-3">Tokens</p>
+      <h2 class="font-heading text-2xl font-bold text-white mb-2">Color Palette</h2>
+      <p class="text-primary-400 text-sm">Deep indigo primary scale + purple accent. All surfaces derive from <code class="text-accent-400 bg-primary-800/50 px-1.5 py-0.5 rounded text-xs">primary-*</code> tokens.</p>
+    </div>
 
-  {# ============================================ #}
-  {# Design Philosophy                            #}
-  {# ============================================ #}
+    <h3 class="font-heading text-sm font-semibold text-accent-400 uppercase tracking-wider mb-4">Primary Scale</h3>
+    <div class="grid grid-cols-5 sm:grid-cols-11 gap-2 mb-10">
+      {%- for step in [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950] %}
+      <div class="text-center">
+        <div class="h-14 rounded-lg bg-primary-{{ step }} border border-primary-700/30"></div>
+        <span class="text-[11px] text-primary-400 mt-1.5 block font-mono">{{ step }}</span>
+      </div>
+      {%- endfor %}
+    </div>
 
-  <section class="mb-16">
-    <h2 class="font-heading text-2xl font-bold text-primary-700 border-b-3 border-primary-500 pb-2 mb-6">Design Philosophy</h2>
-    <div class="prose prose-lg">
-      <p>This site is generated from two inputs: a PDF document (content) and a reference URL (design). The design system merges both streams into a cohesive visual identity.</p>
-      <ul>
-        <li><strong>Content-first:</strong> Design serves the content, not the other way around.</li>
-        <li><strong>Accessible by default:</strong> WCAG 2.1 AA minimum. Underlined links, visible focus states, sufficient contrast.</li>
-        <li><strong>Zero client-side JavaScript:</strong> Only a hamburger menu toggle. Everything else is HTML + CSS.</li>
-        <li><strong>System fonts for body:</strong> Zero load cost, excellent screen readability.</li>
-        <li><strong>Responsive from mobile up:</strong> Every section works at 320px before scaling to desktop.</li>
+    <h3 class="font-heading text-sm font-semibold text-accent-400 uppercase tracking-wider mb-4">Accent Scale</h3>
+    <div class="grid grid-cols-5 sm:grid-cols-10 gap-2 mb-10">
+      {%- for step in [50, 100, 200, 300, 400, 500, 600, 700, 800, 900] %}
+      <div class="text-center">
+        <div class="h-14 rounded-lg bg-accent-{{ step }} border border-accent-700/30"></div>
+        <span class="text-[11px] text-primary-400 mt-1.5 block font-mono">{{ step }}</span>
+      </div>
+      {%- endfor %}
+    </div>
+
+    <h3 class="font-heading text-sm font-semibold text-accent-400 uppercase tracking-wider mb-4">Semantic Colors</h3>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div class="glass-card rounded-xl p-4 text-center">
+        <div class="w-10 h-10 mx-auto rounded-full bg-emerald-500/20 border border-emerald-500/30 mb-2"></div>
+        <span class="text-xs text-primary-300">Success</span>
+      </div>
+      <div class="glass-card rounded-xl p-4 text-center">
+        <div class="w-10 h-10 mx-auto rounded-full bg-amber-500/20 border border-amber-500/30 mb-2"></div>
+        <span class="text-xs text-primary-300">Warning</span>
+      </div>
+      <div class="glass-card rounded-xl p-4 text-center">
+        <div class="w-10 h-10 mx-auto rounded-full bg-red-500/20 border border-red-500/30 mb-2"></div>
+        <span class="text-xs text-primary-300">Error</span>
+      </div>
+      <div class="glass-card rounded-xl p-4 text-center">
+        <div class="w-10 h-10 mx-auto rounded-full bg-accent-500/20 border border-accent-500/30 mb-2"></div>
+        <span class="text-xs text-primary-300">Info / Accent</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ---- Typography ---- #}
+<section class="py-16 sm:py-20 bg-primary-950 section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-10">
+      <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-3">Type</p>
+      <h2 class="font-heading text-2xl font-bold text-white mb-2">Typography</h2>
+      <p class="text-primary-400 text-sm">
+        <strong class="text-primary-200">Space Grotesk</strong> for headings (400–800) ·
+        <strong class="text-primary-200">Inter</strong> for body ·
+        <strong class="text-primary-200">JetBrains Mono</strong> for code
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div>
+        <h3 class="font-heading text-sm font-semibold text-accent-400 uppercase tracking-wider mb-6">Display & Heading Scale</h3>
+        <div class="space-y-6">
+          <div>
+            <p class="text-display text-5xl sm:text-6xl text-white text-glow">Display 6xl</p>
+            <span class="text-[11px] text-primary-500 font-mono">.text-display · font-extrabold · Space Grotesk 800</span>
+          </div>
+          <div>
+            <p class="font-heading text-4xl font-bold text-white">Heading 4xl</p>
+            <span class="text-[11px] text-primary-500 font-mono">font-heading · font-bold · Space Grotesk 700</span>
+          </div>
+          <div>
+            <p class="font-heading text-2xl font-semibold text-white">Heading 2xl</p>
+            <span class="text-[11px] text-primary-500 font-mono">font-heading · font-semibold · Space Grotesk 600</span>
+          </div>
+          <div>
+            <p class="font-heading text-xl font-semibold text-white">Heading xl</p>
+            <span class="text-[11px] text-primary-500 font-mono">font-heading · font-semibold · Space Grotesk 600</span>
+          </div>
+          <div>
+            <p class="font-heading text-lg font-semibold text-white">Heading lg</p>
+            <span class="text-[11px] text-primary-500 font-mono">font-heading · font-semibold · Space Grotesk 600</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 class="font-heading text-sm font-semibold text-accent-400 uppercase tracking-wider mb-6">Body & Utility</h3>
+        <div class="space-y-4">
+          <div>
+            <p class="text-lg text-primary-200 leading-relaxed">Body large — used for section intros and hero subtext. Inter 400 at text-lg with leading-relaxed.</p>
+            <span class="text-[11px] text-primary-500 font-mono">text-lg · text-primary-200 · leading-relaxed</span>
+          </div>
+          <div>
+            <p class="text-body text-primary-300 leading-relaxed">Body default — the base paragraph style. Inter at text-body (17px) for optimal readability on dark backgrounds.</p>
+            <span class="text-[11px] text-primary-500 font-mono">text-body · text-primary-300</span>
+          </div>
+          <div>
+            <p class="text-sm text-primary-400 leading-relaxed">Body small — used for card descriptions, metadata, and secondary content. Inter at text-sm.</p>
+            <span class="text-[11px] text-primary-500 font-mono">text-sm · text-primary-400</span>
+          </div>
+          <div>
+            <p class="text-xs text-primary-500 uppercase tracking-[0.2em] font-semibold">CATEGORY LABEL — UPPERCASE TRACKING</p>
+            <span class="text-[11px] text-primary-500 font-mono">text-xs · uppercase · tracking-[0.2em] · text-accent-400</span>
+          </div>
+          <div>
+            <code class="font-mono text-sm text-accent-400 bg-primary-800/50 px-2 py-1 rounded">JetBrains Mono — code</code>
+            <span class="text-[11px] text-primary-500 font-mono block mt-1">font-mono · text-accent-400 · bg-primary-800/50</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ---- Glass Components ---- #}
+<section class="py-16 sm:py-20 bg-primary-900 section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-10">
+      <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-3">Components</p>
+      <h2 class="font-heading text-2xl font-bold text-white mb-2">Glass Cards</h2>
+      <p class="text-primary-400 text-sm">Frosted glass surfaces with backdrop-filter blur. Three tiers: base, featured, and glow-border.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+      <div class="glass-card rounded-2xl p-6">
+        <h3 class="font-heading text-lg font-semibold text-white mb-2">.glass-card</h3>
+        <p class="text-primary-400 text-sm leading-relaxed">Base glass surface. Semi-transparent background with backdrop-blur. Used for standard content cards.</p>
+        <code class="text-[11px] text-accent-400/70 font-mono mt-3 block">backdrop-blur · border-primary-700/20 · bg-primary-800/40</code>
+      </div>
+      <div class="card-featured rounded-2xl p-6">
+        <h3 class="font-heading text-lg font-semibold text-white mb-2">.card-featured</h3>
+        <p class="text-primary-300 text-sm leading-relaxed">Elevated featured card with accent border glow. Used for primary actions and hero cards.</p>
+        <code class="text-[11px] text-accent-400/70 font-mono mt-3 block">border-accent-500/20 · shadow-accent/10 · bg-gradient</code>
+      </div>
+      <div class="glass-card glow-border rounded-2xl p-6">
+        <h3 class="font-heading text-lg font-semibold text-white mb-2">.glow-border</h3>
+        <p class="text-primary-400 text-sm leading-relaxed">Animated gradient border on scroll-reveal. Used sparingly on high-value interactive elements.</p>
+        <code class="text-[11px] text-accent-400/70 font-mono mt-3 block">conic-gradient border · @keyframes glow-spin</code>
+      </div>
+    </div>
+
+    <h3 class="font-heading text-sm font-semibold text-accent-400 uppercase tracking-wider mb-4">Card Interactions</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="card-lift glass-card rounded-xl p-5 text-center group">
+        <span class="text-primary-300 text-sm">.card-lift</span>
+        <p class="text-primary-500 text-xs mt-1">Hover: translateY(-4px)</p>
+      </div>
+      <div class="card-lift card-accent glass-card rounded-xl p-5 text-center group">
+        <span class="text-primary-300 text-sm">.card-accent</span>
+        <p class="text-primary-500 text-xs mt-1">Hover: accent border</p>
+      </div>
+      <div class="shimmer card-featured rounded-xl p-5 text-center">
+        <span class="text-primary-200 text-sm">.shimmer</span>
+        <p class="text-primary-400 text-xs mt-1">Moving light sweep</p>
+      </div>
+      <div class="glass-card kpi-glow rounded-xl p-5 text-center">
+        <span class="text-primary-300 text-sm">.kpi-glow</span>
+        <p class="text-primary-500 text-xs mt-1">Pulsing accent glow</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ---- Buttons ---- #}
+<section class="py-16 sm:py-20 bg-primary-950 section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-10">
+      <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-3">Actions</p>
+      <h2 class="font-heading text-2xl font-bold text-white mb-2">Buttons & Links</h2>
+      <p class="text-primary-400 text-sm">All buttons use <code class="text-accent-400 bg-primary-800/50 px-1.5 py-0.5 rounded text-xs">rounded-xl font-bold shadow-xl</code>. Primary CTA text is always "See It in Action".</p>
+    </div>
+
+    <div class="flex flex-wrap gap-4 mb-8">
+      <a href="#" class="btn-press hero-cta inline-flex items-center justify-center gap-2 text-white font-bold px-8 py-3.5 rounded-full transition-all duration-300 text-base hover:scale-[1.03]">
+        Hero CTA (Gradient)
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+      <a href="#" class="btn-press inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-400 text-primary-950 font-bold px-8 py-3.5 rounded-xl transition-all duration-200 shadow-xl shadow-accent-500/30 hover:shadow-accent-400/40 hover:scale-[1.03]">
+        Primary Button
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+      <a href="#" class="btn-press inline-flex items-center justify-center gap-2 glass-card text-primary-100 hover:text-white font-semibold px-8 py-3.5 rounded-xl transition-all duration-200">
+        Ghost Button
+      </a>
+    </div>
+    <div class="flex flex-wrap gap-6">
+      <a href="#" class="btn-press inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors text-sm">
+        Text Link
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+      <a href="#" class="text-sm text-accent-400 hover:text-accent-300 underline transition-colors">Underline Link</a>
+    </div>
+  </div>
+</section>
+
+{# ---- Section Patterns ---- #}
+<section class="py-16 sm:py-20 bg-primary-900 section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-10">
+      <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-3">Layout</p>
+      <h2 class="font-heading text-2xl font-bold text-white mb-2">Section Patterns</h2>
+      <p class="text-primary-400 text-sm">Sections alternate between <code class="text-accent-400 bg-primary-800/50 px-1.5 py-0.5 rounded text-xs">bg-primary-900</code> and <code class="text-accent-400 bg-primary-800/50 px-1.5 py-0.5 rounded text-xs">bg-primary-950</code> with gradient dividers.</p>
+    </div>
+
+    <div class="space-y-6">
+      <div class="glass-card rounded-2xl p-6">
+        <h3 class="font-heading text-lg font-semibold text-white mb-3">Section Header Pattern</h3>
+        <div class="bg-primary-900/50 rounded-xl p-6 border border-primary-700/30">
+          <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-4">Category Label</p>
+          <p class="text-display text-3xl text-white mb-3 text-glow">Section Heading</p>
+          <p class="text-primary-300 text-lg max-w-2xl">Supporting description text with text-pretty for balanced line breaks.</p>
+        </div>
+        <code class="text-[11px] text-primary-500 font-mono mt-3 block">text-accent-400 label → .text-display h2 → text-primary-300 description</code>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="glass-card rounded-xl p-5">
+          <h4 class="font-heading text-sm font-semibold text-white mb-2">.section-divider</h4>
+          <p class="text-primary-400 text-xs">Gradient fade between sections. Replaces hard border-t rules.</p>
+        </div>
+        <div class="glass-card rounded-xl p-5">
+          <h4 class="font-heading text-sm font-semibold text-white mb-2">.mesh-bg</h4>
+          <p class="text-primary-400 text-xs">Subtle radial mesh gradient overlay for visual depth.</p>
+        </div>
+        <div class="glass-card rounded-xl p-5">
+          <h4 class="font-heading text-sm font-semibold text-white mb-2">.hero-noise</h4>
+          <p class="text-primary-400 text-xs">SVG noise texture overlay for hero sections. Always aria-hidden.</p>
+        </div>
+        <div class="glass-card rounded-xl p-5">
+          <h4 class="font-heading text-sm font-semibold text-white mb-2">.hero-glow</h4>
+          <p class="text-primary-400 text-xs">Radial purple gradient glow behind hero content.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ---- Animations ---- #}
+<section class="py-16 sm:py-20 bg-primary-950 section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-10">
+      <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-3">Motion</p>
+      <h2 class="font-heading text-2xl font-bold text-white mb-2">Animations</h2>
+      <p class="text-primary-400 text-sm">All animations respect <code class="text-accent-400 bg-primary-800/50 px-1.5 py-0.5 rounded text-xs">prefers-reduced-motion</code>. Scroll reveals use IntersectionObserver.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="glass-card rounded-xl p-5">
+        <h3 class="font-heading text-sm font-semibold text-white mb-2">.reveal</h3>
+        <p class="text-primary-400 text-xs">Fade in + translateY(20px) on scroll intersection.</p>
+      </div>
+      <div class="glass-card rounded-xl p-5">
+        <h3 class="font-heading text-sm font-semibold text-white mb-2">.reveal-left / .reveal-right</h3>
+        <p class="text-primary-400 text-xs">Slide from side + fade on scroll intersection.</p>
+      </div>
+      <div class="glass-card rounded-xl p-5">
+        <h3 class="font-heading text-sm font-semibold text-white mb-2">.reveal-scale</h3>
+        <p class="text-primary-400 text-xs">Scale from 0.95 + fade on scroll intersection.</p>
+      </div>
+      <div class="glass-card rounded-xl p-5">
+        <h3 class="font-heading text-sm font-semibold text-white mb-2">.stagger / .stagger-pop</h3>
+        <p class="text-primary-400 text-xs">Children animate sequentially with 80ms delay. Pop adds scale bounce.</p>
+      </div>
+      <div class="glass-card rounded-xl p-5">
+        <h3 class="font-heading text-sm font-semibold text-white mb-2">.bar-fill</h3>
+        <p class="text-primary-400 text-xs">Width grows from 0% to data-bar-width on scroll with configurable delay.</p>
+      </div>
+      <div class="glass-card rounded-xl p-5">
+        <h3 class="font-heading text-sm font-semibold text-white mb-2">.counter</h3>
+        <p class="text-primary-400 text-xs">Animated number count-up with easeOutCubic to data-count value.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ---- Accessibility ---- #}
+<section class="py-16 sm:py-20 bg-primary-900 section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-10">
+      <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-3">A11y</p>
+      <h2 class="font-heading text-2xl font-bold text-white mb-2">Accessibility</h2>
+      <p class="text-primary-400 text-sm">Target: WCAG 2.1 AA compliance. All interactive elements meet 44px touch targets.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="glass-card rounded-2xl p-6">
+        <h3 class="font-heading text-lg font-semibold text-white mb-4">Structural</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent-400 mt-2 shrink-0"></span>
+            <span class="text-primary-300 text-sm"><strong class="text-white">Skip link:</strong> Hidden until focused, jumps to <code class="text-accent-400 text-xs">#main</code></span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent-400 mt-2 shrink-0"></span>
+            <span class="text-primary-300 text-sm"><strong class="text-white">Landmarks:</strong> <code class="text-accent-400 text-xs">aria-labelledby</code> on all sections, <code class="text-accent-400 text-xs">aria-label</code> on nav/footer</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent-400 mt-2 shrink-0"></span>
+            <span class="text-primary-300 text-sm"><strong class="text-white">Navigation:</strong> <code class="text-accent-400 text-xs">aria-current="page"</code> on active items, <code class="text-accent-400 text-xs">aria-expanded</code> on mobile toggle</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent-400 mt-2 shrink-0"></span>
+            <span class="text-primary-300 text-sm"><strong class="text-white">Carousel:</strong> <code class="text-accent-400 text-xs">role="region" aria-roledescription="carousel"</code> with labeled slides</span>
+          </li>
+        </ul>
+      </div>
+      <div class="glass-card rounded-2xl p-6">
+        <h3 class="font-heading text-lg font-semibold text-white mb-4">Interactive</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent-400 mt-2 shrink-0"></span>
+            <span class="text-primary-300 text-sm"><strong class="text-white">Focus states:</strong> <code class="text-accent-400 text-xs">focus:ring-2 focus:ring-accent-400</code> on all interactives</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent-400 mt-2 shrink-0"></span>
+            <span class="text-primary-300 text-sm"><strong class="text-white">Touch targets:</strong> 44px minimum via padding + background-clip: content-box</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent-400 mt-2 shrink-0"></span>
+            <span class="text-primary-300 text-sm"><strong class="text-white">Reduced motion:</strong> All animations disabled when <code class="text-accent-400 text-xs">prefers-reduced-motion: reduce</code></span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent-400 mt-2 shrink-0"></span>
+            <span class="text-primary-300 text-sm"><strong class="text-white">Decorative:</strong> All SVG icons, particles, and glow elements have <code class="text-accent-400 text-xs">aria-hidden="true"</code></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ---- Files Reference ---- #}
+<section class="py-16 sm:py-20 bg-primary-950 section-divider">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-10">
+      <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-3">Source</p>
+      <h2 class="font-heading text-2xl font-bold text-white mb-2">Files Reference</h2>
+    </div>
+    <div class="glass-card rounded-2xl p-6">
+      <ul class="space-y-3">
+        <li class="flex items-start gap-3">
+          <code class="text-accent-400 text-sm font-mono shrink-0">src/css/input.css</code>
+          <span class="text-primary-400 text-sm">Design tokens via <code class="text-accent-400 text-xs">@theme</code> block (Tailwind v4)</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <code class="text-accent-400 text-sm font-mono shrink-0">whitelabel.config.js</code>
+          <span class="text-primary-400 text-sm">Brand identity — colors, fonts, Google Fonts URL</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <code class="text-accent-400 text-sm font-mono shrink-0">src/js/animations.js</code>
+          <span class="text-primary-400 text-sm">Scroll reveals, counters, typewriter, carousel, particles</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <code class="text-accent-400 text-sm font-mono shrink-0">src/_includes/base.njk</code>
+          <span class="text-primary-400 text-sm">Base layout — header, footer, JSON-LD, meta tags</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <code class="text-accent-400 text-sm font-mono shrink-0">src/_data/site.js</code>
+          <span class="text-primary-400 text-sm">Global site config derived from whitelabel.config.js</span>
+        </li>
       </ul>
     </div>
-  </section>
-
-  {# ============================================ #}
-  {# Colors                                       #}
-  {# ============================================ #}
-
-  <section class="mb-16">
-    <h2 class="font-heading text-2xl font-bold text-primary-700 border-b-3 border-primary-500 pb-2 mb-6">Colors</h2>
-
-    <h3 class="font-heading text-lg font-semibold text-primary-700 mb-4">Primary Scale</h3>
-    <div class="grid grid-cols-5 sm:grid-cols-10 gap-2 mb-8">
-      <div class="text-center">
-        <div class="h-12 rounded bg-primary-50"></div>
-        <span class="text-xs text-gray-500 mt-1 block">50</span>
-      </div>
-      <div class="text-center">
-        <div class="h-12 rounded bg-primary-100"></div>
-        <span class="text-xs text-gray-500 mt-1 block">100</span>
-      </div>
-      <div class="text-center">
-        <div class="h-12 rounded bg-primary-200"></div>
-        <span class="text-xs text-gray-500 mt-1 block">200</span>
-      </div>
-      <div class="text-center">
-        <div class="h-12 rounded bg-primary-300"></div>
-        <span class="text-xs text-gray-500 mt-1 block">300</span>
-      </div>
-      <div class="text-center">
-        <div class="h-12 rounded bg-primary-400"></div>
-        <span class="text-xs text-gray-500 mt-1 block">400</span>
-      </div>
-      <div class="text-center">
-        <div class="h-12 rounded bg-primary-500"></div>
-        <span class="text-xs text-gray-500 mt-1 block">500</span>
-      </div>
-      <div class="text-center">
-        <div class="h-12 rounded bg-primary-600"></div>
-        <span class="text-xs text-gray-500 mt-1 block">600</span>
-      </div>
-      <div class="text-center">
-        <div class="h-12 rounded bg-primary-700"></div>
-        <span class="text-xs text-gray-500 mt-1 block">700</span>
-      </div>
-      <div class="text-center">
-        <div class="h-12 rounded bg-primary-800"></div>
-        <span class="text-xs text-gray-500 mt-1 block">800</span>
-      </div>
-      <div class="text-center">
-        <div class="h-12 rounded bg-primary-900"></div>
-        <span class="text-xs text-gray-500 mt-1 block">900</span>
-      </div>
-    </div>
-
-    <h3 class="font-heading text-lg font-semibold text-primary-700 mb-4">Accent Scale</h3>
-    <div class="grid grid-cols-5 sm:grid-cols-10 gap-2 mb-8">
-      <div class="text-center">
-        <div class="h-12 rounded bg-accent-50"></div>
-        <span class="text-xs text-gray-500 mt-1 block">50</span>
-      </div>
-      <div class="text-center">
-        <div class="h-12 rounded bg-accent-100"></div>
-        <span class="text-xs text-gray-500 mt-1 block">100</span>
-      </div>
-      <div class="text-center">
-        <div class="h-12 rounded bg-accent-200"></div>
-        <span class="text-xs text-gray-500 mt-1 block">200</span>
-      </div>
-      <div class="text-center">
-        <div class="h-12 rounded bg-accent-300"></div>
-        <span class="text-xs text-gray-500 mt-1 block">300</span>
-      </div>
-      <div class="text-center">
-        <div class="h-12 rounded bg-accent-400"></div>
-        <span class="text-xs text-gray-500 mt-1 block">400</span>
-      </div>
-      <div class="text-center">
-        <div class="h-12 rounded bg-accent-500"></div>
-        <span class="text-xs text-gray-500 mt-1 block">500</span>
-      </div>
-      <div class="text-center">
-        <div class="h-12 rounded bg-accent-600"></div>
-        <span class="text-xs text-gray-500 mt-1 block">600</span>
-      </div>
-      <div class="text-center">
-        <div class="h-12 rounded bg-accent-700"></div>
-        <span class="text-xs text-gray-500 mt-1 block">700</span>
-      </div>
-      <div class="text-center">
-        <div class="h-12 rounded bg-accent-800"></div>
-        <span class="text-xs text-gray-500 mt-1 block">800</span>
-      </div>
-      <div class="text-center">
-        <div class="h-12 rounded bg-accent-900"></div>
-        <span class="text-xs text-gray-500 mt-1 block">900</span>
-      </div>
-    </div>
-  </section>
-
-  {# ============================================ #}
-  {# Typography                                   #}
-  {# ============================================ #}
-
-  <section class="mb-16">
-    <h2 class="font-heading text-2xl font-bold text-primary-700 border-b-3 border-primary-500 pb-2 mb-6">Typography</h2>
-
-    <h3 class="font-heading text-lg font-semibold text-primary-700 mb-4">Heading Scale</h3>
-    <div class="space-y-4 mb-8">
-      <p class="font-heading text-5xl font-bold text-primary-700">Heading 5xl</p>
-      <p class="font-heading text-4xl font-bold text-primary-700">Heading 4xl</p>
-      <p class="font-heading text-3xl font-bold text-primary-700">Heading 3xl</p>
-      <p class="font-heading text-2xl font-bold text-primary-700">Heading 2xl</p>
-      <p class="font-heading text-xl font-semibold text-primary-700">Heading xl</p>
-    </div>
-
-    <h3 class="font-heading text-lg font-semibold text-primary-700 mb-4">Body Text</h3>
-    <div class="space-y-2 mb-8">
-      <p class="text-lg">Body large (text-lg)</p>
-      <p class="text-body">Body default (text-body — 17px)</p>
-      <p class="text-sm">Body small (text-sm)</p>
-      <p class="text-xs">Body extra small (text-xs)</p>
-    </div>
-  </section>
-
-  {# ============================================ #}
-  {# Buttons                                      #}
-  {# ============================================ #}
-
-  <section class="mb-16">
-    <h2 class="font-heading text-2xl font-bold text-primary-700 border-b-3 border-primary-500 pb-2 mb-6">Buttons</h2>
-    <div class="flex flex-wrap gap-4">
-      <a href="#" class="inline-block bg-primary-600 hover:bg-primary-700 text-white font-medium px-6 py-3 rounded transition-colors">Primary</a>
-      <a href="#" class="inline-block border border-primary-600 text-primary-600 hover:bg-primary-50 font-medium px-6 py-3 rounded transition-colors">Secondary</a>
-      <a href="#" class="inline-block bg-accent-500 hover:bg-accent-600 text-white font-medium px-6 py-3 rounded transition-colors">Accent</a>
-      <a href="#" class="text-primary-600 underline hover:text-primary-700 font-medium px-2 py-3 transition-colors">Text Link</a>
-    </div>
-  </section>
-
-  {# ============================================ #}
-  {# Cards                                        #}
-  {# ============================================ #}
-
-  <section class="mb-16">
-    <h2 class="font-heading text-2xl font-bold text-primary-700 border-b-3 border-primary-500 pb-2 mb-6">Cards</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-        <h3 class="font-heading text-xl font-semibold text-primary-700 mb-3">Card Title</h3>
-        <p class="text-gray-600">Card content goes here. This is the standard card pattern used for services and features.</p>
-      </div>
-      <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-        <h3 class="font-heading text-xl font-semibold text-primary-700 mb-3">Card with CTA</h3>
-        <p class="text-gray-600 mb-4">Card content with a call to action button below.</p>
-        <a href="#" class="text-primary-600 underline hover:text-primary-700 font-medium">Learn more &rarr;</a>
-      </div>
-      <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-        <h3 class="font-heading text-xl font-semibold text-primary-700 mb-3">Card Three</h3>
-        <p class="text-gray-600">Another card demonstrating the grid layout and consistent styling.</p>
-      </div>
-    </div>
-  </section>
-
-  {# ============================================ #}
-  {# Section Headers                              #}
-  {# ============================================ #}
-
-  <section class="mb-16">
-    <h2 class="font-heading text-2xl font-bold text-primary-700 border-b-3 border-primary-500 pb-2 mb-6">Section Headers</h2>
-    <p class="text-gray-600 mb-4">H2 elements within prose get a bottom border rule, following the convention of technical publications.</p>
-    <div class="prose prose-lg prose-h2:border-b-3 prose-h2:border-primary-500 prose-h2:text-primary-700 prose-h2:pb-2">
-      <h2>Example Section Header</h2>
-      <p>This demonstrates the ruled-heading pattern used throughout interior pages.</p>
-    </div>
-  </section>
-
-  {# ============================================ #}
-  {# Accessibility                                #}
-  {# ============================================ #}
-
-  <section class="mb-16" id="accessibility">
-    <h2 class="font-heading text-2xl font-bold text-primary-700 border-b-3 border-primary-500 pb-2 mb-6">Accessibility</h2>
-    <div class="prose prose-lg">
-      <p>Target: WCAG 2.1 AA compliance on all pages.</p>
-      <ul>
-        <li><strong>Skip link:</strong> Hidden until focused, jumps to <code>#main</code>.</li>
-        <li><strong>Links:</strong> Permanently underlined (WCAG 1.4.1 — not just on hover).</li>
-        <li><strong>Focus states:</strong> Visible on all interactive elements.</li>
-        <li><strong>Color contrast:</strong> All text-on-background combinations meet AA ratios.</li>
-        <li><strong>Navigation:</strong> <code>aria-current="page"</code> on active items, <code>aria-expanded</code> on hamburger.</li>
-      </ul>
-      <h3>The Grayscale Test</h3>
-      <p>View the site with color removed and ask: "Can I still tell what's interactive?" Links should be identifiable by their underline, buttons by their shape, and focus states by their outline — not just by color.</p>
-    </div>
-  </section>
-
-  {# ============================================ #}
-  {# Files Reference                              #}
-  {# ============================================ #}
-
-  <section class="mb-16">
-    <h2 class="font-heading text-2xl font-bold text-primary-700 border-b-3 border-primary-500 pb-2 mb-6">Files Reference</h2>
-    <div class="prose prose-lg">
-      <ul>
-        <li><code>src/css/input.css</code> — Source of truth for design tokens (<code>@theme</code> block)</li>
-        <li><code>src/style-guide.njk</code> — This page (living reference)</li>
-        <li><code>whitelabel.config.js</code> — Brand identity configuration</li>
-        <li><code>data/scraped-styles.json</code> — Raw scraped design data</li>
-        <li><code>data/merged-blueprint.json</code> — Final merged blueprint</li>
-      </ul>
-    </div>
-  </section>
-
-</div>
+  </div>
+</section>
