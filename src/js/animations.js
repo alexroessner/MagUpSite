@@ -293,13 +293,17 @@
   var dashNext = document.querySelector(".dash-arrow-next");
 
   if (dashTrack && dashDots.length) {
-    function updateDashDots() {
+    // Measure slide step dynamically (slide width + gap)
+    function getSlideStep() {
       var slides = dashTrack.querySelectorAll(".dash-slide");
-      if (!slides.length) return;
-      var scrollLeft = dashTrack.scrollLeft;
-      var gap = 24; // gap-6 = 1.5rem = 24px
-      var slideWidth = slides[0].offsetWidth + gap;
-      var activeIndex = Math.round(scrollLeft / slideWidth);
+      if (slides.length < 2) return slides.length ? slides[0].offsetWidth + 16 : 0;
+      return slides[1].offsetLeft - slides[0].offsetLeft;
+    }
+
+    function updateDashDots() {
+      var step = getSlideStep();
+      if (!step) return;
+      var activeIndex = Math.round(dashTrack.scrollLeft / step);
       activeIndex = Math.max(0, Math.min(activeIndex, dashDots.length - 1));
       dashDots.forEach(function (dot, i) {
         dot.classList.toggle("active", i === activeIndex);
@@ -310,31 +314,22 @@
 
     dashDots.forEach(function (dot, i) {
       dot.addEventListener("click", function () {
-        var slides = dashTrack.querySelectorAll(".dash-slide");
-        if (!slides.length) return;
-        var gap = 24;
-        var slideWidth = slides[0].offsetWidth + gap;
-        dashTrack.scrollTo({ left: slideWidth * i, behavior: "smooth" });
+        var step = getSlideStep();
+        if (step) dashTrack.scrollTo({ left: step * i, behavior: "smooth" });
       });
     });
 
     if (dashPrev) {
       dashPrev.addEventListener("click", function () {
-        var slides = dashTrack.querySelectorAll(".dash-slide");
-        if (!slides.length) return;
-        var gap = 24;
-        var slideWidth = slides[0].offsetWidth + gap;
-        dashTrack.scrollBy({ left: -slideWidth, behavior: "smooth" });
+        var step = getSlideStep();
+        if (step) dashTrack.scrollBy({ left: -step, behavior: "smooth" });
       });
     }
 
     if (dashNext) {
       dashNext.addEventListener("click", function () {
-        var slides = dashTrack.querySelectorAll(".dash-slide");
-        if (!slides.length) return;
-        var gap = 24;
-        var slideWidth = slides[0].offsetWidth + gap;
-        dashTrack.scrollBy({ left: slideWidth, behavior: "smooth" });
+        var step = getSlideStep();
+        if (step) dashTrack.scrollBy({ left: step, behavior: "smooth" });
       });
     }
 

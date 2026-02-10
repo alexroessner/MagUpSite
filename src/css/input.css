@@ -941,7 +941,13 @@ button:focus-visible {
   -ms-overflow-style: none;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  scroll-padding-inline: 1rem;
+  scroll-padding-inline: 0.5rem;
+}
+
+@media (width >= 640px) {
+  .dash-carousel-track {
+    scroll-padding-inline: 1rem;
+  }
 }
 
 .dash-carousel-track::-webkit-scrollbar {

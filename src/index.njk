@@ -90,8 +90,8 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 
 <section class="py-20 sm:py-28 lg:py-32 bg-primary-950 section-divider accent-stripe">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-12 reveal">
-      <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-5">Product Preview</p>
+    <div class="text-center mb-8 sm:mb-12 reveal">
+      <p class="text-accent-400 font-semibold text-xs uppercase tracking-[0.2em] mb-4 sm:mb-5">Product Preview</p>
       <h2 class="text-display text-4xl sm:text-5xl lg:text-6xl text-primary-50 mb-5 text-glow">
         See the Platform in Action
       </h2>
@@ -108,18 +108,48 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
       </button>
       {# Scrollable track #}
-      <div class="dash-carousel-track flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4" id="dash-track">
+      <div class="dash-carousel-track flex gap-3 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-4" id="dash-track">
 
         {# ── Slide 1: Prompt Research ── #}
-        <div class="dash-slide snap-center shrink-0 w-[85vw] sm:w-[560px] lg:w-[680px]">
-          <div class="glass-card rounded-2xl p-5 sm:p-6 h-full" style="border-color: rgba(151,117,250,0.12)">
+        <div class="dash-slide snap-center shrink-0 w-[84vw] sm:w-[560px] lg:w-[680px]">
+          <div class="glass-card rounded-2xl p-3 sm:p-6 h-full" style="border-color: rgba(151,117,250,0.12)">
             <div class="flex items-center gap-2 pb-3 mb-4 border-b border-primary-700/20">
               <div class="w-2 h-2 rounded-full bg-accent-500"></div>
               <span class="font-heading text-[10px] font-semibold text-primary-300 uppercase tracking-wider">GEO Intelligent Agent</span>
               <span class="ml-auto text-[10px] px-2 py-0.5 bg-accent-500/10 rounded-full text-accent-400 font-medium">Prompt Research</span>
             </div>
-            <div class="overflow-x-auto -mx-1">
-              <table class="w-full text-[11px] sm:text-xs">
+            {%- set prompts = [
+              { id: "Q001", text: "Best enterprise AI visibility platform", c: "g", g: "g", p: "y" },
+              { id: "Q002", text: "GEO optimization tools for brands", c: "g", g: "y", p: "g" },
+              { id: "Q003", text: "How to monitor AI brand citations", c: "y", g: "g", p: "g" },
+              { id: "Q004", text: "AI search recommendation tracking", c: "g", g: "r", p: "y" },
+              { id: "Q005", text: "Generative engine optimization service", c: "g", g: "g", p: "g" },
+              { id: "Q006", text: "Brand visibility across AI platforms", c: "y", g: "y", p: "r" },
+              { id: "Q007", text: "AI content strategy for enterprise", c: "g", g: "g", p: "y" },
+              { id: "Q008", text: "Cross-platform AI monitoring tools", c: "g", g: "y", p: "g" }
+            ] %}
+            {# Mobile: compact card layout #}
+            <div class="sm:hidden space-y-1.5">
+              {%- for q in prompts %}
+              {% if loop.index <= 5 %}
+              <div class="flex items-start gap-2 bg-primary-900/30 rounded-lg px-2.5 py-2 border border-primary-800/20">
+                <span class="text-primary-600 font-mono text-[9px] mt-0.5 shrink-0">{{ q.id }}</span>
+                <div class="flex-1 min-w-0">
+                  <div class="text-[10px] text-primary-200 leading-snug">{{ q.text }}</div>
+                  <div class="flex items-center gap-3 mt-1.5">
+                    <span class="flex items-center gap-1 text-[8px] text-primary-500"><span class="w-1.5 h-1.5 rounded-full {% if q.c == 'g' %}bg-emerald-400{% elif q.c == 'y' %}bg-amber-400{% else %}bg-red-400{% endif %}"></span>GPT</span>
+                    <span class="flex items-center gap-1 text-[8px] text-primary-500"><span class="w-1.5 h-1.5 rounded-full {% if q.g == 'g' %}bg-emerald-400{% elif q.g == 'y' %}bg-amber-400{% else %}bg-red-400{% endif %}"></span>Google</span>
+                    <span class="flex items-center gap-1 text-[8px] text-primary-500"><span class="w-1.5 h-1.5 rounded-full {% if q.p == 'g' %}bg-emerald-400{% elif q.p == 'y' %}bg-amber-400{% else %}bg-red-400{% endif %}"></span>Pplx</span>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              {%- endfor %}
+              <div class="text-[9px] text-primary-600 text-center pt-1">+3 more prompts tracked</div>
+            </div>
+            {# Desktop: full data table #}
+            <div class="hidden sm:block overflow-x-auto -mx-1">
+              <table class="w-full text-xs">
                 <thead>
                   <tr class="border-b border-primary-700/30">
                     <th class="text-left py-2 px-2 text-primary-500 font-medium">ID</th>
@@ -130,16 +160,6 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
                   </tr>
                 </thead>
                 <tbody>
-                  {%- set prompts = [
-                    { id: "Q001", text: "Best enterprise AI visibility platform", c: "g", g: "g", p: "y" },
-                    { id: "Q002", text: "GEO optimization tools for brands", c: "g", g: "y", p: "g" },
-                    { id: "Q003", text: "How to monitor AI brand citations", c: "y", g: "g", p: "g" },
-                    { id: "Q004", text: "AI search recommendation tracking", c: "g", g: "r", p: "y" },
-                    { id: "Q005", text: "Generative engine optimization service", c: "g", g: "g", p: "g" },
-                    { id: "Q006", text: "Brand visibility across AI platforms", c: "y", g: "y", p: "r" },
-                    { id: "Q007", text: "AI content strategy for enterprise", c: "g", g: "g", p: "y" },
-                    { id: "Q008", text: "Cross-platform AI monitoring tools", c: "g", g: "y", p: "g" }
-                  ] %}
                   {%- for q in prompts %}
                   <tr class="border-b border-primary-800/30{% if loop.last %} border-b-0{% endif %}">
                     <td class="py-1.5 px-2 text-primary-500 font-mono text-[10px]">{{ q.id }}</td>
@@ -156,8 +176,8 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
         </div>
 
         {# ── Slide 2: Brand Multi-dimensional Analysis ── #}
-        <div class="dash-slide snap-center shrink-0 w-[85vw] sm:w-[560px] lg:w-[680px]">
-          <div class="glass-card rounded-2xl p-5 sm:p-6 h-full" style="border-color: rgba(151,117,250,0.12)">
+        <div class="dash-slide snap-center shrink-0 w-[84vw] sm:w-[560px] lg:w-[680px]">
+          <div class="glass-card rounded-2xl p-3 sm:p-6 h-full" style="border-color: rgba(151,117,250,0.12)">
             <div class="flex items-center gap-2 pb-3 mb-4 border-b border-primary-700/20">
               <div class="w-2 h-2 rounded-full bg-accent-400"></div>
               <span class="font-heading text-[10px] font-semibold text-primary-300 uppercase tracking-wider">Brand Intelligence</span>
@@ -180,8 +200,8 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
               {%- endfor %}
             </div>
             {# Heatmap visualization #}
-            <div class="bg-primary-900/30 rounded-xl p-4 border border-primary-700/15">
-              <div class="text-[10px] text-primary-500 uppercase tracking-wider mb-3">Competitor Heatmap</div>
+            <div class="bg-primary-900/30 rounded-xl p-3 sm:p-4 border border-primary-700/15">
+              <div class="text-[10px] text-primary-500 uppercase tracking-wider mb-2 sm:mb-3">Competitor Heatmap</div>
               <div class="grid grid-cols-5 gap-1">
                 {%- for i in range(20) %}
                 <div class="h-5 rounded-sm" style="background: rgba(151, 117, 250, {{ [0.08, 0.15, 0.25, 0.38, 0.5, 0.12, 0.32, 0.45, 0.2, 0.1, 0.42, 0.22, 0.18, 0.38, 0.28, 0.48, 0.14, 0.35, 0.52, 0.06][i] }})"></div>
@@ -196,8 +216,8 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
         </div>
 
         {# ── Slide 3: Real-time Monitoring ── #}
-        <div class="dash-slide snap-center shrink-0 w-[85vw] sm:w-[560px] lg:w-[680px]">
-          <div class="glass-card rounded-2xl p-5 sm:p-6 h-full" style="border-color: rgba(151,117,250,0.12)">
+        <div class="dash-slide snap-center shrink-0 w-[84vw] sm:w-[560px] lg:w-[680px]">
+          <div class="glass-card rounded-2xl p-3 sm:p-6 h-full" style="border-color: rgba(151,117,250,0.12)">
             <div class="flex items-center gap-2 pb-3 mb-4 border-b border-primary-700/20">
               <div class="w-2 h-2 rounded-full bg-emerald-400"></div>
               <span class="font-heading text-[10px] font-semibold text-primary-300 uppercase tracking-wider">Real-time Monitoring</span>
@@ -227,8 +247,8 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
               </div>
             </div>
             {# Brand visibility ranking #}
-            <div class="bg-primary-900/30 rounded-xl p-4 border border-primary-700/15">
-              <div class="text-[10px] text-primary-500 uppercase tracking-wider mb-3">Brand Visibility Ranking</div>
+            <div class="bg-primary-900/30 rounded-xl p-3 sm:p-4 border border-primary-700/15">
+              <div class="text-[10px] text-primary-500 uppercase tracking-wider mb-2 sm:mb-3">Brand Visibility Ranking</div>
               <div class="space-y-2.5">
                 {%- set brandRanks = [
                   { name: "Your Brand", pct: 78, hl: true },
@@ -239,7 +259,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
                 ] %}
                 {%- for b in brandRanks %}
                 <div class="flex items-center gap-2">
-                  <span class="text-[10px] w-20 shrink-0 {% if b.hl %}text-accent-400 font-semibold{% else %}text-primary-400{% endif %}">{{ b.name }}</span>
+                  <span class="text-[10px] w-16 sm:w-20 shrink-0 {% if b.hl %}text-accent-400 font-semibold{% else %}text-primary-400{% endif %}">{{ b.name }}</span>
                   <div class="flex-1 h-1.5 bg-primary-800/50 rounded-full overflow-hidden">
                     <div class="h-full rounded-full" style="width: {{ b.pct }}%; background: {% if b.hl %}linear-gradient(90deg, #7C5CF7, #B197FC){% else %}rgba(139, 114, 184, 0.3){% endif %}"></div>
                   </div>
@@ -252,14 +272,14 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
         </div>
 
         {# ── Slide 4: Project Progress ── #}
-        <div class="dash-slide snap-center shrink-0 w-[85vw] sm:w-[560px] lg:w-[680px]">
-          <div class="glass-card rounded-2xl p-5 sm:p-6 h-full" style="border-color: rgba(151,117,250,0.12)">
+        <div class="dash-slide snap-center shrink-0 w-[84vw] sm:w-[560px] lg:w-[680px]">
+          <div class="glass-card rounded-2xl p-3 sm:p-6 h-full" style="border-color: rgba(151,117,250,0.12)">
             <div class="flex items-center gap-2 pb-3 mb-4 border-b border-primary-700/20">
               <div class="w-2 h-2 rounded-full bg-accent-500"></div>
               <span class="font-heading text-[10px] font-semibold text-primary-300 uppercase tracking-wider">Project Progress</span>
               <span class="ml-auto text-[10px] px-2 py-0.5 bg-accent-500/10 rounded-full text-accent-400 font-medium">Tracking</span>
             </div>
-            <div class="flex flex-col sm:flex-row gap-6">
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
               {# Radial progress gauge #}
               <div class="flex flex-col items-center justify-center shrink-0">
                 <svg viewBox="0 0 120 120" class="w-28 h-28" aria-label="32% complete">
@@ -295,8 +315,8 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
         </div>
 
         {# ── Slide 5: Dashboard Home ── #}
-        <div class="dash-slide snap-center shrink-0 w-[85vw] sm:w-[560px] lg:w-[680px]">
-          <div class="glass-card rounded-2xl p-5 sm:p-6 h-full" style="border-color: rgba(151,117,250,0.12)">
+        <div class="dash-slide snap-center shrink-0 w-[84vw] sm:w-[560px] lg:w-[680px]">
+          <div class="glass-card rounded-2xl p-3 sm:p-6 h-full" style="border-color: rgba(151,117,250,0.12)">
             <div class="flex items-center gap-2 pb-3 mb-4 border-b border-primary-700/20">
               <div class="w-2 h-2 rounded-full bg-accent-500"></div>
               <span class="font-heading text-[10px] font-semibold text-primary-300 uppercase tracking-wider">GEO 42 Dashboard</span>
