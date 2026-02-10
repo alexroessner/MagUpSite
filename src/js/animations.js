@@ -1,5 +1,5 @@
 /**
- * MagUp Animation Engine
+ * GEO 42 Animation Engine
  * Scroll reveals, animated counters, and typewriter effects
  * Respects prefers-reduced-motion for all animations
  */

@@ -12,7 +12,7 @@ Industry: MarTech / AI-Powered Content Marketing
 Founded: 2025
 
 ## About the Company
-MagUp is a Content Marketing Brain for 1000+ Global Enterprises. The platform combines GEO (Generative Engine Optimization) and SEO content marketing to efficiently acquire global customers. MagUp helps brands get discovered by both traditional search engines and AI-powered answer engines like ChatGPT, Perplexity, Claude, Gemini, and Google AI Overviews. MagUp deeply cultivates niche industries, helping enterprises quickly build AI content marketing systems overseas.
+GEO 42 is the AI visibility platform trusted by 1000+ global enterprises. The platform combines GEO (Generative Engine Optimization) with SEO content marketing to efficiently acquire customers worldwide. GEO 42 helps brands get discovered by both traditional search engines and AI-powered answer engines like ChatGPT, Perplexity, Claude, Gemini, and Google AI Overviews. The platform serves specialized verticals, helping enterprises rapidly build AI-optimized content systems across global markets.
 
 ## Services
 
@@ -35,7 +35,7 @@ Measure the downstream impact of AI visibility. Track human traffic from AI sear
 Boost product visibility in ChatGPT Shopping and AI assistants. Track shopping placement, trigger keywords, response-level product analysis, and measure traffic and conversion impact from AI shopping.
 
 ### GEO + SEO Content Marketing
-Create AI-optimized content that performs across both generative engines and traditional search. MagUp&#39;s Content Marketing Brain efficiently acquires global customers through integrated GEO and SEO strategies.
+Create AI-optimized content that performs across both generative engines and traditional search. GEO 42&#39;s Content Marketing Brain efficiently acquires global customers through integrated GEO and SEO strategies.
 
 ## Clients
 - HP

@@ -11,7 +11,7 @@ GEO 42 is the AI visibility platform that makes your brand the definitive answer
 - AI Crawler &amp; Agent Analytics: Gain full visibility into how AI sees your website. Monitor AI crawler access, bot frequency, technical indexing, readability analysis, and content accessibility for AI retrieval.
 - Traffic &amp; Attribution Analytics: Measure the downstream impact of AI visibility. Track human traffic from AI search, attribute conversions to AI platforms, identify pages driving AI-sourced traffic, and prove content marketing ROI.
 - AI Shopping &amp; Product Visibility: Boost product visibility in ChatGPT Shopping and AI assistants. Track shopping placement, trigger keywords, response-level product analysis, and measure traffic and conversion impact from AI shopping.
-- GEO + SEO Content Marketing: Create AI-optimized content that performs across both generative engines and traditional search. MagUp&#39;s Content Marketing Brain efficiently acquires global customers through integrated GEO and SEO strategies.
+- GEO + SEO Content Marketing: Create AI-optimized content that performs across both generative engines and traditional search. GEO 42&#39;s Content Marketing Brain efficiently acquires global customers through integrated GEO and SEO strategies.
 
 ## Contact
 - Email: hello@geo42.ai
