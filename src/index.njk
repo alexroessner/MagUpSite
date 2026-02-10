@@ -24,7 +24,7 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
 
     <h1 class="reveal text-display mb-8 text-glow">
       <span class="block text-[min(3rem,11vw)] sm:text-5xl md:text-6xl lg:text-8xl xl:text-[6.5rem] gradient-text">Become the</span>
-      <span class="block whitespace-nowrap text-[min(3rem,10vw)] sm:text-5xl md:text-6xl lg:text-8xl xl:text-[6.5rem]"><span class="gradient-text">Answer on </span><span class="text-accent-400" data-typewriter="ChatGPT|Perplexity|Gemini|Google AI|DeepSeek|Claude" role="status" aria-live="polite">ChatGPT</span></span>
+      <span class="block whitespace-nowrap text-[min(3rem,10vw)] sm:text-5xl md:text-6xl lg:text-8xl xl:text-[6rem]"><span class="gradient-text">Answer on </span><span class="text-accent-400" data-typewriter="ChatGPT|Perplexity|Gemini|Google AI|DeepSeek|Claude" role="status" aria-live="polite">ChatGPT</span></span>
     </h1>
 
     <p class="reveal text-lg sm:text-xl lg:text-2xl text-primary-300 max-w-3xl mx-auto mb-12 text-pretty leading-relaxed">
@@ -71,13 +71,13 @@ description: "GEO 42 is the AI visibility platform that makes your brand the def
     <div class="overflow-hidden mt-4">
       <div class="logo-marquee logo-marquee-reverse gap-16 items-center whitespace-nowrap">
         {%- for client in pageContent.clients | reverse %}
-        <div class="flex-shrink-0 flex items-center justify-center h-10 px-4 opacity-30 sm:opacity-30 max-sm:opacity-45 hover:opacity-70 transition-opacity">
-          <span class="text-primary-300 font-heading font-semibold text-sm sm:text-sm max-sm:text-base tracking-[0.15em] uppercase">{{ client }}</span>
+        <div class="flex-shrink-0 flex items-center justify-center h-10 px-4 opacity-35 sm:opacity-35 max-sm:opacity-45 hover:opacity-75 transition-opacity">
+          <span class="text-primary-200 font-heading font-semibold text-sm sm:text-sm max-sm:text-base tracking-[0.15em] uppercase">{{ client }}</span>
         </div>
         {%- endfor %}
         {%- for client in pageContent.clients | reverse %}
-        <div class="flex-shrink-0 flex items-center justify-center h-10 px-4 opacity-30 sm:opacity-30 max-sm:opacity-45 hover:opacity-70 transition-opacity" aria-hidden="true">
-          <span class="text-primary-300 font-heading font-semibold text-sm sm:text-sm max-sm:text-base tracking-[0.15em] uppercase">{{ client }}</span>
+        <div class="flex-shrink-0 flex items-center justify-center h-10 px-4 opacity-35 sm:opacity-35 max-sm:opacity-45 hover:opacity-75 transition-opacity" aria-hidden="true">
+          <span class="text-primary-200 font-heading font-semibold text-sm sm:text-sm max-sm:text-base tracking-[0.15em] uppercase">{{ client }}</span>
         </div>
         {%- endfor %}
       </div>
