@@ -2,6 +2,22 @@
 
 @plugin "@tailwindcss/typography";
 
+/* ===== iOS / Safari base resets ===== */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* ===== Skip link ===== */
 .skip-link {
   position: absolute;
@@ -38,10 +54,13 @@ button:focus-visible {
   position: sticky;
   top: 0;
   z-index: 50;
+  -webkit-backdrop-filter: blur(16px) saturate(1.5);
   backdrop-filter: blur(16px) saturate(1.5);
   background: rgb(15 14 10 / 85%);
   border-bottom: 1px solid rgb(212 160 23 / 10%);
   transition: background 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
+  padding-top: env(safe-area-inset-top, 0px);
 }
 
 .site-header.scrolled {
@@ -184,12 +203,14 @@ button:focus-visible {
 /* ===== Gradient text ===== */
 .gradient-text {
   background: linear-gradient(135deg, #ffffff 0%, var(--color-accent-300) 50%, var(--color-accent-500) 100%);
+  -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .gradient-text-gold {
   background: linear-gradient(135deg, var(--color-accent-300) 0%, var(--color-accent-500) 50%, var(--color-accent-700) 100%);
+  -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -246,10 +267,7 @@ button:focus-visible {
 .logo-marquee {
   display: flex;
   animation: marquee 30s linear infinite;
-}
-
-.logo-marquee:hover {
-  animation-play-state: paused;
+  will-change: transform;
 }
 
 @keyframes marquee {
@@ -264,10 +282,12 @@ button:focus-visible {
               border-color 0.3s ease;
 }
 
-.card-lift:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 24px 60px -16px rgb(212 160 23 / 20%),
-              0 0 0 1px rgb(212 160 23 / 15%);
+@media (hover: hover) {
+  .card-lift:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 24px 60px -16px rgb(212 160 23 / 20%),
+                0 0 0 1px rgb(212 160 23 / 15%);
+  }
 }
 
 /* ===== Glassmorphism card — frosted translucent (NOT border-based like Profound) ===== */
@@ -275,18 +295,21 @@ button:focus-visible {
   position: relative;
   overflow: hidden;
   background: rgb(24 23 18 / 60%);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
   backdrop-filter: blur(20px) saturate(1.4);
   border: 1px solid rgb(212 160 23 / 8%);
   box-shadow: 0 8px 32px -8px rgb(0 0 0 / 40%),
               inset 0 1px 0 rgb(212 160 23 / 6%);
 }
 
-.glass-card:hover {
-  background: rgb(24 23 18 / 75%);
-  border-color: rgb(212 160 23 / 20%);
-  box-shadow: 0 16px 48px -12px rgb(0 0 0 / 50%),
-              0 0 30px -10px rgb(212 160 23 / 12%),
-              inset 0 1px 0 rgb(212 160 23 / 10%);
+@media (hover: hover) {
+  .glass-card:hover {
+    background: rgb(24 23 18 / 75%);
+    border-color: rgb(212 160 23 / 20%);
+    box-shadow: 0 16px 48px -12px rgb(0 0 0 / 50%),
+                0 0 30px -10px rgb(212 160 23 / 12%),
+                inset 0 1px 0 rgb(212 160 23 / 10%);
+  }
 }
 
 /* ===== Gold border card ===== */
@@ -302,6 +325,8 @@ button:focus-visible {
   border-radius: inherit;
   padding: 1px;
   background: linear-gradient(135deg, rgb(212 160 23 / 30%), transparent 50%, rgb(212 160 23 / 10%));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
   pointer-events: none;
@@ -342,6 +367,7 @@ button:focus-visible {
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, rgb(212 160 23 / 8%), rgb(24 23 18 / 80%));
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
   backdrop-filter: blur(20px) saturate(1.4);
   border: 1px solid rgb(212 160 23 / 15%);
   box-shadow: 0 12px 40px -8px rgb(212 160 23 / 12%),
@@ -369,6 +395,8 @@ button:focus-visible {
   inset: -1px;
   border-radius: inherit;
   background: conic-gradient(from var(--border-angle, 0deg), transparent 60%, rgb(212 160 23 / 40%), transparent 80%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
   padding: 1px;
@@ -376,9 +404,11 @@ button:focus-visible {
   transition: opacity 0.4s ease;
 }
 
-.glow-border:hover::before {
-  opacity: 1;
-  animation: rotate-border 3s linear infinite;
+@media (hover: hover) {
+  .glow-border:hover::before {
+    opacity: 1;
+    animation: rotate-border 3s linear infinite;
+  }
 }
 
 @keyframes rotate-border {
@@ -465,8 +495,9 @@ button:focus-visible {
 /* ===== Scroll progress bar ===== */
 .scroll-progress {
   position: fixed;
-  top: 0;
+  top: env(safe-area-inset-top, 0px);
   left: 0;
+  right: 0;
   height: 3px;
   background: linear-gradient(90deg, var(--color-accent-600), var(--color-accent-400), var(--color-accent-300));
   z-index: 60;
@@ -487,6 +518,7 @@ button:focus-visible {
   opacity: 0;
   transition: opacity 0.4s ease;
   filter: blur(40px);
+  will-change: transform, opacity;
 }
 
 /* ===== Gold particle canvas ===== */
@@ -555,17 +587,18 @@ button:focus-visible {
   content: "";
   position: absolute;
   top: 0;
-  left: -100%;
+  left: 0;
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, transparent, rgb(212 160 23 / 8%), transparent);
   animation: shimmer 3s ease-in-out infinite;
+  will-change: transform;
 }
 
 @keyframes shimmer {
-  0% { left: -100%; }
-  50% { left: 100%; }
-  100% { left: 100%; }
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
 }
 
 /* ===== KPI card glow ===== */
@@ -735,6 +768,7 @@ button:focus-visible {
   pointer-events: none;
   filter: blur(60px);
   animation: ambient-pulse 4s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 @keyframes ambient-pulse {
@@ -860,6 +894,22 @@ button:focus-visible {
 
   .glow-border::before {
     animation: none;
+  }
+}
+
+/* ===== iOS safe-area insets for notched devices ===== */
+@supports (padding: env(safe-area-inset-top)) {
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* ===== iOS marquee hover — only on pointer devices ===== */
+@media (hover: hover) {
+  .logo-marquee:hover {
+    animation-play-state: paused;
   }
 }
 

@@ -2,11 +2,20 @@
  * GEO 42 Animation Engine
  * Scroll reveals, animated counters, and typewriter effects
  * Respects prefers-reduced-motion for all animations
+ * Optimized for iOS Safari: visibility gating, touch detection, debounced resize
  */
 (function () {
   "use strict";
 
-  var prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var motionQuery = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
+  var prefersReducedMotion = motionQuery && motionQuery.matches;
+
+  // Listen for runtime reduced-motion changes (e.g. iOS Settings toggle)
+  if (motionQuery && motionQuery.addEventListener) {
+    motionQuery.addEventListener("change", function (e) {
+      prefersReducedMotion = e.matches;
+    });
+  }
 
   // ── Scroll-triggered reveals via IntersectionObserver ──
   var revealEls = document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger, .stagger-pop, .glow-reveal");
@@ -102,7 +111,7 @@
     }
   }
 
-  // ── Typewriter cycling ──
+  // ── Typewriter cycling — with visibility gating for iOS battery ──
   var typers = document.querySelectorAll("[data-typewriter]");
   typers.forEach(function (el) {
     var words = el.getAttribute("data-typewriter").split("|");
@@ -118,8 +127,11 @@
     var charIndex = 0;
     var deleting = false;
     var speed = 80;
+    var typeTimerId = null;
+    var paused = false;
 
     function tick() {
+      if (paused) return;
       var current = words[wordIndex];
       if (deleting) {
         charIndex--;
@@ -127,70 +139,108 @@
         if (charIndex === 0) {
           deleting = false;
           wordIndex = (wordIndex + 1) % words.length;
-          setTimeout(tick, 400);
+          typeTimerId = setTimeout(tick, 400);
           return;
         }
-        setTimeout(tick, 40);
+        typeTimerId = setTimeout(tick, 40);
       } else {
         charIndex++;
         el.textContent = current.substring(0, charIndex);
         if (charIndex === current.length) {
           deleting = true;
-          setTimeout(tick, 2000);
+          typeTimerId = setTimeout(tick, 2000);
           return;
         }
-        setTimeout(tick, speed);
+        typeTimerId = setTimeout(tick, speed);
       }
     }
 
-    setTimeout(tick, 800);
+    typeTimerId = setTimeout(tick, 800);
+
+    // Pause typewriter when page is hidden (iOS battery optimization)
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) {
+        paused = true;
+        if (typeTimerId) { clearTimeout(typeTimerId); typeTimerId = null; }
+      } else {
+        paused = false;
+        typeTimerId = setTimeout(tick, 400);
+      }
+    });
   });
 
-  // ── Scroll progress indicator ──
+  // ── Scroll progress indicator — clamped for iOS rubber-band scrolling ──
   var progressBar = document.querySelector(".scroll-progress");
   if (progressBar) {
     window.addEventListener("scroll", function () {
       var scrollTop = window.scrollY;
       var docHeight = document.documentElement.scrollHeight - window.innerHeight;
       var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progress = Math.max(0, Math.min(100, progress));
       progressBar.style.width = progress + "%";
     }, { passive: true });
   }
 
-  // ── Cursor glow — desktop only ──
-  if (!prefersReducedMotion && window.innerWidth > 768) {
+  // ── Cursor glow — pointer devices only (not touch iPads) ──
+  var hasPointer = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (!prefersReducedMotion && hasPointer) {
     var glow = document.querySelector(".cursor-glow");
     if (glow) {
       var glowVisible = false;
+      var rafPending = false;
+      var glowX = 0;
+      var glowY = 0;
+
       document.addEventListener("mousemove", function (e) {
+        glowX = e.clientX;
+        glowY = e.clientY;
         if (!glowVisible) {
           glow.style.opacity = "1";
           glowVisible = true;
         }
-        glow.style.left = e.clientX + "px";
-        glow.style.top = e.clientY + "px";
+        // Batch style updates to rAF to avoid layout thrashing on high-frequency pointers
+        if (!rafPending) {
+          rafPending = true;
+          requestAnimationFrame(function () {
+            glow.style.left = glowX + "px";
+            glow.style.top = glowY + "px";
+            rafPending = false;
+          });
+        }
       }, { passive: true });
 
       document.addEventListener("mouseleave", function () {
         glow.style.opacity = "0";
         glowVisible = false;
-      });
+      }, { passive: true });
     }
   }
 
-  // ── Gold particle canvas — floating dots in hero ──
+  // ── Gold particle canvas — with visibility gating for iOS battery ──
   var canvas = document.querySelector(".particle-canvas canvas");
   if (canvas && !prefersReducedMotion) {
     var ctx = canvas.getContext("2d");
     var particles = [];
     var particleCount = 40;
+    var particleRafId = null;
+    var resizeTimer = null;
 
     function resizeCanvas() {
-      canvas.width = canvas.parentElement.offsetWidth;
-      canvas.height = canvas.parentElement.offsetHeight;
+      var newW = canvas.parentElement.offsetWidth;
+      var newH = canvas.parentElement.offsetHeight;
+      // Only resize if dimensions actually changed (avoids iOS address bar flicker)
+      if (canvas.width !== newW || canvas.height !== newH) {
+        canvas.width = newW;
+        canvas.height = newH;
+      }
     }
     resizeCanvas();
-    window.addEventListener("resize", resizeCanvas, { passive: true });
+
+    // Debounced resize to avoid iOS address bar transition flicker
+    window.addEventListener("resize", function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(resizeCanvas, 150);
+    }, { passive: true });
 
     for (var i = 0; i < particleCount; i++) {
       particles.push({
@@ -224,8 +274,20 @@
         ctx.fillStyle = "rgba(212, 160, 23, " + flickerOpacity + ")";
         ctx.fill();
       }
-      requestAnimationFrame(drawParticles);
+      particleRafId = requestAnimationFrame(drawParticles);
     }
     drawParticles();
+
+    // Pause particle animation when page is hidden (iOS battery optimization)
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) {
+        if (particleRafId) {
+          cancelAnimationFrame(particleRafId);
+          particleRafId = null;
+        }
+      } else if (!particleRafId) {
+        drawParticles();
+      }
+    });
   }
 })();

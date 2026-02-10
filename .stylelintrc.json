@@ -10,6 +10,8 @@
     "import-notation": null,
     "value-keyword-case": null,
     "custom-property-pattern": null,
-    "color-hex-length": null
+    "color-hex-length": null,
+    "property-no-vendor-prefix": null,
+    "length-zero-no-unit": null
   }
 }
