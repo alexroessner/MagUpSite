@@ -26,7 +26,7 @@ const DATA = path.join(ROOT, "data");
 
 function parseArgs() {
   const args = process.argv.slice(2);
-  let gate = "all";
+  let gate = "ALL";
   for (let i = 0; i < args.length; i++) {
     if (args[i] === "--gate" && args[i + 1]) gate = args[++i].toUpperCase();
   }
