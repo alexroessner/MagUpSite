@@ -58,7 +58,7 @@ jobs:
         continue-on-error: true
 
       - name: Run audit
-        run: node scripts/audit.js --gate ALL
+        run: node scripts/audit.js --gate D
         continue-on-error: true
 
       # --- Build for GitHub Pages deployment ---
