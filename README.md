@@ -17,7 +17,6 @@ npm run dev          # Preview at http://localhost:8080
 npm run dev          # CSS watch + Eleventy serve (localhost:8080)
 npm run build        # Production build
 npm run check        # Build + all linters
-npm run audit        # Multi-persona quality audit (gate D)
 ```
 
 ## How Deployment Works
@@ -26,9 +25,8 @@ Push to `main` triggers the CI workflow:
 1. Build CSS (Tailwind v4) and HTML (Eleventy)
 2. Lint HTML and CSS
 3. Run accessibility and link checks
-4. Run audit (gate D: post-build checks)
-5. Deploy to GitHub Pages
-6. Smoke test the live URL
+4. Deploy to GitHub Pages
+5. Smoke test the live URL
 
 GitHub Pages serves the `dist/` output at the repo's Pages URL.
 
@@ -49,9 +47,6 @@ GitHub Pages serves the `dist/` output at the repo's Pages URL.
 MagUpSite/
 ├── .github/workflows/ci.yml    Build & deploy pipeline
 ├── brand-book/                  Design system documentation
-├── personas/                    AI expert personas (11 total)
-├── scripts/
-│   └── audit.js                 Multi-gate quality audit
 ├── data/                        Site blueprint data
 │   ├── merged-blueprint.json    Unified content + design blueprint
 │   ├── raw-extract.json         Original PDF extraction
@@ -68,7 +63,6 @@ MagUpSite/
 │   ├── team.njk                 Team page
 │   ├── sections.njk             Content sections
 │   └── style-guide.njk          Living design reference
-├── audits/                      Audit history
 ├── whitelabel.config.js         Brand configuration
 ├── eleventy.config.js           Eleventy configuration
 └── tailwind.config.js           Tailwind reference (v4 uses CSS config)
@@ -83,24 +77,3 @@ and rationale.
 The `brand-book/` directory documents the full design system: colors,
 typography, components, animations, layout patterns, and brand voice.
 
-## Personas
-
-The `personas/` directory contains 11 expert personas that guide quality.
-Each persona is a prompt that adopts a specific expert's cognitive stance
-for AI-assisted maintenance:
-
-- **Document Analyst** / **Content Architect** / **Copywriter** — content quality
-- **Style Cloner** / **Brand Interpreter** / **3D Graphics** — visual design
-- **Synthesizer** — content-design coherence
-- **Engineer** — build pipeline and tooling
-- **Accessibility** / **SEO** / **Target Audience** — quality gates
-
-## Audit System
-
-Gate D (post-build) checks HTML validity, CSS quality, accessibility,
-links, SEO, and brand consistency:
-
-```bash
-npm run audit                    # Run all gate D checks
-node scripts/audit.js --gate D   # Same thing, explicit
-```

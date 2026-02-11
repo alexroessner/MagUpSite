@@ -17,7 +17,6 @@ Key commands:
 - `npm run build` — Build CSS + Eleventy
 - `npm run dev` — Development server with live reload (localhost:8080)
 - `npm run check` — Full build + all linters
-- `npm run audit` — Run gate D quality audit
 - `npm run lint` — Linters only (requires dev server running)
 
 Some commands require specific permissions:
@@ -39,34 +38,6 @@ Some commands require specific permissions:
   change must maintain the current look and feel unless explicitly
   asked to change it.
 
-## Personas
-
-The `personas/` directory contains expert personas that can be activated
-in any AI-assisted conversation. Each file is a prompt that changes how
-the AI thinks — not a record of past decisions, but an instruction to
-adopt a specific expert's cognitive stance.
-
-### Content
-- **[personas/document-analyst.md](personas/document-analyst.md)** — PDF structure and data
-- **[personas/content-architect.md](personas/content-architect.md)** — Information architecture
-- **[personas/copywriter.md](personas/copywriter.md)** — Web content and voice
-
-### Design
-- **[personas/style-cloner.md](personas/style-cloner.md)** — Visual design reverse-engineering
-- **[personas/brand-interpreter.md](personas/brand-interpreter.md)** — Visual identity and tokens
-- **[personas/3d-graphics.md](personas/3d-graphics.md)** — Three.js scenes and WebGL
-
-### Quality
-- **[personas/synthesizer.md](personas/synthesizer.md)** — Content-design coherence
-- **[personas/engineer.md](personas/engineer.md)** — Build tooling and process
-- **[personas/accessibility.md](personas/accessibility.md)** — WCAG compliance
-- **[personas/seo.md](personas/seo.md)** — Search and AI discoverability
-- **[personas/target-audience.md](personas/target-audience.md)** — User perspective
-
-Use them by referencing the file (e.g., "you are an expert
-@personas/accessibility.md") when you want the AI to bring that expert's
-perspective to the work.
-
 ## Design Approach
 
 When changing colors, fonts, or spacing:
@@ -85,17 +56,6 @@ reference but is not used.
 - **Page content:** `src/_data/pageContent.json` (hero, about, services, team, etc.)
 - **Navigation:** `src/_data/nav.js` (reads from `data/merged-blueprint.json`)
 - **Design tokens:** `src/css/input.css` `@theme` block
-
-## Audit
-
-Gate D (post-build) is the relevant audit for this site:
-
-```bash
-node scripts/audit.js --gate D
-```
-
-Checks HTML validity, CSS quality, accessibility, links, SEO, and brand
-consistency across the built output in `dist/`.
 
 ## Git Workflow
 

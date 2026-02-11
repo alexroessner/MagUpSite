@@ -16,8 +16,7 @@
     "lint:a11y": "pa11y-ci",
     "lint:links": "linkinator http://localhost:8080 --config .linkinator.config.json",
     "lint": "npm run lint:html && npm run lint:css && npm run lint:a11y && npm run lint:links",
-    "check": "npm run build && npm run lint",
-    "audit": "node scripts/audit.js"
+    "check": "npm run build && npm run lint"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
