@@ -1,90 +1,15 @@
-# DeckSiteAgent
+# GEO 42
 
-PDF-driven white-label website generator. Extracts content from PDF
-documents, scrapes design systems from reference URLs, merges both
-streams, and generates professional static sites.
+The Answer Engine for Enterprise Brands. AI visibility platform website
+deployed at [alexroessner.github.io/MagUpSite](https://alexroessner.github.io/MagUpSite/).
 
 ## Quick Start
 
 ```bash
 npm install
-npm run extract -- --pdf source-pdf/company.pdf
-npm run scrape -- --url https://example.com
-npm run merge
 npm run build
 npm run dev          # Preview at http://localhost:8080
 ```
-
-Or run the full pipeline in one command:
-
-```bash
-npm run pipeline
-```
-
-## How It Works
-
-DeckSiteAgent operates as a two-stream pipeline with a merge step:
-
-```
-Stream A (Content)          Stream B (Design)
-─────────────────          ──────────────────
-PDF document               Reference URL
-      │                          │
-      ▼                          ▼
- extract-pdf.js            scrape-styles.js
-      │                          │
-      ▼                          ▼
- raw-extract.json          scraped-styles.json
-      │                          │
-      └──────────┬───────────────┘
-                 ▼
-            merge.js
-                 │
-                 ▼
-        merged-blueprint.json
-                 │
-                 ▼
-         Eleventy + Tailwind
-                 │
-                 ▼
-            dist/ (static site)
-```
-
-### Stream A: PDF Extraction
-
-The extraction script (`scripts/extract-pdf.js`) parses the PDF and
-produces structured data:
-- Company identity (name, tagline, description)
-- Content sections with hierarchy (headings, paragraphs, lists)
-- Tables with semantic structure
-- Contact information
-- Image references
-
-### Stream B: Style Scraping
-
-The scraping script (`scripts/scrape-styles.js`) visits the reference
-URL and extracts the visual design system:
-- Color palette (primary, accent, neutral scales)
-- Typography (font families, sizes, weights, line-heights)
-- Layout patterns (containers, grids, spacing)
-- Component patterns (buttons, cards, navigation)
-- Brand assets (logo, favicon)
-
-### Merge
-
-The merge script (`scripts/merge.js`) combines both streams into a
-unified site blueprint:
-- Maps content to design patterns
-- Resolves conflicts (tone, volume, coverage)
-- Generates navigation structure
-- Produces the final design tokens
-- Creates the target audience persona
-
-### Build
-
-Standard Eleventy + Tailwind CSS v4 build:
-- Tailwind compiles `src/css/input.css` → `src/css/style.css`
-- Eleventy builds `src/` → `dist/`
 
 ## Development
 
@@ -92,100 +17,90 @@ Standard Eleventy + Tailwind CSS v4 build:
 npm run dev          # CSS watch + Eleventy serve (localhost:8080)
 npm run build        # Production build
 npm run check        # Build + all linters
-npm run lint         # Linters only (requires dev server running)
-npm run audit        # Multi-persona audit checks
+npm run audit        # Multi-persona quality audit (gate D)
 ```
+
+## How Deployment Works
+
+Push to `main` triggers the CI workflow:
+1. Build CSS (Tailwind v4) and HTML (Eleventy)
+2. Lint HTML and CSS
+3. Run accessibility and link checks
+4. Run audit (gate D: post-build checks)
+5. Deploy to GitHub Pages
+6. Smoke test the live URL
+
+GitHub Pages serves the `dist/` output at the repo's Pages URL.
+
+## Where Content Lives
+
+| File | What It Controls |
+|------|-----------------|
+| `whitelabel.config.js` | Company name, tagline, colors, fonts, contact info |
+| `src/_data/pageContent.json` | All page content (hero, about, services, team, etc.) |
+| `src/_data/nav.js` | Navigation structure (reads from merged blueprint) |
+| `src/_data/site.js` | Global site metadata (reads from whitelabel config) |
+| `src/css/input.css` | Design tokens via Tailwind v4 `@theme` block |
+| `data/merged-blueprint.json` | Unified site blueprint (content + design merged) |
 
 ## Project Structure
 
 ```
-DeckSiteAgent/
-├── .github/workflows/ci.yml    CI/CD pipeline
-├── personas/                   AI persona files (10 total)
-│   ├── document-analyst.md     PDF structure & extraction
-│   ├── style-cloner.md         Web design reverse-engineering
-│   ├── content-architect.md    Information architecture
-│   ├── brand-interpreter.md    Visual identity & design tokens
-│   ├── synthesizer.md          Two-stream merger
-│   ├── copywriter.md           Web content adaptation
-│   ├── engineer.md             Build pipeline & tooling
-│   ├── accessibility.md        WCAG compliance
-│   ├── seo.md                  Search & AI discoverability
-│   └── target-audience.md      Dynamic (generated per project)
-├── scripts/                    Pipeline scripts
-│   ├── extract-pdf.js          Stream A: PDF → structured data
-│   ├── scrape-styles.js        Stream B: URL → design system
-│   ├── merge.js                Merge: content + design → blueprint
-│   ├── generate.js             Orchestrator: full pipeline
-│   └── audit.js                Multi-persona quality checks
-├── data/                       Intermediate pipeline data
-│   ├── raw-extract.json        PDF extraction output
-│   ├── scraped-styles.json     Style scraping output
-│   └── merged-blueprint.json   Merge output (site blueprint)
-├── source-pdf/                 Input PDF documents
-├── src/                        Eleventy source
-│   ├── _data/                  Global data files
-│   │   ├── site.js             Site metadata (from whitelabel config)
-│   │   ├── nav.js              Navigation structure
-│   │   └── pageContent.json    Structured content for templates
-│   ├── _includes/              Layout templates
-│   │   ├── base.njk            Master layout (head, header, nav, footer)
-│   │   └── page.njk            Interior page layout (prose wrapper)
-│   ├── css/input.css           Tailwind v4 theme (@theme tokens)
-│   ├── images/                 Site images
-│   ├── pdf/                    PDF assets
-│   ├── index.njk               Homepage template
-│   ├── style-guide.njk         Living design system reference
-│   ├── sitemap.njk             XML sitemap
-│   ├── robots.txt.njk          Robots file
-│   ├── llms.txt.njk            AI discoverability (short)
-│   └── llms-full.txt.njk       AI discoverability (extended)
-├── whitelabel.config.js        Brand identity configuration
-├── eleventy.config.js          Eleventy configuration
-├── AGENTS.md                   AI assistant instructions
-├── TODO.md                     Task tracking
-└── README.md                   This file
+MagUpSite/
+├── .github/workflows/ci.yml    Build & deploy pipeline
+├── brand-book/                  Design system documentation
+├── personas/                    AI expert personas (11 total)
+├── scripts/
+│   └── audit.js                 Multi-gate quality audit
+├── data/                        Site blueprint data
+│   ├── merged-blueprint.json    Unified content + design blueprint
+│   ├── raw-extract.json         Original PDF extraction
+│   └── scraped-styles.json      Design system from reference URL
+├── src/                         Eleventy source
+│   ├── _data/                   Global data (site.js, nav.js, pageContent.json)
+│   ├── _includes/               Layouts (base.njk, page.njk)
+│   ├── css/input.css            Tailwind v4 theme + custom CSS
+│   ├── js/                      Three.js animations + scroll effects
+│   ├── index.njk                Homepage (23 sections)
+│   ├── about.njk                About page
+│   ├── services.njk             Services page
+│   ├── contact.njk              Contact page
+│   ├── team.njk                 Team page
+│   ├── sections.njk             Content sections
+│   └── style-guide.njk          Living design reference
+├── audits/                      Audit history
+├── whitelabel.config.js         Brand configuration
+├── eleventy.config.js           Eleventy configuration
+└── tailwind.config.js           Tailwind reference (v4 uses CSS config)
 ```
 
 ## Design System
 
-The site's visual design is configured in two places:
+Design tokens live in `src/css/input.css` via Tailwind v4's `@theme` block.
+The `/style-guide/` page is a living reference showing all tokens, components,
+and rationale.
 
-1. **`src/css/input.css`** — Source of truth for design tokens in the
-   `@theme` block (colors, fonts, spacing). Updated by the merge script.
+The `brand-book/` directory documents the full design system: colors,
+typography, components, animations, layout patterns, and brand voice.
 
-2. **`/style-guide/`** — Living reference showing all tokens, components,
-   and rationale. Run `npm run dev` and visit
-   http://localhost:8080/style-guide/
+## Personas
 
-This project uses Tailwind CSS v4 with CSS-based `@theme` configuration.
-The `tailwind.config.js` file is kept for reference but is not used.
+The `personas/` directory contains 11 expert personas that guide quality.
+Each persona is a prompt that adopts a specific expert's cognitive stance
+for AI-assisted maintenance:
+
+- **Document Analyst** / **Content Architect** / **Copywriter** — content quality
+- **Style Cloner** / **Brand Interpreter** / **3D Graphics** — visual design
+- **Synthesizer** — content-design coherence
+- **Engineer** — build pipeline and tooling
+- **Accessibility** / **SEO** / **Target Audience** — quality gates
 
 ## Audit System
 
-Four audit gates run at pipeline boundaries:
+Gate D (post-build) checks HTML validity, CSS quality, accessibility,
+links, SEO, and brand consistency:
 
-| Gate | Phase | What It Checks |
-|------|-------|---------------|
-| A | Post-extraction | Content completeness against source PDF |
-| B | Post-scrape | Design system completeness, WCAG contrast |
-| C | Post-merge | Blueprint coherence, content-design fit |
-| D | Post-build | HTML, CSS, a11y, links, SEO, brand consistency |
-
-Run all audits: `npm run audit`
-
-## Working With AI
-
-This project uses an AI persona system for consistent quality across
-sessions. See `AGENTS.md` for full details and `personas/` for the
-persona files. Each persona changes how the AI *thinks* about the work
--- what it notices, what it pushes back on, what it raises unprompted.
-
-## Git Workflow
-
-- Small, frequent commits with imperative mood subject lines
-- Keep these files in sync when making changes:
-  - `TODO.md` — as tasks are completed or plans change
-  - `README.md` — developer instructions and documentation
-  - `AGENTS.md` — AI assistant instructions
-  - `src/style-guide.njk` — when design decisions change
+```bash
+npm run audit                    # Run all gate D checks
+node scripts/audit.js --gate D   # Same thing, explicit
+```

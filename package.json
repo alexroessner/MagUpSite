@@ -1,13 +1,9 @@
 {
-  "name": "decksiteagent",
+  "name": "magupsite",
   "version": "1.0.0",
-  "description": "PDF-driven white-label website generator. Extracts content from PDF documents, scrapes design systems from reference URLs, merges both streams, and generates professional static sites.",
-  "main": "index.js",
+  "private": true,
+  "description": "GEO 42 — The Answer Engine for Enterprise Brands. AI visibility platform website.",
   "scripts": {
-    "extract": "node scripts/extract-pdf.js",
-    "scrape": "node scripts/scrape-styles.js",
-    "merge": "node scripts/merge.js",
-    "generate": "node scripts/generate.js",
     "build:css": "npx @tailwindcss/cli -i ./src/css/input.css -o ./src/css/style.css --minify",
     "build:11ty": "npx eleventy",
     "clean": "rm -rf dist",
@@ -21,21 +17,16 @@
     "lint:links": "linkinator http://localhost:8080 --config .linkinator.config.json",
     "lint": "npm run lint:html && npm run lint:css && npm run lint:a11y && npm run lint:links",
     "check": "npm run build && npm run lint",
-    "audit": "node scripts/audit.js",
-    "pipeline": "npm run extract && npm run scrape && npm run merge && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "audit": "node scripts/audit.js"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
     "@tailwindcss/cli": "^4.1.18",
     "@tailwindcss/typography": "^0.5.19",
-    "cheerio": "^1.0.0",
     "html-validate": "^10.7.0",
     "linkinator": "^7.5.3",
     "npm-run-all": "^4.1.5",
     "pa11y-ci": "^4.0.1",
-    "pdf-parse": "^1.1.1",
-    "puppeteer-core": "^24.37.2",
     "stylelint": "^17.1.1",
     "stylelint-config-standard": "^40.0.0",
     "tailwindcss": "^4.1.18"
