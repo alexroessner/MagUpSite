@@ -56,16 +56,16 @@ button:focus-visible {
   z-index: 50;
   -webkit-backdrop-filter: blur(16px) saturate(1.5);
   backdrop-filter: blur(16px) saturate(1.5);
-  background: rgb(12 10 30 / 85%);
-  border-bottom: 1px solid rgb(151 117 250 / 10%);
+  background: rgb(var(--surface-dark-rgb) / 85%);
+  border-bottom: 1px solid rgb(var(--glow-rgb) / 10%);
   transition: background 0.3s ease, border-color 0.3s ease;
   will-change: transform;
   padding-top: env(safe-area-inset-top, 0px);
 }
 
 .site-header.scrolled {
-  background: rgb(12 10 30 / 95%);
-  border-bottom-color: rgb(151 117 250 / 20%);
+  background: rgb(var(--surface-dark-rgb) / 95%);
+  border-bottom-color: rgb(var(--glow-rgb) / 20%);
 }
 
 /* ===== Logo mark ===== */
@@ -239,8 +239,8 @@ button:focus-visible {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 30% 40%, rgb(151 117 250 / 6%), transparent 60%),
-    radial-gradient(ellipse 60% 50% at 70% 60%, rgb(185 160 255 / 4%), transparent 50%),
+    radial-gradient(ellipse 80% 60% at 30% 40%, rgb(var(--glow-rgb) / 6%), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 70% 60%, rgb(var(--glow-light-rgb) / 4%), transparent 50%),
     radial-gradient(ellipse 100% 100% at 50% 100%, var(--color-primary-950), transparent 70%);
 }
 
@@ -252,7 +252,7 @@ button:focus-visible {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(ellipse, rgb(151 117 250 / 8%), transparent 70%);
+  background: radial-gradient(ellipse, rgb(var(--glow-rgb) / 8%), transparent 70%);
   pointer-events: none;
   filter: blur(80px);
 }
@@ -281,10 +281,10 @@ button:focus-visible {
 
 /* ===== FAQ conditional border — accent glow when open ===== */
 .group.open.glass-card {
-  border-color: rgb(151 117 250 / 25%);
-  box-shadow: 0 8px 32px -8px rgb(8 5 30 / 40%),
-              inset 0 1px 0 rgb(151 117 250 / 6%),
-              0 0 20px -8px rgb(151 117 250 / 12%);
+  border-color: rgb(var(--glow-rgb) / 25%);
+  box-shadow: 0 8px 32px -8px rgb(var(--surface-dark-rgb) / 40%),
+              inset 0 1px 0 rgb(var(--glow-rgb) / 6%),
+              0 0 20px -8px rgb(var(--glow-rgb) / 12%);
 }
 
 /* ===== Terminal window frame ===== */
@@ -299,8 +299,8 @@ button:focus-visible {
   left: 0;
   right: 0;
   height: 2.5rem;
-  background: rgb(12 10 30 / 90%);
-  border-bottom: 1px solid rgb(151 117 250 / 12%);
+  background: rgb(var(--surface-dark-rgb) / 90%);
+  border-bottom: 1px solid rgb(var(--glow-rgb) / 12%);
   border-radius: 1rem 1rem 0 0;
   z-index: 1;
 }
@@ -334,10 +334,10 @@ button:focus-visible {
 
 /* ===== Hero CTA button — gradient pill with warm glow ===== */
 .hero-cta {
-  background: linear-gradient(135deg, #9775FA, #7C5CF7 60%, #6741F0);
+  background: linear-gradient(135deg, var(--color-accent-500), var(--color-accent-600) 60%, var(--color-accent-700));
   box-shadow:
-    0 4px 20px -4px rgb(151 117 250 / 30%),
-    0 0 40px -12px rgb(185 160 255 / 20%),
+    0 4px 20px -4px rgb(var(--glow-rgb) / 30%),
+    0 0 40px -12px rgb(var(--glow-light-rgb) / 20%),
     inset 0 1px 0 rgb(255 255 255 / 20%);
 }
 
@@ -349,10 +349,10 @@ button:focus-visible {
 }
 
 .hero-cta:hover {
-  background: linear-gradient(135deg, #B197FC, #9775FA 60%, #7C5CF7);
+  background: linear-gradient(135deg, var(--color-accent-400), var(--color-accent-500) 60%, var(--color-accent-600));
   box-shadow:
-    0 6px 28px -4px rgb(151 117 250 / 40%),
-    0 0 50px -8px rgb(185 160 255 / 25%),
+    0 6px 28px -4px rgb(var(--glow-rgb) / 40%),
+    0 0 50px -8px rgb(var(--glow-light-rgb) / 25%),
     inset 0 1px 0 rgb(255 255 255 / 25%);
 }
 
@@ -367,8 +367,8 @@ button:focus-visible {
 @media (hover: hover) {
   .card-lift:hover {
     transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 24px 60px -16px rgb(151 117 250 / 20%),
-                0 0 0 1px rgb(151 117 250 / 15%);
+    box-shadow: 0 24px 60px -16px rgb(var(--glow-rgb) / 20%),
+                0 0 0 1px rgb(var(--glow-rgb) / 15%);
   }
 }
 
@@ -376,8 +376,8 @@ button:focus-visible {
 @media (hover: none) {
   .card-lift:active {
     transform: scale(0.97);
-    box-shadow: 0 4px 20px -4px rgb(151 117 250 / 25%),
-                inset 0 1px 0 rgb(151 117 250 / 15%);
+    box-shadow: 0 4px 20px -4px rgb(var(--glow-rgb) / 25%),
+                inset 0 1px 0 rgb(var(--glow-rgb) / 15%);
     transition-duration: 0.1s;
   }
 }
@@ -386,10 +386,10 @@ button:focus-visible {
 .glass-card {
   position: relative;
   overflow: hidden;
-  background: rgb(20 16 45 / 85%);
-  border: 1px solid rgb(151 117 250 / 8%);
-  box-shadow: 0 8px 32px -8px rgb(8 5 30 / 40%),
-              inset 0 1px 0 rgb(151 117 250 / 6%);
+  background: rgb(var(--surface-rgb) / 85%);
+  border: 1px solid rgb(var(--glow-rgb) / 8%);
+  box-shadow: 0 8px 32px -8px rgb(var(--surface-dark-rgb) / 40%),
+              inset 0 1px 0 rgb(var(--glow-rgb) / 6%);
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -397,28 +397,28 @@ button:focus-visible {
 .glass-blur {
   -webkit-backdrop-filter: blur(20px) saturate(1.4);
   backdrop-filter: blur(20px) saturate(1.4);
-  background: rgb(20 16 45 / 60%);
+  background: rgb(var(--surface-rgb) / 60%);
 }
 
 /* Desktop: hover brighten */
 @media (hover: hover) {
   .glass-card:hover {
-    background: rgb(20 16 45 / 92%);
-    border-color: rgb(151 117 250 / 20%);
+    background: rgb(var(--surface-rgb) / 92%);
+    border-color: rgb(var(--glow-rgb) / 20%);
     box-shadow: 0 16px 48px -12px rgb(0 0 0 / 50%),
-                0 0 30px -10px rgb(151 117 250 / 12%),
-                inset 0 1px 0 rgb(151 117 250 / 10%);
+                0 0 30px -10px rgb(var(--glow-rgb) / 12%),
+                inset 0 1px 0 rgb(var(--glow-rgb) / 10%);
   }
 }
 
 /* Touch: active press — glass brightens on tap */
 @media (hover: none) {
   .glass-card:active {
-    background: rgb(20 16 45 / 95%);
-    border-color: rgb(151 117 250 / 25%);
+    background: rgb(var(--surface-rgb) / 95%);
+    border-color: rgb(var(--glow-rgb) / 25%);
     box-shadow: 0 4px 16px -4px rgb(0 0 0 / 50%),
-                0 0 20px -8px rgb(151 117 250 / 15%),
-                inset 0 1px 0 rgb(151 117 250 / 12%);
+                0 0 20px -8px rgb(var(--glow-rgb) / 15%),
+                inset 0 1px 0 rgb(var(--glow-rgb) / 12%);
     transition-duration: 0.1s;
   }
 }
@@ -435,7 +435,7 @@ button:focus-visible {
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, rgb(151 117 250 / 30%), transparent 50%, rgb(151 117 250 / 10%));
+  background: linear-gradient(135deg, rgb(var(--glow-rgb) / 30%), transparent 50%, rgb(var(--glow-rgb) / 10%));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -455,7 +455,7 @@ button:focus-visible {
   left: 10%;
   right: 10%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgb(151 117 250 / 20%), rgb(151 117 250 / 40%), rgb(151 117 250 / 20%), transparent);
+  background: linear-gradient(90deg, transparent, rgb(var(--glow-rgb) / 20%), rgb(var(--glow-rgb) / 40%), rgb(var(--glow-rgb) / 20%), transparent);
 }
 
 /* ===== Gradient mesh background for sections ===== */
@@ -468,8 +468,8 @@ button:focus-visible {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 50% 80% at 20% 50%, rgb(151 117 250 / 3%), transparent),
-    radial-gradient(ellipse 40% 60% at 80% 30%, rgb(185 160 255 / 2%), transparent);
+    radial-gradient(ellipse 50% 80% at 20% 50%, rgb(var(--glow-rgb) / 3%), transparent),
+    radial-gradient(ellipse 40% 60% at 80% 30%, rgb(var(--glow-light-rgb) / 2%), transparent);
   pointer-events: none;
 }
 
@@ -477,12 +477,12 @@ button:focus-visible {
 .card-featured {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, rgb(151 117 250 / 8%), rgb(20 16 45 / 80%));
+  background: linear-gradient(135deg, rgb(var(--glow-rgb) / 8%), rgb(var(--surface-rgb) / 80%));
   -webkit-backdrop-filter: blur(20px) saturate(1.4);
   backdrop-filter: blur(20px) saturate(1.4);
-  border: 1px solid rgb(151 117 250 / 15%);
-  box-shadow: 0 12px 40px -8px rgb(151 117 250 / 12%),
-              inset 0 1px 0 rgb(151 117 250 / 10%);
+  border: 1px solid rgb(var(--glow-rgb) / 15%);
+  box-shadow: 0 12px 40px -8px rgb(var(--glow-rgb) / 12%),
+              inset 0 1px 0 rgb(var(--glow-rgb) / 10%);
 }
 
 .card-featured::after {
@@ -505,7 +505,7 @@ button:focus-visible {
   position: absolute;
   inset: -1px;
   border-radius: inherit;
-  background: conic-gradient(from var(--border-angle, 0deg), transparent 60%, rgb(151 117 250 / 40%), transparent 80%);
+  background: conic-gradient(from var(--border-angle, 0deg), transparent 60%, rgb(var(--glow-rgb) / 40%), transparent 80%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -608,12 +608,12 @@ button:focus-visible {
   left: 10%;
   right: 10%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgb(151 117 250 / 25%), rgb(151 117 250 / 50%), rgb(151 117 250 / 25%), transparent);
+  background: linear-gradient(90deg, transparent, rgb(var(--glow-rgb) / 25%), rgb(var(--glow-rgb) / 50%), rgb(var(--glow-rgb) / 25%), transparent);
 }
 
 /* ===== Dramatic text glow for headings ===== */
 .text-glow {
-  text-shadow: 0 0 40px rgb(151 117 250 / 20%), 0 0 80px rgb(151 117 250 / 10%);
+  text-shadow: 0 0 40px rgb(var(--glow-rgb) / 20%), 0 0 80px rgb(var(--glow-rgb) / 10%);
 }
 
 /* ===== Large display text ===== */
@@ -660,7 +660,7 @@ button:focus-visible {
   width: 400px;
   height: 400px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgb(151 117 250 / 6%), transparent 70%);
+  background: radial-gradient(circle, rgb(var(--glow-rgb) / 6%), transparent 70%);
   pointer-events: none;
   z-index: 1;
   transform: translate(-50%, -50%);
@@ -681,7 +681,7 @@ button:focus-visible {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgb(151 117 250 / 15%), rgb(151 117 250 / 5%) 40%, transparent 70%);
+  background: radial-gradient(circle, rgb(var(--glow-rgb) / 15%), rgb(var(--glow-rgb) / 5%) 40%, transparent 70%);
   pointer-events: none;
   z-index: 2;
   transform: translate(-50%, -50%) scale(0);
@@ -757,7 +757,7 @@ button:focus-visible {
 
 .s3d {
   position: absolute;
-  border: 1px solid rgb(151 117 250 / 12%);
+  border: 1px solid rgb(var(--glow-rgb) / 12%);
   opacity: 0;
   animation: s3d-drift 18s ease-in-out infinite;
   will-change: transform, opacity;
@@ -794,13 +794,16 @@ button:focus-visible {
     opacity: 0;
     transform: translateY(0) rotate(0deg) scale(0.8);
   }
+
   15% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.7;
     transform: translateY(-12px) rotate(180deg) scale(1.2);
   }
+
   85% {
     opacity: 1;
   }
@@ -828,7 +831,7 @@ button:focus-visible {
   right: -10%;
   width: 1px;
   height: 200%;
-  background: linear-gradient(180deg, transparent, rgb(151 117 250 / 30%), transparent);
+  background: linear-gradient(180deg, transparent, rgb(var(--glow-rgb) / 30%), transparent);
   transform: rotate(15deg);
 }
 
@@ -839,7 +842,7 @@ button:focus-visible {
   right: 25%;
   width: 1px;
   height: 200%;
-  background: linear-gradient(180deg, transparent, rgb(151 117 250 / 15%), transparent);
+  background: linear-gradient(180deg, transparent, rgb(var(--glow-rgb) / 15%), transparent);
   transform: rotate(15deg);
 }
 
@@ -871,8 +874,8 @@ button:focus-visible {
 }
 
 @keyframes flywheel-glow {
-  0%, 100% { box-shadow: 0 0 20px -4px rgb(151 117 250 / 15%); }
-  50% { box-shadow: 0 0 40px -4px rgb(151 117 250 / 30%); }
+  0%, 100% { box-shadow: 0 0 20px -4px rgb(var(--glow-rgb) / 15%); }
+  50% { box-shadow: 0 0 40px -4px rgb(var(--glow-rgb) / 30%); }
 }
 
 /* ===== 3D depth stagger reveal — cards emerge from depth ===== */
@@ -913,7 +916,7 @@ button:focus-visible {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgb(151 117 250 / 8%), transparent);
+  background: linear-gradient(90deg, transparent, rgb(var(--glow-rgb) / 8%), transparent);
   animation: shimmer 3s ease-in-out infinite;
   will-change: transform;
 }
@@ -949,8 +952,8 @@ button:focus-visible {
 
 /* ===== KPI card glow ===== */
 .kpi-glow {
-  box-shadow: 0 0 0 1px rgb(151 117 250 / 10%),
-              0 4px 24px -4px rgb(151 117 250 / 8%);
+  box-shadow: 0 0 0 1px rgb(var(--glow-rgb) / 10%),
+              0 4px 24px -4px rgb(var(--glow-rgb) / 8%);
 }
 
 /* ===== Platform card 3D tilt on hover (desktop only) ===== */
@@ -1022,12 +1025,12 @@ button:focus-visible {
 .glow-reveal.visible {
   opacity: 1;
   transform: translateY(0);
-  box-shadow: 0 0 40px -10px rgb(151 117 250 / 30%);
+  box-shadow: 0 0 40px -10px rgb(var(--glow-rgb) / 30%);
   animation: glow-fade 2s ease 0.6s forwards;
 }
 
 @keyframes glow-fade {
-  to { box-shadow: 0 0 0 0 rgb(151 117 250 / 0%); }
+  to { box-shadow: 0 0 0 0 rgb(var(--glow-rgb) / 0%); }
 }
 
 /* ===== Pop-in — scale from small with spring ===== */
@@ -1116,7 +1119,7 @@ button:focus-visible {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(ellipse, rgb(151 117 250 / 12%), transparent 70%);
+  background: radial-gradient(ellipse, rgb(var(--glow-rgb) / 12%), transparent 70%);
   pointer-events: none;
   filter: blur(60px);
   animation: ambient-pulse 4s ease-in-out infinite;
@@ -1184,7 +1187,7 @@ button:focus-visible {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 9999px;
-  background: rgb(151 117 250 / 20%);
+  background: rgb(var(--glow-rgb) / 20%);
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -1198,7 +1201,7 @@ button:focus-visible {
 }
 
 .dash-dot:hover {
-  background: rgb(151 117 250 / 40%);
+  background: rgb(var(--glow-rgb) / 40%);
 }
 
 /* Carousel arrows */
@@ -1209,8 +1212,8 @@ button:focus-visible {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  background: rgb(20 16 45 / 80%);
-  border: 1px solid rgb(151 117 250 / 20%);
+  background: rgb(var(--surface-rgb) / 80%);
+  border: 1px solid rgb(var(--glow-rgb) / 20%);
   color: var(--color-accent-400);
   align-items: center;
   justify-content: center;
@@ -1222,8 +1225,8 @@ button:focus-visible {
 }
 
 .dash-arrow:hover {
-  background: rgb(20 16 45 / 95%);
-  border-color: rgb(151 117 250 / 40%);
+  background: rgb(var(--surface-rgb) / 95%);
+  border-color: rgb(var(--glow-rgb) / 40%);
 }
 
 .dash-arrow-prev {
@@ -1324,32 +1327,32 @@ button:focus-visible {
 
 .hero-shape--circle {
   border-radius: 50%;
-  border: 1px solid rgb(151 117 250 / 12%);
-  background: rgb(151 117 250 / 3%);
+  border: 1px solid rgb(var(--glow-rgb) / 12%);
+  background: rgb(var(--glow-rgb) / 3%);
 }
 
 .hero-shape--hex {
-  border: 1px solid rgb(151 117 250 / 15%);
-  background: rgb(151 117 250 / 4%);
+  border: 1px solid rgb(var(--glow-rgb) / 15%);
+  background: rgb(var(--glow-rgb) / 4%);
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
 .hero-shape--diamond {
-  border: 1px solid rgb(185 160 255 / 12%);
-  background: rgb(185 160 255 / 3%);
+  border: 1px solid rgb(var(--glow-light-rgb) / 12%);
+  background: rgb(var(--glow-light-rgb) / 3%);
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
 
 .hero-shape--ring {
   border-radius: 50%;
-  border: 2px solid rgb(151 117 250 / 15%);
+  border: 2px solid rgb(var(--glow-rgb) / 15%);
   background: transparent;
 }
 
 .hero-shape--dot {
   border-radius: 50%;
-  background: rgb(151 117 250 / 25%);
-  box-shadow: 0 0 20px 5px rgb(151 117 250 / 10%);
+  background: rgb(var(--glow-rgb) / 25%);
+  box-shadow: 0 0 20px 5px rgb(var(--glow-rgb) / 10%);
 }
 
 .hero-shape-1 { width: 60px; height: 60px; top: 12%; left: 6%; animation: hdrift1 20s ease-in-out infinite; }
@@ -1419,7 +1422,7 @@ button:focus-visible {
 .section-orb--lg {
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgb(151 117 250 / 8%), transparent 70%);
+  background: radial-gradient(circle, rgb(var(--glow-rgb) / 8%), transparent 70%);
   filter: blur(60px);
   animation: orb-lg 35s ease-in-out infinite;
 }
@@ -1427,7 +1430,7 @@ button:focus-visible {
 .section-orb--md {
   width: 180px;
   height: 180px;
-  background: radial-gradient(circle, rgb(124 92 247 / 10%), transparent 70%);
+  background: radial-gradient(circle, rgb(var(--glow-dark-rgb) / 10%), transparent 70%);
   filter: blur(40px);
   animation: orb-md 28s ease-in-out infinite;
 }
@@ -1435,7 +1438,7 @@ button:focus-visible {
 .section-orb--sm {
   width: 100px;
   height: 100px;
-  background: radial-gradient(circle, rgb(185 160 255 / 12%), transparent 70%);
+  background: radial-gradient(circle, rgb(var(--glow-light-rgb) / 12%), transparent 70%);
   filter: blur(30px);
   animation: orb-sm 22s ease-in-out infinite;
 }
@@ -1696,4 +1699,11 @@ button:focus-visible {
   --color-accent-800: #5530DB;
   --color-accent-900: #4320B8;
   --color-accent-950: #2E1180;
+
+  /* ===== Effect channels (RGB triplets for alpha compositing) ===== */
+  --surface-rgb: 17 11 48;         /* primary-900 channels */
+  --surface-dark-rgb: 26 18 66;    /* primary-800 channels */
+  --glow-rgb: 151 117 250;         /* accent-500 channels */
+  --glow-light-rgb: 201 181 255;   /* accent-300 channels */
+  --glow-dark-rgb: 124 92 247;     /* accent-600 channels */
 }
