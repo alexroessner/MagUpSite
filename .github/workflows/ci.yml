@@ -1,4 +1,4 @@
-name: CI
+name: Build & Deploy
 
 on:
   push:
@@ -61,13 +61,15 @@ jobs:
         run: node scripts/audit.js --gate ALL
         continue-on-error: true
 
-      # --- Deploy via DeckSiteAgent GitHub Pages ---
-      - name: Build for DeckSiteAgent Pages
+      # --- Build for GitHub Pages deployment ---
+      # Uses repo name as path prefix so it works whether repo is
+      # named DeckSiteAgent, MagUpSite, or anything else.
+      - name: Build for GitHub Pages
         if: github.event_name == 'push'
         run: npm run build
         env:
-          PATH_PREFIX: /DeckSiteAgent/
-          SITE_URL: https://alexroessner.github.io/DeckSiteAgent
+          PATH_PREFIX: /${{ github.event.repository.name }}/
+          SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
 
       - name: Upload Pages artifact
         if: github.event_name == 'push'
@@ -83,20 +85,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Enable GitHub Pages
-        run: |
-          curl -sf -X POST \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/${{ github.repository }}/pages" \
-            -d '{"build_type":"workflow"}' || \
-          curl -sf -X PUT \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/${{ github.repository }}/pages" \
-            -d '{"build_type":"workflow"}' || true
-        continue-on-error: true
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
@@ -109,8 +97,9 @@ jobs:
       - name: Wait for deployment propagation
         run: sleep 15
 
-      - name: Verify DeckSiteAgent site
+      - name: Verify site is live
         run: |
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://alexroessner.github.io/DeckSiteAgent/)
-          echo "DeckSiteAgent HTTP status: $STATUS"
+          SITE_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$SITE_URL")
+          echo "Site HTTP status: $STATUS at $SITE_URL"
           [ "$STATUS" = "200" ]
