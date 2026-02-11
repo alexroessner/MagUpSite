@@ -1,4 +1,4 @@
-name: CI
+name: Build & Deploy
 
 on:
   push:
@@ -61,45 +61,15 @@ jobs:
         run: node scripts/audit.js --gate ALL
         continue-on-error: true
 
-      # --- Deploy to MagUpSite repo (primary) ---
-      - name: Build for MagUpSite
+      # --- Build for GitHub Pages deployment ---
+      # Uses repo name as path prefix so it works whether repo is
+      # named DeckSiteAgent, MagUpSite, or anything else.
+      - name: Build for GitHub Pages
         if: github.event_name == 'push'
         run: npm run build
         env:
-          PATH_PREFIX: /MagUpSite/
-          SITE_URL: https://alexroessner.github.io/MagUpSite
-
-      - name: Push to MagUpSite repo
-        if: github.event_name == 'push'
-        env:
-          DEPLOY_TOKEN_V3: ${{ secrets.MAGUPSITE_DEPLOY_TOKEN3 }}
-          DEPLOY_TOKEN_V2: ${{ secrets.MAGUPSITE_DEPLOY_TOKEN2 }}
-          DEPLOY_TOKEN_V1: ${{ secrets.MAGUPSITE_DEPLOY_TOKEN }}
-        run: |
-          # Try v3 first, then v2, then v1
-          DEPLOY_TOKEN="${DEPLOY_TOKEN_V3:-${DEPLOY_TOKEN_V2:-$DEPLOY_TOKEN_V1}}"
-          if [ -z "$DEPLOY_TOKEN" ]; then
-            echo "::warning::No MAGUPSITE_DEPLOY_TOKEN set. Skipping MagUpSite deploy."
-            exit 0
-          fi
-          cd dist
-          git init
-          git config user.name "DeckSiteAgent CI"
-          git config user.email "ci@decksiteagent.dev"
-          git checkout -b main
-          git add -A
-          git commit -m "Deploy MagUp site from DeckSiteAgent @ $(git -C $GITHUB_WORKSPACE rev-parse --short HEAD)"
-          git remote add origin "https://x-access-token:${DEPLOY_TOKEN}@github.com/alexroessner/MagUpSite.git"
-          git push -f origin main
-          echo "Deployed to MagUpSite"
-
-      # --- Fallback: Deploy via DeckSiteAgent GitHub Pages ---
-      - name: Build for DeckSiteAgent Pages
-        if: github.event_name == 'push'
-        run: npm run build
-        env:
-          PATH_PREFIX: /DeckSiteAgent/
-          SITE_URL: https://alexroessner.github.io/DeckSiteAgent
+          PATH_PREFIX: /${{ github.event.repository.name }}/
+          SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
 
       - name: Upload Pages artifact
         if: github.event_name == 'push'
@@ -115,20 +85,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Enable GitHub Pages
-        run: |
-          curl -sf -X POST \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/${{ github.repository }}/pages" \
-            -d '{"build_type":"workflow"}' || \
-          curl -sf -X PUT \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/${{ github.repository }}/pages" \
-            -d '{"build_type":"workflow"}' || true
-        continue-on-error: true
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
@@ -141,14 +97,9 @@ jobs:
       - name: Wait for deployment propagation
         run: sleep 15
 
-      - name: Verify DeckSiteAgent site
+      - name: Verify site is live
         run: |
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://alexroessner.github.io/DeckSiteAgent/)
-          echo "DeckSiteAgent HTTP status: $STATUS"
+          SITE_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$SITE_URL")
+          echo "Site HTTP status: $STATUS at $SITE_URL"
           [ "$STATUS" = "200" ]
-
-      - name: Verify MagUpSite (if deployed)
-        run: |
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://alexroessner.github.io/MagUpSite/)
-          echo "MagUpSite HTTP status: $STATUS"
-        continue-on-error: true

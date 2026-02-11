@@ -315,7 +315,7 @@ module.exports = {
     mono: ${JSON.stringify(tokens.typography.monoFont)},
     googleFontsUrl: ${JSON.stringify(tokens.typography.googleFontsUrl)},
   },
-  siteUrl: "https://alexroessner.github.io/MagUpSite",
+  siteUrl: process.env.SITE_URL || "",
   pathPrefix: "/",
 };
 `;
