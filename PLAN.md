@@ -1,5 +1,12 @@
 # DeckSiteAgent: Standalone Product Plan
 
+## Confirmed Decisions (2025-02-11)
+
+- **Architecture:** Incremental (PLAN.md). Templates stay in DeckSiteAgent, genericized in place. GEO 42 data moves to `examples/geo42/`. DeckSiteAgent stays functional at every step.
+- **Three.js:** Optional, not always included. Generic templates work without it. Opt-in based on brand/data.
+- **`docs/` directory:** Stale build artifacts (Eleventy outputs to `dist/`). Remove during cleanup.
+- **`enrich.js` approach:** LLM infers complex fields (`roadmap`, `faqs`, `stats`, `methodology`, `challenges`, `case_studies`). `merge.js` stays deterministic for core fields. Enrichment is optional.
+
 ## Situation
 
 Two products share one repo today:
